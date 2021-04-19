@@ -5,6 +5,9 @@
         "start": "ng serve",
         "build": "ng build --prod",
         "test": "ng test",
+        "test:ci": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
+        "lint": "npx eslint ./src --fix",
+        "lint:ci": "npx eslint ./src",
         "e2e": "ng e2e",
         "start:prod": "node src/productionServer.js"
     },
@@ -31,7 +34,6 @@
         "@types/node": "^12.11.1",
         "@typescript-eslint/eslint-plugin": "^4.22.0",
         "@typescript-eslint/parser": "^4.22.0",
-        "codelyzer": "^6.0.0",
         "eslint": "^7.24.0",
         "jasmine-core": "~3.6.0",
         "jasmine-spec-reporter": "~5.0.0",
@@ -42,7 +44,6 @@
         "karma-jasmine-html-reporter": "^1.5.0",
         "protractor": "~7.0.0",
         "ts-node": "~8.3.0",
-        "tslint": "~6.1.0",
         "typescript": "~4.1.5"
     }
 }
