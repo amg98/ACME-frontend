@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RegisterComponent } from "./components/forms/register/register.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { LanguageSelectorComponent } from "./components/language-selector/language-selector.component";
-import { TranslatableComponent } from './components/translatable/translatable.component';
+import { TranslatableComponent } from "./components/translatable/translatable.component";
 
 @NgModule({
     declarations: [
