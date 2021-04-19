@@ -6,8 +6,8 @@
     "build": "ng build --prod",
     "test": "ng test",
     "test:ci": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
-    "lint": "npx eslint ./src --fix",
-    "lint:ci": "npx eslint ./src",
+    "lint": "npx eslint ./src ./e2e/src --fix",
+    "lint:ci": "npx eslint ./src ./e2e/src",
     "e2e": "ng e2e",
     "start:prod": "node src/productionServer.js"
   },

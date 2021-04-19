@@ -1,4 +1,5 @@
 <mat-toolbar>
-    <span>My Application</span>
-    <button mat-raised-button routerLink="/register">Register</button>
+    <span>{{appName}}</span>
+    <app-language-selector></app-language-selector>
+    <button mat-raised-button routerLink="/register">{{registerText}}</button>
 </mat-toolbar>
