@@ -31,6 +31,9 @@
             </mat-error>
         </mat-form-field>
 
+        <!-- Password match errors -->
+        <mat-error class="password-match" *ngIf="registerForm.hasError('passwordsDontMatch')">{{passwordMatchText}}</mat-error>
+
         <!-- Password -->
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>{{passwordText}}</mat-label>
@@ -71,8 +74,5 @@
 
         <!-- Submit button -->
         <button mat-raised-button color="accent" class="submit-button" type="submit" [disabled]="!registerForm.valid">{{registerText}}</button>
-    
-        <!-- Password match errors -->
-        <mat-error *ngIf="registerForm.hasError('passwordsDontMatch')">{{passwordMatchText}}</mat-error>
     </form>
 </mat-card>
