@@ -1,9 +1,11 @@
-<mat-toolbar color="primary">
-    <div>
-        <button mat-button routerLink="/" class="app-button">{{appName}}</button>
-    </div>
+<mat-toolbar color="primary" class="wrapper">
+    <button mat-button routerLink="/" class="app-button">
+        <span class="icon">✈️</span>
+        {{appName}}
+    </button>
     <div>
         <app-language-selector></app-language-selector>
-        <button mat-raised-button routerLink="/register">{{registerText}}</button>
+        <button color="accent" class="button" mat-raised-button routerLink="/register">{{registerText}}</button>
+        <button color="accent" class="button" mat-raised-button routerLink="/login">{{loginText}}</button>
     </div>
 </mat-toolbar>

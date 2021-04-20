@@ -10,6 +10,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatCardModule } from "@angular/material/card";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -18,6 +19,7 @@ import { RegisterComponent } from "./components/forms/register/register.componen
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { LanguageSelectorComponent } from "./components/language-selector/language-selector.component";
 import { TranslatableComponent } from "./components/translatable/translatable.component";
+import { LoginComponent } from "./components/forms/login/login.component";
 
 @NgModule({
     declarations: [
@@ -26,6 +28,7 @@ import { TranslatableComponent } from "./components/translatable/translatable.co
         NavbarComponent,
         LanguageSelectorComponent,
         TranslatableComponent,
+        LoginComponent,
     ],
     imports: [
         BrowserModule,
@@ -40,6 +43,7 @@ import { TranslatableComponent } from "./components/translatable/translatable.co
         MatInputModule,
         MatCheckboxModule,
         MatSnackBarModule,
+        MatCardModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

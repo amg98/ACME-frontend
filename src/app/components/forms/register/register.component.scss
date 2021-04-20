@@ -1,0 +1,72 @@
+$cardColor: #c90032;
+$titleBackground: darken($cardColor, 10%);
+
+.card {
+    margin: 0 auto;
+    margin-top: 2rem;
+    width: 40%;
+    border-radius: 1.5em;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+    background-color: darken(#ff7d9d, 10%);
+    background-size: 58px 58px;
+    background-position: 0px 2px, 4px 35px, 29px 31px, 33px 6px, 0px 36px, 4px 2px, 29px 6px, 33px 30px;
+    background-image: linear-gradient(335deg, $cardColor 23px, transparent 23px),
+        linear-gradient(155deg, $cardColor 23px, transparent 23px),
+        linear-gradient(335deg, $cardColor 23px, transparent 23px),
+        linear-gradient(155deg, $cardColor 23px, transparent 23px),
+        linear-gradient(335deg, $cardColor 10px, transparent 10px),
+        linear-gradient(155deg, $cardColor 10px, transparent 10px),
+        linear-gradient(335deg, $cardColor 10px, transparent 10px),
+        linear-gradient(155deg, $cardColor 10px, transparent 10px);
+    background-repeat: repeat;
+    border: 2px solid #222;
+}
+
+.form-field {
+    display: block;
+    width: 60%;
+    margin-top: 1em;
+    margin-left: 5em;
+    ::ng-deep .mat-form-field-outline {
+        background-color:rgba( #c33, 0.9);
+        color: #000;
+        border-radius: 5px;
+    }
+    ::ng-deep .mat-form-field-label {
+        color: #000;
+    }
+}
+
+.checkbox {
+    color: #eee;
+    font-size: 1.1em;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.error {
+    font-size: 1.2em;
+    color: #eee;
+    text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    letter-spacing: 0.06em;
+    margin-top: 1em;
+    margin-bottom: 1.2em;
+    background-color: rgba($titleBackground, 0.9);
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: 1em;
+    color: #000;
+}
+
+.submit-button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 2em;
+}

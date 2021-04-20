@@ -11,6 +11,7 @@ export class NavbarComponent extends TranslatableComponent {
 
     appName!: string;
     registerText!: string;
+    loginText!: string;
 
     constructor(translator: TranslatorService) {
         super(translator);
@@ -18,6 +19,7 @@ export class NavbarComponent extends TranslatableComponent {
         this.setLanguageChangeListener(() => {
             this.appName = translator.getString("app-title");
             this.registerText = translator.getString("register");
+            this.loginText = translator.getString("login");
         });
     }
 }

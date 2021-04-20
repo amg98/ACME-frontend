@@ -1,4 +1,5 @@
-<mat-select [(value)]="selectedLanguage" (selectionChange)="onLanguageChange($event)">
-    <mat-option *ngFor="let lang of languages; index as i;" [value]="languageLabels[i]">{{lang}}</mat-option>
-</mat-select>
-
+<mat-form-field class="field">
+    <mat-select [(value)]="selectedLanguage" (selectionChange)="onLanguageChange($event)">
+        <mat-option *ngFor="let lang of languages; index as i;" [value]="languageLabels[i]">{{lang}}</mat-option>
+    </mat-select>
+</mat-form-field>
