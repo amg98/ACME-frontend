@@ -1,0 +1,25 @@
+{
+    "app-title": "ACME Explorer",
+    "register": "Register",
+    "Spanish": "Spanish",
+    "English": "English",
+
+    "register-form": "Registration form",
+    "name": "Name",
+    "surname": "Surname",
+    "required-field": "This field is required",
+    "email": "E-mail",
+    "email-validation": "E-mail format is not valid",
+    "password": "Password",
+    "repeat-password": "Repeat password",
+    "minimum-5": "The minimum length is 5 characters",
+    "phone-number": "Phone number",
+    "address": "Address",
+    "wannabe-sponsor": "I want to be a sponsor",
+    "phonenumber-validation": "The phone number is not correct",
+    "passwords-dont-match": "Passwords don't match",
+
+    "registration-success": "User has been registered successfully",
+    "registration-failure": "Error while registering the user",
+    "close": "Close"
+}
