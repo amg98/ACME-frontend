@@ -9,3 +9,15 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.alert-success {
+    background-color: #32cd32;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px #000;
+}
+
+.alert-error {
+    background-color: #ff6347;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px #000;
+}

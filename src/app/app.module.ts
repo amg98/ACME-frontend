@@ -11,6 +11,8 @@ import { MatInputModule } from "@angular/material/input";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatCardModule } from "@angular/material/card";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatIconModule } from "@angular/material/icon";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -44,6 +46,8 @@ import { LoginComponent } from "./components/forms/login/login.component";
         MatCheckboxModule,
         MatSnackBarModule,
         MatCardModule,
+        MatMenuModule,
+        MatIconModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

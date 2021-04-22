@@ -24,21 +24,6 @@ $errorColor: darken(#ffa500, 10%);
     }
 }
 
-.checkbox {
-    color: #000;
-    font-size: 1.1em;
-}
-
-.error {
-    font-size: 1.2em;
-    color: $errorColor;
-}
-
-.password-match {
-    margin-left: 21%;
-    color: $errorColor;
-}
-
 .title {
     text-align: center;
     text-transform: uppercase;
@@ -58,4 +43,19 @@ $errorColor: darken(#ffa500, 10%);
     display: block;
     margin: 0 auto;
     margin-top: 2em;
+}
+
+.error {
+    font-size: 1.2em;
+    color: $errorColor;
+}
+
+.checkbox {
+    color: #000;
+    font-size: 1.1em;
+}
+
+.password-match {
+    margin-left: 21%;
+    color: $errorColor;
 }

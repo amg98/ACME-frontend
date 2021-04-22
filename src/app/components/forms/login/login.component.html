@@ -1,1 +1,28 @@
-<p>login works!</p>
+<mat-card class="card">
+    <form [formGroup]="loginForm" (submit)="onSubmit()">
+
+        <mat-card-title class="title">{{loginText}}</mat-card-title>
+
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{emailText}}</mat-label>
+            <input matInput formControlName="email" type="email">
+            <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
+                <span class="error" *ngIf="loginForm.controls.email.errors?.required">{{requiredFieldText}}</span>
+                <span class="error" *ngIf="loginForm.controls.email.errors?.email">{{emailValidationText}}</span>
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Password -->
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{passwordText}}</mat-label>
+            <input matInput formControlName="password" type="password">
+            <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+                <span class="error" *ngIf="loginForm.controls.password.errors?.required">{{requiredFieldText}}</span>
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Submit button -->
+        <button mat-raised-button color="accent" class="submit-button" type="submit" [disabled]="!loginForm.valid">{{loginText}}</button>
+    </form>
+</mat-card>

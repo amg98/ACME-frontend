@@ -97,10 +97,16 @@ export class RegisterComponent extends TranslatableComponent {
                 roles: actor.isSponsor ? ["EXPLORER", "SPONSOR"] : ["EXPLORER"],
             });
 
-            this.snackbar.open(this.registrationSuccessText, this.closeText, { duration: 5000 });
+            this.snackbar.open(this.registrationSuccessText, this.closeText, {
+                duration: 5000,
+                panelClass: [ "alert-success" ]
+            });
             this.router.navigate(["/"]);
         } catch {
-            this.snackbar.open(this.registrationFailureText, this.closeText, { duration: 5000 });
+            this.snackbar.open(this.registrationFailureText, this.closeText, {
+                duration: 5000,
+                panelClass: [ "alert-error" ]
+            });
         }
     }
 }

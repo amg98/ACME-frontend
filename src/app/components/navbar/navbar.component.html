@@ -5,7 +5,20 @@
     </button>
     <div>
         <app-language-selector></app-language-selector>
-        <button color="accent" class="button" mat-raised-button routerLink="/register">{{registerText}}</button>
-        <button color="accent" class="button" mat-raised-button routerLink="/login">{{loginText}}</button>
+
+        <button *ngIf="loggedActorName !== null;else loginButtons" color="primary" class="button username"
+            mat-raised-button [matMenuTriggerFor]="menu">{{loggedActorName}}</button>
+
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item class="logout-button" (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                {{logoutText}}
+            </button>
+        </mat-menu>
     </div>
 </mat-toolbar>
+
+<ng-template #loginButtons>
+    <button color="accent" class="button" mat-raised-button routerLink="/register">{{registerText}}</button>
+    <button color="accent" class="button" mat-raised-button routerLink="/login">{{loginText}}</button>
+</ng-template>

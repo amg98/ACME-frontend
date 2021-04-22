@@ -19,8 +19,11 @@
     "wannabe-sponsor": "Quiero ser un patrocinador",
     "phonenumber-validation": "El número no es correcto",
     "passwords-dont-match": "Las contraseñas no coinciden",
+    "logout": "Cerrar sesión",
 
     "registration-success": "Se ha creado el usuario satisfactoriamente",
     "registration-failure": "Ha ocurrido un error creando el usuario",
+    "login-success": "Se ha iniciado sesión correctamente",
+    "login-failure": "Las credenciales introducidas no son válidas",
     "close": "Cerrar"
 }
