@@ -17,6 +17,7 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
     loggedActorName: string | null;
     logoutText!: string;
     loggedActorSub: Subscription;
+    editProfileText!: string;
 
     constructor(translator: TranslatorService, private actorsService: ActorsService) {
         super(translator);
@@ -26,6 +27,7 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
             this.registerText = translator.getString("register");
             this.loginText = translator.getString("login");
             this.logoutText = translator.getString("logout");
+            this.editProfileText = translator.getString("edit-profile");
         });
 
         this.loggedActorName = "";

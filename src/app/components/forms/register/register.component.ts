@@ -10,7 +10,6 @@ import { TranslatorService } from "@services/translator.service";
     selector: "app-register",
     templateUrl: "./register.component.html",
     styleUrls: ["./register.component.scss"],
-    providers: [ ActorsService ],
 })
 export class RegisterComponent extends TranslatableComponent {
 

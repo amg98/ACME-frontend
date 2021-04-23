@@ -20,6 +20,7 @@
     "phonenumber-validation": "The phone number is not correct",
     "passwords-dont-match": "Passwords don't match",
     "logout": "Logout",
+    "edit-profile": "Edit profile",
 
     "registration-success": "User has been registered successfully",
     "registration-failure": "Error while registering the user",

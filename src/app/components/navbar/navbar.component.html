@@ -10,7 +10,11 @@
             mat-raised-button [matMenuTriggerFor]="menu">{{loggedActorName}}</button>
 
         <mat-menu #menu="matMenu">
-            <button mat-menu-item class="logout-button" (click)="logout()">
+            <button mat-menu-item class="menu-button" routerLink="/profile">
+                <mat-icon>account_circle</mat-icon>
+                {{editProfileText}}
+            </button>
+            <button mat-menu-item class="menu-button" (click)="logout()">
                 <mat-icon>exit_to_app</mat-icon>
                 {{logoutText}}
             </button>
