@@ -10,7 +10,6 @@ import { TranslatorService } from "@services/translator.service";
     selector: "app-login",
     templateUrl: "./login.component.html",
     styleUrls: ["./login.component.scss"],
-    providers: [ActorsService]
 })
 export class LoginComponent extends TranslatableComponent {
 

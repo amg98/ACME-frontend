@@ -1,21 +1,22 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy } from "@angular/core";
 import { TranslatableComponent } from "@components/translatable/translatable.component";
 import { ActorsService } from "@services/actors.service";
 import { TranslatorService } from "@services/translator.service";
+import { Subscription } from "rxjs";
 
 @Component({
     selector: "app-navbar",
     templateUrl: "./navbar.component.html",
     styleUrls: ["./navbar.component.scss"],
-    providers: [ ActorsService ]
 })
-export class NavbarComponent extends TranslatableComponent {
+export class NavbarComponent extends TranslatableComponent implements OnDestroy {
 
     appName!: string;
     registerText!: string;
     loginText!: string;
     loggedActorName: string | null;
     logoutText!: string;
+    loggedActorSub: Subscription;
 
     constructor(translator: TranslatorService, private actorsService: ActorsService) {
         super(translator);
@@ -28,19 +29,20 @@ export class NavbarComponent extends TranslatableComponent {
         });
 
         this.loggedActorName = "";
-        this.fetchLoggedActorName();
-    }
-
-    async fetchLoggedActorName(): Promise<void> {
-        try {
-            const actor = await this.actorsService.getLoggedActor();
-            this.loggedActorName = `${actor.name} ${actor.surname}`;
-        } catch {
-            this.loggedActorName = null;
-        }
+        this.loggedActorSub = actorsService.subscribeToLoggedActor(loggedActor => {
+            if(typeof loggedActor == "undefined") this.loggedActorName = "";
+            else {
+                this.loggedActorName = loggedActor === null ? null : `${loggedActor.name} ${loggedActor.surname}`;
+            }
+        });
     }
 
     logout(): void {
         this.actorsService.logout();
+    }
+
+    ngOnDestroy(): void {
+        super.ngOnDestroy();
+        this.loggedActorSub.unsubscribe();     
     }
 }
