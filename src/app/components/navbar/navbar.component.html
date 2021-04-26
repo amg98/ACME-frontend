@@ -14,6 +14,10 @@
                 <mat-icon>account_circle</mat-icon>
                 {{editProfileText}}
             </button>
+            <button *ngIf="isAdmin" mat-menu-item class="menu-button" routerLink="/admin/dashboard">
+                <mat-icon>assessment</mat-icon>
+                {{statsText}}
+            </button>
             <button mat-menu-item class="menu-button" (click)="logout()">
                 <mat-icon>exit_to_app</mat-icon>
                 {{logoutText}}

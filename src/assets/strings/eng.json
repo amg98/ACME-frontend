@@ -22,6 +22,7 @@
     "passwords-dont-match": "Passwords don't match",
     "logout": "Logout",
     "edit-profile": "Edit profile",
+    "stats": "Statistics",
 
     "registration-success": "User has been registered successfully",
     "registration-failure": "Error while registering the user",

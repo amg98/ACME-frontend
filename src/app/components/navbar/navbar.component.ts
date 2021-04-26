@@ -18,6 +18,8 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
     logoutText!: string;
     loggedActorSub: Subscription;
     editProfileText!: string;
+    statsText!: string;
+    isAdmin = false;
 
     constructor(translator: TranslatorService, private actorsService: ActorsService) {
         super(translator);
@@ -28,13 +30,16 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
             this.loginText = translator.getString("login");
             this.logoutText = translator.getString("logout");
             this.editProfileText = translator.getString("edit-profile");
+            this.statsText = translator.getString("stats");
         });
 
         this.loggedActorName = "";
         this.loggedActorSub = actorsService.subscribeToLoggedActor(loggedActor => {
+            this.isAdmin = false;
             if(typeof loggedActor == "undefined") this.loggedActorName = "";
             else {
                 this.loggedActorName = loggedActor === null ? null : `${loggedActor.name} ${loggedActor.surname}`;
+                this.isAdmin = loggedActor === null ? false : loggedActor.roles.includes("ADMINISTRATOR");
             }
         });
     }
