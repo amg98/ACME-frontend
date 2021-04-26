@@ -97,11 +97,11 @@
             {{sponsorText}}</mat-checkbox>
 
         <!-- At least one role error -->
-        <mat-error class="validation-error-text" *ngIf="profileForm.hasError('oneRoleAtLeast')">{{passwordMatchText}}
+        <mat-error class="validation-error-text" *ngIf="profileForm.hasError('oneRoleAtLeast')">{{oneRoleAtLeastText}}
         </mat-error>
 
         <!-- Submit button -->
         <button mat-raised-button color="accent" class="forms__submit-button" type="submit"
-            [disabled]="!profileForm.valid">{{registerText}}</button>
+            [disabled]="!profileForm.valid">{{saveText}}</button>
     </form>
 </mat-card>

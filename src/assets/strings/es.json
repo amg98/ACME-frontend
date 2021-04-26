@@ -11,6 +11,7 @@
     "required-field": "Este campo es obligatorio",
     "email": "Correo electrónico",
     "email-validation": "El correo no es válido",
+    "one-role-at-least": "Debes seleccionar al menos un rol",
     "password": "Contraseña",
     "repeat-password": "Repite la contraseña",
     "minimum-5": "La longitud mínima es de 5 caracteres",
@@ -26,5 +27,13 @@
     "registration-failure": "Ha ocurrido un error creando el usuario",
     "login-success": "Se ha iniciado sesión correctamente",
     "login-failure": "Las credenciales introducidas no son válidas",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "save": "Guardar",
+    "save-success": "Los cambios han sido guardados correctamente",
+    "save-failure": "Ha ocurrido un error guardando los cambios",
+
+    "admin": "Administrador",
+    "explorer": "Explorador",
+    "sponsor": "Patrocinador",
+    "manager": "Gestor"
 }

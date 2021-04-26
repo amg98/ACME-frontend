@@ -11,6 +11,7 @@
     "required-field": "This field is required",
     "email": "E-mail",
     "email-validation": "E-mail format is not valid",
+    "one-role-at-least": "It is required to select at least one role",
     "password": "Password",
     "repeat-password": "Repeat password",
     "minimum-5": "The minimum length is 5 characters",
@@ -26,5 +27,13 @@
     "registration-failure": "Error while registering the user",
     "login-success": "Login has been completed successfully",
     "login-failure": "Entered credentials are invalid",
-    "close": "Close"
+    "close": "Close",
+    "save": "Save",
+    "save-success": "Los cambios han sido guardados correctamente",
+    "save-failure": "Ha ocurrido un error guardando los cambios",
+
+    "admin": "Administrator",
+    "explorer": "Explorer",
+    "sponsor": "Sponsor",
+    "manager": "Manager"
 }
