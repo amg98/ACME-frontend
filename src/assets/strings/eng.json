@@ -1,6 +1,7 @@
 {
     "app-title": "ACME Explorer",
     "register": "Register",
+    "login": "Login",
     "Spanish": "Spanish",
     "English": "English",
 
@@ -18,8 +19,11 @@
     "wannabe-sponsor": "I want to be a sponsor",
     "phonenumber-validation": "The phone number is not correct",
     "passwords-dont-match": "Passwords don't match",
+    "logout": "Logout",
 
     "registration-success": "User has been registered successfully",
     "registration-failure": "Error while registering the user",
+    "login-success": "Login has been completed successfully",
+    "login-failure": "Entered credentials are invalid",
     "close": "Close"
 }

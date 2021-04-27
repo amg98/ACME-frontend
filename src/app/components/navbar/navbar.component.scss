@@ -1,0 +1,27 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.app-button {
+    font-size: 1.4rem;
+    font-style: italic;
+}
+
+.button {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.icon {
+    margin-right: 0.5em;
+}
+
+.username {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+}
+
+.logout-button {
+    font-size: 1.2em;
+}

@@ -1,76 +1,78 @@
-<p>{{registerFormText}}</p>
+<mat-card class="card">
+    <form [formGroup]="registerForm" (submit)="onSubmit()">
 
-<form [formGroup]="registerForm" (submit)="onSubmit()">
+        <mat-card-title class="title">{{registerFormText}}</mat-card-title>
 
-    <!-- Name -->
-    <mat-form-field appearance="outline">
-        <mat-label>{{nameText}}</mat-label>
-        <input matInput formControlName="name">
-        <mat-error *ngIf="registerForm.controls.name.touched && registerForm.controls.name.invalid">
-            <span *ngIf="registerForm.controls.name.errors?.required">{{requiredFieldText}}</span>
-        </mat-error>
-    </mat-form-field>
+        <!-- Name -->
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{nameText}}</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="registerForm.controls.name.touched && registerForm.controls.name.invalid">
+                <span class="error" *ngIf="registerForm.controls.name.errors?.required">{{requiredFieldText}}</span>
+            </mat-error>
+        </mat-form-field>
 
-    <!-- Surname -->
-    <mat-form-field appearance="outline">
-        <mat-label>{{surnameText}}</mat-label>
-        <input matInput formControlName="surname">
-        <mat-error *ngIf="registerForm.controls.surname.touched && registerForm.controls.surname.invalid">
-            <span *ngIf="registerForm.controls.surname.errors?.required">{{requiredFieldText}}</span>
-        </mat-error>
-    </mat-form-field>
+        <!-- Surname -->
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{surnameText}}</mat-label>
+            <input matInput formControlName="surname">
+            <mat-error *ngIf="registerForm.controls.surname.touched && registerForm.controls.surname.invalid">
+                <span class="error" *ngIf="registerForm.controls.surname.errors?.required">{{requiredFieldText}}</span>
+            </mat-error>
+        </mat-form-field>
 
-    <!-- Email -->
-    <mat-form-field appearance="outline">
-        <mat-label>{{emailText}}</mat-label>
-        <input matInput formControlName="email" type="email">
-        <mat-error *ngIf="registerForm.controls.email.touched && registerForm.controls.email.invalid">
-            <span *ngIf="registerForm.controls.email.errors?.required">{{requiredFieldText}}</span>
-            <span *ngIf="registerForm.controls.email.errors?.email">{{emailValidationText}}</span>
-        </mat-error>
-    </mat-form-field>
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{emailText}}</mat-label>
+            <input matInput formControlName="email" type="email">
+            <mat-error *ngIf="registerForm.controls.email.touched && registerForm.controls.email.invalid">
+                <span class="error" *ngIf="registerForm.controls.email.errors?.required">{{requiredFieldText}}</span>
+                <span class="error" *ngIf="registerForm.controls.email.errors?.email">{{emailValidationText}}</span>
+            </mat-error>
+        </mat-form-field>
 
-    <!-- Password -->
-    <mat-form-field appearance="outline">
-        <mat-label>{{passwordText}}</mat-label>
-        <input matInput formControlName="password" type="password">
-        <mat-error *ngIf="registerForm.controls.password.touched && registerForm.controls.password.invalid">
-            <span *ngIf="registerForm.controls.password.errors?.required">{{requiredFieldText}}</span>
-            <span *ngIf="registerForm.controls.password.errors?.minlength">{{minimumValidationText}}</span>
-        </mat-error>
-    </mat-form-field>
+        <!-- Password match errors -->
+        <mat-error class="password-match" *ngIf="registerForm.hasError('passwordsDontMatch')">{{passwordMatchText}}</mat-error>
 
-    <!-- Repeat password -->
-    <mat-form-field appearance="outline">
-        <mat-label>{{repeatPasswordText}}</mat-label>
-        <input matInput formControlName="repeatPassword" type="password">
-        <mat-error *ngIf="registerForm.controls.repeatPassword.touched && registerForm.controls.repeatPassword.invalid">
-            <span *ngIf="registerForm.controls.repeatPassword.errors?.required">{{requiredFieldText}}</span>
-            <span *ngIf="registerForm.controls.repeatPassword.errors?.minlength">{{minimumValidationText}}</span>
-        </mat-error>
-    </mat-form-field>
+        <!-- Password -->
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{passwordText}}</mat-label>
+            <input matInput formControlName="password" type="password">
+            <mat-error *ngIf="registerForm.controls.password.touched && registerForm.controls.password.invalid">
+                <span class="error" *ngIf="registerForm.controls.password.errors?.required">{{requiredFieldText}}</span>
+                <span class="error" *ngIf="registerForm.controls.password.errors?.minlength">{{minimumValidationText}}</span>
+            </mat-error>
+        </mat-form-field>
 
-    <!-- Password match errors -->
-    <mat-error *ngIf="registerForm.hasError('passwordsDontMatch')">{{passwordMatchText}}</mat-error>
+        <!-- Repeat password -->
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{repeatPasswordText}}</mat-label>
+            <input matInput formControlName="repeatPassword" type="password">
+            <mat-error *ngIf="registerForm.controls.repeatPassword.touched && registerForm.controls.repeatPassword.invalid">
+                <span class="error" *ngIf="registerForm.controls.repeatPassword.errors?.required">{{requiredFieldText}}</span>
+                <span class="error" *ngIf="registerForm.controls.repeatPassword.errors?.minlength">{{minimumValidationText}}</span>
+            </mat-error>
+        </mat-form-field>
 
-    <!-- Phone number -->
-    <mat-form-field appearance="outline">
-        <mat-label>{{phoneNumberText}}</mat-label>
-        <input matInput formControlName="phoneNumber">
-        <mat-error *ngIf="registerForm.controls.phoneNumber.touched && registerForm.controls.phoneNumber.invalid">
-            <span *ngIf="registerForm.controls.phoneNumber.errors?.pattern">{{phoneNumberValidationText}}</span>
-        </mat-error>
-    </mat-form-field>
+        <!-- Phone number -->
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{phoneNumberText}}</mat-label>
+            <input matInput formControlName="phoneNumber">
+            <mat-error *ngIf="registerForm.controls.phoneNumber.touched && registerForm.controls.phoneNumber.invalid">
+                <span class="error" *ngIf="registerForm.controls.phoneNumber.errors?.pattern">{{phoneNumberValidationText}}</span>
+            </mat-error>
+        </mat-form-field>
 
-    <!-- Address -->
-    <mat-form-field appearance="outline">
-        <mat-label>{{addressText}}</mat-label>
-        <input matInput formControlName="address">
-    </mat-form-field>
+        <!-- Address -->
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{addressText}}</mat-label>
+            <input matInput formControlName="address">
+        </mat-form-field>
 
-    <!-- Sponsor? -->
-    <mat-checkbox formControlName="isSponsor" color="primary">{{wannabeSponsorText}}</mat-checkbox>
+        <!-- Sponsor? -->
+        <mat-checkbox formControlName="isSponsor" color="primary" class="form-field checkbox">{{wannabeSponsorText}}</mat-checkbox>
 
-    <!-- Submit button -->
-    <button mat-raised-button color="primary" type="submit">{{registerText}}</button>
-</form>
+        <!-- Submit button -->
+        <button mat-raised-button color="accent" class="submit-button" type="submit" [disabled]="!registerForm.valid">{{registerText}}</button>
+    </form>
+</mat-card>
