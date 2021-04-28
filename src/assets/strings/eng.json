@@ -17,7 +17,7 @@
     "minimum-5": "The minimum length is 5 characters",
     "phone-number": "Phone number",
     "address": "Address",
-    "wannabe-sponsor": "I want to be a sponsor",
+    "wannabe-sponsor": "Sponsor",
     "phonenumber-validation": "The phone number is not correct",
     "passwords-dont-match": "Passwords don't match",
     "logout": "Logout",

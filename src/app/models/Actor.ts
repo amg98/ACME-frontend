@@ -5,8 +5,8 @@ export interface Actor extends Entity {
     surname: string,
     email: string,
     password: string,
-    address: string,
-    phoneNumber: string,
+    address?: string,
+    phoneNumber?: string,
     roles: string[],
     isBanned?: boolean
 }

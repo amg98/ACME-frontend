@@ -1,6 +1,8 @@
 .wrapper {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    height: 100%;
 }
 
 .app-button {
@@ -9,12 +11,14 @@
 }
 
 .button {
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 0.6rem;
+    height: 2.5rem;
 }
 
 .icon {
-    margin-right: 0.5em;
+    margin-right: 0.5rem;
 }
 
 .username {
@@ -23,5 +27,17 @@
 }
 
 .menu-button {
-    font-size: 1.2em;
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 629px) {
+    .wrapper {
+        justify-content: space-around;
+    }
+}
+
+@media screen and (max-width: 406px) {
+    .wrapper {
+        padding-bottom: 0.5rem;
+    }
 }

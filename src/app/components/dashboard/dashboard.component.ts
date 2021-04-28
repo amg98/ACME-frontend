@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { StatsService } from "@services/stats.service";
 
 @Component({
     selector: "app-dashboard",
@@ -6,5 +7,9 @@ import { Component } from "@angular/core";
     styleUrls: ["./dashboard.component.scss"]
 })
 export class DashboardComponent {
+
+    constructor(private statsService: StatsService) {
+        
+    }
 
 }
