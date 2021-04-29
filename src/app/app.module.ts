@@ -23,6 +23,7 @@ import { LanguageSelectorComponent } from "./components/language-selector/langua
 import { TranslatableComponent } from "./components/translatable/translatable.component";
 import { LoginComponent } from "./components/forms/login/login.component";
 import { ProfileComponent } from "./components/forms/profile/profile.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
 
 @NgModule({
     declarations: [
@@ -33,6 +34,7 @@ import { ProfileComponent } from "./components/forms/profile/profile.component";
         TranslatableComponent,
         LoginComponent,
         ProfileComponent,
+        DashboardComponent,
     ],
     imports: [
         BrowserModule,
