@@ -3,6 +3,23 @@
         <span class="icon">✈️</span>
         {{appName}}
     </button>
+
+    <div>
+        <!-- search bar -->
+        <form class="search-form">
+
+            <mat-form-field  class="search-full-width">
+                <mat-label >{{finderText}}</mat-label>
+                <input matInput type="text" size="10">
+            </mat-form-field>
+
+            <button mat-button class="app-button">
+                <span class="icon">🔍</span>
+            </button>
+
+        </form>
+    </div>
+
     <div>
         <app-language-selector></app-language-selector>
 

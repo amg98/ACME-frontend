@@ -18,6 +18,7 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
     logoutText!: string;
     loggedActorSub: Subscription;
     editProfileText!: string;
+    finderText!: string;
 
     constructor(translator: TranslatorService, private actorsService: ActorsService) {
         super(translator);
@@ -28,6 +29,7 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
             this.loginText = translator.getString("login");
             this.logoutText = translator.getString("logout");
             this.editProfileText = translator.getString("edit-profile");
+            this.finderText = translator.getString("search");
         });
 
         this.loggedActorName = "";

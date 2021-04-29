@@ -35,5 +35,7 @@
     "admin": "Administrator",
     "explorer": "Explorer",
     "sponsor": "Sponsor",
-    "manager": "Manager"
+    "manager": "Manager",
+    
+    "search": "Search"
 }

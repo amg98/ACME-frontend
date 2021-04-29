@@ -25,3 +25,28 @@
 .menu-button {
     font-size: 1.2em;
 }
+
+.search-form { 
+    min-width: 75px;
+    max-width: 200px;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.search-full-width {  
+    width: 100%;
+}
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix {
+       padding: 0.4em 0px !important;
+}
+  
+ ::ng-deep .mat-form-field-label-wrapper { 
+    top: -0.55em;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float 
+.mat-form-field-label {
+    transform: translateY(-0.01em) scale(.75);
+    width: 133.33333%;
+}
