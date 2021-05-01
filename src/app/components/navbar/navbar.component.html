@@ -1,8 +1,12 @@
 <mat-toolbar color="primary" class="wrapper">
-    <button mat-button routerLink="/" class="app-button">
-        <span class="icon">✈️</span>
-        {{appName}}
-    </button>
+    <div class="wrapper">
+        <button mat-button routerLink="/" class="app-button">
+            <span class="icon">✈️</span>
+            {{appName}}
+        </button>
+        <app-finder></app-finder>
+    </div>
+
     <div class="wrapper">
         <app-language-selector></app-language-selector>
 
