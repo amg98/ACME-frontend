@@ -23,7 +23,8 @@ import { LanguageSelectorComponent } from "./components/language-selector/langua
 import { TranslatableComponent } from "./components/translatable/translatable.component";
 import { LoginComponent } from "./components/forms/login/login.component";
 import { ProfileComponent } from "./components/forms/profile/profile.component";
-import { FinderComponent } from './components/finder/finder.component';
+import { FinderComponent } from "./components/finder/finder.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
 
 @NgModule({
     declarations: [
@@ -35,6 +36,7 @@ import { FinderComponent } from './components/finder/finder.component';
         LoginComponent,
         ProfileComponent,
         FinderComponent,
+        DashboardComponent,
     ],
     imports: [
         BrowserModule,

@@ -3,8 +3,7 @@
         <span class="icon">✈️</span>
         {{appName}}
     </button>
-    <app-finder></app-finder>
-    <div>
+    <div class="wrapper">
         <app-language-selector></app-language-selector>
 
         <button *ngIf="loggedActorName !== null;else loginButtons" color="primary" class="button username"
@@ -15,6 +14,10 @@
                 <mat-icon>account_circle</mat-icon>
                 {{editProfileText}}
             </button>
+            <button *ngIf="isAdmin" mat-menu-item class="menu-button" routerLink="/admin/dashboard">
+                <mat-icon>assessment</mat-icon>
+                {{statsText}}
+            </button>
             <button mat-menu-item class="menu-button" (click)="logout()">
                 <mat-icon>exit_to_app</mat-icon>
                 {{logoutText}}
@@ -24,6 +27,8 @@
 </mat-toolbar>
 
 <ng-template #loginButtons>
-    <button color="accent" class="button" mat-raised-button routerLink="/register">{{registerText}}</button>
-    <button color="accent" class="button" mat-raised-button routerLink="/login">{{loginText}}</button>
+    <div class="wrapper">
+        <button color="accent" class="button" mat-raised-button routerLink="/register">{{registerText}}</button>
+        <button color="accent" class="button" mat-raised-button routerLink="/login">{{loginText}}</button>
+    </div>
 </ng-template>

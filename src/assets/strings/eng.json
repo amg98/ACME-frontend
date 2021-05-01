@@ -17,11 +17,12 @@
     "minimum-5": "The minimum length is 5 characters",
     "phone-number": "Phone number",
     "address": "Address",
-    "wannabe-sponsor": "I want to be a sponsor",
+    "wannabe-sponsor": "Sponsor",
     "phonenumber-validation": "The phone number is not correct",
     "passwords-dont-match": "Passwords don't match",
     "logout": "Logout",
     "edit-profile": "Edit profile",
+    "stats": "Statistics",
 
     "registration-success": "User has been registered successfully",
     "registration-failure": "Error while registering the user",
