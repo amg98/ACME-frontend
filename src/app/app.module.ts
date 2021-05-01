@@ -24,6 +24,7 @@ import { TranslatableComponent } from "./components/translatable/translatable.co
 import { LoginComponent } from "./components/forms/login/login.component";
 import { ProfileComponent } from "./components/forms/profile/profile.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
     declarations: [
@@ -35,6 +36,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
         LoginComponent,
         ProfileComponent,
         DashboardComponent,
+        FooterComponent,
     ],
     imports: [
         BrowserModule,
