@@ -25,6 +25,7 @@ import { LoginComponent } from "./components/forms/login/login.component";
 import { ProfileComponent } from "./components/forms/profile/profile.component";
 import { FinderComponent } from "./components/finder/finder.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
     declarations: [
@@ -37,6 +38,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
         ProfileComponent,
         FinderComponent,
         DashboardComponent,
+        FooterComponent,
     ],
     imports: [
         BrowserModule,

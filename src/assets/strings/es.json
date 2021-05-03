@@ -38,5 +38,11 @@
     "sponsor": "Patrocinador",
     "manager": "Gestor",
 
+    "help":"Ayuda",
+    "privacyAndTerms": "Privacidad y Términos",
+    "userAgreement" : "Acuerdo de usuario",
+    "resume":"Viajar es vivir, es sumergirte en realidades desconocidas. En Acme Explorer lo sabemos y es por ello que somos expertos en organizar tus viajes y ofrecerte itinerarios de ensueño hechos a medida. Somos desde 2015 la empresa líder en el sector turístico y millones de clientes por todo el mundo lo avalan.",
+    "whoWeAre":"¿Quienes somos?",
+    "flag":"https://cdn.icon-icons.com/icons2/45/PNG/64/Spain_flags_flag_8858.png"
     "search":"Buscar"
 }
