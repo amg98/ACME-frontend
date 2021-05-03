@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from"@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
@@ -23,6 +23,7 @@ import { LanguageSelectorComponent } from "./components/language-selector/langua
 import { TranslatableComponent } from "./components/translatable/translatable.component";
 import { LoginComponent } from "./components/forms/login/login.component";
 import { ProfileComponent } from "./components/forms/profile/profile.component";
+import { FinderComponent } from "./components/finder/finder.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -35,6 +36,7 @@ import { FooterComponent } from './components/footer/footer.component';
         TranslatableComponent,
         LoginComponent,
         ProfileComponent,
+        FinderComponent,
         DashboardComponent,
         FooterComponent,
     ],

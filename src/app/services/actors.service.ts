@@ -30,7 +30,7 @@ export class ActorsService {
 
     private async loginFromLocalStorage() {
         const idToken = localStorage.getItem("idToken");
-        if(idToken === null) {
+        if (idToken === null) {
             this.loggedActor.next(null);
             return;
         }
@@ -71,9 +71,9 @@ export class ActorsService {
     async updateLoggedActor(actor: Actor): Promise<void> {
         actor._id = this.loggedActor.value?._id;
         const idToken = localStorage.getItem("idToken");
-        
+
         await this.client.put(`${environment.backendURL}/actors`, { actor }, {
-            headers: { "Authorization": `Bearer ${idToken}`}
+            headers: { "Authorization": `Bearer ${idToken}` }
         }).toPromise();
 
         this.loggedActor.next(actor);
