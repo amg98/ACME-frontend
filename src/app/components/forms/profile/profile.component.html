@@ -1,107 +1,107 @@
 <mat-card class="forms__card">
     <form [formGroup]="profileForm" (submit)="onSubmit()">
 
-        <mat-card-title class="forms__title">{{editProfileText}}</mat-card-title>
+        <mat-card-title class="forms__title">{{msg["edit-profile"]}}</mat-card-title>
 
         <!-- Name -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{nameText}}</mat-label>
+            <mat-label>{{msg.name}}</mat-label>
             <input matInput formControlName="name">
             <mat-error *ngIf="profileForm.controls.name.touched && profileForm.controls.name.invalid">
                 <span class="forms__error"
-                    *ngIf="profileForm.controls.name.errors?.required">{{requiredFieldText}}</span>
+                    *ngIf="profileForm.controls.name.errors?.required">{{msg["required-field"]}}</span>
             </mat-error>
         </mat-form-field>
 
         <!-- Surname -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{surnameText}}</mat-label>
+            <mat-label>{{msg.surname}}</mat-label>
             <input matInput formControlName="surname">
             <mat-error *ngIf="profileForm.controls.surname.touched && profileForm.controls.surname.invalid">
                 <span class="forms__error"
-                    *ngIf="profileForm.controls.surname.errors?.required">{{requiredFieldText}}</span>
+                    *ngIf="profileForm.controls.surname.errors?.required">{{msg["required-field"]}}</span>
             </mat-error>
         </mat-form-field>
 
         <!-- Email -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{emailText}}</mat-label>
+            <mat-label>{{msg.email}}</mat-label>
             <input matInput formControlName="email" type="email">
             <mat-error *ngIf="profileForm.controls.email.touched && profileForm.controls.email.invalid">
                 <span class="forms__error"
-                    *ngIf="profileForm.controls.email.errors?.required">{{requiredFieldText}}</span>
+                    *ngIf="profileForm.controls.email.errors?.required">{{msg["required-field"]}}</span>
                 <span class="forms__error"
-                    *ngIf="profileForm.controls.email.errors?.email">{{emailValidationText}}</span>
+                    *ngIf="profileForm.controls.email.errors?.email">{{msg["email-validation"]}}</span>
             </mat-error>
         </mat-form-field>
 
         <!-- Password match errors -->
-        <mat-error class="validation-error-text" *ngIf="profileForm.hasError('passwordsDontMatch')">{{passwordMatchText}}
+        <mat-error class="validation-error-text" *ngIf="profileForm.hasError('passwordsDontMatch')">{{msg["passwords-dont-match"]}}
         </mat-error>
 
         <!-- Password -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{passwordText}}</mat-label>
+            <mat-label>{{msg.password}}</mat-label>
             <input matInput formControlName="password" type="password">
             <mat-error *ngIf="profileForm.controls.password.touched && profileForm.controls.password.invalid">
                 <span class="forms__error"
-                    *ngIf="profileForm.controls.password.errors?.required">{{requiredFieldText}}</span>
+                    *ngIf="profileForm.controls.password.errors?.required">{{msg["required-field"]}}</span>
                 <span class="forms__error"
-                    *ngIf="profileForm.controls.password.errors?.minlength">{{minimumValidationText}}</span>
+                    *ngIf="profileForm.controls.password.errors?.minlength">{{msg["minimum-5"]}}</span>
             </mat-error>
         </mat-form-field>
 
         <!-- Repeat password -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{repeatPasswordText}}</mat-label>
+            <mat-label>{{msg["repeat-password"]}}</mat-label>
             <input matInput formControlName="repeatPassword" type="password">
             <mat-error
                 *ngIf="profileForm.controls.repeatPassword.touched && profileForm.controls.repeatPassword.invalid">
                 <span class="forms__error"
-                    *ngIf="profileForm.controls.repeatPassword.errors?.required">{{requiredFieldText}}</span>
+                    *ngIf="profileForm.controls.repeatPassword.errors?.required">{{msg["required-field"]}}</span>
                 <span class="forms__error"
-                    *ngIf="profileForm.controls.repeatPassword.errors?.minlength">{{minimumValidationText}}</span>
+                    *ngIf="profileForm.controls.repeatPassword.errors?.minlength">{{msg["minimum-5"]}}</span>
             </mat-error>
         </mat-form-field>
 
         <!-- Phone number -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{phoneNumberText}}</mat-label>
+            <mat-label>{{msg["phone-number"]}}</mat-label>
             <input matInput formControlName="phoneNumber">
             <mat-error *ngIf="profileForm.controls.phoneNumber.touched && profileForm.controls.phoneNumber.invalid">
                 <span class="forms__error"
-                    *ngIf="profileForm.controls.phoneNumber.errors?.pattern">{{phoneNumberValidationText}}</span>
+                    *ngIf="profileForm.controls.phoneNumber.errors?.pattern">{{msg["phonenumber-validation"]}}</span>
             </mat-error>
         </mat-form-field>
 
         <!-- Address -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{addressText}}</mat-label>
+            <mat-label>{{msg.address}}</mat-label>
             <input matInput formControlName="address">
         </mat-form-field>
 
         <!-- Admin? -->
         <mat-checkbox formControlName="isAdmin" color="primary" class="forms__form-field checkbox">
-            {{adminText}}</mat-checkbox>
+            {{msg.admin}}</mat-checkbox>
 
         <!-- Manager? -->
         <mat-checkbox formControlName="isManager" color="primary" class="forms__form-field checkbox">
-            {{managerText}}</mat-checkbox>
+            {{msg.manager}}</mat-checkbox>
 
         <!-- Explorer? -->
         <mat-checkbox formControlName="isExplorer" color="primary" class="forms__form-field checkbox">
-            {{explorerText}}</mat-checkbox>
+            {{msg.explorer}}</mat-checkbox>
 
         <!-- Sponsor? -->
         <mat-checkbox formControlName="isSponsor" color="primary" class="forms__form-field checkbox">
-            {{sponsorText}}</mat-checkbox>
+            {{msg.sponsor}}</mat-checkbox>
 
         <!-- At least one role error -->
-        <mat-error class="validation-error-text" *ngIf="profileForm.hasError('oneRoleAtLeast')">{{oneRoleAtLeastText}}
+        <mat-error class="validation-error-text" *ngIf="profileForm.hasError('oneRoleAtLeast')">{{msg["one-role-at-least"]}}
         </mat-error>
 
         <!-- Submit button -->
         <button mat-raised-button color="accent" class="forms__submit-button" type="submit"
-            [disabled]="!profileForm.valid">{{saveText}}</button>
+            [disabled]="!profileForm.valid">{{msg.save}}</button>
     </form>
 </mat-card>

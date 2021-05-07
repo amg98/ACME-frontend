@@ -21,7 +21,7 @@ export class LanguageSelectorComponent implements OnDestroy {
         this.selectedLanguage = translator.getLanguage()
 
         this.translatorSub = translator.subscribe(() => {
-            this.languages = this.languageLabels.map(langLabel => translator.getString(langLabel))
+            this.languages = this.languageLabels.map(langLabel => translator.getMessages()[langLabel])
         })
     }
 

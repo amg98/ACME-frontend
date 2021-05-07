@@ -11,27 +11,12 @@ import { Subscription } from "rxjs"
 })
 export class NavbarComponent extends TranslatableComponent implements OnDestroy {
 
-    appName!: string;
-    registerText!: string;
-    loginText!: string;
     loggedActorName: string | null;
-    logoutText!: string;
     loggedActorSub: Subscription;
-    editProfileText!: string;
-    statsText!: string;
     isAdmin = false;
 
     constructor(translator: TranslatorService, private actorsService: ActorsService) {
         super(translator)
-        
-        this.setLanguageChangeListener(() => {
-            this.appName = translator.getString("app-title")
-            this.registerText = translator.getString("register")
-            this.loginText = translator.getString("login")
-            this.logoutText = translator.getString("logout")
-            this.editProfileText = translator.getString("edit-profile")
-            this.statsText = translator.getString("stats")
-        })
 
         this.loggedActorName = ""
         this.loggedActorSub = actorsService.subscribeToLoggedActor(loggedActor => {

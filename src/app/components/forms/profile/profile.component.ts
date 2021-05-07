@@ -12,60 +12,13 @@ import { TranslatorService } from "@services/translator.service"
 })
 export class ProfileComponent extends TranslatableComponent {
 
-    editProfileText!: string;
-    nameText!: string;
-    surnameText!: string;
-    requiredFieldText!: string;
-    emailText!: string;
-    emailValidationText!: string;
-    passwordText!: string;
-    repeatPasswordText!: string;
-    minimumValidationText!: string;
-    passwordMatchText!: string;
-    phoneNumberText!: string;
-    phoneNumberValidationText!: string;
-    addressText!: string;
-    saveText!: string;
-    adminText!: string;
-    explorerText!: string;
-    sponsorText!: string;
-    managerText!: string;
-    oneRoleAtLeastText!: string;
     profileForm: FormGroup;
-    closeText!: string;
-    saveSuccessText!: string;
-    saveFailureText!: string;
 
     constructor(translator: TranslatorService,
                 private formBuilder: FormBuilder,
                 private actorsService: ActorsService,
                 private snackbar: MatSnackBar) {
         super(translator)
-
-        this.setLanguageChangeListener(() => {
-            this.editProfileText = translator.getString("edit-profile")
-            this.nameText = translator.getString("name")
-            this.surnameText = translator.getString("surname")
-            this.requiredFieldText = translator.getString("required-field")
-            this.emailText = translator.getString("email")
-            this.emailValidationText = translator.getString("email-validation")
-            this.passwordText = translator.getString("password")
-            this.repeatPasswordText = translator.getString("repeat-password")
-            this.minimumValidationText = translator.getString("minimum-5")
-            this.passwordMatchText = translator.getString("passwords-dont-match")
-            this.phoneNumberText = translator.getString("phone-number")
-            this.phoneNumberValidationText = translator.getString("phonenumber-validation")
-            this.addressText = translator.getString("address")
-            this.saveText = translator.getString("save")
-            this.adminText = translator.getString("admin")
-            this.explorerText = translator.getString("explorer")
-            this.sponsorText = translator.getString("sponsor")
-            this.managerText = translator.getString("manager")
-            this.oneRoleAtLeastText = translator.getString("one-role-at-least")
-            this.closeText = translator.getString("close")
-            this.saveSuccessText = translator.getString("save-success")
-            this.saveFailureText = translator.getString("save-failure")
-        })
 
         this.profileForm = this.formBuilder.group({
             name: ["", [Validators.required]],
@@ -137,12 +90,12 @@ export class ProfileComponent extends TranslatableComponent {
                 roles,
             })
 
-            this.snackbar.open(this.saveSuccessText, this.closeText, {
+            this.snackbar.open(this.msg["save-success"], this.msg.close, {
                 duration: 5000,
                 panelClass: [ "alert-success" ]
             })
         } catch {
-            this.snackbar.open(this.saveFailureText, this.closeText, {
+            this.snackbar.open(this.msg["save-failure"], this.msg.close, {
                 duration: 5000,
                 panelClass: [ "alert-error" ]
             })

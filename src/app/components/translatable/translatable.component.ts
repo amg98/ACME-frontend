@@ -9,11 +9,11 @@ import { Subscription } from "rxjs"
 export class TranslatableComponent implements OnDestroy {
 
     private translatorSub: Subscription;
-    messages!: Record<string, string>
+    msg!: Record<string, string>
 
     constructor(private translator: TranslatorService) {
         this.translatorSub = this.translator.subscribe(() => {
-            this.messages = translator.getMessages()
+            this.msg = translator.getMessages()
         })
     }
 

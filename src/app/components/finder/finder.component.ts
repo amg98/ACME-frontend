@@ -7,20 +7,9 @@ import { TranslatorService } from "@services/translator.service"
     templateUrl: "./finder.component.html",
     styleUrls: ["./finder.component.scss"]
 })
-export class FinderComponent extends TranslatableComponent  {
-  
-  finderText!: string;
+export class FinderComponent extends TranslatableComponent {
 
-  constructor(translator: TranslatorService) {
-      super(translator)
-      this.setLanguageChangeListener(()=>{
-          this.finderText = translator.getString("search")
-      })
-  }
-
-
-  ngOnInit(): void { 
-      console.log("init")
-  }
- 
+    constructor(translator: TranslatorService) {
+        super(translator)
+    }
 }
