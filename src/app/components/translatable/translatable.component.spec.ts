@@ -1,25 +1,25 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from "@angular/core/testing"
 
-import { TranslatableComponent } from "./translatable.component";
+import { TranslatableComponent } from "./translatable.component"
 
 describe("TranslatableComponent", () => {
-    let component: TranslatableComponent;
-    let fixture: ComponentFixture<TranslatableComponent>;
+    let component: TranslatableComponent
+    let fixture: ComponentFixture<TranslatableComponent>
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [ TranslatableComponent ]
         })
-            .compileComponents();
-    });
+            .compileComponents()
+    })
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(TranslatableComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+        fixture = TestBed.createComponent(TranslatableComponent)
+        component = fixture.componentInstance
+        fixture.detectChanges()
+    })
 
     it("should create", () => {
-        expect(component).toBeTruthy();
-    });
-});
+        expect(component).toBeTruthy()
+    })
+})

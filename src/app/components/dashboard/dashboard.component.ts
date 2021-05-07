@@ -1,5 +1,5 @@
-import { Component } from "@angular/core";
-import { StatsService } from "@services/stats.service";
+import { Component } from "@angular/core"
+import { StatsService } from "@services/stats.service"
 
 @Component({
     selector: "app-dashboard",

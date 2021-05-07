@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
-import { TranslatableComponent } from "@components/translatable/translatable.component";
-import { TranslatorService } from "@services/translator.service";
+import { Component } from "@angular/core"
+import { TranslatableComponent } from "@components/translatable/translatable.component"
+import { TranslatorService } from "@services/translator.service"
 
 @Component({
     selector: "app-finder",
@@ -12,15 +12,15 @@ export class FinderComponent extends TranslatableComponent  {
   finderText!: string;
 
   constructor(translator: TranslatorService) {
-      super(translator);
+      super(translator)
       this.setLanguageChangeListener(()=>{
-          this.finderText = translator.getString("search");
-      });
+          this.finderText = translator.getString("search")
+      })
   }
 
 
   ngOnInit(): void { 
-      console.log("init");
+      console.log("init")
   }
  
 }

@@ -1,6 +1,6 @@
-import { Component, OnDestroy } from "@angular/core";
-import { TranslatorService } from "@services/translator.service";
-import { Subscription } from "rxjs";
+import { Component, OnDestroy } from "@angular/core"
+import { TranslatorService } from "@services/translator.service"
+import { Subscription } from "rxjs"
 
 @Component({
     selector: "app-translatable",
@@ -8,20 +8,16 @@ import { Subscription } from "rxjs";
 })
 export class TranslatableComponent implements OnDestroy {
 
-    translatorSub: Subscription | null;
+    private translatorSub: Subscription;
+    messages!: Record<string, string>
 
     constructor(private translator: TranslatorService) {
-        this.translatorSub = null;
-    }
-
-    setLanguageChangeListener(onDataMap: VoidFunction): void {
-        if(this.translatorSub) this.translatorSub.unsubscribe();
         this.translatorSub = this.translator.subscribe(() => {
-            onDataMap();
-        });
+            this.messages = translator.getMessages()
+        })
     }
 
     ngOnDestroy(): void {
-        if(this.translatorSub) this.translatorSub.unsubscribe();
+        this.translatorSub.unsubscribe()
     }
 }
