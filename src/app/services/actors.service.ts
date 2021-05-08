@@ -52,6 +52,10 @@ export class ActorsService {
         return this.loggedActor.subscribe(fun)
     }
 
+    getLoggedActor(): Actor | null | undefined {
+        return this.loggedActor.value
+    }
+
     async login(email: string, password: string): Promise<void> {
 
         const loginResponse = await this.client.post(`${environment.backendURL}/auth/login`, { email, password }).toPromise() as LoginResponse
