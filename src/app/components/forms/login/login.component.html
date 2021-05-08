@@ -23,6 +23,9 @@
         </mat-form-field>
 
         <!-- Submit button -->
-        <button mat-raised-button color="accent" class="forms__submit-button" type="submit" [disabled]="!loginForm.valid">{{msg.login}}</button>
+        <div class="forms__submit-button">
+            <button mat-raised-button color="accent" class="forms__submit-button" type="submit" [disabled]="!loginForm.valid || loading">{{msg.login}}</button>
+            <mat-spinner *ngIf="loading" diameter="35" class="forms__loading-spinner"></mat-spinner>
+        </div>
     </form>
 </mat-card>

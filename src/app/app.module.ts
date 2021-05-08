@@ -13,6 +13,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar"
 import { MatCardModule } from "@angular/material/card"
 import { MatMenuModule } from "@angular/material/menu"
 import { MatIconModule } from "@angular/material/icon"
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 
 import { AppRoutingModule } from "./app-routing.module"
 import { AppComponent } from "./app.component"
@@ -57,6 +58,7 @@ import { TokenInterceptor } from "./interceptors/token.interceptor"
         MatCardModule,
         MatMenuModule,
         MatIconModule,
+        MatProgressSpinnerModule,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

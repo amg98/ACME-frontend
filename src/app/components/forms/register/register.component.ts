@@ -14,6 +14,7 @@ import { TranslatorService } from "@services/translator.service"
 export class RegisterComponent extends TranslatableComponent {
 
     registerForm: FormGroup;
+    loading = false
 
     constructor(translator: TranslatorService,
                 private formBuilder: FormBuilder,
@@ -43,6 +44,7 @@ export class RegisterComponent extends TranslatableComponent {
 
     async onSubmit(): Promise<void> {
         if (!this.registerForm.valid) return
+        this.loading = true
 
         const actor = this.registerForm.value
 
@@ -68,5 +70,7 @@ export class RegisterComponent extends TranslatableComponent {
                 panelClass: [ "alert-error" ]
             })
         }
+
+        this.loading = false
     }
 }

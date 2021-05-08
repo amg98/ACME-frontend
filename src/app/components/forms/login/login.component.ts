@@ -14,6 +14,7 @@ import { TranslatorService } from "@services/translator.service"
 export class LoginComponent extends TranslatableComponent {
 
     loginForm: FormGroup;
+    loading = false;
 
     constructor(translator: TranslatorService,
         private formBuilder: FormBuilder,
@@ -30,6 +31,7 @@ export class LoginComponent extends TranslatableComponent {
 
     async onSubmit(): Promise<void> {
         if (!this.loginForm.valid) return
+        this.loading = true
 
         try {
             await this.actorsService.login(this.loginForm.value.email, this.loginForm.value.password)
@@ -46,5 +48,7 @@ export class LoginComponent extends TranslatableComponent {
                 panelClass: [ "alert-error" ]
             })
         }
+
+        this.loading = false
     }
 }
