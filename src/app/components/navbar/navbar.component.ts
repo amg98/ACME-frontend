@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from "@angular/core"
+import { Router } from "@angular/router"
 import { TranslatableComponent } from "@components/translatable/translatable.component"
 import { ActorsService } from "@services/actors.service"
 import { TranslatorService } from "@services/translator.service"
@@ -15,7 +16,7 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
     loggedActorSub: Subscription;
     isAdmin = false;
 
-    constructor(translator: TranslatorService, private actorsService: ActorsService) {
+    constructor(translator: TranslatorService, private actorsService: ActorsService, private router: Router) {
         super(translator)
 
         this.loggedActorName = ""
@@ -31,6 +32,7 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
 
     logout(): void {
         this.actorsService.logout()
+        this.router.navigate(["/"])
     }
 
     ngOnDestroy(): void {

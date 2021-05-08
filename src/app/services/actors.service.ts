@@ -74,11 +74,8 @@ export class ActorsService {
 
     async updateLoggedActor(actor: Actor): Promise<void> {
         actor._id = this.loggedActor.value?._id
-        const idToken = localStorage.getItem("idToken")
 
-        await this.client.put(`${environment.backendURL}/actors`, { actor }, {
-            headers: { "Authorization": `Bearer ${idToken}` }
-        }).toPromise()
+        await this.client.put(`${environment.backendURL}/actors`, { actor }).toPromise()
 
         this.loggedActor.next(actor)
     }

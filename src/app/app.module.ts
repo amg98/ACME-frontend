@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core"
 import { BrowserModule } from "@angular/platform-browser"
 import { ReactiveFormsModule } from "@angular/forms"
-import { HttpClientModule } from "@angular/common/http"
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http"
 
 import { MatToolbarModule } from "@angular/material/toolbar"
 import { MatButtonModule } from "@angular/material/button"
@@ -26,6 +26,7 @@ import { ProfileComponent } from "./components/forms/profile/profile.component"
 import { FinderComponent } from "./components/finder/finder.component"
 import { DashboardComponent } from "./components/dashboard/dashboard.component"
 import { FooterComponent } from "./components/footer/footer.component"
+import { TokenInterceptor } from "./interceptors/token.interceptor"
 
 @NgModule({
     declarations: [
@@ -57,7 +58,9 @@ import { FooterComponent } from "./components/footer/footer.component"
         MatMenuModule,
         MatIconModule,
     ],
-    providers: [],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
