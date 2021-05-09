@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http"
 import { Injectable } from "@angular/core"
 import { environment } from "@env/environment"
 
-interface Stats {
+export interface Stats {
     min: number,
     max: number,
     mean: number,
@@ -48,6 +48,13 @@ export class StatsService {
 
     async getApplicationsRatio(): Promise<ApplicationsRatio> {
         return await this.client.get(`${environment.backendURL}/stats/applications-ratio`).toPromise() as ApplicationsRatio
+        /*return {
+            pending: 10,
+            accepted: 23,
+            rejected: 42,
+            due: 12,
+            cancelled: 14
+        }*/
     }
 
     async getAveragePriceFinder(): Promise<AveragePriceFinder> {

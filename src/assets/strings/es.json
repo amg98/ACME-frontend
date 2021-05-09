@@ -44,5 +44,23 @@
     "resume":"Viajar es vivir, es sumergirte en realidades desconocidas. En Acme Explorer lo sabemos y es por ello que somos expertos en organizar tus viajes y ofrecerte itinerarios de ensueño hechos a medida. Somos desde 2015 la empresa líder en el sector turístico y millones de clientes por todo el mundo lo avalan.",
     "whoWeAre":"¿Quienes somos?",
     "flag":"https://cdn.icon-icons.com/icons2/45/PNG/64/Spain_flags_flag_8858.png",
-    "search":"Buscar"
+    "search":"Buscar",
+
+    "stats/apps-ratio": "Ratio de aplicaciones",
+    "stats/pending": "Pendientes",
+    "stats/accepted": "Aceptadas",
+    "stats/rejected": "Rechazadas",
+    "stats/due": "Pagadas",
+    "stats/cancelled": "Canceladas",
+    "stats/trips-per-manager": "Viajes por gestor",
+    "stats/apps-per-trip": "Reservas por viaje",
+    "stats/price-per-trips": "Precio por viaje (€)",
+    "stats/avg-price-finder": "Rango de precios (€)",
+    "stats/min": "Mínimo",
+    "stats/max": "Máximo",
+    "stats/mean": "Media",
+    "stats/stdv": "Desviación típica",
+    "stats/top-keywords": "Top 10 de palabras buscadas",
+    "stats/word": "Palabra",
+    "stats/count": "Ocurrencias"
 }

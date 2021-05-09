@@ -1,0 +1,12 @@
+.wrapper {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.pie-chart {
+    flex-basis: 50%;
+}
+
+.table {
+    flex-basis: 50%;
+}

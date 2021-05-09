@@ -1,7 +1,11 @@
 import { NgModule } from "@angular/core"
+import { CommonModule } from "@angular/common"
 import { BrowserModule } from "@angular/platform-browser"
 import { ReactiveFormsModule } from "@angular/forms"
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http"
+import { PlotlyModule } from "angular-plotly.js"
+
+PlotlyModule.plotlyjs = require("plotly.js/dist/plotly.js")
 
 import { MatToolbarModule } from "@angular/material/toolbar"
 import { MatButtonModule } from "@angular/material/button"
@@ -28,6 +32,9 @@ import { FinderComponent } from "./components/finder/finder.component"
 import { DashboardComponent } from "./components/dashboard/dashboard.component"
 import { FooterComponent } from "./components/footer/footer.component"
 import { TokenInterceptor } from "./interceptors/token.interceptor"
+import { PieChartComponent } from "./components/stats/pie-chart/pie-chart.component"
+import { TableComponent } from "./components/stats/table/table.component"
+import { KeywordsTableComponent } from "./components/stats/keywords-table/keywords-table.component"
 
 @NgModule({
     declarations: [
@@ -41,8 +48,12 @@ import { TokenInterceptor } from "./interceptors/token.interceptor"
         FinderComponent,
         DashboardComponent,
         FooterComponent,
+        PieChartComponent,
+        TableComponent,
+        KeywordsTableComponent,
     ],
     imports: [
+        CommonModule,
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
@@ -59,6 +70,7 @@ import { TokenInterceptor } from "./interceptors/token.interceptor"
         MatMenuModule,
         MatIconModule,
         MatProgressSpinnerModule,
+        PlotlyModule,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
