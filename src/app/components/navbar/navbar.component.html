@@ -2,7 +2,7 @@
     <div class="wrapper">
         <button mat-button routerLink="/" class="app-button">
             <span class="icon">✈️</span>
-            {{appName}}
+            {{msg["app-title"]}}
         </button>
         <app-finder></app-finder>
     </div>
@@ -16,15 +16,15 @@
         <mat-menu #menu="matMenu">
             <button mat-menu-item class="menu-button" routerLink="/profile">
                 <mat-icon>account_circle</mat-icon>
-                {{editProfileText}}
+                {{msg["edit-profile"]}}
             </button>
             <button *ngIf="isAdmin" mat-menu-item class="menu-button" routerLink="/admin/dashboard">
                 <mat-icon>assessment</mat-icon>
-                {{statsText}}
+                {{msg.stats}}
             </button>
             <button mat-menu-item class="menu-button" (click)="logout()">
                 <mat-icon>exit_to_app</mat-icon>
-                {{logoutText}}
+                {{msg.logout}}
             </button>
         </mat-menu>
     </div>
@@ -32,7 +32,7 @@
 
 <ng-template #loginButtons>
     <div class="wrapper">
-        <button color="accent" class="button" mat-raised-button routerLink="/register">{{registerText}}</button>
-        <button color="accent" class="button" mat-raised-button routerLink="/login">{{loginText}}</button>
+        <button color="accent" class="button" mat-raised-button routerLink="/register">{{msg.register}}</button>
+        <button color="accent" class="button" mat-raised-button routerLink="/login">{{msg.login}}</button>
     </div>
 </ng-template>

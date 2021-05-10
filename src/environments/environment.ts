@@ -1,7 +1,7 @@
 export const environment = {
     production: false,
     backendURL: "https://acmeexplorer.herokuapp.com/api/v1"
-};
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

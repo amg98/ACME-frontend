@@ -1,7 +1,7 @@
-import { Component, OnDestroy } from "@angular/core";
-import { MatSelectChange } from "@angular/material/select";
-import { Language, TranslatorService } from "@services/translator.service";
-import { Subscription } from "rxjs";
+import { Component, OnDestroy } from "@angular/core"
+import { MatSelectChange } from "@angular/material/select"
+import { Language, TranslatorService } from "@services/translator.service"
+import { Subscription } from "rxjs"
 
 @Component({
     selector: "app-language-selector",
@@ -17,20 +17,20 @@ export class LanguageSelectorComponent implements OnDestroy {
 
     constructor(private translator: TranslatorService) {
         
-        this.languageLabels = translator.getLanguages();
-        this.selectedLanguage = translator.getLanguage();
+        this.languageLabels = translator.getLanguages()
+        this.selectedLanguage = translator.getLanguage()
 
         this.translatorSub = translator.subscribe(() => {
-            this.languages = this.languageLabels.map(langLabel => translator.getString(langLabel));
-        });
+            this.languages = this.languageLabels.map(langLabel => translator.getMessages()[langLabel])
+        })
     }
 
     onLanguageChange(event: MatSelectChange): void {
-        const language = Object.keys(Language).filter(it => isNaN(Number(it))).indexOf(event.value);
-        this.translator.changeLanguage(language);
+        const language = Object.keys(Language).filter(it => isNaN(Number(it))).indexOf(event.value)
+        this.translator.changeLanguage(language)
     }
 
     ngOnDestroy(): void {
-        this.translatorSub.unsubscribe();
+        this.translatorSub.unsubscribe()
     }
 }
