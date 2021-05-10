@@ -1,5 +1,6 @@
 {
     "app-title": "ACME Explorer",
+    "menu": "Menú principal",
     "register": "Registrarse",
     "register-manager": "Registrar gestor",
     "login": "Iniciar sesión",

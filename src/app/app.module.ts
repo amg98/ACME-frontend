@@ -15,9 +15,9 @@ import { MatInputModule } from "@angular/material/input"
 import { MatCheckboxModule } from "@angular/material/checkbox"
 import { MatSnackBarModule } from "@angular/material/snack-bar"
 import { MatCardModule } from "@angular/material/card"
-import { MatMenuModule } from "@angular/material/menu"
 import { MatIconModule } from "@angular/material/icon"
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
+import { MatSidenavModule } from "@angular/material/sidenav"
 
 import { AppRoutingModule } from "./app-routing.module"
 import { AppComponent } from "./app.component"
@@ -67,9 +67,9 @@ import { KeywordsTableComponent } from "./components/stats/keywords-table/keywor
         MatCheckboxModule,
         MatSnackBarModule,
         MatCardModule,
-        MatMenuModule,
         MatIconModule,
         MatProgressSpinnerModule,
+        MatSidenavModule,
         PlotlyModule,
     ],
     providers: [

@@ -1,38 +1,47 @@
-<mat-toolbar color="primary" class="wrapper">
-    <div class="wrapper">
-        <button mat-button routerLink="/" class="app-button">
-            <span class="icon">✈️</span>
-            {{msg["app-title"]}}
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="over" class="sidenav">
+        <h2 class="menu-title">{{msg.menu}}</h2>
+        <button mat-button class="menu-button" routerLink="/profile" (click)="sidenav.close()">
+            <mat-icon>account_circle</mat-icon>
+            {{msg["edit-profile"]}}
         </button>
-        <app-finder></app-finder>
-    </div>
+        <button *ngIf="isAdmin" mat-button class="menu-button" routerLink="/admin/dashboard" (click)="sidenav.close()">
+            <mat-icon>assessment</mat-icon>
+            {{msg.stats}}
+        </button>
+        <button *ngIf="isAdmin" mat-button class="menu-button" routerLink="/register" (click)="sidenav.close()">
+            <mat-icon>assignment_ind</mat-icon>
+            {{msg["register-manager"]}}
+        </button>
+        <button mat-button class="menu-button" (click)="logout()" (click)="sidenav.close()">
+            <mat-icon>exit_to_app</mat-icon>
+            {{msg.logout}}
+        </button>
+    </mat-sidenav>
 
-    <div class="wrapper">
-        <app-language-selector></app-language-selector>
+    <mat-sidenav-content class="background">
+        <mat-toolbar color="primary" class="wrapper">
+            <div class="wrapper">
+                <button mat-button routerLink="/" class="app-button">
+                    <span class="icon">✈️</span>
+                    {{msg["app-title"]}}
+                </button>
+                <app-finder></app-finder>
+            </div>
 
-        <button *ngIf="loggedActorName !== null;else loginButtons" color="primary" class="button username"
-            mat-raised-button [matMenuTriggerFor]="menu">{{loggedActorName}}</button>
+            <div class="wrapper">
+                <app-language-selector></app-language-selector>
 
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item class="menu-button" routerLink="/profile">
-                <mat-icon>account_circle</mat-icon>
-                {{msg["edit-profile"]}}
-            </button>
-            <button *ngIf="isAdmin" mat-menu-item class="menu-button" routerLink="/admin/dashboard">
-                <mat-icon>assessment</mat-icon>
-                {{msg.stats}}
-            </button>
-            <button *ngIf="isAdmin" mat-menu-item class="menu-button" routerLink="/register">
-                <mat-icon>assignment_ind</mat-icon>
-                {{msg["register-manager"]}}
-            </button>
-            <button mat-menu-item class="menu-button" (click)="logout()">
-                <mat-icon>exit_to_app</mat-icon>
-                {{msg.logout}}
-            </button>
-        </mat-menu>
-    </div>
-</mat-toolbar>
+                <button *ngIf="loggedActorName !== null;else loginButtons" mat-button (click)="sidenav.toggle()"
+                    class="button username">
+                    {{loggedActorName}}
+                    <mat-icon>dashboard</mat-icon>
+                </button>
+            </div>
+        </mat-toolbar>
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>
 
 <ng-template #loginButtons>
     <div class="wrapper">
