@@ -39,7 +39,7 @@ export class KeywordsTableComponent extends TranslatableComponent implements OnI
     }]
     layout = {
         paper_bgcolor: "rgba(0, 0, 0, 0)",
-        title: ""
+        title: "",
     }
 
     constructor(translator: TranslatorService, private statsService: StatsService) { 
