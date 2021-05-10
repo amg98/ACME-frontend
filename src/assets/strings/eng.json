@@ -1,6 +1,8 @@
 {
     "app-title": "ACME Explorer",
+    "menu": "Main menu",
     "register": "Register",
+    "register-manager": "Register manager",
     "login": "Login",
     "Spanish": "Spanish",
     "English": "English",
@@ -17,7 +19,6 @@
     "minimum-5": "The minimum length is 5 characters",
     "phone-number": "Phone number",
     "address": "Address",
-    "wannabe-sponsor": "Sponsor",
     "phonenumber-validation": "The phone number is not correct",
     "passwords-dont-match": "Passwords don't match",
     "logout": "Logout",
@@ -44,5 +45,23 @@
     "resume": "Traveling is living, it is immersing yourself in unknown realities. At Acme Explorer we know this and that is why we are experts in organizing your trips and offering you tailor-made dream itineraries. We have been the leading company in the tourism sector since 2015 and millions of clients around the world endorse it.",
     "whoWeAre": "Who we are?",
     "flag":"https://cdn.icon-icons.com/icons2/45/PNG/64/uk_flags_flag_8834.png",
-    "search": "Search"
+    "search": "Search",
+
+    "stats/apps-ratio": "Applications ratio",
+    "stats/pending": "Pending",
+    "stats/accepted": "Accepted",
+    "stats/rejected": "Rejected",
+    "stats/due": "Due",
+    "stats/cancelled": "Cancelled",
+    "stats/trips-per-manager": "Trips per manager",
+    "stats/apps-per-trip": "Applications per trip",
+    "stats/price-per-trips": "Price per trips (€)",
+    "stats/avg-price-finder": "Price range (€)",
+    "stats/min": "Minimum",
+    "stats/max": "Maximum",
+    "stats/mean": "Mean",
+    "stats/stdv": "Standard deviation",
+    "stats/top-keywords": "Top 10 searched keywords",
+    "stats/word": "Keyword",
+    "stats/count": "Count"
 }

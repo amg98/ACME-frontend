@@ -1,0 +1,16 @@
+@import "../../shared/styles/forms.scss";
+
+.card {
+    width: 90%;
+    padding-bottom: 2em;
+}
+
+.wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    row-gap: 2em;
+}
+
+.graph {
+    flex-basis: 100%;
+}

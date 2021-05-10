@@ -80,9 +80,21 @@
             <input matInput formControlName="address">
         </mat-form-field>
 
+        <!-- Manager? -->
+        <mat-checkbox formControlName="isManager" color="primary" class="forms__form-field checkbox">
+            {{msg.manager}}</mat-checkbox>
+
+        <!-- Explorer? -->
+        <mat-checkbox formControlName="isExplorer" color="primary" class="forms__form-field checkbox">
+            {{msg.explorer}}</mat-checkbox>
+
         <!-- Sponsor? -->
         <mat-checkbox formControlName="isSponsor" color="primary" class="forms__form-field checkbox">
-            {{msg["wannabe-sponsor"]}}</mat-checkbox>
+            {{msg.sponsor}}</mat-checkbox>
+
+        <!-- At least one role error -->
+        <mat-error class="validation-error-text" *ngIf="registerForm.hasError('oneRoleAtLeast')">{{msg["one-role-at-least"]}}
+        </mat-error>
 
         <!-- Submit button -->
         <div class="forms__submit-button">

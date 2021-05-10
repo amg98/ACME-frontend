@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http"
 import { Injectable } from "@angular/core"
 import { environment } from "@env/environment"
 
-interface Stats {
+export interface Stats {
     min: number,
     max: number,
     mean: number,
