@@ -26,6 +26,7 @@ import { ProfileComponent } from "./components/forms/profile/profile.component";
 import { FinderComponent } from "./components/finder/finder.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { FooterComponent } from "./components/footer/footer.component";
+import { TripDisplayComponent } from './components/trip/trip-display/trip-display.component';
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import { FooterComponent } from "./components/footer/footer.component";
         FinderComponent,
         DashboardComponent,
         FooterComponent,
+        TripDisplayComponent,
     ],
     imports: [
         BrowserModule,
