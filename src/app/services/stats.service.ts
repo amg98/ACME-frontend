@@ -48,13 +48,6 @@ export class StatsService {
 
     async getApplicationsRatio(): Promise<ApplicationsRatio> {
         return await this.client.get(`${environment.backendURL}/stats/applications-ratio`).toPromise() as ApplicationsRatio
-        /*return {
-            pending: 10,
-            accepted: 23,
-            rejected: 42,
-            due: 12,
-            cancelled: 14
-        }*/
     }
 
     async getAveragePriceFinder(): Promise<AveragePriceFinder> {

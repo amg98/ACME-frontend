@@ -1,6 +1,7 @@
 {
     "app-title": "ACME Explorer",
     "register": "Register",
+    "register-manager": "Register manager",
     "login": "Login",
     "Spanish": "Spanish",
     "English": "English",
@@ -17,7 +18,6 @@
     "minimum-5": "The minimum length is 5 characters",
     "phone-number": "Phone number",
     "address": "Address",
-    "wannabe-sponsor": "Sponsor",
     "phonenumber-validation": "The phone number is not correct",
     "passwords-dont-match": "Passwords don't match",
     "logout": "Logout",

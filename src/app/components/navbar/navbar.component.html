@@ -22,6 +22,10 @@
                 <mat-icon>assessment</mat-icon>
                 {{msg.stats}}
             </button>
+            <button *ngIf="isAdmin" mat-menu-item class="menu-button" routerLink="/register">
+                <mat-icon>assignment_ind</mat-icon>
+                {{msg["register-manager"]}}
+            </button>
             <button mat-menu-item class="menu-button" (click)="logout()">
                 <mat-icon>exit_to_app</mat-icon>
                 {{msg.logout}}
