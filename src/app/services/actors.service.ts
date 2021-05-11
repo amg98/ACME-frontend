@@ -79,4 +79,12 @@ export class ActorsService {
 
         this.loggedActor.next(actor)
     }
+
+    async getActorsSummary(): Promise<Actor[]> {
+        return await this.client.get(`${environment.backendURL}/actors`).toPromise() as Actor[]
+    }
+
+    async setActorBanStatus(actor: Actor, banned: boolean): Promise<void> {
+        await this.client.put(`${environment.backendURL}/actors/${actor._id}/ban`, { isBanned: banned }).toPromise()
+    }
 }
