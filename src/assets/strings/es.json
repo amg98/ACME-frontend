@@ -63,5 +63,11 @@
     "stats/stdv": "Desviación típica",
     "stats/top-keywords": "Top 10 de palabras buscadas",
     "stats/word": "Palabra",
-    "stats/count": "Ocurrencias"
+    "stats/count": "Ocurrencias",
+
+    "users-list": "Lista de usuarios",
+    "users-list/ban-error": "No se ha podido cambiar el estado del usuario",
+    "users-list/load-error": "No se han podido obtener los usuarios",
+    "users-list/ban": "Banear",
+    "users-list/unban": "Desbanear"
 }

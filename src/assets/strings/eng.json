@@ -63,5 +63,11 @@
     "stats/stdv": "Standard deviation",
     "stats/top-keywords": "Top 10 searched keywords",
     "stats/word": "Keyword",
-    "stats/count": "Count"
+    "stats/count": "Count",
+
+    "users-list": "Users list",
+    "users-list/ban-error": "Unable to change the user state",
+    "users-list/load-error": "Unable to retrieve users",
+    "users-list/ban": "Ban",
+    "users-list/unban": "Unban"
 }

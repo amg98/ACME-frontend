@@ -13,6 +13,10 @@
             <mat-icon>assignment_ind</mat-icon>
             {{msg["register-manager"]}}
         </button>
+        <button *ngIf="isAdmin" mat-button class="menu-button" routerLink="/admin/users" (click)="sidenav.close()">
+            <mat-icon>account_box</mat-icon>
+            {{msg["users-list"]}}
+        </button>
         <button mat-button class="menu-button" (click)="logout()" (click)="sidenav.close()">
             <mat-icon>exit_to_app</mat-icon>
             {{msg.logout}}

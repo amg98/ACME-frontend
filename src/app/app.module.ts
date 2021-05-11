@@ -35,6 +35,7 @@ import { TokenInterceptor } from "./interceptors/token.interceptor"
 import { PieChartComponent } from "./components/stats/pie-chart/pie-chart.component"
 import { TableComponent } from "./components/stats/table/table.component"
 import { KeywordsTableComponent } from "./components/stats/keywords-table/keywords-table.component"
+import { UsersListComponent } from "./components/users-list/users-list.component"
 
 @NgModule({
     declarations: [
@@ -51,6 +52,7 @@ import { KeywordsTableComponent } from "./components/stats/keywords-table/keywor
         PieChartComponent,
         TableComponent,
         KeywordsTableComponent,
+        UsersListComponent,
     ],
     imports: [
         CommonModule,
