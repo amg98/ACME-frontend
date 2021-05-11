@@ -36,6 +36,7 @@ import { PieChartComponent } from "./components/stats/pie-chart/pie-chart.compon
 import { TableComponent } from "./components/stats/table/table.component"
 import { KeywordsTableComponent } from "./components/stats/keywords-table/keywords-table.component"
 import { UsersListComponent } from "./components/users-list/users-list.component"
+import { CubeComponent } from "./components/stats/cube/cube.component"
 
 @NgModule({
     declarations: [
@@ -53,6 +54,7 @@ import { UsersListComponent } from "./components/users-list/users-list.component
         TableComponent,
         KeywordsTableComponent,
         UsersListComponent,
+        CubeComponent,
     ],
     imports: [
         CommonModule,

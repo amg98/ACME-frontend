@@ -1,0 +1,57 @@
+.card {
+    margin: 5%;
+    border-radius: 2em;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+    background-color: rgba(#fff, 0.8);
+    border: 2px solid #222;
+}
+
+.title {
+    margin-bottom: 1.2em;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    margin-right: 10%;
+    margin-left: 10%;
+    border-bottom: 2px solid #ccc;
+    text-align: center;
+    font-weight: 300;
+    font-size: 2rem;
+}
+
+.cube-button {
+    margin: 0 auto;
+    width: 30em;
+    background-color: #4CAF50;
+    display: block;
+    margin-bottom: 4em;
+}
+
+.forms-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.form {
+    flex-basis: 50%;
+}
+
+.form-title {
+    margin-bottom: 1.2em;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    margin-right: 20%;
+    margin-left: 20%;
+    border-bottom: 2px solid #ccc;
+    text-align: center;
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+.form-field {
+    margin-right: 1em;
+}
+
+.submit-button {
+    text-align: center;
+}
