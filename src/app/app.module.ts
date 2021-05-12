@@ -18,6 +18,8 @@ import { MatCardModule } from "@angular/material/card"
 import { MatIconModule } from "@angular/material/icon"
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatSidenavModule } from "@angular/material/sidenav"
+import { MatDialogModule } from "@angular/material/dialog"
+import { MatExpansionModule } from "@angular/material/expansion"
 
 import { AppRoutingModule } from "./app-routing.module"
 import { AppComponent } from "./app.component"
@@ -38,6 +40,7 @@ import { KeywordsTableComponent } from "./components/stats/keywords-table/keywor
 import { UsersListComponent } from "./components/users-list/users-list.component"
 import { CubeComponent } from "./components/stats/cube/cube.component"
 import { ManagerApplicationsComponent } from "./components/manager/applications/applications.component"
+import { RejectApplicationComponent } from "./components/dialog/reject-application/reject-application.component"
 
 @NgModule({
     declarations: [
@@ -57,6 +60,7 @@ import { ManagerApplicationsComponent } from "./components/manager/applications/
         UsersListComponent,
         CubeComponent,
         ManagerApplicationsComponent,
+        RejectApplicationComponent,
     ],
     imports: [
         CommonModule,
@@ -76,6 +80,8 @@ import { ManagerApplicationsComponent } from "./components/manager/applications/
         MatIconModule,
         MatProgressSpinnerModule,
         MatSidenavModule,
+        MatDialogModule,
+        MatExpansionModule,
         PlotlyModule,
         FormsModule,
     ],

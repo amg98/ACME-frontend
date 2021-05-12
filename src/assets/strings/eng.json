@@ -97,5 +97,19 @@
     "cube/empty-result": "No matching results have been found",
 
     "applications/error-change-status": "Unable to change the application status",
-    "applications/error": "Unable to retrieve the applications"
+    "applications/error": "Unable to retrieve the applications",
+    "applications/no-reason": "No reason has been specified",
+    "applications/reject": "Reject application",
+    "applications/enter-reason": "Enter the reason",
+    "applications/accept-action": "Accept",
+    "applications/reject-reason": "Rejection reason",
+    "applications/reject-action": "Reject",
+    "applications/comments": "Comments",
+    "cancel": "Cancel",
+
+    "PENDING": "Pending",
+    "ACCEPTED": "Accepted",
+    "REJECTED": "Rejected",
+    "DUE": "Due",
+    "CANCELLED": "Cancelled"
 }

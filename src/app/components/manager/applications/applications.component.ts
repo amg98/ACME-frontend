@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core"
+import { MatDialog } from "@angular/material/dialog"
 import { MatSnackBar } from "@angular/material/snack-bar"
+import { RejectApplicationComponent } from "@components/dialog/reject-application/reject-application.component"
 import { TranslatableComponent } from "@components/translatable/translatable.component"
 import { ApplicationsService, GetManagerApplicationsData } from "@services/applications.service"
 import { TranslatorService } from "@services/translator.service"
@@ -12,13 +14,12 @@ import { ApplicationStatus } from "src/app/models/Application"
 })
 export class ManagerApplicationsComponent extends TranslatableComponent implements OnInit {
     data: GetManagerApplicationsData | null = null
-    rejectedReason = ""
-    rejectedReasonError = false
     loading: boolean[][] = []
 
     constructor(private appsService: ApplicationsService,
         translator: TranslatorService,
-        private snackbar: MatSnackBar) {
+        private snackbar: MatSnackBar,
+        private dialog: MatDialog) {
         super(translator)
     }
 
@@ -44,7 +45,7 @@ export class ManagerApplicationsComponent extends TranslatableComponent implemen
     }
 
     async onDue(tripIndex: number, appIndex: number): Promise<void> {
-        if(!this.data) return
+        if (!this.data) return
 
         this.loading[tripIndex][appIndex] = true
         try {
@@ -57,15 +58,31 @@ export class ManagerApplicationsComponent extends TranslatableComponent implemen
     }
 
     async onRejected(tripIndex: number, appIndex: number): Promise<void> {
-        if(!this.data) return
-        this.rejectedReasonError = this.rejectedReason == ""
-        if(this.rejectedReasonError) return
+        if (!this.data) return
+
+        const dialogRef = this.dialog.open(RejectApplicationComponent, {
+            width: "30em",
+            data: { rejectedReason: "" }
+        })
+
+        dialogRef.afterClosed().subscribe(result => {
+            if(result === undefined) return
+            if(result === "") {
+                this.showAlert("applications/no-reason", "alert-info")
+                return
+            }
+            this.rejectApplication(tripIndex, appIndex, result)
+        })
+    }
+
+    async rejectApplication(tripIndex: number, appIndex: number, rejectedReason: string): Promise<void> {
+        if (!this.data) return
 
         this.loading[tripIndex][appIndex] = true
         try {
-            await this.appsService.updateApplicationByManager(this.data.apps[tripIndex][appIndex], ApplicationStatus.Rejected, this.rejectedReason)
+            await this.appsService.updateApplicationByManager(this.data.apps[tripIndex][appIndex], ApplicationStatus.Rejected, rejectedReason)
             this.data.apps[tripIndex][appIndex].status = ApplicationStatus.Rejected
-            this.data.apps[tripIndex][appIndex].rejectReason = this.rejectedReason
+            this.data.apps[tripIndex][appIndex].rejectReason = rejectedReason
         } catch {
             this.showAlert("applications/error-change-status", "alert-error")
         }

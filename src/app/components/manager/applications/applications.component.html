@@ -1,30 +1,43 @@
-<mat-spinner *ngIf="data == null" diameter="35"></mat-spinner>
+<mat-spinner *ngIf="data == null" diameter="35" class="spinner"></mat-spinner>
+<h2 class="title">{{msg["all-apps"]}}</h2>
 <div *ngIf="data != null">
 
     <!-- Trip -->
-    <div *ngFor="let trip of data.trips; let tripIndex = index">
-        <p>{{trip.ticker}}</p>
-        <p>{{trip.title}}</p>
+    <div class="trip" *ngFor="let trip of data.trips; let tripIndex = index">
+        <h3 class="trip-title">{{trip.ticker}} - {{trip.title}}</h3>
 
         <!-- Application -->
-        <div *ngFor="let app of data.apps[tripIndex]; let appIndex = index">
-            <p>{{app.status}}</p>
-            <p *ngIf="app.comments">Comentarios: {{app.comments}}</p>
-            <p>Fecha de creación: {{app.timeStamp}}</p>
-            <p *ngIf="app.rejectReason">Motivo de rechazo: {{app.rejectReason}}</p>
+        <mat-accordion>
+            <mat-expansion-panel class="accordion" *ngFor="let app of data.apps[tripIndex]; let appIndex = index">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <span class="timestamp">{{app.timeStamp | date:"MM/dd/yy - hh:mm:ss"}}</span>
+                        <span class="badge" 
+                            [class.badge-pending]="app.status === 'PENDING'"
+                            [class.badge-accepted]="app.status === 'ACCEPTED'"
+                            [class.badge-rejected]="app.status === 'REJECTED'"
+                            [class.badge-due]="app.status === 'DUE'"
+                            [class.badge-cancelled]="app.status === 'CANCELLED'">{{msg[app.status]}}</span>
+                    </mat-panel-title>
+                    <mat-panel-description class="panel-description">
+                        <span class="name">
+                            {{data.explorers[tripIndex][appIndex].name}}
+                            {{data.explorers[tripIndex][appIndex].surname}}
+                        </span>
+                        (<a [href]="'mailto:'+data.explorers[tripIndex][appIndex].email">{{data.explorers[tripIndex][appIndex].email}}</a>)
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="panel-content">
+                    <p class="content-section" *ngIf="app.comments">{{msg["applications/comments"]}}: <q class="content">{{app.comments}}</q></p>
+                    <p class="content-section" *ngIf="app.rejectReason">{{msg["applications/reject-reason"]}}: <q class="content">{{app.rejectReason}}</q></p>
 
-            <!-- Explorer -->
-            <p>{{data.explorers[tripIndex][appIndex].name}} {{data.explorers[tripIndex][appIndex].surname}}</p>
-            <p>{{data.explorers[tripIndex][appIndex].email}}</p>
-
-            <form *ngIf="app.status == 'PENDING'">
-                <mat-form-field appearance="outline" class="forms__form-field">
-                    <mat-label>Razón de rechazo</mat-label>
-                    <input matInput type="text" [(ngModel)]="rejectedReason">
-                </mat-form-field>
-                <button mat-raised-button (click)="onDue(tripIndex, appIndex)">Pasar a DUE</button>
-                <button mat-raised-button (click)="onRejected(tripIndex, appIndex)">Pasar a REJECTED</button>
-            </form>
-        </div>
+                    <div *ngIf="app.status == 'PENDING'" class="buttons">
+                        <button class="accept-button" mat-raised-button (click)="onDue(tripIndex, appIndex)">{{msg["applications/accept-action"]}}</button>
+                        <button class="reject-button" mat-raised-button (click)="onRejected(tripIndex, appIndex)">{{msg["applications/reject-action"]}}</button>
+                        <mat-spinner *ngIf="loading[tripIndex][appIndex]" diameter="35"></mat-spinner>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
     </div>
 </div>

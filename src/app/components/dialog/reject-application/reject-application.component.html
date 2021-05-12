@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{msg["applications/reject"]}}</h2>
+<div mat-dialog-content>
+    <p>{{msg["applications/enter-reason"]}}</p>
+    <mat-form-field>
+        <mat-label>{{msg["applications/reject-reason"]}}:</mat-label>
+        <input matInput [(ngModel)]="rejectedReason">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button class="cancel-button" mat-button (click)="onNoClick()">{{msg["cancel"]}}</button>
+    <button class="reject-button"mat-button [mat-dialog-close]="rejectedReason" cdkFocusInitial>{{msg["applications/reject-action"]}}</button>
+</div>
