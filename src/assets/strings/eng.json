@@ -92,6 +92,6 @@
     "cube/less": "Less (<)",
     "cube/less-equal": "Less equal (<=)",
     "cube/amount": "Amount",
-    "cube/user-query-result": "User query result",
-    "cube/complete-query-result": "Complete query result"
+    "cube/query-result": "Query result",
+    "cube/empty-result": "No matching results have been found"
 }

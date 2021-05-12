@@ -58,9 +58,6 @@ export class CubeComponent extends TranslatableComponent implements OnInit {
         try {
             this.explorers = (await this.actorsService.getActorsSummary())
                 .filter(actor => actor.roles.includes("EXPLORER"))
-
-            this.queryResult = 23
-            this.complexQueryResult = [this.explorers[0], this.explorers[1], this.explorers[2], this.explorers[3]]
         } catch {
             this.showAlert("users-list/load-error", "alert-error")
         }
@@ -83,6 +80,7 @@ export class CubeComponent extends TranslatableComponent implements OnInit {
 
         this.loading = true
         try {
+            this.complexQueryResult = null
             this.queryResult = await this.cubeService.queryCube(this.explorers[formValue.explorer], `${formValue.period1}${formValue.period2}`)
         } catch {
             this.showAlert("cube/query-error", "alert-error")
@@ -96,7 +94,11 @@ export class CubeComponent extends TranslatableComponent implements OnInit {
 
         this.loadingComplex = true
         try {
+            this.queryResult = null
             this.complexQueryResult = await this.cubeService.queryCubeComplex(`${formValue.period1}${formValue.period2}`, formValue.condition, formValue.amount)
+            if(this.complexQueryResult.length === 0) {
+                this.showAlert("cube/empty-result", "alert-info")
+            }
         } catch(e) {
             this.showAlert("cube/query-error", "alert-error")
         }

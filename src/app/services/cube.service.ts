@@ -12,6 +12,10 @@ enum CubeCondition {
     LessEqual = "<="
 }
 
+interface CubeResponse {
+    explorers: Actor[]
+}
+
 @Injectable({
     providedIn: "root"
 })
@@ -37,6 +41,7 @@ export class CubeService {
             .set("period", period)
             .set("condition", condition)
             .set("amount", amount.toString())
-        return await this.client.get(`${environment.backendURL}/cubes/explorers`, { params }).toPromise() as Actor[]
+        const response = await this.client.get(`${environment.backendURL}/cubes/explorers`, { params }).toPromise() as CubeResponse
+        return response.explorers
     }
 }

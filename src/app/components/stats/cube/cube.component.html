@@ -6,134 +6,142 @@
         <form class="form" [formGroup]="queryForm" (submit)="queryCube()">
             <p class="form-title">{{msg["cube/user-query"]}}</p>
 
-            <!-- User list -->
-            <mat-form-field class="form-field" appearance="fill">
-                <mat-label>{{msg["cube/user"]}}</mat-label>
-                <mat-select formControlName="explorer">
-                    <mat-option *ngFor="let explorer of explorers; let i = index" [value]="i">{{explorer.name + " " +
-                        explorer.surname}}</mat-option>
-                </mat-select>
-                <mat-error *ngIf="queryForm.controls.explorer.touched && queryForm.controls.explorer.invalid">
-                    <span class="forms__error"
-                        *ngIf="queryForm.controls.explorer.errors?.required">{{msg["required-field"]}}</span>
-                </mat-error>
-            </mat-form-field>
-    
-            <!-- Period -->
-            <mat-form-field class="form-field" appearance="fill">
-                <mat-label>{{msg["cube/period"]}}</mat-label>
-                <mat-select formControlName="period1" (selectionChange)="periodChanged()">
-                    <mat-option value="Y">{{msg["cube/year"]}}</mat-option>
-                    <mat-option value="M">{{msg["cube/month"]}}</mat-option>
-                </mat-select>
-                <mat-error *ngIf="queryForm.controls.period1.touched && queryForm.controls.period1.invalid">
-                    <span class="forms__error"
-                        *ngIf="queryForm.controls.period1.errors?.required">{{msg["required-field"]}}</span>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>{{msg["cube/period"]}}</mat-label>
-                <mat-select formControlName="period2">
-                    <div *ngIf="queryForm.value.period1 == 'M'">
-                        <mat-option *ngFor="let month of months" [value]="month">{{month}}</mat-option>
-                    </div>
-                    <div *ngIf="queryForm.value.period1 == 'Y'">
-                        <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
-                    </div>
-                </mat-select>
-                <mat-error *ngIf="queryForm.controls.period2.touched && queryForm.controls.period2.invalid">
-                    <span class="forms__error"
-                        *ngIf="queryForm.controls.period2.errors?.required">{{msg["required-field"]}}</span>
-                </mat-error>
-            </mat-form-field>
-    
+            <div class="form-fields">
+
+                <!-- Period -->
+                <mat-form-field appearance="fill">
+                    <mat-label>{{msg["cube/period"]}}</mat-label>
+                    <mat-select formControlName="period1" (selectionChange)="periodChanged()">
+                        <mat-option value="Y">{{msg["cube/year"]}}</mat-option>
+                        <mat-option value="M">{{msg["cube/month"]}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="queryForm.controls.period1.touched && queryForm.controls.period1.invalid">
+                        <span class="forms__error"
+                            *ngIf="queryForm.controls.period1.errors?.required">{{msg["required-field"]}}</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>{{msg["cube/period"]}}</mat-label>
+                    <mat-select formControlName="period2">
+                        <div *ngIf="queryForm.value.period1 == 'M'">
+                            <mat-option *ngFor="let month of months" [value]="month">{{month}}</mat-option>
+                        </div>
+                        <div *ngIf="queryForm.value.period1 == 'Y'">
+                            <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
+                        </div>
+                    </mat-select>
+                    <mat-error *ngIf="queryForm.controls.period2.touched && queryForm.controls.period2.invalid">
+                        <span class="forms__error"
+                            *ngIf="queryForm.controls.period2.errors?.required">{{msg["required-field"]}}</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- User list -->
+                <mat-form-field appearance="fill">
+                    <mat-label>{{msg["cube/user"]}}</mat-label>
+                    <mat-select formControlName="explorer">
+                        <mat-option *ngFor="let explorer of explorers; let i = index" [value]="i">{{explorer.name + " "
+                            +
+                            explorer.surname}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="queryForm.controls.explorer.touched && queryForm.controls.explorer.invalid">
+                        <span class="forms__error"
+                            *ngIf="queryForm.controls.explorer.errors?.required">{{msg["required-field"]}}</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
             <!-- Submit button -->
-            <div class="forms__submit-button">
-                <button mat-raised-button color="accent" class="forms__submit-button" type="submit"
+            <div class="forms__submit-button submit-button">
+                <button mat-raised-button color="accent" type="submit"
                     [disabled]="!queryForm.valid || loading">{{msg["cube/query"]}}</button>
                 <mat-spinner *ngIf="loading" diameter="35" class="forms__loading-spinner"></mat-spinner>
             </div>
         </form>
-    
+
         <form class="form" [formGroup]="complexQueryForm" (submit)="queryCubeComplex()">
             <p class="form-title">{{msg["cube/complete-query"]}}</p>
 
-            <!-- Period -->
-            <mat-form-field class="form-field" appearance="fill">
-                <mat-label>{{msg["cube/period"]}}</mat-label>
-                <mat-select formControlName="period1" (selectionChange)="periodComplexChanged()">
-                    <mat-option value="Y">{{msg["cube/year"]}}</mat-option>
-                    <mat-option value="M">{{msg["cube/month"]}}</mat-option>
-                </mat-select>
-                <mat-error *ngIf="complexQueryForm.controls.period1.touched && complexQueryForm.controls.period1.invalid">
-                    <span class="forms__error"
-                        *ngIf="complexQueryForm.controls.period1.errors?.required">{{msg["required-field"]}}</span>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>{{msg["cube/period"]}}</mat-label>
-                <mat-select formControlName="period2">
-                    <div *ngIf="queryForm.value.period1 == 'M'">
-                        <mat-option *ngFor="let month of months" [value]="month">{{month}}</mat-option>
-                    </div>
-                    <div *ngIf="queryForm.value.period1 == 'Y'">
-                        <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
-                    </div>
-                </mat-select>
-                <mat-error *ngIf="complexQueryForm.controls.period2.touched && complexQueryForm.controls.period2.invalid">
-                    <span class="forms__error"
-                        *ngIf="complexQueryForm.controls.period2.errors?.required">{{msg["required-field"]}}</span>
-                </mat-error>
-            </mat-form-field>
-    
-            <!-- Condition -->
-            <mat-form-field class="form-field" appearance="fill">
-                <mat-label>{{msg["cube/condition"]}}</mat-label>
-                <mat-select formControlName="condition">
-                    <mat-option value="eq">{{msg["cube/equal"]}}</mat-option>
-                    <mat-option value="ne">{{msg["cube/not-equal"]}}</mat-option>
-                    <mat-option value="gt">{{msg["cube/greater"]}}</mat-option>
-                    <mat-option value="gte">{{msg["cube/greater-equal"]}}</mat-option>
-                    <mat-option value="lt">{{msg["cube/less"]}}</mat-option>
-                    <mat-option value="lte">{{msg["cube/less-equal"]}}</mat-option>
-                </mat-select>
-                <mat-error
-                    *ngIf="complexQueryForm.controls.condition.touched && complexQueryForm.controls.condition.invalid">
-                    <span class="forms__error"
-                        *ngIf="complexQueryForm.controls.condition.errors?.required">{{msg["required-field"]}}</span>
-                </mat-error>
-            </mat-form-field>
-    
-            <!-- Amount -->
-            <mat-form-field class="form-field" appearance="fill">
-                <mat-label>{{msg["cube/amount"]}}</mat-label>
-                <input matInput formControlName="amount" type="number">
-                <mat-error *ngIf="complexQueryForm.controls.amount.touched && complexQueryForm.controls.amount.invalid">
-                    <span class="forms__error"
-                        *ngIf="complexQueryForm.controls.amount.errors?.required">{{msg["required-field"]}}</span>
-                </mat-error>
-            </mat-form-field>
-    
+            <div class="form-fields">
+                <!-- Period -->
+                <mat-form-field appearance="fill">
+                    <mat-label>{{msg["cube/period"]}}</mat-label>
+                    <mat-select formControlName="period1" (selectionChange)="periodComplexChanged()">
+                        <mat-option value="Y">{{msg["cube/year"]}}</mat-option>
+                        <mat-option value="M">{{msg["cube/month"]}}</mat-option>
+                    </mat-select>
+                    <mat-error
+                        *ngIf="complexQueryForm.controls.period1.touched && complexQueryForm.controls.period1.invalid">
+                        <span class="forms__error"
+                            *ngIf="complexQueryForm.controls.period1.errors?.required">{{msg["required-field"]}}</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>{{msg["cube/period"]}}</mat-label>
+                    <mat-select formControlName="period2">
+                        <div *ngIf="queryForm.value.period1 == 'M'">
+                            <mat-option *ngFor="let month of months" [value]="month">{{month}}</mat-option>
+                        </div>
+                        <div *ngIf="queryForm.value.period1 == 'Y'">
+                            <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
+                        </div>
+                    </mat-select>
+                    <mat-error
+                        *ngIf="complexQueryForm.controls.period2.touched && complexQueryForm.controls.period2.invalid">
+                        <span class="forms__error"
+                            *ngIf="complexQueryForm.controls.period2.errors?.required">{{msg["required-field"]}}</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Condition -->
+                <mat-form-field appearance="fill">
+                    <mat-label>{{msg["cube/condition"]}}</mat-label>
+                    <mat-select formControlName="condition">
+                        <mat-option value="eq">{{msg["cube/equal"]}}</mat-option>
+                        <mat-option value="ne">{{msg["cube/not-equal"]}}</mat-option>
+                        <mat-option value="gt">{{msg["cube/greater"]}}</mat-option>
+                        <mat-option value="gte">{{msg["cube/greater-equal"]}}</mat-option>
+                        <mat-option value="lt">{{msg["cube/less"]}}</mat-option>
+                        <mat-option value="lte">{{msg["cube/less-equal"]}}</mat-option>
+                    </mat-select>
+                    <mat-error
+                        *ngIf="complexQueryForm.controls.condition.touched && complexQueryForm.controls.condition.invalid">
+                        <span class="forms__error"
+                            *ngIf="complexQueryForm.controls.condition.errors?.required">{{msg["required-field"]}}</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Amount -->
+                <mat-form-field appearance="fill">
+                    <mat-label>{{msg["cube/amount"]}}</mat-label>
+                    <input matInput formControlName="amount" type="number">
+                    <mat-error
+                        *ngIf="complexQueryForm.controls.amount.touched && complexQueryForm.controls.amount.invalid">
+                        <span class="forms__error"
+                            *ngIf="complexQueryForm.controls.amount.errors?.required">{{msg["required-field"]}}</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
             <!-- Submit button -->
-            <div class="forms__submit-button">
-                <button mat-raised-button color="accent" class="forms__submit-button" type="submit"
+            <div class="forms__submit-button submit-button">
+                <button mat-raised-button color="accent" type="submit"
                     [disabled]="!complexQueryForm.valid || loadingComplex">{{msg["cube/query"]}}</button>
                 <mat-spinner *ngIf="loadingComplex" diameter="35" class="forms__loading-spinner"></mat-spinner>
             </div>
         </form>
     </div>
 
-    <div *ngIf="queryResult != null">
-        {{msg["cube/user-query-result"]}}: {{queryResult}}
+    <h3 *ngIf="queryResult != null || complexQueryResult != null" class="title query-result">{{msg["cube/query-result"]}}</h3>
+
+    <div *ngIf="queryResult != null" class="result-number">
+        {{queryResult}} €
     </div>
 
-    <div *ngIf="complexQueryResult != null">
-        {{msg["cube/complete-query-result"]}}:
-        <div *ngFor="let actor of complexQueryResult">
-            <p>{{actor.name}} {{actor.surname}}</p>
-            <p>{{msg.email}}:
-                <a [href]="'mailto:'+actor.email">{{actor.email}}</a>
-            </p>
+    <div *ngIf="complexQueryResult != null && complexQueryResult.length > 0" class="result-users-wrapper">
+        <div *ngFor="let actor of complexQueryResult" class="result-user">
+            <p class="user-name">{{actor.name}} {{actor.surname}}</p>
+            <p>(<a [href]="'mailto:'+actor.email">{{actor.email}}</a>)</p>
         </div>
     </div>
 </mat-card>

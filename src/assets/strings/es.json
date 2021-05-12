@@ -92,6 +92,6 @@
     "cube/less": "Menor (<)",
     "cube/less-equal": "Menor o igual (<=)",
     "cube/amount": "Cantidad",
-    "cube/user-query-result": "Resultado de la consulta por usuario",
-    "cube/complete-query-result": "Resultado de la consulta completa"
+    "cube/query-result": "Resultado de la consulta",
+    "cube/empty-result": "No se han encontrado resultados"
 }
