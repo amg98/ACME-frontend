@@ -1,0 +1,30 @@
+<mat-spinner *ngIf="data == null" diameter="35"></mat-spinner>
+<div *ngIf="data != null">
+
+    <!-- Trip -->
+    <div *ngFor="let trip of data.trips; let tripIndex = index">
+        <p>{{trip.ticker}}</p>
+        <p>{{trip.title}}</p>
+
+        <!-- Application -->
+        <div *ngFor="let app of data.apps[tripIndex]; let appIndex = index">
+            <p>{{app.status}}</p>
+            <p *ngIf="app.comments">Comentarios: {{app.comments}}</p>
+            <p>Fecha de creación: {{app.timeStamp}}</p>
+            <p *ngIf="app.rejectReason">Motivo de rechazo: {{app.rejectReason}}</p>
+
+            <!-- Explorer -->
+            <p>{{data.explorers[tripIndex][appIndex].name}} {{data.explorers[tripIndex][appIndex].surname}}</p>
+            <p>{{data.explorers[tripIndex][appIndex].email}}</p>
+
+            <form *ngIf="app.status == 'PENDING'">
+                <mat-form-field appearance="outline" class="forms__form-field">
+                    <mat-label>Razón de rechazo</mat-label>
+                    <input matInput type="text" [(ngModel)]="rejectedReason">
+                </mat-form-field>
+                <button mat-raised-button (click)="onDue(tripIndex, appIndex)">Pasar a DUE</button>
+                <button mat-raised-button (click)="onRejected(tripIndex, appIndex)">Pasar a REJECTED</button>
+            </form>
+        </div>
+    </div>
+</div>

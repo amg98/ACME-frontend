@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core"
 import { CommonModule } from "@angular/common"
 import { BrowserModule } from "@angular/platform-browser"
-import { ReactiveFormsModule } from "@angular/forms"
+import { ReactiveFormsModule, FormsModule } from "@angular/forms"
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http"
 import { PlotlyModule } from "angular-plotly.js"
 
@@ -37,6 +37,7 @@ import { TableComponent } from "./components/stats/table/table.component"
 import { KeywordsTableComponent } from "./components/stats/keywords-table/keywords-table.component"
 import { UsersListComponent } from "./components/users-list/users-list.component"
 import { CubeComponent } from "./components/stats/cube/cube.component"
+import { ManagerApplicationsComponent } from "./components/manager/applications/applications.component"
 
 @NgModule({
     declarations: [
@@ -55,6 +56,7 @@ import { CubeComponent } from "./components/stats/cube/cube.component"
         KeywordsTableComponent,
         UsersListComponent,
         CubeComponent,
+        ManagerApplicationsComponent,
     ],
     imports: [
         CommonModule,
@@ -75,6 +77,7 @@ import { CubeComponent } from "./components/stats/cube/cube.component"
         MatProgressSpinnerModule,
         MatSidenavModule,
         PlotlyModule,
+        FormsModule,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

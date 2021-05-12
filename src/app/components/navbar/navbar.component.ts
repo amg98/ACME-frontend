@@ -15,6 +15,7 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
     loggedActorName: string | null;
     loggedActorSub: Subscription;
     isAdmin = false;
+    isManager = false;
 
     constructor(translator: TranslatorService, private actorsService: ActorsService, private router: Router) {
         super(translator)
@@ -22,10 +23,12 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
         this.loggedActorName = ""
         this.loggedActorSub = actorsService.subscribeToLoggedActor(loggedActor => {
             this.isAdmin = false
+            this.isManager = false
             if(typeof loggedActor == "undefined") this.loggedActorName = ""
             else {
                 this.loggedActorName = loggedActor === null ? null : `${loggedActor.name} ${loggedActor.surname}`
                 this.isAdmin = loggedActor === null ? false : loggedActor.roles.includes("ADMINISTRATOR")
+                this.isManager = loggedActor === null ? false : loggedActor.roles.includes("MANAGER")
             }
         })
     }

@@ -24,6 +24,7 @@
     "logout": "Cerrar sesión",
     "edit-profile": "Editar perfil",
     "stats": "Estadísticas",
+    "all-apps": "Todas las reservas",
 
     "registration-success": "Se ha creado el usuario satisfactoriamente",
     "registration-failure": "Ha ocurrido un error creando el usuario",
@@ -93,5 +94,8 @@
     "cube/less-equal": "Menor o igual (<=)",
     "cube/amount": "Cantidad",
     "cube/query-result": "Resultado de la consulta",
-    "cube/empty-result": "No se han encontrado resultados"
+    "cube/empty-result": "No se han encontrado resultados",
+
+    "applications/error-change-status": "No se ha podido cambiar el estado de la reserva",
+    "applications/error": "No se han podido obtener las reservas"
 }

@@ -24,6 +24,7 @@
     "logout": "Logout",
     "edit-profile": "Edit profile",
     "stats": "Statistics",
+    "all-apps": "All applications",
 
     "registration-success": "User has been registered successfully",
     "registration-failure": "Error while registering the user",
@@ -93,5 +94,8 @@
     "cube/less-equal": "Less equal (<=)",
     "cube/amount": "Amount",
     "cube/query-result": "Query result",
-    "cube/empty-result": "No matching results have been found"
+    "cube/empty-result": "No matching results have been found",
+
+    "applications/error-change-status": "Unable to change the application status",
+    "applications/error": "Unable to retrieve the applications"
 }
