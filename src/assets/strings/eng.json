@@ -47,6 +47,7 @@
     "whoWeAre": "Who we are?",
     "flag":"https://cdn.icon-icons.com/icons2/45/PNG/64/uk_flags_flag_8834.png",
     "search": "Search",
+    "no-keyword": "No keyword has been specified",
 
     "stats/apps-ratio": "Applications ratio",
     "stats/pending": "Pending",
