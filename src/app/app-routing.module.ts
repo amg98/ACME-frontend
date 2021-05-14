@@ -12,7 +12,7 @@ import { CubeComponent } from "@components/stats/cube/cube.component"
 import { ManagerApplicationsComponent } from "@components/manager/applications/applications.component"
 import { ManagerGuard } from "./guards/manager.guard"
 
-const routes: Routes = [
+export const routes: Routes = [
     { path: "register", component: RegisterComponent },
     { path: "login", component: LoginComponent },
     { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
