@@ -1,0 +1,56 @@
+<div class="card my-2">
+    <div class="card-header">
+      <h3 class="card-title">{{'tripsListText'}}</h3>
+    </div>
+  </div>
+  
+  <div class="card-body mr-2">
+  
+    <div *ngIf="data != undefined && data.length > 0" class="card-deck pl-2">
+        <div *ngFor="let trip of data" class="{{(this.actorsService.checkRole('MANAGER') || this.displayTrip(trip) )? 'tam' : ''}}">
+      <div *ngIf="this.actorsService.checkRole('MANAGER') || this.displayTrip(trip)" class="card mb-3 ml-4 "
+        (scrolled)="onScrollDown()" (scrolledUp)="onScrollUp()">
+        <img
+        class="card-img-top" style="display: block;"
+        src="{{getFirstPicture(trip)}}" alt="{{trip.title}}">
+        <div class="card-header">
+          <h4 class="card-title">{{trip.title}}</h4>
+        </div>
+        <div class="card-body description">
+          <details>
+            <summary ng-hide="advstatus">
+              {{trip.description | slice:0:50}}
+              <span class="badge badge-light" ng-click="advstatus=true">(...)</span>
+            </summary>
+            <p class="card-text text-muted">{{trip.description}}</p>
+          </details>
+        </div>
+  
+        <div class="card-footer">
+          <a *ngIf="(this.actorsService.checkRole('MANAGER') && this.actorsService.checkId(trip.manager))"
+            routerLink="/trips/{{trip.ticker}}"
+            class="btn btn-primary pull-left mx-1">
+            <span class="fa fa-pencil" aria-hidden="true"></span>
+            {{'trip.edit'}}
+          </a>
+          <a *ngIf="!trip.reasonCancel"
+            routerLink="/trips/display/{{trip.ticker}}"
+            class="btn btn-primary pull-left mx-1">
+            <span class="fa fa-search-plus" aria-hidden="true"></span>
+            {{'trip.details'}}
+          </a>
+          <button *ngIf="trip.reasonCancel"
+          class="btn btn-warning pull-left"
+          type="button"
+          (click)="showReasonCancel(trip)"
+          ><span class="fa fa-search-plus" aria-hidden="true"></span>
+          {{'canceledTripText'}}</button>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <button *ngIf="this.actorsService.checkRole('MANAGER') && !this.showfilter" type="button" class="btn btn-primary mt-4 ml-4" (click)="newTrip();"> 
+    {{'newTrip'}}
+  </button>

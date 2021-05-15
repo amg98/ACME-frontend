@@ -1,0 +1,27 @@
+.card-img-top{
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.description {
+    height: 5rem;
+}
+
+@media (min-width: 34rem) {
+    .card-deck > .tam {
+        width: 32%;
+        flex-wrap: wrap;
+        flex: initial;
+    }
+
+    .card-deck > .card {
+        flex-wrap: wrap;
+        flex: initial;
+    }
+
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}

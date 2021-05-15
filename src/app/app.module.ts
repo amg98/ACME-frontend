@@ -27,6 +27,7 @@ import { FinderComponent } from "./components/finder/finder.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { TripDisplayComponent } from './components/trip/trip-display/trip-display.component';
+import { TripListComponent } from './components/trip/trip-list/trip-list.component';
 
 @NgModule({
     declarations: [
@@ -41,6 +42,7 @@ import { TripDisplayComponent } from './components/trip/trip-display/trip-displa
         DashboardComponent,
         FooterComponent,
         TripDisplayComponent,
+        TripListComponent,
     ],
     imports: [
         BrowserModule,

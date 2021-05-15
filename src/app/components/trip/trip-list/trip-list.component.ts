@@ -1,0 +1,205 @@
+import { Component, OnInit } from '@angular/core';
+import { TripService } from 'src/app/services/trip.service';
+import { TranslatableComponent } from '@components/translatable/translatable.component';
+import { Router, ActivatedRoute } from '@angular/router';
+import {TranslatorService} from '@services/translator.service';
+import { Actor } from 'src/app/models/Actor';
+import {ActorsService} from '@services/actors.service';
+import { FinderService } from 'src/app/services/finder.service';
+import { Trip } from 'src/app/models/Trip';
+import { MatSnackBar } from "@angular/material/snack-bar";
+
+const MAX_TRIPS = 10;
+
+@Component({
+  selector: 'app-trip-list',
+  templateUrl: './trip-list.component.html',
+  styleUrls: ['./trip-list.component.scss']
+})
+export class TripListComponent extends TranslatableComponent implements OnInit {
+
+  numObjects = MAX_TRIPS;
+
+  actor!: Actor;
+  data!: any[];
+  roles!: string[];
+
+  keyword!: string;
+  minPrice!: string;
+  maxPrice!: string;
+  minDate!: string;
+  maxDate!: string;
+  reasonCancel!: Trip["reasonCancel"];
+  closeText!:string;
+
+  newTripText!: string;
+  canceledTripText!: string;
+  tripsListText!: string;
+
+  showfilter = true;
+
+  direction!: string;
+
+  constructor(private tripService: TripService, 
+    public actorsService: ActorsService,
+    private finderService: FinderService,
+    translator: TranslatorService, 
+    private router: Router,
+    private route: ActivatedRoute,
+    private snackbar: MatSnackBar) {
+      super(translator);
+      route.queryParams.subscribe(val => this.ngOnInit());
+      this.setLanguageChangeListener(() => {
+        this.reasonCancel = translator.getString("reasonCancel");
+        this.closeText = translator.getString("closeText");
+    });
+  }
+
+  async ngOnInit() {
+    console.log(this.route.url);
+    if (this.route.url !== undefined) {
+      this.actorsService.getCurrentActor().then((actor) => {
+        this.actor = actor;
+          this.route.url.subscribe(url => {
+            if (url[0].path !== 'trips-created') {
+              if (url[0].path !== 'finder') {
+                this.route.queryParams
+                .subscribe(async params => {
+                  this.keyword = params['keyword'];
+                  this.minDate = params['minDate'];
+                  this.maxDate = params['maxDate'];
+                  this.minPrice = params['minPrice'];
+                  this.maxPrice = params['maxPrice'];
+                  await this.searchTrips();
+                });
+              } else {
+                this.finderService.getFinderUser(String(this.actor._id)).then(async params => {
+                  /*this.keyword = params['keyword'];
+                  this.minDate = params['minDate'];
+                  this.maxDate = params['maxDate'];
+                  this.minPrice = params['minPrice'];
+                  this.maxPrice = params['maxPrice'];*/
+                  await this.searchTrips();
+                });
+              }
+                this.roles = [];
+            } else {
+              this.showfilter = false;
+              this.actor = actor;
+              this.tripService.getManagerTrips(String(this.actor._id)).then((val) => {
+                this.data.push(val);
+              });
+            }
+          });
+      });
+    } else {
+      await this.searchTrips();
+    }
+  }
+
+  async searchTrips() {
+    return this.tripService.searchTrips(0, MAX_TRIPS, this.keyword, this.minPrice, this.maxPrice,
+      this.minDate, this.maxDate)
+      .then((val) => {
+        this.data = val;
+      })
+      .catch((err) => console.error(err.message));
+  }
+
+  getFirstPicture(trip: Trip) {
+    if ( trip.pictures.length > 0) {
+      if (trip.pictures[0] === '') {
+        return 'https://i.ya-webdesign.com/images/image-not-available-png-3.png';
+      } else {
+        return trip.pictures[0];
+      }
+    } else {
+      return 'https://i.ya-webdesign.com/images/image-not-available-png-3.png';
+    }
+  }
+
+  searchFilter() {
+    console.log(this.minPrice);
+    this.router.navigate(['/trips/search'], { 'queryParams': {
+      'keyword': this.keyword,
+      'minPrice': this.minPrice,
+      'maxPrice': this.maxPrice,
+      'minDate': this.minDate,
+      'maxDate': this.maxDate
+    }});
+  }
+
+  saveFinder() {
+    if (this.actor != null && this.actor !== undefined) {
+      this.finderService.updateFinderUser({
+        'keyword': this.keyword,
+        'minPrice': this.minPrice,
+        'maxPrice': this.maxPrice,
+        'minDate': this.minDate,
+        'maxDate': this.maxDate
+      }, String(this.actor._id))
+        .then((val) => {
+          //this.messageService.notifyMessage(this.translateService.instant('messages.finder.saved'), 'alert alert-success');
+        }, err => {
+          //this.messageService.notifyMessage(this.translateService.instant('errorMessages.500'), 'alert alert-danger');
+        });
+    }
+
+  }
+
+  //AÑADIR COMPROBACIÓN DE DIAS, CREO QUE ES UNA SEMANA ANTES DE QUE EMPIECE
+  displayTrip(trip: Trip) {
+    const date = new Date();
+    const startDate = new Date(trip.startDate);
+    return trip.isPublished && (startDate.getTime() > date.getTime());
+  }
+
+  // Functions to infinite scroll
+
+  onScrollDown () {
+    if (this.showfilter) {
+      const start = this.numObjects;
+      this.numObjects += MAX_TRIPS;
+      this.appendTrips(start, this.numObjects);
+      this.direction = 'down';
+    }
+  }
+
+  onScrollUp () {
+    if (this.showfilter) {
+      const start = this.numObjects;
+      this.numObjects += MAX_TRIPS;
+      this.prependTrips(start, this.numObjects);
+      this.direction = 'up';
+    }
+  }
+
+  appendTrips (startIndex: number, endIndex: number) {
+    this.addTrips(startIndex, endIndex, 'push');
+  }
+
+  prependTrips (startIndex: number, endIndex: number) {
+    this.addTrips(startIndex, endIndex, 'unshift');
+  }
+
+  addTrips (startIndex: number, endIndex: number, _method: string) {
+    this.tripService.searchTrips(startIndex, MAX_TRIPS, this.keyword, this.minPrice, this.maxPrice,
+      this.minDate, this.maxDate)
+      .then((val) => {
+        this.data = this.data.concat(val);
+      })
+      .catch((err) => console.error(err.message));
+  }
+
+  showReasonCancel(trip: Trip) {
+    this.snackbar.open(trip.reasonCancel, this.closeText, {
+      duration: 5000,
+      panelClass: [ "alert-success" ]
+  });
+  }
+
+  newTrip() {
+    this.router.navigate(['/trips-new']);
+  }
+
+}
