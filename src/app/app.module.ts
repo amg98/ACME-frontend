@@ -37,6 +37,8 @@ import { PieChartComponent } from "./components/stats/pie-chart/pie-chart.compon
 import { TableComponent } from "./components/stats/table/table.component"
 import { KeywordsTableComponent } from "./components/stats/keywords-table/keywords-table.component"
 import { ThemeSwitchComponent } from "./components/theme-switch/theme-switch.component"
+import { UsersListComponent } from "./components/users-list/users-list.component"
+import { CubeComponent } from "./components/stats/cube/cube.component"
 
 @NgModule({
     declarations: [
@@ -54,6 +56,8 @@ import { ThemeSwitchComponent } from "./components/theme-switch/theme-switch.com
         TableComponent,
         KeywordsTableComponent,
         ThemeSwitchComponent,
+        UsersListComponent,
+        CubeComponent,
     ],
     imports: [
         CommonModule,

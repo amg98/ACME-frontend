@@ -1,0 +1,18 @@
+<h2 class="title">{{msg["users-list"]}}</h2>
+<mat-spinner *ngIf="loading" diameter="35" class="spinner"></mat-spinner>
+<div *ngIf="!loading" class="wrapper">
+    <div *ngFor="let user of users; let i = index" class="card">
+        <h3 class="name">{{user.name}} {{user.surname}}</h3>
+        <p class="email">{{msg.email}}: 
+            <a [href]="'mailto:'+user.email">{{user.email}}</a>
+        </p>
+        <span class="badge badge-manager" *ngIf="user.roles.includes('MANAGER')">{{msg.manager}}</span>
+        <span class="badge badge-explorer" *ngIf="user.roles.includes('EXPLORER')">{{msg.explorer}}</span>
+        <span class="badge badge-sponsor" *ngIf="user.roles.includes('SPONSOR')">{{msg.sponsor}}</span>
+        <div class="ban-button">
+            <button mat-raised-button [disabled]="changingStatus[i]" (click)="onBan(user, i)" [class.ban]="!user.isBanned" [class.unban]="user.isBanned">{{user.isBanned ?
+                msg["users-list/unban"] : msg["users-list/ban"]}}</button>
+            <mat-spinner *ngIf="changingStatus[i]" diameter="35" class="button-spinner"></mat-spinner>
+        </div>
+    </div>
+</div>
