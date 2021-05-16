@@ -1,6 +1,6 @@
 import { browser, by, element, logging } from "protractor";
 import { AppPage } from "./app.po";
-let url ="http://localhost:4200/";
+const url ="http://localhost:4200/";
 
 describe("workspace-project App", () => {
     let page: AppPage;

@@ -1,4 +1,4 @@
-import { Deserializable } from './Deserializable';
+import { Deserializable } from "./Deserializable";
 
 export class Picture implements Deserializable {
     Buffer!: string;

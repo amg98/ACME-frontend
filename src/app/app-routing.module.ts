@@ -14,12 +14,12 @@ const routes: Routes = [
     { path: "profile", component: ProfileComponent },
     { path: "admin/dashboard", component: DashboardComponent },
     
-    {path: 'trips', children: [
+    {path: "trips", children: [
         {path: "search", component: TripListComponent},
         {path: "display/:id", component: TripDisplayComponent},
         {path: "", component: TripListComponent},
         {path: "finder", component: TripListComponent},
-      ]},
+    ]},
 
 ];
 

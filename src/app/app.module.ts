@@ -13,7 +13,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatCardModule } from "@angular/material/card";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -27,9 +27,9 @@ import { ProfileComponent } from "./components/forms/profile/profile.component";
 import { FinderComponent } from "./components/finder/finder.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { FooterComponent } from "./components/footer/footer.component";
-import { TripDisplayComponent } from './components/trip/trip-display/trip-display.component';
-import { TripListComponent } from './components/trip/trip-list/trip-list.component';
-import { TripFormComponent } from './components/trip/trip-form/trip-form.component';
+import { TripDisplayComponent } from "./components/trip/trip-display/trip-display.component";
+import { TripListComponent } from "./components/trip/trip-list/trip-list.component";
+import { TripFormComponent } from "./components/trip/trip-form/trip-form.component";
 
 @NgModule({
     declarations: [

@@ -1,25 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TripDisplayComponent } from './trip-display.component';
+import { TripDisplayComponent } from "./trip-display.component";
 
-describe('TripDisplayComponent', () => {
-  let component: TripDisplayComponent;
-  let fixture: ComponentFixture<TripDisplayComponent>;
+describe("TripDisplayComponent", () => {
+    let component: TripDisplayComponent;
+    let fixture: ComponentFixture<TripDisplayComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ TripDisplayComponent ]
-    })
-    .compileComponents();
-  });
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [ TripDisplayComponent ]
+        })
+            .compileComponents();
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TripDisplayComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(TripDisplayComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it("should create", () => {
+        expect(component).toBeTruthy();
+    });
 });

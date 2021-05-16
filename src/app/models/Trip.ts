@@ -1,12 +1,12 @@
-import { Entity } from './Entity';
-import {Picture} from './Picture';
+import { Entity } from "./Entity";
+import {Picture} from "./Picture";
 
 export interface Trip extends Entity {
     //TODO: Mirar campos obligatorios en back y si alguno de estos no estuviesen
     ticker: string,
     title: string,
     description: string,
-    price: Number,
+    price: number,
     requeriments: string[],
     startDate: Date,
     endDate: Date,
@@ -19,6 +19,6 @@ export interface Trip extends Entity {
         description: string,
         price: number,
     }];
-    isPublished: Boolean,
+    isPublished: boolean,
     reasonCancel: string
 }
