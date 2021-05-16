@@ -18,6 +18,7 @@ import { MatCardModule } from "@angular/material/card"
 import { MatIconModule } from "@angular/material/icon"
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatSidenavModule } from "@angular/material/sidenav"
+import { MatSlideToggleModule } from "@angular/material/slide-toggle"
 
 import { AppRoutingModule } from "./app-routing.module"
 import { AppComponent } from "./app.component"
@@ -35,6 +36,7 @@ import { TokenInterceptor } from "./interceptors/token.interceptor"
 import { PieChartComponent } from "./components/stats/pie-chart/pie-chart.component"
 import { TableComponent } from "./components/stats/table/table.component"
 import { KeywordsTableComponent } from "./components/stats/keywords-table/keywords-table.component"
+import { ThemeSwitchComponent } from "./components/theme-switch/theme-switch.component"
 
 @NgModule({
     declarations: [
@@ -51,6 +53,7 @@ import { KeywordsTableComponent } from "./components/stats/keywords-table/keywor
         PieChartComponent,
         TableComponent,
         KeywordsTableComponent,
+        ThemeSwitchComponent,
     ],
     imports: [
         CommonModule,
@@ -71,6 +74,7 @@ import { KeywordsTableComponent } from "./components/stats/keywords-table/keywor
         MatProgressSpinnerModule,
         MatSidenavModule,
         PlotlyModule,
+        MatSlideToggleModule,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

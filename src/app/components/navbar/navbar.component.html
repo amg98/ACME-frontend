@@ -30,6 +30,7 @@
             </div>
 
             <div class="wrapper">
+                <app-theme-switch ></app-theme-switch>
                 <app-language-selector></app-language-selector>
 
                 <button *ngIf="loggedActorName !== null;else loginButtons" mat-button (click)="sidenav.toggle()"
