@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { TranslatableComponent } from '@components/translatable/translatable.component';
 import {TranslatorService} from '@services/translator.service';
 import {TripService} from '@services/trip.service';
-import { Trip } from "src/app/models/Trip"
 import { Router, ActivatedRoute } from '@angular/router';
 import {ActorsService} from '@services/actors.service';
 import { Actor } from "src/app/models/Actor";
 import { MatSnackBar } from "@angular/material/snack-bar";
-
+import {Trip} from "src/app/models/Trip";
+import { Sponsorship } from 'src/app/models/Sponsorship';
 
 @Component({
   selector: 'app-trip-display',
@@ -17,16 +17,30 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 export class TripDisplayComponent extends TranslatableComponent implements OnInit {
   
   trip!: Trip;
-  _id!: string;
+  id!: string;
   pictures!: string[];
   sponsors!: string;
-  actor!: Actor;
+  actor!: Actor
+  tripDetailsText!: string;
+  seeTripFromApplicationText!: string;
   applicationCreatedSuccessText!: string;
   applicationCreatedFailureText!:string;
-  closeText!:string;
+  close!:string;
+  back!:string;
+  sponsorshipService: any;
+  sponsorships: any;
+  title!:string;
+  ticker!: string;
+  price!: string;
+  description!: string;
+  startDate!: string;
+  endDate!: string;
+  stages!: string;
+  apply!: string;
+  requeriments!: string;
 
 
-  constructor(private actorsService: ActorsService,
+  constructor(public actorsService: ActorsService,
     private tripService: TripService,
     translator: TranslatorService,
     private router: Router,
@@ -35,31 +49,49 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
       super(translator);
 
       this.setLanguageChangeListener(() => {
+        this.tripDetailsText = translator.getString("tripDetailsText");
+        this.seeTripFromApplicationText = translator.getString("seeTripFromApplicationText");
         this.applicationCreatedSuccessText = translator.getString("applicationCreatedSuccessText");
         this.applicationCreatedFailureText = translator.getString("applicationCreatedFailureText");
-        this.closeText = translator.getString("close");
+        this.title = translator.getString("title");
+        this.ticker = translator.getString("ticker");
+        this.price = translator.getString("price");
+        this.description = translator.getString("description");
+        this.endDate = translator.getString("endDate");
+        this.startDate = translator.getString("startDate");
+        this.stages = translator.getString("stages");
+        this.close = translator.getString("close");
+        this.back = translator.getString("back");
+        this.apply = translator.getString("apply");
+        this.requeriments = translator.getString("requeriments");
     });
     }
 
-  async ngOnInit() {
-    // Recover id param
-    this._id = this.route.snapshot.params['id'];
-    const param = this.route.snapshot.params['paramKey'];
-    
-    // Recover trip
-    this.tripService.getTrip(this._id)
-    .then((val) => {
-      this.trip = val;
-      console.log('trip detail: ' + this.trip._id)
-
-    })
-    .catch((err)=>{
-      console.error(err);
-    })
-
-  }
+    async ngOnInit() {
+      // Recover id param
+      this.id = this.route.snapshot.params['id'];
+      // console.log('id trip: ' + this.id);
+      const param = this.route.snapshot.params['paramKey'];
+      // console.log('param: ' + param);
+  
+      // si viene del boton ver trip del datatable de applications
+      if (param === 'application') {
+        this.trip = await this.tripService.getTrip(this.id);
+  
+      } else {
+        // recover item from SKU
+        this.trip = await this.tripService.getTrip(this.id);
+  
+        if ( this.trip !== undefined && this.trip !== null ) {
+          this.pictures = this.trip.pictures;
+          this.sponsorships = this.sponsorshipService.getRandomSponsorForATrip(this.trip._id)   
+        }  
+      }
+    }
+  
+  
   goBack(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/trips']);
   }
   getPicture(id: number) {
     if ( this.trip.pictures.length > 0) {
@@ -78,10 +110,10 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
       await this.actorsService.getCurrentActor().then( actor => {
         if (actor !== null) {
         // Se crea la aplicación
-          this.tripService.applyTrip(tripId, actor._id)
+          this.tripService.applyTrip(String(tripId), actor._id)
           .then((appl) => {
             // console.log('appli detail: ' + appli);
-            this.snackbar.open(this.applicationCreatedSuccessText, this.closeText, {
+            this.snackbar.open(this.applicationCreatedSuccessText, this.close, {
               duration: 5000,
               panelClass: [ "alert-success" ]
           });
@@ -95,14 +127,13 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
             // this.messageService.notifyMessage('application.appli.fail', 'alert alert-danger');
             //this.messageService.notifyMessage(mes, 'alert alert-danger');
           });
-
       } else {
         console.log('Error recuperar actor logado!');
       }
     });
     return true;
   }catch{
-    this.snackbar.open(this.applicationCreatedFailureText, this.closeText, {
+    this.snackbar.open(this.applicationCreatedFailureText, this.close, {
       duration: 5000,
       panelClass: [ "alert-error" ]
   });

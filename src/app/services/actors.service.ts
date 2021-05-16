@@ -131,6 +131,5 @@ export class ActorsService {
         } else {
           return false;
         }
-    
       }
 }

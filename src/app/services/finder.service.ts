@@ -14,19 +14,17 @@ export class FinderService {
   constructor(private client: HttpClient) { }
 
   async getFinderUser(id: string) {
-    const url = `${environment.backendURL}/v1/finders/explorers/${id}`;
-    return this.client.get(url).toPromise();
+    return this.client.get(`${environment.backendURL}/finders/actors/${id}`).toPromise();
   }
 
 async updateFinderUser(finder: any, id: string) {
-    const url = `${environment.backendURL}/v1/finders/explorers/${id}`;
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
 
     const body = JSON.stringify(finder);
     console.log(body);
     return new Promise<any>((resolve, reject) => {
-      this.client.put(url, body, httpOptions).toPromise()
+      this.client.put(`${environment.backendURL}/finders/${id}`, body, httpOptions).toPromise()
         .then(res => {
           resolve(res);
         }, err => {console.error(err); reject(err); });

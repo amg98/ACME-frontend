@@ -13,8 +13,14 @@ const routes: Routes = [
     { path: "login", component: LoginComponent },
     { path: "profile", component: ProfileComponent },
     { path: "admin/dashboard", component: DashboardComponent },
-    {path: "trips", component: TripDisplayComponent},
-    {path: "trips", component: TripListComponent}
+    
+    {path: 'trips', children: [
+        {path: "search", component: TripListComponent},
+        {path: "display/:id", component: TripDisplayComponent},
+        {path: "", component: TripListComponent},
+        {path: "finder", component: TripListComponent},
+      ]},
+
 ];
 
 @NgModule({

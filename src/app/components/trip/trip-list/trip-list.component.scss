@@ -1,27 +1,24 @@
-.card-img-top{
-    width: 100%;
-    height: 15vw;
-    object-fit: cover;
+
+.content {
+    padding: 16px;
+}
+.mat-card{
+    width: 300px;
+    margin-bottom: 16px;
+    margin-left: 16px;
+    padding: 16px;
+}
+.card__image{
+    width: 300px;
 }
 
-.description {
-    height: 5rem;
+.content > mat-card {
+    width: 20px;
+    margin-bottom: 16px;
 }
 
-@media (min-width: 34rem) {
-    .card-deck > .tam {
-        width: 32%;
-        flex-wrap: wrap;
-        flex: initial;
-    }
-
-    .card-deck > .card {
-        flex-wrap: wrap;
-        flex: initial;
-    }
-
+.column-label {
+    margin-right: 8px;
+    font-size: 1rem;
 }
 
-summary::-webkit-details-marker {
-    display: none;
-}

@@ -13,6 +13,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatCardModule } from "@angular/material/card";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -28,6 +29,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { TripDisplayComponent } from './components/trip/trip-display/trip-display.component';
 import { TripListComponent } from './components/trip/trip-list/trip-list.component';
+import { TripFormComponent } from './components/trip/trip-form/trip-form.component';
 
 @NgModule({
     declarations: [
@@ -43,6 +45,7 @@ import { TripListComponent } from './components/trip/trip-list/trip-list.compone
         FooterComponent,
         TripDisplayComponent,
         TripListComponent,
+        TripFormComponent,
     ],
     imports: [
         BrowserModule,
@@ -60,6 +63,7 @@ import { TripListComponent } from './components/trip/trip-list/trip-list.compone
         MatCardModule,
         MatMenuModule,
         MatIconModule,
+        FlexLayoutModule
     ],
     providers: [],
     bootstrap: [AppComponent]

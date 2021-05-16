@@ -44,5 +44,32 @@
     "resume": "Traveling is living, it is immersing yourself in unknown realities. At Acme Explorer we know this and that is why we are experts in organizing your trips and offering you tailor-made dream itineraries. We have been the leading company in the tourism sector since 2015 and millions of clients around the world endorse it.",
     "whoWeAre": "Who we are?",
     "flag":"https://cdn.icon-icons.com/icons2/45/PNG/64/uk_flags_flag_8834.png",
-    "search": "Search"
+    "search": "Search",
+
+    "tripDeletedText": "Trip successfully deleted",
+    "tripCreatedText": "Trip successfully created",
+    "tripUpdatedText": "Trip successfully updated",
+    "tripCanceledText": "Trip successfully canceled",
+    "finderSavedText": "Finder successfully saved.",
+    "tripDetailsText": "Trip Details",
+    "back": "Back",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "placeHolder": "Enter",
+
+    "seeTripFromApplicationText": "See Trip",
+    "applicationCreatedSuccessText": "Application successfully created",
+    "applicationCreatedFailureText": "Application has not been saved due to an error, try later please",
+    "price":"Price",
+    "title": "Title",
+    "description": "Description",
+    "ticker": "Ticker",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "stages": "Stages",
+    "apply": "Apply",
+    "requeriments" : "Requeriments",
+
+    "newTripFormText": "New Trip Form"
+
 }

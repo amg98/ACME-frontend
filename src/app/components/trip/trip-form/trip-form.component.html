@@ -1,0 +1,46 @@
+<mat-card class="forms__card">
+    <form [formGroup]="profileForm" (submit)="onSubmit()">
+
+        <mat-card-title class="forms__title">{{newTripFormText}}</mat-card-title>
+
+        <!-- Title -->
+        <mat-form-field appearance="outline" class="forms__form-field">
+            <mat-label>{{title}}</mat-label>
+            <input matInput formControlName="title">
+            <mat-error *ngIf="profileForm.controls.title.touched && profileForm.controls.title.invalid">
+                <span class="forms__error"
+                    *ngIf="profileForm.controls.title.errors?.required">{{requiredFieldText}}</span>
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Description -->
+        <mat-form-field appearance="outline" class="forms__form-field">
+            <mat-label>{{description}}</mat-label>
+            <input matInput formControlName="description">
+            <mat-error *ngIf="profileForm.controls.description.touched && profileForm.controls.description.invalid">
+                <span class="forms__error"
+                    *ngIf="profileForm.controls.description.errors?.required">{{requiredFieldText}}</span>
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Price -->
+        <mat-form-field appearance="outline" class="forms__form-field">
+            <mat-label>{{price}}</mat-label>
+            <input matInput formControlName="price">
+            <mat-error *ngIf="profileForm.controls.price.touched && profileForm.controls.price.invalid">
+                <span class="forms__error"
+                    *ngIf="profileForm.controls.price.errors?.required">{{requiredFieldText}}</span>
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Start date -->
+        <!-- End date -->
+        <!-- Stages -->
+        <!-- Requirements -->
+        <!-- Pictures -->
+
+        <!-- Submit button -->
+        <button mat-raised-button color="accent" class="forms__submit-button" type="submit"
+            [disabled]="!profileForm.valid">{{saveText}}</button>
+    </form>
+</mat-card>

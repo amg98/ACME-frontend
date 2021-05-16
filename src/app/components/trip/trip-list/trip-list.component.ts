@@ -21,7 +21,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   numObjects = MAX_TRIPS;
 
   actor!: Actor;
-  data!: any[];
+  data!: Trip[];
   roles!: string[];
 
   keyword!: string;
@@ -30,11 +30,16 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   minDate!: string;
   maxDate!: string;
   reasonCancel!: Trip["reasonCancel"];
-  closeText!:string;
-
+  close!: string;
+  editTripText!:string;
+  tripCanceledText!: string;
+  tripDetailsText!: string;
+  tripDeletedText!:string;
+  tripCreatedText!:string;
+  tripUpdatedText!:string;
   newTripText!: string;
-  canceledTripText!: string;
   tripsListText!: string;
+  finderSavedText!:string;
 
   showfilter = true;
 
@@ -51,8 +56,15 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
       route.queryParams.subscribe(val => this.ngOnInit());
       this.setLanguageChangeListener(() => {
         this.reasonCancel = translator.getString("reasonCancel");
-        this.closeText = translator.getString("closeText");
-    });
+        this.close = translator.getString("close");
+        this.editTripText = translator.getString("tripDetailText");
+        this.tripCanceledText = translator.getString("tripCanceledText");
+        this.tripDetailsText = translator.getString("tripDetailsText");
+        this.tripCanceledText = translator.getString("tripDeletedText");
+        this.tripCreatedText = translator.getString("tripCreatedText");
+        this.tripUpdatedText = translator.getString("tripUpdatedText");
+        this.finderSavedText = translator.getString("finderSavedText");
+    }); 
   }
 
   async ngOnInit() {
@@ -60,9 +72,9 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     if (this.route.url !== undefined) {
       this.actorsService.getCurrentActor().then((actor) => {
         this.actor = actor;
-          this.route.url.subscribe(url => {
-            if (url[0].path !== 'trips-created') {
-              if (url[0].path !== 'finder') {
+          /*this.route.url.subscribe(url => {
+            if (url[0].path !== 'mytrips-created') {
+              if (url[0].path !== 'finders') {
                 this.route.queryParams
                 .subscribe(async params => {
                   this.keyword = params['keyword'];
@@ -78,7 +90,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
                   this.minDate = params['minDate'];
                   this.maxDate = params['maxDate'];
                   this.minPrice = params['minPrice'];
-                  this.maxPrice = params['maxPrice'];*/
+                  this.maxPrice = params['maxPrice'];
                   await this.searchTrips();
                 });
               }
@@ -93,15 +105,18 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
           });
       });
     } else {
-      await this.searchTrips();
+      this.data = await this.tripService.getTrips()
+    }*/
+  });
+  this.data = await this.tripService.getTrips()
     }
   }
 
   async searchTrips() {
     return this.tripService.searchTrips(0, MAX_TRIPS, this.keyword, this.minPrice, this.maxPrice,
       this.minDate, this.maxDate)
-      .then((val) => {
-        this.data = val;
+      .then((res) => {
+        this.data = res;
       })
       .catch((err) => console.error(err.message));
   }
@@ -192,7 +207,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   }
 
   showReasonCancel(trip: Trip) {
-    this.snackbar.open(trip.reasonCancel, this.closeText, {
+    this.snackbar.open(trip.reasonCancel, this.close, {
       duration: 5000,
       panelClass: [ "alert-success" ]
   });

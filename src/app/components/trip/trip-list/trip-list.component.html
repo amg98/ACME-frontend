@@ -1,56 +1,109 @@
-<div class="card my-2">
-    <div class="card-header">
-      <h3 class="card-title">{{'tripsListText'}}</h3>
-    </div>
-  </div>
   
-  <div class="card-body mr-2">
+
+
+<!--<div class="card-body mr-2">
+  <div id="accordionAudit">
+    <div class="card">
+      <div class="card-header" id="headingAudit"  *ngIf="this.showfilter">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseAudit" aria-expanded="false" aria-controls="collapseAudit">
+            {{'trip.filter'}}
+          </button>
+        </h5>
+      </div>
   
-    <div *ngIf="data != undefined && data.length > 0" class="card-deck pl-2">
-        <div *ngFor="let trip of data" class="{{(this.actorsService.checkRole('MANAGER') || this.displayTrip(trip) )? 'tam' : ''}}">
-      <div *ngIf="this.actorsService.checkRole('MANAGER') || this.displayTrip(trip)" class="card mb-3 ml-4 "
-        (scrolled)="onScrollDown()" (scrolledUp)="onScrollUp()">
-        <img
-        class="card-img-top" style="display: block;"
-        src="{{getFirstPicture(trip)}}" alt="{{trip.title}}">
-        <div class="card-header">
-          <h4 class="card-title">{{trip.title}}</h4>
-        </div>
-        <div class="card-body description">
-          <details>
-            <summary ng-hide="advstatus">
-              {{trip.description | slice:0:50}}
-              <span class="badge badge-light" ng-click="advstatus=true">(...)</span>
-            </summary>
-            <p class="card-text text-muted">{{trip.description}}</p>
-          </details>
-        </div>
-  
-        <div class="card-footer">
-          <a *ngIf="(this.actorsService.checkRole('MANAGER') && this.actorsService.checkId(trip.manager))"
-            routerLink="/trips/{{trip.ticker}}"
-            class="btn btn-primary pull-left mx-1">
-            <span class="fa fa-pencil" aria-hidden="true"></span>
-            {{'trip.edit'}}
-          </a>
-          <a *ngIf="!trip.reasonCancel"
-            routerLink="/trips/display/{{trip.ticker}}"
-            class="btn btn-primary pull-left mx-1">
-            <span class="fa fa-search-plus" aria-hidden="true"></span>
-            {{'trip.details'}}
-          </a>
-          <button *ngIf="trip.reasonCancel"
-          class="btn btn-warning pull-left"
-          type="button"
-          (click)="showReasonCancel(trip)"
-          ><span class="fa fa-search-plus" aria-hidden="true"></span>
-          {{'canceledTripText'}}</button>
+      <div id="collapseAudit" class="collapse" aria-labelledby="headingAudit" data-parent="#accordionAudit">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h4 class="">{{'trip.filter'}}: {{this.keyword}}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <span class="">Rango de precios</span>
+            </div>
+            <div class="col-md-6">
+              <input type="number" class="form-control" id="minPrice" placeholder="minPrice" [(ngModel)]="minPrice">
+            </div>
+            <div class="col-md-6">
+              <input type="number" class="form-control" id="maxPrice" placeholder="maxPrice" [(ngModel)]="maxPrice">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <span class="">Rango de Fechas</span>
+            </div>
+            <div class="col-md-6">
+              <input type="date" class="form-control" id="minDate" placeholder="minDate" [(ngModel)]="minDate">
+            </div>
+            <div class="col-md-6">
+              <input type="date" class="form-control" id="maxDate" placeholder="maxDate" [(ngModel)]="maxDate">
+            </div>
+          </div>
+
+          <button class="btn btn-primary mt-4 mb-2 mx-2" type="submit" (click)="searchFilter()">{{'trip.filter'}}</button>
+          <button *ngIf="this.actorsService.checkRole('EXPLORER')" class="btn btn-primary mt-4 mb-2 mx-2" type="submit" (click)="saveFinder()">{{'finderSavedText'}}</button>
         </div>
       </div>
     </div>
-    
   </div>
-  
-  <button *ngIf="this.actorsService.checkRole('MANAGER') && !this.showfilter" type="button" class="btn btn-primary mt-4 ml-4" (click)="newTrip();"> 
-    {{'newTrip'}}
-  </button>
+</div> -->
+
+<div class="content">
+    <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="25px">
+        <div *ngIf="data != undefined && data.length > 0">
+        <div fxFlex = "33%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let trip of data">
+        <div *ngIf="this.displayTrip(trip)" class="card mb-3 ml-4 "
+      infiniteScroll
+      (scrolled)="onScrollDown()" (scrolledUp)="onScrollUp()">
+      <!-- Cards-->
+      
+      <mat-card class= "mat-elevation-z4">
+      <mat-card-header>
+        <mat-card-title>{{trip.title}}</mat-card-title>
+      </mat-card-header>
+      <img
+      class="card__image" style="display: block;"
+      src="{{getFirstPicture(trip)}}" alt="{{trip.title}}">
+
+
+      <mat-card-content>
+        <details>
+          <summary ng-hide="advstatus">
+            {{trip.description | slice:0:50}}
+            <span class="badge badge-light" ng-click="advstatus=true">(...)</span>
+          </summary>
+          <p>{{trip.description}}</p>
+        </details>
+      <mat-card-actions>
+        <a *ngIf="(this.actorsService.checkRole('MANAGER') && this.actorsService.checkId(trip.manager))"
+          routerLink="/trips/{{trip.ticker}}"
+          class="btn btn-primary pull-left mx-1">
+          <span class="fa fa-pencil" aria-hidden="true"></span>
+          {{'tripEditText'}}
+        </a>
+        <button *ngIf="!trip.reasonCancel"
+        routerLink="/trips/display/{{trip._id}}" 
+        class="mdc-button mdc-button--raised">
+            <span class="mdc-button__ripple"></span>
+            <i class="material-icons mdc-button__icon" aria-hidden="true">bookmark</i>
+        </button>
+        <button *ngIf="trip.reasonCancel"
+        class="btn btn-warning pull-left"
+        type="button"
+        (click)="showReasonCancel(trip)"
+        ><span class="fa fa-search-plus" aria-hidden="true"></span>
+        {{'tripCanceledText'}}</button>
+        <button *ngIf="this.actorsService.checkRole('MANAGER') && !this.showfilter" type="button" class="card_button" (click)="newTrip();"> 
+            {{'newTripText'}}
+          </button>
+      </mat-card-actions>
+    </mat-card-content>
+      </mat-card>
+      </div>
+     </div>
+    </div>
+</div>
+</div>
