@@ -9,6 +9,8 @@ import { AuthGuard } from "./guards/auth.guard"
 import { AdminGuard } from "./guards/admin.guard"
 import { UsersListComponent } from "@components/users-list/users-list.component"
 import { CubeComponent } from "@components/stats/cube/cube.component"
+import { ManagerApplicationsComponent } from "@components/manager/applications/applications.component"
+import { ManagerGuard } from "./guards/manager.guard"
 
 const routes: Routes = [
     { path: "register", component: RegisterComponent },
@@ -16,7 +18,8 @@ const routes: Routes = [
     { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
     { path: "admin/dashboard", component: DashboardComponent, canActivate: [AdminGuard] },
     { path: "admin/users", component: UsersListComponent, canActivate: [AdminGuard] },
-    { path: "admin/cube", component: CubeComponent, canActivate: [AdminGuard] }
+    { path: "admin/cube", component: CubeComponent, canActivate: [AdminGuard] },
+    { path: "manager/apps", component: ManagerApplicationsComponent, canActivate: [ManagerGuard] },
 ]
 
 @NgModule({

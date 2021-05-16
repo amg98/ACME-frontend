@@ -24,6 +24,7 @@
     "logout": "Cerrar sesión",
     "edit-profile": "Editar perfil",
     "stats": "Estadísticas",
+    "all-apps": "Todas las reservas",
 
     "registration-success": "Se ha creado el usuario satisfactoriamente",
     "registration-failure": "Ha ocurrido un error creando el usuario",
@@ -51,7 +52,7 @@
     "stats/pending": "Pendientes",
     "stats/accepted": "Aceptadas",
     "stats/rejected": "Rechazadas",
-    "stats/due": "Pagadas",
+    "stats/due": "Por pagar",
     "stats/cancelled": "Canceladas",
     "stats/trips-per-manager": "Viajes por gestor",
     "stats/apps-per-trip": "Reservas por viaje",
@@ -93,5 +94,22 @@
     "cube/less-equal": "Menor o igual (<=)",
     "cube/amount": "Cantidad",
     "cube/query-result": "Resultado de la consulta",
-    "cube/empty-result": "No se han encontrado resultados"
+    "cube/empty-result": "No se han encontrado resultados",
+
+    "applications/error-change-status": "No se ha podido cambiar el estado de la reserva",
+    "applications/error": "No se han podido obtener las reservas",
+    "applications/no-reason": "No se ha especificado un motivo",
+    "applications/reject": "Rechazar reserva",
+    "applications/enter-reason": "Introduzca el motivo",
+    "applications/reject-reason": "Motivo de rechazo",
+    "applications/accept-action": "Aceptar",
+    "applications/reject-action": "Rechazar",
+    "applications/comments": "Comentarios",
+    "cancel": "Cancelar",
+
+    "PENDING": "Pendiente",
+    "ACCEPTED": "Aceptada",
+    "REJECTED": "Rechazada",
+    "DUE": "Por pagar",
+    "CANCELLED": "Cancelada"
 }
