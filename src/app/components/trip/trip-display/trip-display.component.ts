@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslatableComponent } from '@components/translatable/translatable.component';
 import {TranslatorService} from '@services/translator.service';
-import {TripService} from '@services/trip.service';
+import {TripService} from '@services/trips.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {ActorsService} from '@services/actors.service';
 import { Actor } from "src/app/models/Actor";

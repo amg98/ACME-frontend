@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TripService } from 'src/app/services/trip.service';
+import { TripService } from '@services/trips.service';
 import { TranslatableComponent } from '@components/translatable/translatable.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import {TranslatorService} from '@services/translator.service';

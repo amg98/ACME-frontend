@@ -5,7 +5,7 @@ import { TranslatableComponent } from "@components/translatable/translatable.com
 import { ActorsService } from "@services/actors.service";
 import { Router, ActivatedRoute } from '@angular/router';
 import { TranslatorService } from "@services/translator.service";
-import {TripService} from '@services/trip.service';
+import {TripService} from '@services/trips.service';
 import { Actor } from 'src/app/models/Actor';
 import { Trip } from 'src/app/models/Trip';
 import { ProfileComponent } from "@components/forms/profile/profile.component";
