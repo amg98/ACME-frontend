@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { environment } from "@env/environment";
 import { Trip } from "../models/Trip";
-import { Observable } from "rxjs";
 
 const httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -28,7 +27,7 @@ export class TripService {
         return this.client.get<Trip>(url).toPromise();
     }
 
-    applyTrip(idTrip: string, idExplorer: any) {
+    applyTrip(idTrip: string, idExplorer: string) {
         const url = `${environment.backendURL}/applications`;
         // return this.http.get<Trip>(url).toPromise();
 
