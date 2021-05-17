@@ -47,6 +47,7 @@
     "whoWeAre":"¿Quienes somos?",
     "flag":"https://cdn.icon-icons.com/icons2/45/PNG/64/Spain_flags_flag_8858.png",
     "search":"Buscar",
+    "no-keyword": "No se ha especificado ninguna palabra clave",
 
     "stats/apps-ratio": "Ratio de aplicaciones",
     "stats/pending": "Pendientes",
