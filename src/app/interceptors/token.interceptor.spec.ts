@@ -5,7 +5,6 @@ import {
 } from "@angular/common/http/testing"
 import { TokenInterceptor } from "./token.interceptor"
 import { HttpClient, HTTP_INTERCEPTORS } from "@angular/common/http"
-import { TripsService } from "@services/trips.service"
 
 describe("AuthHttpInterceptor", () => {
     let httpMock: HttpTestingController
@@ -16,7 +15,6 @@ describe("AuthHttpInterceptor", () => {
             imports: [HttpClientTestingModule],
             providers: [
                 HttpClient,
-                TripsService,
                 {
                     provide: HTTP_INTERCEPTORS,
                     useClass: TokenInterceptor,
@@ -40,6 +38,7 @@ describe("AuthHttpInterceptor", () => {
         })
         tick()
         const httpRequest = httpMock.expectOne(url)
+        httpRequest.flush({}, { status: 200, statusText: "OK" })
 
         expect(httpRequest.request.headers.has("Authorization")).toEqual(true)
         expect(httpRequest.request.headers.get("Authorization")).toBe(`Bearer ${idToken}`)
@@ -55,6 +54,7 @@ describe("AuthHttpInterceptor", () => {
         })
         tick()
         const httpRequest = httpMock.expectOne(url)
+        httpRequest.flush({}, { status: 200, statusText: "OK" })
 
         expect(httpRequest.request.headers.has("Authorization")).not.toEqual(true)
     }))
