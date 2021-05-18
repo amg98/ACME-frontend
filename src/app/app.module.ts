@@ -41,6 +41,7 @@ import { UsersListComponent } from "./components/users-list/users-list.component
 import { CubeComponent } from "./components/stats/cube/cube.component"
 import { ManagerApplicationsComponent } from "./components/manager/applications/applications.component"
 import { RejectApplicationComponent } from "./components/dialog/reject-application/reject-application.component"
+import { TripsManagerListComponent } from "./components/manager/trips-manager-list/trips-manager-list.component"
 
 @NgModule({
     declarations: [
@@ -61,6 +62,7 @@ import { RejectApplicationComponent } from "./components/dialog/reject-applicati
         CubeComponent,
         ManagerApplicationsComponent,
         RejectApplicationComponent,
+        TripsManagerListComponent,
     ],
     imports: [
         CommonModule,
