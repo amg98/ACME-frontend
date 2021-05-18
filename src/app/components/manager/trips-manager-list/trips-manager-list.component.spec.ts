@@ -1,25 +1,27 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { ComponentFixture, TestBed } from "@angular/core/testing"
 
-import { TripsManagerListComponent } from './trips-manager-list.component';
+// import { TripsManagerListComponent } from "./trips-manager-list.component"
 
-describe('TripsManagerListComponent', () => {
-  let component: TripsManagerListComponent;
-  let fixture: ComponentFixture<TripsManagerListComponent>;
+describe("TripsManagerListComponent", () => {
+/*
+    let component: TripsManagerListComponent
+    let fixture: ComponentFixture<TripsManagerListComponent>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ TripsManagerListComponent ]
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [ TripsManagerListComponent ]
+        })
+            .compileComponents()
     })
-    .compileComponents();
-  });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TripsManagerListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(TripsManagerListComponent)
+        component = fixture.componentInstance
+        fixture.detectChanges()
+    })
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    it("should create", () => {
+        expect(component).toBeTruthy()
+    })
+    */
+})

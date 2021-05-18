@@ -25,6 +25,9 @@
     "edit-profile": "Edit profile",
     "stats": "Statistics",
     "all-apps": "All applications",
+    "all-trips": "All trips",
+    "edit": "Edit",
+    "delete": "Delete",
 
     "registration-success": "User has been registered successfully",
     "registration-failure": "Error while registering the user",

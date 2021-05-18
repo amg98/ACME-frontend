@@ -20,6 +20,8 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatSidenavModule } from "@angular/material/sidenav"
 import { MatDialogModule } from "@angular/material/dialog"
 import { MatExpansionModule } from "@angular/material/expansion"
+import { MatTableModule } from "@angular/material/table"
+import { MatPaginatorModule } from "@angular/material/paginator"
 
 import { AppRoutingModule } from "./app-routing.module"
 import { AppComponent } from "./app.component"
@@ -86,6 +88,8 @@ import { TripsManagerListComponent } from "./components/manager/trips-manager-li
         MatExpansionModule,
         PlotlyModule,
         FormsModule,
+        MatTableModule,
+        MatPaginatorModule,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
