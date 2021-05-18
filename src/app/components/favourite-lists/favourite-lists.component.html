@@ -5,7 +5,7 @@
     <mat-spinner *ngIf="loadingSync" diameter="35" class="spinner"></mat-spinner>
 </div>
 <mat-spinner *ngIf="loadingLists" diameter="35" class="lists-spinner"></mat-spinner>
-<div *ngFor="let list of favouriteLists.favouriteLists; let listIndex = index" class="card">
+<div *ngFor="let list of favouriteLists.favouriteLists; let listIndex = index">
     <h3 class="list-name">{{list.name}}</h3>
     <div class="wrapper">
         <div *ngFor="let tripID of list.trips; let tripIndex = index" class="trip-card"

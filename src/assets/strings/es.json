@@ -6,6 +6,8 @@
     "login": "Iniciar sesión",
     "Spanish": "Español",
     "English": "Inglés",
+    "yes": "Sí",
+    "no": "No",
 
     "register-form": "Formulario de registro",
     "name": "Nombre",
@@ -123,5 +125,10 @@
     "cancelled-trip": "Cancelado",
     "expired-trip": "Finalizado",
     "about-to-start-trip": "A punto de comenzar",
-    "start-date": "Fecha de inicio"
+    "start-date": "Fecha de inicio",
+
+    "sponsorships": "Promociones",
+    "sponsorships/load-error": "Ha ocurrido un error cargando las promociones",
+    "sponsorships/landing-page-link": "Enlace de la promoción",
+    "sponsorships/isPaid": "Pagado"
 }
