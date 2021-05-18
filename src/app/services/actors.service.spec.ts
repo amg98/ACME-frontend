@@ -4,7 +4,7 @@ import { environment } from "@env/environment"
 import { Actor } from "../models/Actor"
 import { ActorsService } from "./actors.service"
 
-fdescribe("ActorsService", () => {
+describe("ActorsService", () => {
     let httpMock: HttpTestingController
 
     const actor: Actor = {
