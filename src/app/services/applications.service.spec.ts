@@ -39,7 +39,7 @@ describe("ApplicationsService", () => {
             requirements: ["string"],
             startDate: "string",
             endDate: "string",
-            pictures: "string",
+            pictures: ["string"],
             cancelReason: "string",
             isCancelled: false,
             isPublished: true,

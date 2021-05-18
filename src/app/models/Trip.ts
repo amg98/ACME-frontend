@@ -10,13 +10,13 @@ export interface Trip extends Entity {
     ticker: string,
     title: string,
     description?: string,
-    requirements: [string],
+    requirements: string[],
     startDate: string,
     endDate: string,
-    pictures: string,
+    pictures: string[],
     cancelReason: string,
     isCancelled: boolean
     isPublished: boolean,   // should be always true
     price: number,
-    stages: [TripStage],
+    stages: TripStage[],
 }
