@@ -1,59 +1,61 @@
 <mat-spinner *ngIf="dataSource == null" diameter="35" class="spinner"></mat-spinner>
 <div *ngIf="dataSource != null">
- 
-        <h4 class="forms__title">{{msg["all-trips"]}}</h4>
-        <table mat-table [dataSource]="dataSource">
 
-            <!-- Position Column -->
-            <ng-container matColumnDef="ticker">
-                <th mat-header-cell *matHeaderCellDef> ticker </th>
-                <td mat-cell *matCellDef="let trip"> {{trip.ticker}} </td>
-            </ng-container>
+    <h4 class="forms__title">{{msg["all-trips"]}}</h4>
+    <table mat-table [dataSource]="dataSource">
 
-            <!-- Name Column -->
-            <ng-container matColumnDef="title">
-                <th mat-header-cell *matHeaderCellDef> tittle </th>
-                <td mat-cell *matCellDef="let element"> {{element.title}} </td>
-            </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="ticker">
+            <th mat-header-cell *matHeaderCellDef> {{msg["ticker"]}} </th>
+            <td mat-cell *matCellDef="let trip"> {{trip.ticker}} </td>
+        </ng-container>
 
-            <!-- Weight Column -->
-            <ng-container matColumnDef="price">
-                <th mat-header-cell *matHeaderCellDef> price </th>
-                <td mat-cell *matCellDef="let element"> {{element.price}} </td>
-            </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef> {{msg["tittle"]}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+        </ng-container>
 
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="startDate">
-                <th mat-header-cell *matHeaderCellDef> startDate </th>
-                <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
-            </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef> {{msg["price"]}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
 
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="endDate">
-                <th mat-header-cell *matHeaderCellDef> endDate </th>
-                <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
-            </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="startDate">
+            <th mat-header-cell *matHeaderCellDef> {{msg["startDate"]}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+        </ng-container>
 
-               <!-- btn edit -->
-               <ng-container matColumnDef="cancelReason">
-                <th mat-header-cell *matHeaderCellDef>   </th>
-                <td mat-cell *matCellDef="let element" >  
-                    <button mat-raised-button color="primary" type="submit" [disabled]="element.isPublished">{{msg.edit}}</button>
-                </td>
-            </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="endDate">
+            <th mat-header-cell *matHeaderCellDef> {{msg["endDate"]}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
+        </ng-container>
 
-            <!-- btn cancel -->
-            <ng-container matColumnDef="description" >
-                <th mat-header-cell *matHeaderCellDef>   </th>
-                <td mat-cell *matCellDef="let element" > 
-                    <button mat-raised-button color="warn" type="button" [disabled]="element.isPublished">{{msg.delete}}</button>
-                </td>
-            </ng-container>
-            
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+        <!-- btn edit -->
+        <ng-container matColumnDef="cancelReason">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button color="primary" type="submit"
+                    [disabled]="element.isPublished">{{msg.edit}}</button>
+            </td>
+        </ng-container>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
- 
+        <!-- btn cancel -->
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button color="warn" type="button"
+                    [disabled]="element.isPublished">{{msg.delete}}</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
 </div>

@@ -28,6 +28,11 @@
     "all-trips": "All trips",
     "edit": "Edit",
     "delete": "Delete",
+    "ticker": "Ticker",
+    "tittle": "Tittle",
+    "price": "Price",
+    "startDate": "Start Date",
+    "endDate": "End Date",
 
     "registration-success": "User has been registered successfully",
     "registration-failure": "Error while registering the user",

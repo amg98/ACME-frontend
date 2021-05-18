@@ -38,7 +38,7 @@ const trips: Trip[] = [
         ticker: "2", title: "2er viaje", price: 230, isCancelled: false,
         requirements: ["sin requerimiento 2"], pictures: "foto 2",
         stages: [{ description: "stage desc2", title: "stage ttl2", price: 230 }],
-        isPublished: true, cancelReason: "r2", startDate: "01/06/21", endDate: "01/09/21"
+        isPublished: true, cancelReason: "r2", startDate: "01/05/21", endDate: "01/09/21"
     }, {
         ticker: "1", title: "1er viaje", price: 220, isCancelled: false,
         requirements: ["sin requerimiento 1"], pictures: "foto 1",
@@ -53,7 +53,7 @@ const trips: Trip[] = [
         ticker: "1", title: "1er viaje", price: 220, isCancelled: false,
         requirements: ["sin requerimiento 1"], pictures: "foto 1",
         stages: [{ description: "stage desc1", title: "stage ttl1", price: 220 }],
-        isPublished: true, cancelReason: "", startDate: "01/06/21", endDate: "01/09/21"
+        isPublished: true, cancelReason: "", startDate: "01/05/21", endDate: "01/09/21"
     }, {
         ticker: "2", title: "2er viaje", price: 230, isCancelled: false,
         requirements: ["sin requerimiento 2"], pictures: "foto 2",
