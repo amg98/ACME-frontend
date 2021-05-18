@@ -6,6 +6,8 @@ $accent:  mat-palette($mat-deep-purple, 400);
 $warn:    mat-palette($mat-orange, 400);
 $theme: mat-light-theme($primary, $accent, $warn);
 
+@include angular-material-theme($theme);
+
 $dark-theme: mat-dark-theme($primary, $accent, $warn);
 
 .dark-mode{
