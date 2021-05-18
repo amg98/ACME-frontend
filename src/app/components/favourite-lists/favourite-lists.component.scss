@@ -1,0 +1,113 @@
+.title {
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    margin-right: 20%;
+    margin-left: 20%;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    text-align: center;
+    font-weight: 300;
+    font-size: 2rem;
+}
+
+.sync-button {
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: row nowrap;
+    margin-right: 5em;
+    margin-bottom: 2em;
+}
+
+.green {
+    background-color: #66BB6A;
+}
+
+.spinner {
+    margin-left: 1em;
+}
+
+.lists-spinner {
+    margin: 0 auto;
+    margin-bottom: 100%;
+}
+
+.list-name {
+    font-weight: 400;
+    font-size: 1.8rem;
+    font-style: italic;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.wrapper {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    row-gap: 3em;
+}
+
+.trip-card {
+    flex-basis: 35%;
+    border-radius: 1.5em;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+    background-color: rgba(#fff, 0.8);
+    border: 2px solid #222;
+    backdrop-filter: blur(5px);
+}
+
+.trip-title {
+    margin-top: 1em;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0.01em;
+    font-size: 1.2em;
+}
+
+.trip-image {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 0.5em;
+}
+
+.trip-detail {
+    margin-top: 1em;
+    margin-left: 5%;
+}
+
+.trip-cancelled {
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #ef5350;
+}
+
+.trip-expired {
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #FF5722;
+}
+
+.trip-about {
+    font-weight: 600;
+    font-size: 1.1em;
+    text-decoration: underline;
+    font-style: italic;
+    text-transform: uppercase;
+    color: #ef5350;
+}
+
+.trip-disabled {
+    filter: grayscale(100%);
+}
+
+.trip-about-hl {
+    background-color: rgba(#ffeb3b, 0.8)
+}

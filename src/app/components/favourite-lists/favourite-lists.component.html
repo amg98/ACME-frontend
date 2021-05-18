@@ -1,0 +1,27 @@
+<h2 class="title">{{msg["favourite-lists"]}}</h2>
+<div class="sync-button">
+    <button mat-raised-button class="green" (click)="onSync()"
+        [disabled]="loadingSync">{{msg["favourite-lists/sync"]}}</button>
+    <mat-spinner *ngIf="loadingSync" diameter="35" class="spinner"></mat-spinner>
+</div>
+<mat-spinner *ngIf="loadingLists" diameter="35" class="lists-spinner"></mat-spinner>
+<div *ngFor="let list of favouriteLists.favouriteLists; let listIndex = index" class="card">
+    <h3 class="list-name">{{list.name}}</h3>
+    <div class="wrapper">
+        <div *ngFor="let tripID of list.trips; let tripIndex = index" class="trip-card"
+            [class.trip-about-hl]="isAboutToStart(trips[listIndex][tripIndex])"
+            [class.trip-disabled]="trips[listIndex][tripIndex].isCancelled || isExpired(trips[listIndex][tripIndex])">
+            <h4 class="trip-title">{{trips[listIndex][tripIndex].ticker}} - {{trips[listIndex][tripIndex].title}}
+            </h4>
+            <img class="trip-image" src="{{trips[listIndex][tripIndex].pictures[0]}}">
+            <p class="trip-detail">{{msg["start-date"]}}: {{trips[listIndex][tripIndex].startDate |
+                date:"dd/MM/yy"}}</p>
+            <p *ngIf="trips[listIndex][tripIndex].isCancelled" class="trip-detail trip-cancelled">
+                {{msg["cancelled-trip"]}}</p>
+            <p *ngIf="isExpired(trips[listIndex][tripIndex])" class="trip-detail trip-expired">
+                {{msg["expired-trip"]}}</p>
+            <p *ngIf="isAboutToStart(trips[listIndex][tripIndex])" class="trip-detail trip-about">
+                {{msg["about-to-start-trip"]}}</p>
+        </div>
+    </div>
+</div>
