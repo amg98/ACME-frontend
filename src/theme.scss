@@ -8,8 +8,6 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 @include angular-material-theme($theme);
 
-// $angular-default-theme: ($theme);
-
 $dark-theme: mat-dark-theme($primary, $accent, $warn);
 
 .dark-mode{
