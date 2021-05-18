@@ -70,5 +70,6 @@
     "apply": "Apply",
     "requeriments" : "Requisitos",
 
-    "newTripFormText": "Formulario Nuevo Viaje"
+    "newTripFormText": "Formulario Nuevo Viaje",
+    "addRequeriments": "Añade requisitos"
 }

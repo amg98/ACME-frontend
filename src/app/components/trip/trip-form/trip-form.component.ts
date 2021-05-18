@@ -8,7 +8,6 @@ import { TranslatorService } from "@services/translator.service";
 import {TripService} from "@services/trips.service";
 import { Actor } from "src/app/models/Actor";
 import { Trip } from "src/app/models/Trip";
-import { ProfileComponent } from "@components/forms/profile/profile.component";
 
 @Component({
     selector: "app-trip-form",
@@ -19,7 +18,9 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
   actor!: Actor;
   tripForm!: FormGroup;
   stages!: FormArray;
+  stagesText!:string;
   requeriments!: FormArray;
+  requerimentsText!: string;
   pictures!: FormArray;
   trip!: Trip;
   isNew!: boolean;
@@ -37,6 +38,9 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
   description!: string;
   price!: string;
   saveText!: string;
+  addRequerimentsText!:string;
+  startDate!:string;
+  endDate!:string;
   
   constructor(private formBuilder: FormBuilder,
       translator: TranslatorService,
@@ -52,6 +56,14 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
           this.saveSuccessText = translator.getString("save-success");
           this.saveFailureText = translator.getString("save-failure");
           this.newTripFormText = translator.getString("newTripFormText"); 
+          this.title = translator.getString("title"); 
+          this.description = translator.getString("description"); 
+          this.price = translator.getString("price");
+          this.stagesText = translator.getString("stages");
+          this.requerimentsText = translator.getString("requeriments");
+          this.addRequerimentsText = translator.getString("addRequeriments");
+          this.saveText = translator.getString("save");
+
       });
   }
   ngOnInit() {
@@ -60,7 +72,7 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
       this.tripForm.controls["price"].setValue(this.totalprice);
       if (this.route.url !== undefined) {
           this.route.url.subscribe(url => {
-              if (url[0].path !== "trips-new") {
+              if (url[0].path !== "new") {
                   this.trip_new = false;
                   this.route.params
                       .subscribe(async params => {
@@ -86,10 +98,6 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
           this.actor = actor;
           this.tripForm.controls["manager"].setValue(this.actor._id);
       });
-  }
-
-  getControls(frmGrp: FormGroup, key: string) {
-      return (<FormArray>frmGrp.controls[key]).controls;
   }
 
   formatDate(d: Date) {
@@ -173,8 +181,8 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
 
   initRequeriments(requerimentsList: string[]) {
       this.requeriments = this.tripForm.get("requeriments") as FormArray;
-      requerimentsList.map(item => {
-          this.requeriments.push(new FormControl(item));
+      requerimentsList.map(requeriment => {
+          this.requeriments.push(new FormControl(requeriment));
       });
       this.removeReq(0);
       this.tripForm.setControl("requeriments", this.requeriments);
@@ -191,8 +199,8 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
 
   initPictures(picturesList: string[]) {
       this.pictures = this.tripForm.get("pictures") as FormArray;
-      picturesList.map(item => {
-          this.pictures.push(new FormControl(item));
+      picturesList.map(picture => {
+          this.pictures.push(new FormControl(picture));
       });
       this.removePic(0);
       this.tripForm.setControl("pictures", this.pictures);
@@ -202,7 +210,8 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
       if (this.trip_new) {
           this.tripService.postTrip(formTrip).then( val => {
               this.updated = true;
-              this.router.navigate(["/trips-created"]);
+              //PONER EN ESTA RUTA EL NOMBRE DE LA PANTALLA QUE LE DE FAUSTINO
+              this.router.navigate(["/my-trips"]);
               // TODO : poner mensaje creado
           }, err => {
               this.snackbar.open(this.saveFailureText, this.closeText, {
@@ -215,7 +224,7 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
       } else {
           this.tripService.updateTrip(formTrip, this.trip.ticker).then( val => {
               this.updated = true;
-              this.router.navigate(["/trips-created"]);
+              this.router.navigate(["/my-trips"]);
               this.snackbar.open(this.saveSuccessText, this.closeText, {
                   duration: 5000,
                   panelClass: [ "alert-success" ]
@@ -232,6 +241,9 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
 
   goBack() {
       window.history.back();
+  }
+  getControls(frmGrp: FormGroup, key: string) {
+    return (<FormArray>frmGrp.controls[key]).controls;
   }
 
 }

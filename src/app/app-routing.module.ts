@@ -7,6 +7,7 @@ import { ProfileComponent } from "@components/forms/profile/profile.component";
 import { DashboardComponent } from "@components/dashboard/dashboard.component";
 import { TripDisplayComponent } from "@components/trip/trip-display/trip-display.component";
 import { TripListComponent } from "@components/trip/trip-list/trip-list.component";
+import { TripFormComponent } from "@components/trip/trip-form/trip-form.component";
 
 const routes: Routes = [
     { path: "register", component: RegisterComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
     { path: "admin/dashboard", component: DashboardComponent },
     
     {path: "trips", children: [
+        {path: "new", component: TripFormComponent},
         {path: "search", component: TripListComponent},
         {path: "display/:id", component: TripDisplayComponent},
         {path: "", component: TripListComponent},
