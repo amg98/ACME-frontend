@@ -1,17 +1,26 @@
-
-.container{
-    background-color: rgb(24, 196, 248);
+@import "../../../shared/styles/forms.scss";
+.accordion {
+    background-color: rgba(#fff, 0.9)
 }
-.card-header{
+
+.title {
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    margin-right: 20%;
+    margin-left: 20%;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
     text-align: center;
-    font-size: 48;
+    font-weight: 300;
+    font-size: 2rem;
 }
 
-#carouselExampleControls2 {
-    height: 10rem;
+.h3{
+    text-align:center;
+    margin:auto;
 }
 
-.carousel-item > img {
-    height: 30rem;
-}
+
 

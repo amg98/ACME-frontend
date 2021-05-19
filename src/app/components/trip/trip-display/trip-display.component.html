@@ -1,124 +1,60 @@
-  
-<div class=container>
-<div class= "info">
+<div class="trip">
   <div>
-    <h3 class="card-header">{{trip.title}}</h3>    
-    
-    <!-- boton atras -->
-    <button (click)="goBack()" class="btn btn-primary" style="float: right; margin-right: 1em; margin-top: -48px;">
-      {{'back'}}
-    </button>
-  </div>
-  <!-- boton trips applications -->
-  <div class="card-body" *ngIf="this.actorsService.checkRole('MANAGER') && this.actorsService.checkIsCurrentUser(trip.manager)">
+  <h3 class="title">{{trip.title}}</h3>
+  <!-- boton solicitar -->
+<div class="btn-apply">
+  <div *ngIf="trip != undefined"></div>
+  <button mat-raised-button color="accent" (click)="onApply(trip._id!)" id="applybutton" class="btn btn-primary">
+    {{apply}}
+  </button>
+</div> 
+</div>
 
-    <a            
-      [routerLink]="['/trips-applies/trip/' + trip._id, {'paramKey': 'manager'}]"
-      class="btn btn-primary btn-application">
-      {{'seeTripFromApplicationText'}}
-    </a>
+<mat-card>
+  <h3 class="card-title The-explorer-4-hex">Ticker: {{trip.ticker}}</h3>
+</mat-card>
 
-  </div>
+<mat-card>
+  <h3 class="card-title The-explorer-4-hex">{{price}}: {{trip.price}}&euro;</h3>
+</mat-card>
 
-  <div class="card-body">
-    <h5 class="card-title The-explorer-4-hex">Ticker: {{trip.ticker}}</h5>
-  </div>
+<mat-card>
+  <h3>{{trip.description}}</h3>
+</mat-card>
 
-  <div class="card-body">
-    <h5 class="card-title The-explorer-4-hex">{{price}}: {{trip.price}}&euro;</h5>
-  </div>
+<mat-card>
+  <h3>{{startDate}}: {{trip.startDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
+  <h3>{{endDate}}: {{trip.endDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
+</mat-card>
 
-  <div class="card-body">
-    <h6 class="card-title The-explorer-4-hex">{{trip.description}}</h6>
-  </div>
+<!-- requeriments -->
+
+<mat-card *ngIf= "trip.requeriments != null">
+  <ul *ngFor="let requeriment of trip.requeriments">
+    <li>{{requeriment}}</li>
+  </ul>
+</mat-card>
+
+<!-- stages -->
+<mat-card>
+<mat-accordion>
   
-
-  <div class="card-body">
-    <div class="row text-center">
-      <div class="col-md-6">
-        <p class="The-explorer-3-hex mx-4 card">
-          <span class="card-body">
-            <i class="fa fa-calendar mr-2"></i>{{startDate}}:&nbsp;{{trip.startDate}}
-          </span>
+  <mat-expansion-panel class="accordion" *ngFor="let stage of trip.stages">
+      <mat-expansion-panel-header>
+          <mat-panel-title><b>{{stage.title}}</b>
+          </mat-panel-title>
+          <mat-panel-description class="panel-description">
+          </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="panel-content">
+        <p class="content-section" class="content">{{stage.description}}</p>
+        <p class="content-section" class="content">{{stage.price}}&euro;
         </p>
       </div>
-      <div class="col-md-6">
-        <p class="The-explorer-3-hex mx-4 card">
-          <span class="card-body">
-            <i class="fa fa-calendar mr-2"></i>{{endDate}}:&nbsp;{{trip.endDate}}
-          </span>
-        </p>
-      </div>
-    </div>
-  </div>
+  </mat-expansion-panel>
+</mat-accordion>
+</mat-card>
 
-  <!-- etapas stages -->
-  <div class="card-body">
-    <div id="accordion">
-      <div class="card">
-        <div class="card-header" id="headingOne">
-          <h5 class="mb-0">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              {{stages}}
-            </button>
-          </h5>
-        </div>
-    
-        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-          <div class="card-body">
-            <ul class="list-group list-group-flash">
-              <li class="list-group-item" *ngFor="let stage of this.trip.stages; let i = index">
-                
-                <div id="accordionTwo">
-        
-                    <div class="" id="headingTwo">
-                      <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                          {{stage.title}}
-                        </button>
-                      </h5>
-                    </div>
-                
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionTwo">
-                      <div class="card-body">       
-                            <p class="text-muted">{{stage.description}}</p>
-                            <p class="The-explorer-2-hex">{{price}}: <span class="ml-1">{{stage.price}}&euro;</span></p>
-                      </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- requisitos -->
-  <div class="card-body">
-    <div id="accordionThree">
-      <div class="card">
-        <div class="card-header" id="headingThree">
-          <h5 class="mb-0">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              {{requeriments}}
-            </button>
-          </h5>
-        </div>
-    
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionThree">
-          <div class="card-body">
-            <ul class="list-group list-group-flash">
-              <li class="list-group-item" *ngFor="let requeriment of this.trip.requeriments; let i = index">
-                <p>{{requeriment}}</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class= "pictures">
   <!-- pictures -->
   <div id="myCarousel" *ngIf="trip.pictures.length > 0" class="carousel slide" data-ride="carousel">
 
@@ -148,17 +84,7 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-<!-- boton solicitar -->
-<div class="btn-apply" *ngIf="this.actorsService.checkRole('EXPLORER')">
-  <div *ngIf="trip != undefined"></div>
-  <button (click)="onApply(trip._id!)" id="applybutton" class="btn btn-primary">
-    {{'apply'}}
-  </button>
-</div> 
 <br/>
-</div>
-</div>
-
 
   <!-- Sponsor 
   <div class="card-body">

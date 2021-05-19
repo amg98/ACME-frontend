@@ -1,2 +1,16 @@
 @import "../../../shared/styles/forms.scss";
 
+.form{
+    width: auto;
+}
+
+.forms__form-field{
+display: flex;
+  justify-content: center;
+}
+
+.body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

@@ -13,7 +13,10 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatCardModule } from "@angular/material/card";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
+import {MatExpansionModule} from '@angular/material/expansion';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -63,7 +66,10 @@ import { TripFormComponent } from "./components/trip/trip-form/trip-form.compone
         MatCardModule,
         MatMenuModule,
         MatIconModule,
-        FlexLayoutModule
+        MatExpansionModule,
+        FlexLayoutModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
     providers: [],
     bootstrap: [AppComponent]

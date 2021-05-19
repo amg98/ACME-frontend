@@ -41,6 +41,7 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
   addRequerimentsText!:string;
   startDate!:string;
   endDate!:string;
+  dates!: string;
   
   constructor(private formBuilder: FormBuilder,
       translator: TranslatorService,
@@ -63,6 +64,7 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
           this.requerimentsText = translator.getString("requeriments");
           this.addRequerimentsText = translator.getString("addRequeriments");
           this.saveText = translator.getString("save");
+          this.dates = translator.getString("dates");
 
       });
   }

@@ -67,9 +67,10 @@
     "startDate": "Fecha inicio",
     "endDate": "Fecha fin",
     "stages": "Etapas",
-    "apply": "Apply",
+    "apply": "Aplicar",
     "requeriments" : "Requisitos",
 
     "newTripFormText": "Formulario Nuevo Viaje",
-    "addRequeriments": "Añade requisitos"
+    "addRequeriments": "Añade requisitos",
+    "dates": "Fechas"
 }

@@ -1,3 +1,4 @@
+<body>
 <mat-card class="forms__card">
     <form [formGroup]="tripForm" (submit)="onSubmit()">
 
@@ -33,10 +34,9 @@
             </mat-error>
         </mat-form-field>
 
-
         <mat-form-field appearance="outline" class="forms__form-field">
             <!-- StartDate -->
-            <mat-label>Dates</mat-label>
+            <mat-label>{{dates}}</mat-label>
                   <mat-label for="startDate">{{startDate}}</mat-label>
                   <input matInput type="date" name="startDate" formControlName="startDate"
                   placeholder="{{startDate}}" required>
@@ -58,13 +58,13 @@
               </div>
             </div>
             <button mat-raised-button type type="button" (click)="addRequeriments()">+</button>
-            </mat-form-field>
+        </mat-form-field>
         
         <!-- Stages --> 
         <mat-form-field appearance="outline" class="forms__form-field">
             <mat-label for="stages">{{stagesText}}</mat-label>
           <div formArrayName="stages"
-            *ngFor="let requeriment of getControls(tripForm, 'stages'); let i = index;">
+            *ngFor="let stages of getControls(tripForm, 'stages'); let i = index;">
             <div [formGroupName]="i">
                   <input matInput formControlName="stages">
                 <button mat-raised-button type="button" (click)="removeStage(i)">x</button>
@@ -81,3 +81,4 @@
 
     </form>
 </mat-card>
+</body>
