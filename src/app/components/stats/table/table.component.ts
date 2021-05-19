@@ -61,23 +61,23 @@ export class TableComponent extends TranslatableComponent implements OnInit, OnD
     async getStats(statsGetter: () => Promise<Stats>, row: number): Promise<void> {
         try {
             const stats = await statsGetter()
-            this.data[0].cells.values[1][row] = stats.min.toString()
-            this.data[0].cells.values[2][row] = stats.max.toString()
-            this.data[0].cells.values[3][row] = stats.mean.toString()
-            this.data[0].cells.values[4][row] = stats.stdv.toString()
+            this.data[0].cells.values[1][row] = stats.min.toFixed(2)
+            this.data[0].cells.values[2][row] = stats.max.toFixed(2)
+            this.data[0].cells.values[3][row] = stats.avg.toFixed(2)
+            this.data[0].cells.values[4][row] = stats.stdv.toFixed(2)
         // eslint-disable-next-line no-empty
         } catch { }
     }
 
     async ngOnInit(): Promise<void> {
         this.loading = true
-        await this.getStats(this.statsService.getTripsPerManager, 0)
-        await this.getStats(this.statsService.getApplicationsPerTrip, 1)
-        await this.getStats(this.statsService.getPricePerTrips, 2)
+        await this.getStats(() => this.statsService.getTripsPerManager(), 0)
+        await this.getStats(() => this.statsService.getApplicationsPerTrip(), 1)
+        await this.getStats(() => this.statsService.getPricePerTrips(), 2)
         try {
             const stats = await this.statsService.getAveragePriceFinder()
-            this.data[0].cells.values[1][3] = stats.minPrice.toString()
-            this.data[0].cells.values[2][3] = stats.maxPrice.toString()
+            this.data[0].cells.values[1][3] = stats.minPrice.toFixed(2)
+            this.data[0].cells.values[2][3] = stats.maxPrice.toFixed(2)
         // eslint-disable-next-line no-empty
         } catch { }
         this.loading = false
