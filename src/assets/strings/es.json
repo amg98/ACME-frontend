@@ -8,6 +8,7 @@
     "English": "Inglés",
     "yes": "Sí",
     "no": "No",
+    "pay": "Pagar",
 
     "register-form": "Formulario de registro",
     "name": "Nombre",
@@ -131,6 +132,14 @@
     "sponsorships/load-error": "Ha ocurrido un error cargando las promociones",
     "sponsorships/landing-page-link": "Enlace de la promoción",
     "sponsorships/isPaid": "Pagado",
+    "sponsorships/payment-error": "Ha ocurrido un error preparando el pago",
+
+    "payment-logging-in": "Iniciando sesión de nuevo",
+    "payment-paying": "Realizando el pago",
+    "payment-cancelled": "El pago ha sido cancelado",
+    "payment-done": "El pago se ha realizado satisfactoriamente",
+    "payment-error": "Ha ocurrido un error ejecutando el pago",
+    "go-back": "Volver",
 
     "flat-rate": "Precio de las promociones",
     "flat-rate/success": "Se ha modificado el precio satisfactoriamente",

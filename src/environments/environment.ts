@@ -1,6 +1,7 @@
 export const environment = {
     production: false,
-    backendURL: "https://acmeexplorer.herokuapp.com/api/v1"
+    backendURL: "https://acmeexplorer.herokuapp.com/api/v1",
+    frontendURL: "http://localhost:4200"
 }
 
 /*

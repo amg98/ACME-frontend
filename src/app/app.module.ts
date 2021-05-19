@@ -45,6 +45,7 @@ import { FavouriteListsComponent } from "./components/favourite-lists/favourite-
 import { SponsorshipsComponent } from "./components/sponsorships/sponsorships.component"
 import { FlatRateComponent } from "./components/flat-rate/flat-rate.component"
 import { DialogFlatRateComponent } from "./components/dialog/flat-rate/flat-rate.component"
+import { SponsorshipPaymentComponent } from "./components/sponsorship-payment/sponsorship-payment.component"
 
 @NgModule({
     declarations: [
@@ -69,6 +70,7 @@ import { DialogFlatRateComponent } from "./components/dialog/flat-rate/flat-rate
         SponsorshipsComponent,
         FlatRateComponent,
         DialogFlatRateComponent,
+        SponsorshipPaymentComponent,
     ],
     imports: [
         CommonModule,
