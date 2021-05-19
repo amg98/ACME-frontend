@@ -16,19 +16,23 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
     loggedActorSub: Subscription;
     isAdmin = false;
     isManager = false;
+    isExplorer = false;
+    isSponsor = false;
 
     constructor(translator: TranslatorService, private actorsService: ActorsService, private router: Router) {
         super(translator)
 
         this.loggedActorName = ""
         this.loggedActorSub = actorsService.subscribeToLoggedActor(loggedActor => {
-            this.isAdmin = false
-            this.isManager = false
             if(typeof loggedActor == "undefined") this.loggedActorName = ""
-            else {
-                this.loggedActorName = loggedActor === null ? null : `${loggedActor.name} ${loggedActor.surname}`
-                this.isAdmin = loggedActor === null ? false : loggedActor.roles.includes("ADMINISTRATOR")
-                this.isManager = loggedActor === null ? false : loggedActor.roles.includes("MANAGER")
+            else if(loggedActor == null) {
+                this.loggedActorName = null
+            } else {
+                this.loggedActorName = `${loggedActor.name} ${loggedActor.surname}`
+                this.isAdmin = loggedActor.roles.includes("ADMINISTRATOR")
+                this.isManager = loggedActor.roles.includes("MANAGER")
+                this.isExplorer = loggedActor.roles.includes("EXPLORER")
+                this.isSponsor = loggedActor.roles.includes("SPONSOR")
             }
         })
     }

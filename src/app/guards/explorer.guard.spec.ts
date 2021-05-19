@@ -3,7 +3,7 @@ import { RouterTestingModule } from "@angular/router/testing"
 import { ActorsService } from "@services/actors.service"
 import { HttpClientTestingModule } from "@angular/common/http/testing"
 
-import { ManagerGuard } from "./manager.guard"
+import { ExplorerGuard } from "./explorer.guard"
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from "@angular/router"
 
 const fakeRouterState = (url: string): RouterStateSnapshot => {
@@ -12,8 +12,8 @@ const fakeRouterState = (url: string): RouterStateSnapshot => {
     } as RouterStateSnapshot
 }
 
-describe("ManagerGuard", () => {
-    let guard: ManagerGuard
+describe("ExplorerGuard", () => {
+    let guard: ExplorerGuard
     let actorsService: ActorsService
     let router: Router
 
@@ -21,7 +21,7 @@ describe("ManagerGuard", () => {
         name: "name",
         surname: "surname",
         email: "a@a.com",
-        roles: ["MANAGER"]
+        roles: ["EXPLORER"]
     }
 
     const deniedActor = {
@@ -39,7 +39,7 @@ describe("ManagerGuard", () => {
                 ActorsService
             ]
         })
-        guard = TestBed.inject(ManagerGuard)
+        guard = TestBed.inject(ExplorerGuard)
         actorsService = TestBed.inject(ActorsService)
         router = TestBed.inject(Router)
     })

@@ -6,6 +6,8 @@
     "login": "Login",
     "Spanish": "Spanish",
     "English": "English",
+    "yes": "Yes",
+    "no": "No",
 
     "register-form": "Registration form",
     "name": "Name",
@@ -112,5 +114,21 @@
     "ACCEPTED": "Accepted",
     "REJECTED": "Rejected",
     "DUE": "Due",
-    "CANCELLED": "Cancelled"
+    "CANCELLED": "Cancelled",
+
+    "favourite-lists": "Favourite lists",
+    "favourite-lists/sync-error": "Couldn't sync favourite lists with server",
+    "favourite-lists/loading-error": "Couldn't load favourite lists",
+    "favourite-lists/sync-success": "Favourite lists have been successfully synchronized",
+    "favourite-lists/sync": "Synchronize",
+
+    "cancelled-trip": "Cancelled trip",
+    "expired-trip": "Expired trip",
+    "about-to-start-trip": "About to start",
+    "start-date": "Start date",
+
+    "sponsorships": "Sponsorships",
+    "sponsorships/load-error": "An error has happened while loading the sponsorships",
+    "sponsorships/landing-page-link": "Sponsorship link",
+    "sponsorships/isPaid": "Paid"
 }
