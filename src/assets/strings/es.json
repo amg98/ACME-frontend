@@ -6,6 +6,8 @@
     "login": "Iniciar sesión",
     "Spanish": "Español",
     "English": "Inglés",
+    "yes": "Sí",
+    "no": "No",
 
     "register-form": "Formulario de registro",
     "name": "Nombre",
@@ -32,7 +34,7 @@
     "tittle": "Titulo",
     "price": "Precio",
     "startDate": "Fecha Inicio",
-    "endDate": "Fecha fin",
+    "endDate": "Fecha Fin",
 
     "registration-success": "Se ha creado el usuario satisfactoriamente",
     "registration-failure": "Ha ocurrido un error creando el usuario",
@@ -120,5 +122,21 @@
     "ACCEPTED": "Aceptada",
     "REJECTED": "Rechazada",
     "DUE": "Por pagar",
-    "CANCELLED": "Cancelada"
+    "CANCELLED": "Cancelada",
+
+    "favourite-lists": "Listas de favoritos",
+    "favourite-lists/sync-error": "No se han podido sincronizar las listas de favoritos con el servidor",
+    "favourite-lists/loading-error": "No se han podido cargar las listas de favoritos",
+    "favourite-lists/sync-success": "Se han sincronizado las listas de favoritos satisfactoriamente",
+    "favourite-lists/sync": "Sincronizar",
+
+    "cancelled-trip": "Cancelado",
+    "expired-trip": "Finalizado",
+    "about-to-start-trip": "A punto de comenzar",
+    "start-date": "Fecha de inicio",
+
+    "sponsorships": "Promociones",
+    "sponsorships/load-error": "Ha ocurrido un error cargando las promociones",
+    "sponsorships/landing-page-link": "Enlace de la promoción",
+    "sponsorships/isPaid": "Pagado"
 }

@@ -44,6 +44,8 @@ import { CubeComponent } from "./components/stats/cube/cube.component"
 import { ManagerApplicationsComponent } from "./components/manager/applications/applications.component"
 import { RejectApplicationComponent } from "./components/dialog/reject-application/reject-application.component"
 import { TripsManagerListComponent } from "./components/manager/trips-manager-list/trips-manager-list.component"
+import { FavouriteListsComponent } from "./components/favourite-lists/favourite-lists.component"
+import { SponsorshipsComponent } from "./components/sponsorships/sponsorships.component"
 
 @NgModule({
     declarations: [
@@ -65,6 +67,8 @@ import { TripsManagerListComponent } from "./components/manager/trips-manager-li
         ManagerApplicationsComponent,
         RejectApplicationComponent,
         TripsManagerListComponent,
+        FavouriteListsComponent,
+        SponsorshipsComponent,
     ],
     imports: [
         CommonModule,

@@ -1,20 +1,20 @@
 /*import { ComponentFixture, TestBed } from "@angular/core/testing"
 
-import { FinderComponent } from "./finder.component"*/
+import { SponsorshipsComponent } from "./sponsorships.component"*/
 
-describe("FinderComponent", () => {
-    /*let component: FinderComponent
-    let fixture: ComponentFixture<FinderComponent>
+describe("SponsorshipsComponent", () => {
+    /*let component: SponsorshipsComponent
+    let fixture: ComponentFixture<SponsorshipsComponent>
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [ FinderComponent ]
+            declarations: [ SponsorshipsComponent ]
         })
             .compileComponents()
     })
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(FinderComponent)
+        fixture = TestBed.createComponent(SponsorshipsComponent)
         component = fixture.componentInstance
         fixture.detectChanges()
     })

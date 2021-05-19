@@ -7,16 +7,16 @@ export interface TripStage extends Entity {
 }
 
 export interface Trip extends Entity {
-    ticker: string,//
-    title: string,//
+    ticker: string,
+    title: string,
     description?: string,
-    requirements: [string],
-    startDate: string,//
-    endDate: string,//
-    pictures: string,
+    requirements: string[],
+    startDate: string,
+    endDate: string,
+    pictures: string[],
     cancelReason: string,
     isCancelled: boolean
     isPublished: boolean,   // should be always true
-    price: number,//
-    stages: [TripStage],
+    price: number,
+    stages: TripStage[],
 }

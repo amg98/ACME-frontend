@@ -17,6 +17,11 @@ export class TripsService {
         return await this.client.get(`${environment.backendURL}/trips/manager`).toPromise() as Trip[]
     }
 
+    async getTrips(tripIDs: string[]): Promise<Trip[]> {
+        const trips = await Promise.all(tripIDs.map(tripID => this.client.get(`${environment.backendURL}/trips/${tripID}/display`).toPromise()))
+        return trips as Trip[]
+    }
+
     subscribeToSearchResults(fun: (trips: Trip[] | null) => void): Subscription {
         return this.searchResults.subscribe(fun)
     }
