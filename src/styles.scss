@@ -3,28 +3,56 @@
 
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    font-size: 16px;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
 }
 
-.alert-info {
+.light-mode {
+  @include angular-material-theme($light-theme);
+  .alert-info {
     background-color: #ffca28;
     color: #ffffff;
     text-shadow: 2px 2px 8px #000;
-}
+  }
 
-.alert-success {
+  .alert-success {
     background-color: #32cd32;
     color: #ffffff;
     text-shadow: 2px 2px 8px #000;
-}
+  }
 
-.alert-error {
+  .alert-error {
     background-color: #ff6347;
     color: #ffffff;
     text-shadow: 2px 2px 8px #000;
+  }
+}
+
+.dark-mode {
+  @include angular-material-theme($dark-theme);
+  .alert-info {
+    background-color: #ffca28;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px #000;
+  }
+
+  .alert-success {
+    background-color: #32cd32;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px #000;
+  }
+
+  .alert-error {
+    background-color: #ff6347;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px #000;
+  }
+}
+
+.app-height { 
+  min-height: calc(100vh - 300px - 35px);
 }
