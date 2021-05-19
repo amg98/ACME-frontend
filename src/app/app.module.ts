@@ -43,6 +43,8 @@ import { ManagerApplicationsComponent } from "./components/manager/applications/
 import { RejectApplicationComponent } from "./components/dialog/reject-application/reject-application.component"
 import { FavouriteListsComponent } from "./components/favourite-lists/favourite-lists.component"
 import { SponsorshipsComponent } from "./components/sponsorships/sponsorships.component"
+import { FlatRateComponent } from "./components/flat-rate/flat-rate.component"
+import { DialogFlatRateComponent } from "./components/dialog/flat-rate/flat-rate.component"
 
 @NgModule({
     declarations: [
@@ -65,6 +67,8 @@ import { SponsorshipsComponent } from "./components/sponsorships/sponsorships.co
         RejectApplicationComponent,
         FavouriteListsComponent,
         SponsorshipsComponent,
+        FlatRateComponent,
+        DialogFlatRateComponent,
     ],
     imports: [
         CommonModule,

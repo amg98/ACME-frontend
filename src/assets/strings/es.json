@@ -130,5 +130,11 @@
     "sponsorships": "Promociones",
     "sponsorships/load-error": "Ha ocurrido un error cargando las promociones",
     "sponsorships/landing-page-link": "Enlace de la promoción",
-    "sponsorships/isPaid": "Pagado"
+    "sponsorships/isPaid": "Pagado",
+
+    "flat-rate": "Precio de las promociones",
+    "flat-rate/success": "Se ha modificado el precio satisfactoriamente",
+    "flat-rate/error": "Ha ocurrido un error modificando el precio",
+    "flat-rate/enter": "Introduce el nuevo precio (€)",
+    "flat-rate/update": "Actualizar"
 }

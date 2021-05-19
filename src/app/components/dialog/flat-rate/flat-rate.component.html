@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{msg["flat-rate"]}}</h2>
+<div mat-dialog-content>
+    <p>{{msg["flat-rate/enter"]}}</p>
+    <mat-form-field>
+        <mat-label>{{msg["flat-rate"]}}:</mat-label>
+        <input type="number" matInput [(ngModel)]="flatRate">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button class="cancel-button" mat-button (click)="onNoClick()">{{msg["cancel"]}}</button>
+    <button class="okay-button"mat-button [mat-dialog-close]="flatRate" cdkFocusInitial>{{msg["flat-rate/update"]}}</button>
+</div>

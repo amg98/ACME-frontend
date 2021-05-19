@@ -33,6 +33,7 @@
             <mat-icon>extension</mat-icon>
             {{msg.cube}}
         </button>
+        <app-flat-rate *ngIf="isAdmin"></app-flat-rate>
         <button mat-button class="menu-button" (click)="logout()" (click)="sidenav.close()">
             <mat-icon>exit_to_app</mat-icon>
             {{msg.logout}}
