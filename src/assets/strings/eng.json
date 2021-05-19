@@ -8,6 +8,7 @@
     "English": "English",
     "yes": "Yes",
     "no": "No",
+    "pay": "Pay",
 
     "register-form": "Registration form",
     "name": "Name",
@@ -130,5 +131,19 @@
     "sponsorships": "Sponsorships",
     "sponsorships/load-error": "An error has happened while loading the sponsorships",
     "sponsorships/landing-page-link": "Sponsorship link",
-    "sponsorships/isPaid": "Paid"
+    "sponsorships/isPaid": "Paid",
+    "sponsorships/payment-error": "An error has happened while preparing the payment",
+
+    "payment-logging-in": "Logging in again",
+    "payment-paying": "Executing the payment",
+    "payment-cancelled": "The payment has been cancelled",
+    "payment-done": "The payment has been executed successfully",
+    "payment-error": "An error has happened while executing the payment",
+    "go-back": "Go back",
+
+    "flat-rate": "Sponsorships flat rate",
+    "flat-rate/success": "Flat rate has been updated successfully",
+    "flat-rate/error": "An error has happened while updating the flat rate",
+    "flat-rate/enter": "Enter the new flat rate (€)",
+    "flat-rate/update": "Update"
 }

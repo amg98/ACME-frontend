@@ -1,0 +1,30 @@
+.spinner {
+    margin: 0 auto;
+    margin-bottom: 2em;
+}
+
+.message {
+    margin-top: 2.5em;
+    margin-bottom: 2em;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    margin-right: 20%;
+    margin-left: 20%;
+    border: 2px solid #000;
+    border-radius: 2em;
+    background-color: rgba(#fff, 0.8);
+    backdrop-filter: blur(4px);
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.message-cancelled {
+    color: #f44336;
+}
+
+.button {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 2em;
+}

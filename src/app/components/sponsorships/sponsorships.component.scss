@@ -72,3 +72,14 @@
     text-transform: uppercase;
     color: #ef5350
 }
+
+.pay-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.pay-button-spinner {
+    margin-left: 1em;
+}

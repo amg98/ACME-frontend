@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core"
 import { MatSnackBar } from "@angular/material/snack-bar"
 import { TranslatableComponent } from "@components/translatable/translatable.component"
+import { environment } from "@env/environment"
 import { SponsorshipsService } from "@services/sponsorships.service"
 import { TranslatorService } from "@services/translator.service"
 import { TripsService } from "@services/trips.service"
@@ -17,6 +18,7 @@ export class SponsorshipsComponent extends TranslatableComponent implements OnIn
     sponsorships: Sponsorship[]
     trips: Trip[]
     loading = false
+    loadingPay: boolean[] = []
     
     constructor(translator: TranslatorService,
         private sponsorshipsService: SponsorshipsService,
@@ -39,9 +41,23 @@ export class SponsorshipsComponent extends TranslatableComponent implements OnIn
         try {
             this.sponsorships = await this.sponsorshipsService.getSponsorships()
             this.trips = await this.tripsService.getTrips(this.sponsorships.map(it => it.tripID))
+            this.loadingPay = new Array(this.sponsorships.length).fill(false)
         } catch {
             this.showAlert("sponsorships/load-error", "alert-error")
         }
         this.loading = false
+    }
+
+    async pay(index: number): Promise<void> {
+        const id = this.sponsorships[index]._id
+        if(!id) return
+        this.loadingPay[index] = true
+        try {
+            const paypalURL = await this.sponsorshipsService.paySponsorship(id, `${environment.frontendURL}/sponsorship-payment`, `${environment.frontendURL}/sponsorship-payment`)
+            window.location.href = paypalURL
+        } catch {
+            this.showAlert("sponsorships/payment-error", "alert-error")
+        }
+        this.loadingPay[index] = false
     }
 }

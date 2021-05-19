@@ -2,12 +2,16 @@
 <mat-spinner *ngIf="loading" diameter="35" class="spinner"></mat-spinner>
 <div class="wrapper">
     <div *ngFor="let sponsorship of sponsorships; let i = index" class="card">
-        <h3 class="card-title">{{trips[i].ticker}} - {{trips[i].title}}</h3>
+        <h3 *ngIf="trips.length > 0" class="card-title">{{trips[i].ticker}} - {{trips[i].title}}</h3>
         <img class="image" src="{{sponsorship.bannerURL}}">
         <a class="detail link" href="{{sponsorship.landingPageURL}}">{{msg["sponsorships/landing-page-link"]}}</a>
         <p class="detail">{{msg["sponsorships/isPaid"]}}:
             <span class="yes" *ngIf="sponsorship.isPaid">{{msg["yes"]}}</span>
             <span class="no" *ngIf="!sponsorship.isPaid">{{msg["no"]}}</span>
         </p>
+        <div *ngIf="!sponsorship.isPaid" class="pay-button">
+            <button mat-raised-button color="accent" [disabled]="loadingPay[i]" (click)="pay(i)">{{msg["pay"]}}</button>
+            <mat-spinner *ngIf="loadingPay[i]" diameter="35" class="pay-button-spinner"></mat-spinner>
+        </div>
     </div>
 </div>
