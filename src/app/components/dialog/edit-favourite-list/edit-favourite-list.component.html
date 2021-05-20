@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{msg["favourite-lists/update-list"]}}</h2>
+<div mat-dialog-content>
+    <p>{{msg["favourite-lists/enter"]}}</p>
+    <mat-form-field>
+        <mat-label>{{msg["favourite-lists/title"]}}:</mat-label>
+        <input type="text" matInput [(ngModel)]="listTitle">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button class="cancel-button" mat-button (click)="onNoClick()">{{msg["cancel"]}}</button>
+    <button class="update-button" mat-button [mat-dialog-close]="listTitle" cdkFocusInitial>{{msg["favourite-lists/update"]}}</button>
+</div>

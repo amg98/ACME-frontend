@@ -1,16 +1,24 @@
 <h2 class="title">{{msg["favourite-lists"]}}</h2>
-<div class="sync-button">
+<div class="buttons-wrapper">
+    <button mat-raised-button class="add-list-button" (click)="newList()">{{msg["favourite-lists/add"]}}</button>
     <button mat-raised-button class="green" (click)="onSync()"
         [disabled]="loadingSync">{{msg["favourite-lists/sync"]}}</button>
     <mat-spinner *ngIf="loadingSync" diameter="35" class="spinner"></mat-spinner>
 </div>
 <mat-spinner *ngIf="loadingLists" diameter="35" class="lists-spinner"></mat-spinner>
 <div *ngFor="let list of favouriteLists.favouriteLists; let listIndex = index">
-    <h3 class="list-name">{{list.name}}</h3>
+    <div>
+        <span class="list-name">{{list.name}}</span>
+        <button mat-mini-fab class="list-button edit-list-button" (click)="editList(listIndex)"><mat-icon>edit</mat-icon></button>
+        <button mat-mini-fab class="list-button delete-list-button" (click)="deleteList(listIndex)"><mat-icon>delete</mat-icon></button>
+    </div>
     <div class="wrapper">
         <div *ngFor="let tripID of list.trips; let tripIndex = index" class="trip-card"
             [class.trip-about-hl]="isAboutToStart(trips[listIndex][tripIndex])"
             [class.trip-disabled]="trips[listIndex][tripIndex].isCancelled || isExpired(trips[listIndex][tripIndex])">
+            <div class="crud-wrapper">
+                <button mat-mini-fab class="delete-button" (click)="deleteTrip(listIndex, tripIndex)"><mat-icon>delete</mat-icon></button>
+            </div>
             <h4 class="trip-title">{{trips[listIndex][tripIndex].ticker}} - {{trips[listIndex][tripIndex].title}}
             </h4>
             <img class="trip-image" src="{{trips[listIndex][tripIndex].pictures[0]}}">

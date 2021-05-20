@@ -1,5 +1,8 @@
 import { Component } from "@angular/core"
+import { MatDialog } from "@angular/material/dialog"
 import { MatSnackBar } from "@angular/material/snack-bar"
+import { EditFavouriteListComponent } from "@components/dialog/edit-favourite-list/edit-favourite-list.component"
+import { NewFavouriteListComponent } from "@components/dialog/new-favourite-list/new-favourite-list.component"
 import { TranslatableComponent } from "@components/translatable/translatable.component"
 import { FavouriteListsService } from "@services/favourite-lists.service"
 import { TranslatorService } from "@services/translator.service"
@@ -23,7 +26,8 @@ export class FavouriteListsComponent extends TranslatableComponent {
     constructor(translator: TranslatorService,
         private snackbar: MatSnackBar,
         private favouriteListsService: FavouriteListsService,
-        private tripsService: TripsService) { 
+        private tripsService: TripsService,
+        private dialog: MatDialog) { 
         super(translator)
         this.getFavouriteLists()
     }
@@ -71,5 +75,55 @@ export class FavouriteListsComponent extends TranslatableComponent {
             this.showAlert("favourite-lists/sync-error", "alert-error")
         }
         this.loadingSync = false
+    }
+
+    deleteList(listIndex: number): void {
+        this.favouriteLists.favouriteLists.splice(listIndex, 1)
+        this.favouriteListsService.saveFavouriteLists()
+    }
+
+    deleteTrip(listIndex: number, tripIndex: number): void {
+        this.favouriteLists.favouriteLists[listIndex].trips.splice(tripIndex, 1)
+        this.trips[listIndex].splice(tripIndex, 1)
+        this.favouriteListsService.saveFavouriteLists()
+    }
+
+    newList(): void {
+        const dialogRef = this.dialog.open(NewFavouriteListComponent, {
+            width: "30em",
+            data: {}
+        })
+
+        dialogRef.afterClosed().subscribe(result => {
+            if(result === undefined) return
+            if(result === "") {
+                this.showAlert("favourite-lists/empty-list-name", "alert-info")
+                return
+            }
+
+            this.favouriteLists.favouriteLists.push({
+                name: result,
+                trips: []
+            })
+            this.favouriteListsService.saveFavouriteLists()
+        })
+    }
+
+    editList(listIndex: number): void {
+        const dialogRef = this.dialog.open(EditFavouriteListComponent, {
+            width: "30em",
+            data: { listTitle: this.favouriteLists.favouriteLists[listIndex].name }
+        })
+
+        dialogRef.afterClosed().subscribe(result => {
+            if(result === undefined) return
+            if(result === "") {
+                this.showAlert("favourite-lists/empty-list-name", "alert-info")
+                return
+            }
+
+            this.favouriteLists.favouriteLists[listIndex].name = result
+            this.favouriteListsService.saveFavouriteLists()
+        })
     }
 }
