@@ -4,51 +4,44 @@
     <h4 class="forms__title">{{msg["all-trips"]}}</h4>
     <table mat-table [dataSource]="dataSource">
 
-        <!-- Position Column -->
         <ng-container matColumnDef="ticker">
             <th mat-header-cell *matHeaderCellDef> {{msg["ticker"]}} </th>
             <td mat-cell *matCellDef="let trip"> {{trip.ticker}} </td>
         </ng-container>
 
-        <!-- Name Column -->
         <ng-container matColumnDef="title">
             <th mat-header-cell *matHeaderCellDef> {{msg["tittle"]}} </th>
-            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+            <td mat-cell *matCellDef="let trip"> {{trip.title}} </td>
         </ng-container>
 
-        <!-- Weight Column -->
         <ng-container matColumnDef="price">
             <th mat-header-cell *matHeaderCellDef> {{msg["price"]}} </th>
-            <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+            <td mat-cell *matCellDef="let trip"> {{trip.price}} </td>
         </ng-container>
 
-        <!-- Symbol Column -->
         <ng-container matColumnDef="startDate">
             <th mat-header-cell *matHeaderCellDef> {{msg["startDate"]}} </th>
-            <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+            <td mat-cell *matCellDef="let trip"> {{trip.startDate | date:"MM/dd/yy - hh:mm:ss"}} </td>
         </ng-container>
 
-        <!-- Symbol Column -->
         <ng-container matColumnDef="endDate">
             <th mat-header-cell *matHeaderCellDef> {{msg["endDate"]}} </th>
-            <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
+            <td mat-cell *matCellDef="let trip"> {{trip.endDate | date:"MM/dd/yy - hh:mm:ss"}} </td>
         </ng-container>
 
-        <!-- btn edit -->
-        <ng-container matColumnDef="cancelReason">
+        <ng-container matColumnDef="description">
             <th mat-header-cell *matHeaderCellDef> </th>
-            <td mat-cell *matCellDef="let element">
+            <td mat-cell *matCellDef="let trip">
                 <button mat-raised-button color="primary" type="submit"
-                    [disabled]="element.isPublished">{{msg.edit}}</button>
+                    [disabled]="trip.isPublished">{{msg.edit}}</button>
             </td>
         </ng-container>
 
-        <!-- btn cancel -->
-        <ng-container matColumnDef="description">
+        <ng-container matColumnDef="cancelReason">
             <th mat-header-cell *matHeaderCellDef> </th>
-            <td mat-cell *matCellDef="let element">
+            <td mat-cell *matCellDef="let trip">
                 <button mat-raised-button color="warn" type="button"
-                    [disabled]="element.isPublished">{{msg.delete}}</button>
+                    [disabled]=" !checkDate(trip.startDate)"(click)="onCancel(trip._id)">{{msg.cancel}}</button>
             </td>
         </ng-container>
 

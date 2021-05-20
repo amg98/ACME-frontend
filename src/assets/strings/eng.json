@@ -29,7 +29,6 @@
     "all-apps": "All applications",
     "all-trips": "All trips",
     "edit": "Edit",
-    "delete": "Delete",
     "ticker": "Ticker",
     "tittle": "Tittle",
     "price": "Price",
@@ -130,6 +129,7 @@
     "favourite-lists/sync-success": "Favourite lists have been successfully synchronized",
     "favourite-lists/sync": "Synchronize",
 
+    "trips/error": "Unable to retrieve the trips",
     "cancelled-trip": "Cancelled trip",
     "expired-trip": "Expired trip",
     "about-to-start-trip": "About to start",

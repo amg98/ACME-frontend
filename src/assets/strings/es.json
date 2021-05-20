@@ -29,7 +29,6 @@
     "all-apps": "Todas las reservas",
     "all-trips": "Todos los viajes",
     "edit": "Editar",
-    "delete": "Eliminar",
     "ticker": "Ticket",
     "tittle": "Titulo",
     "price": "Precio",
@@ -130,6 +129,7 @@
     "favourite-lists/sync-success": "Se han sincronizado las listas de favoritos satisfactoriamente",
     "favourite-lists/sync": "Sincronizar",
 
+    "trips/error": "No se han podido obtener los viajes",
     "cancelled-trip": "Cancelado",
     "expired-trip": "Finalizado",
     "about-to-start-trip": "A punto de comenzar",
