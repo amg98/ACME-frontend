@@ -79,11 +79,11 @@ export class TripsManagerListComponent extends TranslatableComponent implements 
         } catch {
             this.showAlert("trips/error-cancel", "alert-error")
         }
-        console.log(index)
-        this.trips.slice(index,1)
-        this.dataSource.data = this.trips
-        
 
+        // console.log(index)
+        // this.trips.slice(index,1)
+        // this.dataSource.data = this.trips
+        
         this.showSpiner = false
     }
 
