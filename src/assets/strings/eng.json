@@ -112,6 +112,7 @@
     "applications/reject-reason": "Rejection reason",
     "applications/reject-action": "Reject",
     "applications/comments": "Comments",
+    "applications/no-apps": "There are no applications right now",
     "cancel": "Cancel",
 
     "PENDING": "Pending",

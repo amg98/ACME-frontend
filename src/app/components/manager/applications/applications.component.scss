@@ -32,6 +32,19 @@
     padding-bottom: 0.5em;
 }
 
+.no-apps-message {
+    display: block;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0 auto;
+    color: #999;
+    max-width: 50%;
+    padding: 1em;
+    border-top: 1px solid #888;
+    border-bottom: 1px solid #888;
+    text-shadow: 1px 1px rgba(#000, 0.4);
+}
+
 .accordion {
     margin-left: 5%;
     margin-right: 5%;
