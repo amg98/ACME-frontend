@@ -1,0 +1,76 @@
+<div class="trip">
+    <div>
+    <h3 class="title">{{trip.title}}</h3>
+
+    <!-- <app-add-to-favourites tripID=trip._id></app-add-to-favourites> -->
+
+    <!-- boton solicitar -->
+  <div class="btn-apply">
+    <div *ngIf="trip != undefined && trip !=null"></div>
+    <button mat-raised-button  *ngIf = "isExplorer && !trip.isCancelled" color="accent" (click)="onApply(trip._id!)" id="applybutton" class="btn btn-primary">
+      {{apply}}
+    </button>
+  </div> 
+  </div>
+  
+  <mat-card class="card">
+  
+  <mat-card class= "card1">
+    <h3 class="card-title The-explorer-4-hex">Ticker: {{trip.ticker}}</h3>
+    <h3 class="card-title The-explorer-4-hex">{{price}}: {{trip.price}}&euro;</h3>
+    <h3>{{startDate}}: {{trip.startDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
+    <h3>{{endDate}}: {{trip.endDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
+     <!-- requeriments -->
+    <mat-card *ngIf= "trip.requeriments != null">
+      <div *ngFor="let requeriment of trip.requeriments; let i = index">
+        <p>{{i}}:{{requeriment}}</p>
+      </div>
+    </mat-card>
+    <!-- stages -->
+  <mat-card>
+    <mat-accordion>
+      
+      <mat-expansion-panel class="accordion" *ngFor="let stage of trip.stages">
+          <mat-expansion-panel-header>
+              <mat-panel-title><b>{{stage.title}}</b>
+              </mat-panel-title>
+              <mat-panel-description class="panel-description">
+              </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="panel-content">
+            <p class="content-section" class="content">{{stage.description}}</p>
+            <p class="content-section" class="content">{{stage.price}}&euro;
+            </p>
+          </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+    </mat-card>
+  </mat-card>
+  
+  <mat-card>
+    <h3>{{trip.description}}</h3>
+  </mat-card>
+  
+  
+
+  
+  <mat-card class="carousel-data">
+    <mat-grid-list cols="2" rowHeight="200px" class="carousel-data" *ngFor="let picture of trip.pictures let i = index;" >
+        <mat-grid-tile>     
+           <img class="m-t-0 m-b-0 "[src]="getPicture(i)" alt="" layout-fill>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-card>
+</mat-card>
+
+  <!-- Calling jquery first -->
+  <script language="JavaScript" type="text/javascript" src="scripts/jquery.js"></script>
+  <script language="JavaScript" type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <!-- Carousel -->
+  <script language="JavaScript" type="text/javascript">
+    $(document).ready(function(){
+      $('.carousel').carousel({
+        interval: 3000
+      })
+    });    
+  </script>  

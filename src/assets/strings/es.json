@@ -145,5 +145,33 @@
     "flat-rate/success": "Se ha modificado el precio satisfactoriamente",
     "flat-rate/error": "Ha ocurrido un error modificando el precio",
     "flat-rate/enter": "Introduce el nuevo precio (€)",
-    "flat-rate/update": "Actualizar"
+    "flat-rate/update": "Actualizar",
+
+    "tripDeletedText": "Viaje eliminado con éxito",
+    "tripCreatedText": "Viaje creado con éxito",
+    "tripUpdatedText": "Viaje actualizado con éxito",
+    "tripCanceledText": "Viaje cancelado con éxito",
+    "finderSavedText": "Finder guardado con éxito",
+    "tripDetailsText": "Detalles del viaje",
+    "back": "Atrás",
+    "delete": "Eliminar",
+    "placeHolder": "Introducir",
+
+    "seeTripFromApplicationText": "Ver viaje",
+    "applicationCreatedSuccessText": "Aplicación creada con éxito",
+    "applicationCreatedFailureText": "La aplicación no se ha creado debido a un error, por favor inténtelo más tarde",
+    "price":"Precio",
+    "title": "Título",
+    "description": "Descripción",
+    "ticker": "Ticker",
+    "startDate": "Fecha inicio",
+    "endDate": "Fecha fin",
+    "stages": "Etapas",
+    "apply": "Aplicar",
+    "requeriments" : "Requisitos",
+
+    "newTripFormText": "Formulario Nuevo Viaje",
+    "addRequeriments": "Añade requisitos",
+    "dates": "Fechas",
+    "newTrip": "Nuevo Viaje"
 }

@@ -40,7 +40,7 @@ export class LoginComponent extends TranslatableComponent {
                 duration: 5000,
                 panelClass: [ "alert-success" ]
             })
-            this.router.navigate(["/"])
+            this.router.navigate(["/trips"])
         } catch {
             this.loginForm.reset()
             this.snackbar.open(this.msg["login-failure"], this.msg.close, {

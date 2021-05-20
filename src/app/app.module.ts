@@ -20,6 +20,9 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatSidenavModule } from "@angular/material/sidenav"
 import { MatDialogModule } from "@angular/material/dialog"
 import { MatExpansionModule } from "@angular/material/expansion"
+import { MatCarouselModule } from '@ngmodule/material-carousel';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 import { AppRoutingModule } from "./app-routing.module"
 import { AppComponent } from "./app.component"
@@ -45,7 +48,10 @@ import { FavouriteListsComponent } from "./components/favourite-lists/favourite-
 import { SponsorshipsComponent } from "./components/sponsorships/sponsorships.component"
 import { FlatRateComponent } from "./components/flat-rate/flat-rate.component"
 import { DialogFlatRateComponent } from "./components/dialog/flat-rate/flat-rate.component"
-import { SponsorshipPaymentComponent } from "./components/sponsorship-payment/sponsorship-payment.component"
+import { SponsorshipPaymentComponent } from "./components/sponsorship-payment/sponsorship-payment.component";
+import { TripDisplayComponent } from './components/trips/trip-display/trip-display.component';
+import { TripFormComponent } from './components/trips/trip-form/trip-form.component';
+import { TripListComponent } from './components/trips/trip-list/trip-list.component'
 
 @NgModule({
     declarations: [
@@ -71,6 +77,10 @@ import { SponsorshipPaymentComponent } from "./components/sponsorship-payment/sp
         FlatRateComponent,
         DialogFlatRateComponent,
         SponsorshipPaymentComponent,
+        TripDisplayComponent,
+        TripFormComponent,
+        FooterComponent,
+        TripListComponent,
     ],
     imports: [
         CommonModule,
@@ -94,6 +104,8 @@ import { SponsorshipPaymentComponent } from "./components/sponsorship-payment/sp
         MatExpansionModule,
         PlotlyModule,
         FormsModule,
+        MatCarouselModule,
+        MatGridListModule
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

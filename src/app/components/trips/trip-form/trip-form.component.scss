@@ -1,0 +1,7 @@
+@import "../../../shared/styles/forms.scss";
+
+.validation-error-text {
+    margin-left: 21%;
+    padding-top: 5%;
+    color: $forms__errorColor;
+}
