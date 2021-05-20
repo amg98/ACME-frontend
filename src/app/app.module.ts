@@ -46,6 +46,7 @@ import { SponsorshipsComponent } from "./components/sponsorships/sponsorships.co
 import { FlatRateComponent } from "./components/flat-rate/flat-rate.component"
 import { DialogFlatRateComponent } from "./components/dialog/flat-rate/flat-rate.component"
 import { SponsorshipPaymentComponent } from "./components/sponsorship-payment/sponsorship-payment.component"
+import { SponsorshipComponent } from "./components/forms/sponsorship/sponsorship.component"
 
 @NgModule({
     declarations: [
@@ -71,6 +72,7 @@ import { SponsorshipPaymentComponent } from "./components/sponsorship-payment/sp
         FlatRateComponent,
         DialogFlatRateComponent,
         SponsorshipPaymentComponent,
+        SponsorshipComponent,
     ],
     imports: [
         CommonModule,

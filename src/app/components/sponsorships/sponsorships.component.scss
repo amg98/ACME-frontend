@@ -21,6 +21,26 @@
     row-gap: 3em;
 }
 
+.crud-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+}
+
+.crud-button {
+    margin-top: 1em;
+    margin-right: 1em;
+    background-color: transparent;
+}
+
+.edit-button {
+    color: #2196F3;
+}
+
+.delete-button {
+    color: #f44336;
+}
+
 .image {
     display: block;
     margin: 0 auto;

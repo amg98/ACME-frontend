@@ -9,6 +9,8 @@
     "yes": "Sí",
     "no": "No",
     "pay": "Pagar",
+    "update": "Actualizar",
+    "create": "Crear",
 
     "register-form": "Formulario de registro",
     "name": "Nombre",
@@ -28,6 +30,7 @@
     "edit-profile": "Editar perfil",
     "stats": "Estadísticas",
     "all-apps": "Todas las reservas",
+    "url-validation": "La URL no es correcta",
 
     "registration-success": "Se ha creado el usuario satisfactoriamente",
     "registration-failure": "Ha ocurrido un error creando el usuario",
@@ -133,6 +136,16 @@
     "sponsorships/landing-page-link": "Enlace de la promoción",
     "sponsorships/isPaid": "Pagado",
     "sponsorships/payment-error": "Ha ocurrido un error preparando el pago",
+    "sponsorships/create-success": "Se ha creado la promoción correctamente",
+    "sponsorships/create-error": "Ha ocurrido un error creando la promoción",
+    "sponsorships/edit-success": "Se ha actualizado la promoción correctamente",
+    "sponsorships/edit-error": "Ha ocurrido un error actualizando la promoción",
+    "sponsorships/edit": "Editar promoción",
+    "sponsorships/create": "Nueva promoción",
+    "sponsorships/bannerURL": "Imagen del anuncio",
+    "sponsorships/landingPageURL": "URL del anuncio",
+    "sponsorships/delete-success": "Se ha eliminado la promoción correctamente",
+    "sponsorships/delete-error": "Ha ocurrido un error eliminando la promoción",
 
     "payment-logging-in": "Iniciando sesión de nuevo",
     "payment-paying": "Realizando el pago",

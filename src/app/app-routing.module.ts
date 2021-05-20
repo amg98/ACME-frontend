@@ -16,6 +16,7 @@ import { ExplorerGuard } from "./guards/explorer.guard"
 import { SponsorshipsComponent } from "@components/sponsorships/sponsorships.component"
 import { SponsorGuard } from "./guards/sponsor.guard"
 import { SponsorshipPaymentComponent } from "@components/sponsorship-payment/sponsorship-payment.component"
+import { SponsorshipComponent } from "@components/forms/sponsorship/sponsorship.component"
 
 export const routes: Routes = [
     { path: "register", component: RegisterComponent },
@@ -27,7 +28,8 @@ export const routes: Routes = [
     { path: "manager/apps", component: ManagerApplicationsComponent, canActivate: [ManagerGuard] },
     { path: "explorer/favourite-lists", component: FavouriteListsComponent, canActivate: [ExplorerGuard] },
     { path: "sponsor/sponsorships", component: SponsorshipsComponent, canActivate: [SponsorGuard] },
-    { path: "sponsorship-payment", component: SponsorshipPaymentComponent }
+    { path: "sponsorship-payment", component: SponsorshipPaymentComponent },
+    { path: "sponsorship-form", component: SponsorshipComponent, canActivate: [SponsorGuard] },
 ]
 
 @NgModule({

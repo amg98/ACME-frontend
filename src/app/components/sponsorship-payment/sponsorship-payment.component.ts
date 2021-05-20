@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from "@angular/core"
-import { ActivatedRoute, Router } from "@angular/router"
+import { ActivatedRoute } from "@angular/router"
 import { TranslatableComponent } from "@components/translatable/translatable.component"
 import { ActorsService } from "@services/actors.service"
 import { SponsorshipsService } from "@services/sponsorships.service"

@@ -40,4 +40,16 @@ export class SponsorshipsService {
         }).toPromise()
         localStorage.removeItem("sponsorship-payment")
     }
+
+    async createSponsorship(sponsorship: Sponsorship): Promise<void> {
+        await this.client.post(`${environment.backendURL}/sponsorships`, { sponsorship }).toPromise()
+    }
+
+    async updateSponsorship(sponsorship: Sponsorship): Promise<void> {
+        await this.client.put(`${environment.backendURL}/sponsorships/${sponsorship._id}`, { sponsorship }).toPromise()
+    }
+
+    async deleteSponsorship(sponsorship: Sponsorship): Promise<void> {
+        await this.client.delete(`${environment.backendURL}/sponsorships/${sponsorship._id}`).toPromise()
+    }
 }
