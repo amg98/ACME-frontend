@@ -1,0 +1,9 @@
+<h3 class="message" *ngIf="state == PaymentState.LOGGING_IN">{{msg["payment-logging-in"]}}</h3>
+<h3 class="message" *ngIf="state == PaymentState.PAYING">{{msg["payment-paying"]}}</h3>
+<h3 class="message message-cancelled" *ngIf="state == PaymentState.CANCELLED">{{msg["payment-cancelled"]}}</h3>
+<h3 class="message" *ngIf="state == PaymentState.DONE">{{msg["payment-done"]}}</h3>
+<h3 class="message" *ngIf="state == PaymentState.ERROR">{{msg["payment-error"]}}</h3>
+<mat-spinner *ngIf="state == PaymentState.LOGGING_IN || state == PaymentState.PAYING" diameter="35" class="spinner">
+</mat-spinner>
+<button color="accent" class="button" *ngIf="state == PaymentState.CANCELLED || state == PaymentState.DONE || state == PaymentState.ERROR"
+    mat-raised-button routerLink="/sponsor/sponsorships">{{msg["go-back"]}}</button>

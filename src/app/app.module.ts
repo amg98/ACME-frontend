@@ -22,6 +22,7 @@ import { MatDialogModule } from "@angular/material/dialog"
 import { MatExpansionModule } from "@angular/material/expansion"
 import { MatTableModule } from "@angular/material/table"
 import { MatPaginatorModule } from "@angular/material/paginator"
+import { MatMenuModule } from "@angular/material/menu"
 
 import { AppRoutingModule } from "./app-routing.module"
 import { AppComponent } from "./app.component"
@@ -45,8 +46,15 @@ import { ManagerApplicationsComponent } from "./components/manager/applications/
 import { RejectApplicationComponent } from "./components/dialog/reject-application/reject-application.component"
 import { TripsManagerListComponent } from "./components/manager/trips-manager-list/trips-manager-list.component"
 import { FavouriteListsComponent } from "./components/favourite-lists/favourite-lists.component"
-import { SponsorshipsComponent } from "./components/sponsorships/sponsorships.component";
-import { CancelTripComponent } from './components/dialog/cancel-trip/cancel-trip.component'
+import { CancelTripComponent } from "./components/dialog/cancel-trip/cancel-trip.component"
+import { SponsorshipsComponent } from "./components/sponsorships/sponsorships.component"
+import { FlatRateComponent } from "./components/flat-rate/flat-rate.component"
+import { DialogFlatRateComponent } from "./components/dialog/flat-rate/flat-rate.component"
+import { SponsorshipPaymentComponent } from "./components/sponsorship-payment/sponsorship-payment.component"
+import { SponsorshipComponent } from "./components/forms/sponsorship/sponsorship.component"
+import { NewFavouriteListComponent } from "./components/dialog/new-favourite-list/new-favourite-list.component"
+import { EditFavouriteListComponent } from "./components/dialog/edit-favourite-list/edit-favourite-list.component"
+import { AddToFavouritesComponent } from "./components/add-to-favourites/add-to-favourites.component"
 
 @NgModule({
     declarations: [
@@ -71,6 +79,13 @@ import { CancelTripComponent } from './components/dialog/cancel-trip/cancel-trip
         FavouriteListsComponent,
         SponsorshipsComponent,
         CancelTripComponent,
+        FlatRateComponent,
+        DialogFlatRateComponent,
+        SponsorshipPaymentComponent,
+        SponsorshipComponent,
+        NewFavouriteListComponent,
+        EditFavouriteListComponent,
+        AddToFavouritesComponent,
     ],
     imports: [
         CommonModule,
@@ -92,6 +107,7 @@ import { CancelTripComponent } from './components/dialog/cancel-trip/cancel-trip
         MatSidenavModule,
         MatDialogModule,
         MatExpansionModule,
+        MatMenuModule,
         PlotlyModule,
         FormsModule,
         MatTableModule,

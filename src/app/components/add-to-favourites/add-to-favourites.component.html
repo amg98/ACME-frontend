@@ -1,0 +1,6 @@
+<div *ngIf="isExplorer">
+    <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">{{msg["favourite-lists/add-to-favourites"]}}</button>
+    <mat-menu #menu="matMenu">
+        <button *ngFor="let list of lists; let i = index" (click)="addToList(i)" class="list-name" mat-menu-item>{{list}}</button>
+    </mat-menu>
+</div>
