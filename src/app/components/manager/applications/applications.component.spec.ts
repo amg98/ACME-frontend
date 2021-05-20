@@ -1,25 +1,25 @@
-/*import { ComponentFixture, TestBed } from "@angular/core/testing"
+import { ComponentFixture, TestBed } from "@angular/core/testing"
 
-import { ApplicationsComponent } from "./applications.component"*/
+import { ManagerApplicationsComponent } from "./applications.component"
 
-describe("ApplicationsComponent", () => {
-    /*let component: ApplicationsComponent
-    let fixture: ComponentFixture<ApplicationsComponent>
+fdescribe("ManagerApplicationsComponent", () => {
+    let component: ManagerApplicationsComponent
+    let fixture: ComponentFixture<ManagerApplicationsComponent>
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [ ApplicationsComponent ]
+            declarations: [ ManagerApplicationsComponent ]
         })
             .compileComponents()
     })
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(ApplicationsComponent)
+        fixture = TestBed.createComponent(ManagerApplicationsComponent)
         component = fixture.componentInstance
         fixture.detectChanges()
     })
 
     it("should create", () => {
         expect(component).toBeTruthy()
-    })*/
+    })
 })

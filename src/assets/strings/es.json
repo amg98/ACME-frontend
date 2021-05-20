@@ -112,6 +112,7 @@
     "applications/accept-action": "Aceptar",
     "applications/reject-action": "Rechazar",
     "applications/comments": "Comentarios",
+    "applications/no-apps": "No hay reservas por el momento",
     "cancel": "Cancelar",
 
     "PENDING": "Pendiente",
