@@ -133,6 +133,9 @@
     "favourite-lists/update": "Actualizar",
     "favourite-lists/empty-list-name": "El nombre de la lista no puede estar vacío",
     "favourite-lists/add": "Añadir lista",
+    "favourite-lists/add-to-favourites": "Añadir a favoritos",
+    "favourite-lists/already-exists": "El viaje ya ha sido añadido a esta lista",
+    "favourite-lists/add-success": "El viaje ha sido añadido satisfactoriamente",
 
     "cancelled-trip": "Cancelado",
     "expired-trip": "Finalizado",
