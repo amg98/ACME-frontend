@@ -45,7 +45,8 @@ import { ManagerApplicationsComponent } from "./components/manager/applications/
 import { RejectApplicationComponent } from "./components/dialog/reject-application/reject-application.component"
 import { TripsManagerListComponent } from "./components/manager/trips-manager-list/trips-manager-list.component"
 import { FavouriteListsComponent } from "./components/favourite-lists/favourite-lists.component"
-import { SponsorshipsComponent } from "./components/sponsorships/sponsorships.component"
+import { SponsorshipsComponent } from "./components/sponsorships/sponsorships.component";
+import { CancelTripComponent } from './components/dialog/cancel-trip/cancel-trip.component'
 
 @NgModule({
     declarations: [
@@ -69,6 +70,7 @@ import { SponsorshipsComponent } from "./components/sponsorships/sponsorships.co
         TripsManagerListComponent,
         FavouriteListsComponent,
         SponsorshipsComponent,
+        CancelTripComponent,
     ],
     imports: [
         CommonModule,

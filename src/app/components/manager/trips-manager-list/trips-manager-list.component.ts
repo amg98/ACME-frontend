@@ -7,6 +7,8 @@ import { TranslatableComponent } from "@components/translatable/translatable.com
 import { TranslatorService } from "@services/translator.service"
 import { Trip } from "src/app/models/Trip"
 import { TripsService } from "@services/trips.service"
+import { MatDialog } from "@angular/material/dialog"
+import { CancelTripComponent } from "@components/dialog/cancel-trip/cancel-trip.component"
 
 @Component({
     selector: "app-trips-manager-list",
@@ -24,8 +26,10 @@ export class TripsManagerListComponent extends TranslatableComponent implements 
     currentDate = new Date()
 
     @ViewChild(MatPaginator) paginator!: MatPaginator
+    showSpiner = false
 
-    constructor(translator: TranslatorService, private snackBar: MatSnackBar, private tripsService: TripsService) {
+    constructor(translator: TranslatorService, private tripsService: TripsService,
+        private snackBar: MatSnackBar, private dialogRef: MatDialog) {
         super(translator)
         this.dataSource = new MatTableDataSource<Trip>()
     }
@@ -48,8 +52,39 @@ export class TripsManagerListComponent extends TranslatableComponent implements 
         return ((new Date(date).getTime() - this.currentDate.getTime()) / (1000 * 60 * 60 * 24) > 7)
     }
 
-    onCancel(tripId: string): void {
-        console.log(tripId)
+    onCancel(trip: Trip, index: number): void {
+        if (!this.trips) return
+        console.log("on cancel", trip)
+        const dialogRef = this.dialogRef.open(CancelTripComponent, {
+            width: "30em",
+            data: { cancelReason: "" }
+        })
+
+        dialogRef.afterClosed().subscribe(res => {
+            if (res === undefined) return
+            if (res === "") {
+                this.showAlert("trips/no-reason", "alert-info")
+                return
+            }
+            this.cancelTrip(trip, index, res)
+        })
+    }
+
+    async cancelTrip(trip: Trip, index: number, cancelReason: string): Promise<void> {
+        if (!this.trips) return
+        this.showSpiner = true
+        try {
+            trip.cancelReason = cancelReason
+            await this.tripsService.cancelTripByManager(trip, cancelReason)
+        } catch {
+            this.showAlert("trips/error-cancel", "alert-error")
+        }
+        console.log(index)
+        this.trips.slice(index,1)
+        this.dataSource.data = this.trips
+        
+
+        this.showSpiner = false
     }
 
     showAlert(messageID: string, panelClass: string): void {

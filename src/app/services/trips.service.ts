@@ -31,8 +31,9 @@ export class TripsService {
         this.searchResults.next(results)
     }
 
-    async cancelTripByManager(tripId: string, cancelReason = ""): Promise<void> {
-        await this.client.put(`${environment.backendURL}/trips/${tripId}/cancel`, { 
+    async cancelTripByManager(trip: Trip, cancelReason = ""): Promise<void> {
+        console.log(cancelReason)
+        await this.client.put(`${environment.backendURL}/trips/${trip._id}/cancel`, { 
             cancelReason: cancelReason
         }).toPromise()      
     }

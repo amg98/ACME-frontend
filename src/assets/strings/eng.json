@@ -129,6 +129,12 @@
     "favourite-lists/sync-success": "Favourite lists have been successfully synchronized",
     "favourite-lists/sync": "Synchronize",
 
+    "back":"Back",
+    "trips/cancel": "Cancel trip",
+    "trips/enter-reason": "Enter the reason",
+    "trips/cancel-reason": "Cancel reason",
+    "trips/no-reason": "No reason has been specified",
+    "trips/error-cancel": "Unable to cancel the trip",
     "trips/error": "Unable to retrieve the trips",
     "cancelled-trip": "Cancelled trip",
     "expired-trip": "Expired trip",

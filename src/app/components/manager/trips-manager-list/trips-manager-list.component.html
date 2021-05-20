@@ -2,6 +2,7 @@
 <div *ngIf="dataSource != null">
 
     <h4 class="forms__title">{{msg["all-trips"]}}</h4>
+    <mat-spinner *ngIf="showSpiner" diameter="35"></mat-spinner>
     <table mat-table [dataSource]="dataSource">
 
         <ng-container matColumnDef="ticker">
@@ -39,9 +40,9 @@
 
         <ng-container matColumnDef="cancelReason">
             <th mat-header-cell *matHeaderCellDef> </th>
-            <td mat-cell *matCellDef="let trip">
+            <td mat-cell *matCellDef="let trip; let i = index">
                 <button mat-raised-button color="warn" type="button"
-                    [disabled]=" !checkDate(trip.startDate)"(click)="onCancel(trip._id)">{{msg.cancel}}</button>
+                    [disabled]="trip.isCancelled || !checkDate(trip.startDate)"(click)="onCancel(trip, i)">{{msg.cancel}}</button>
             </td>
         </ng-container>
 
