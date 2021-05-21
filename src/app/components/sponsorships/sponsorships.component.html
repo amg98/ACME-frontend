@@ -2,6 +2,10 @@
 <mat-spinner *ngIf="loading" diameter="35" class="spinner"></mat-spinner>
 <div class="wrapper">
     <div *ngFor="let sponsorship of sponsorships; let i = index" class="card">
+        <div class="crud-wrapper">
+            <button mat-mini-fab class="crud-button edit-button" (click)="edit(sponsorship)"><mat-icon>edit</mat-icon></button>
+            <button mat-mini-fab class="crud-button delete-button" (click)="remove(sponsorship)"><mat-icon>delete</mat-icon></button>
+        </div>
         <h3 *ngIf="trips.length > 0" class="card-title">{{trips[i].ticker}} - {{trips[i].title}}</h3>
         <img class="image" src="{{sponsorship.bannerURL}}">
         <a class="detail link" href="{{sponsorship.landingPageURL}}">{{msg["sponsorships/landing-page-link"]}}</a>

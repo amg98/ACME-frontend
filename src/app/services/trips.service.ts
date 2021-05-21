@@ -83,20 +83,6 @@ export class TripsService {
         this.client.delete(`${environment.backendURL}/trips/${id}`, httpOptions).toPromise();
     }
 
-    async cancelTrip(cancelReason: string , id: string) {
-        const url = `${environment.backendURL}/trips/${id}/cancel`;
-        const headers = new HttpHeaders();
-        headers.append("Content-Type", "application/json");
-
-        const body = JSON.stringify({ reasonCancel: cancelReason });
-        console.log(body);
-        return new Promise<any>((resolve, reject) => {
-            this.client.put(url, body, httpOptions).toPromise()
-                .then(res => {
-                    resolve(res);
-                }, err => {console.error(err); reject(err); });
-        });
-    }
     async searchTrips(start: number, 
         psize: number, 
         keyword: string, 
@@ -117,5 +103,10 @@ export class TripsService {
         return this.client.get<Trip[]>(`${environment.backendURL}/trips/search`, {
             params: parameters, observe: "body",
         }).toPromise();
+
+    async cancelTripByManager(trip: Trip, cancelReason = ""): Promise<void> {
+        await this.client.put(`${environment.backendURL}/trips/${trip._id}/cancel`, { 
+            cancelReason: cancelReason
+        }).toPromise()      
     }
 }

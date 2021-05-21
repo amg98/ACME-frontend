@@ -20,11 +20,16 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatSidenavModule } from "@angular/material/sidenav"
 import { MatDialogModule } from "@angular/material/dialog"
 import { MatExpansionModule } from "@angular/material/expansion"
+
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MatFileUploadModule } from 'angular-material-fileupload';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatTableModule } from "@angular/material/table"
+import { MatPaginatorModule } from "@angular/material/paginator"
+import { MatMenuModule } from "@angular/material/menu"
+
 
 import { AppRoutingModule } from "./app-routing.module"
 import { AppComponent } from "./app.component"
@@ -46,14 +51,23 @@ import { UsersListComponent } from "./components/users-list/users-list.component
 import { CubeComponent } from "./components/stats/cube/cube.component"
 import { ManagerApplicationsComponent } from "./components/manager/applications/applications.component"
 import { RejectApplicationComponent } from "./components/dialog/reject-application/reject-application.component"
+import { TripsManagerListComponent } from "./components/manager/trips-manager-list/trips-manager-list.component"
 import { FavouriteListsComponent } from "./components/favourite-lists/favourite-lists.component"
+import { CancelTripComponent } from "./components/dialog/cancel-trip/cancel-trip.component"
 import { SponsorshipsComponent } from "./components/sponsorships/sponsorships.component"
 import { FlatRateComponent } from "./components/flat-rate/flat-rate.component"
 import { DialogFlatRateComponent } from "./components/dialog/flat-rate/flat-rate.component"
+
 import { SponsorshipPaymentComponent } from "./components/sponsorship-payment/sponsorship-payment.component";
 import { TripDisplayComponent } from './components/trips/trip-display/trip-display.component';
 import { TripFormComponent } from './components/trips/trip-form/trip-form.component';
 import { TripListComponent } from './components/trips/trip-list/trip-list.component'
+import { SponsorshipComponent } from "./components/forms/sponsorship/sponsorship.component"
+import { NewFavouriteListComponent } from "./components/dialog/new-favourite-list/new-favourite-list.component"
+import { EditFavouriteListComponent } from "./components/dialog/edit-favourite-list/edit-favourite-list.component"
+import { AddToFavouritesComponent } from "./components/add-to-favourites/add-to-favourites.component"
+import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-explorer-list.component"
+
 
 @NgModule({
     declarations: [
@@ -74,8 +88,10 @@ import { TripListComponent } from './components/trips/trip-list/trip-list.compon
         CubeComponent,
         ManagerApplicationsComponent,
         RejectApplicationComponent,
+        TripsManagerListComponent,
         FavouriteListsComponent,
         SponsorshipsComponent,
+        CancelTripComponent,
         FlatRateComponent,
         DialogFlatRateComponent,
         SponsorshipPaymentComponent,
@@ -83,7 +99,11 @@ import { TripListComponent } from './components/trips/trip-list/trip-list.compon
         TripFormComponent,
         FooterComponent,
         TripListComponent,
-    
+        SponsorshipComponent,
+        NewFavouriteListComponent,
+        EditFavouriteListComponent,
+        AddToFavouritesComponent,
+        AppsExplorerListComponent,
     ],
     imports: [
         CommonModule,
@@ -105,6 +125,7 @@ import { TripListComponent } from './components/trips/trip-list/trip-list.compon
         MatSidenavModule,
         MatDialogModule,
         MatExpansionModule,
+        MatMenuModule,
         PlotlyModule,
         FormsModule,
         MatCarouselModule,
@@ -113,6 +134,8 @@ import { TripListComponent } from './components/trips/trip-list/trip-list.compon
         MatFileUploadModule,
         MatDatepickerModule,
         MatNativeDateModule
+        MatTableModule,
+        MatPaginatorModule
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
