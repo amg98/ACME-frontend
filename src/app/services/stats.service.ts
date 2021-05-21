@@ -5,7 +5,7 @@ import { environment } from "@env/environment"
 export interface Stats {
     min: number,
     max: number,
-    mean: number,
+    avg: number,
     stdv: number
 }
 

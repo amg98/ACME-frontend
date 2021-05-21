@@ -30,4 +30,10 @@ export class TripsService {
         const results = await this.client.get(`${environment.backendURL}/trips/search/${keyword}`).toPromise() as Trip[]
         this.searchResults.next(results)
     }
+
+    async cancelTripByManager(trip: Trip, cancelReason = ""): Promise<void> {
+        await this.client.put(`${environment.backendURL}/trips/${trip._id}/cancel`, { 
+            cancelReason: cancelReason
+        }).toPromise()      
+    }
 }

@@ -7,6 +7,7 @@
         <h3 class="trip-title">{{trip.ticker}} - {{trip.title}}</h3>
 
         <!-- Application -->
+        <p *ngIf="data.apps[tripIndex].length === 0" class="no-apps-message">{{msg["applications/no-apps"]}}</p>
         <mat-accordion>
             <mat-expansion-panel class="accordion" *ngFor="let app of data.apps[tripIndex]; let appIndex = index">
                 <mat-expansion-panel-header>

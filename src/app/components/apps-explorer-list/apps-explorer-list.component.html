@@ -1,0 +1,160 @@
+<mat-spinner *ngIf="!(pending.length > 0 || due.length > 0 || accepted.length > 0 || rejected.length > 0 || cancelled.length > 0)" diameter="35" class="spinner">
+</mat-spinner>
+<h2 class="title">{{ msg["my-apps"] }}</h2>
+
+<div class="accordion" *ngIf="pending.length > 0 || due.length > 0 || accepted.length > 0 || rejected.length > 0 || cancelled.length > 0">
+    <mat-accordion>
+
+        <div *ngIf="pending.length > 0">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <span class="badge pending">
+                            {{ msg["applications/pending"]}}
+                        </span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-accordion>
+                    <div *ngFor="let app of pending; let appIndex = index">
+                        <mat-expansion-panel class="pending">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{ app.timeStamp | date: "MM/dd/yy - hh:mm:ss" }}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p class="content-section" *ngIf="app.comments">
+                                {{msg["applications/comments"]}}: <q class="content">{{app.comments}}</q>
+                            </p>
+                            <div class="buttons">
+                                <button class="cancel-button" mat-raised-button
+                                    (click)="onCancel(appIndex)">{{msg["cancel"]}}</button>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+                </mat-accordion>
+            </mat-expansion-panel>
+        </div>
+
+        <div *ngIf="due.length > 0">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <span class="badge due">
+                            {{ msg["applications/due"]}}
+                        </span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-accordion>
+                    <div *ngFor="let app of due; let appIndex = index">
+                        <mat-expansion-panel class="due">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{ app.timeStamp | date: "MM/dd/yy - hh:mm:ss" }}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p class="content-section" *ngIf="app.comments">
+                                {{msg["applications/comments"]}}: <q class="content">{{app.comments}}</q>
+                            </p>
+                            <div class="buttons">
+                                <button class="pay-button" mat-raised-button
+                                    (click)="onPay(appIndex)">{{msg["applications/pay"]}}</button>
+
+                                <!-- <mat-spinner *ngIf="app.status === pending" diameter="35"></mat-spinner> -->
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+                </mat-accordion>
+            </mat-expansion-panel>
+        </div>
+
+        <div *ngIf="accepted.length > 0">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <span class="badge accepted">
+                            {{ msg["applications/accepted"] }}
+                        </span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-accordion>
+                    <div *ngFor="let app of accepted; let appIndex = index">
+                        <mat-expansion-panel class="accepted">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{ app.timeStamp | date: "MM/dd/yy - hh:mm:ss" }}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p class="content-section" *ngIf="app.comments">
+                                {{msg["applications/comments"]}}: <q class="content">{{app.comments}}</q>
+                            </p>
+                            <div class="buttons">
+                                <button class="cancel-button" mat-raised-button
+                                    (click)="onCancel(appIndex)">{{msg["cancel"]}}</button>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+                </mat-accordion>
+            </mat-expansion-panel>
+        </div>
+        <div *ngIf="rejected.length > 0">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <span class="badge rejected">
+                            {{ msg["applications/rejected"] }}
+                        </span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-accordion>
+                    <div *ngFor="let app of rejected; let appIndex = index">
+                        <mat-expansion-panel class="rejected">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{ app.timeStamp | date: "MM/dd/yy - hh:mm:ss" }}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p class="content-section" *ngIf="app.comments">
+                                {{msg["applications/comments"]}}: <q class="content">{{app.comments}}</q>
+                            </p>
+                            <p class="content-section" *ngIf="app.rejectReason">
+                                {{msg["applications/reject-reason"]}}: <q class="content">{{app.rejectReason}}</q>
+                            </p>
+                        </mat-expansion-panel>
+                    </div>
+                </mat-accordion>
+            </mat-expansion-panel>
+        </div>
+
+        <div *ngIf="cancelled.length > 0">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <span class="badge cancelled">
+                            {{msg["applications/cancelled"]}}
+                        </span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-accordion>
+                    <div *ngFor="let app of cancelled; let appIndex = index">
+                        <mat-expansion-panel class="cancelled">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{ app.timeStamp | date: "MM/dd/yy - hh:mm:ss" }}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p class="content-section" *ngIf="app.comments">
+                                {{msg["applications/comments"]}}: <q class="content">{{app.comments}}</q>
+                            </p>
+                        </mat-expansion-panel>
+                    </div>
+                </mat-accordion>
+            </mat-expansion-panel>
+        </div>
+
+    </mat-accordion>
+</div>

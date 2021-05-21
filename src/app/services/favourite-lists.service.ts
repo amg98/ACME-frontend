@@ -9,7 +9,7 @@ import { FavouriteLists } from "../models/FavouriteLists"
 export class FavouriteListsService {
 
     favouriteLists: FavouriteLists = {
-        timestamp: new Date().toISOString(),
+        timestamp: new Date(0).toISOString(),
         favouriteLists: []
     }
 
