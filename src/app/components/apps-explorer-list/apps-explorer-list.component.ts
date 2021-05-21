@@ -29,7 +29,8 @@ export class AppsExplorerListComponent extends TranslatableComponent implements 
           await this.getApps()
       } catch (error) {
           this.showAlert("applications/error", "alert-error")
-      } 
+          this.pending = []
+      }
   }
 
   async getApps(): Promise<void> {
@@ -39,7 +40,7 @@ export class AppsExplorerListComponent extends TranslatableComponent implements 
       this.rejected = await this.appServices.getApps(ApplicationStatus.Rejected)
       this.cancelled = await this.appServices.getApps(ApplicationStatus.Cancelled)
   }
- 
+
   onPay(appId: number): void {
       console.log(appId)
   }
