@@ -121,6 +121,12 @@
     "applications/reject-action": "Rechazar",
     "applications/comments": "Comentarios",
     "applications/no-apps": "No hay reservas por el momento",
+    "applications/pending": "Pendientes",
+    "applications/accepted": "Aceptadas",
+    "applications/rejected": "Rechazadas",
+    "applications/due": "Por pagar",
+    "applications/pay": "Pagar",
+    "applications/cancelled": "Canceladas",
     "cancel": "Cancelar",
 
     "PENDING": "Pendiente",

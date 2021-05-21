@@ -121,6 +121,12 @@
     "applications/reject-action": "Reject",
     "applications/comments": "Comments",
     "applications/no-apps": "There are no applications right now",
+    "applications/pending": "Pending",
+    "applications/accepted": "Accepted",
+    "applications/rejected": "Rejected",
+    "applications/due": "Due",
+    "applications/pay": "Pay",
+    "applications/cancelled": "Cancelled",
     "cancel": "Cancel",
 
     "PENDING": "Pending",

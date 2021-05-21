@@ -18,9 +18,16 @@ export interface GetManagerApplicationsData {
 })
 export class ApplicationsService {
 
-    constructor(private client: HttpClient,
-        private tripsService: TripsService,
-        private actorsService: ActorsService) { }
+    constructor(private client: HttpClient, private tripsService: TripsService, 
+        private actorsService: ActorsService) {
+        
+    }
+
+    async getApps(appStatus: string): Promise<Application[]> {
+        const id = this.actorsService.getLoggedActor()?._id
+        const apps = await this.client.get(`${environment.backendURL}/applications/explorers/${id}?status=${appStatus}`).toPromise() as Application[]
+        return apps
+    }
 
     async getManagerApplications(): Promise<GetManagerApplicationsData> {
         const trips = await this.tripsService.getTripsByManager()
@@ -33,6 +40,6 @@ export class ApplicationsService {
         await this.client.put(`${environment.backendURL}/applications/${application._id}/update`, {
             status,
             rejectReason
-        }).toPromise()      
+        }).toPromise()
     }
 }

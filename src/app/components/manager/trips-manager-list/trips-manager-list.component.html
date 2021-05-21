@@ -42,7 +42,7 @@
             <th mat-header-cell *matHeaderCellDef> </th>
             <td mat-cell *matCellDef="let trip; let i = index">
                 <button mat-raised-button color="warn" type="button"
-                    [disabled]="trip.isCancelled || !checkDate(trip.startDate)"(click)="onCancel(trip, i)">{{msg.cancel}}</button>
+                    [disabled]=" trip.isCancelled || !checkDate(trip.startDate)"(click)="onCancel(trip, i)">{{msg.cancel}}</button>
             </td>
         </ng-container>
 
