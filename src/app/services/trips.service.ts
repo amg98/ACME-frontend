@@ -83,6 +83,13 @@ export class TripsService {
         this.client.delete(`${environment.backendURL}/trips/${id}`, httpOptions).toPromise();
     }
 
+    async cancelTripByManager(trip: Trip, cancelReason = ""): Promise<void> {
+        await this.client.put(`${environment.backendURL}/trips/${trip._id}/cancel`, { 
+            cancelReason: cancelReason
+        }).toPromise();
+    }
+    
+
     async searchTrips(start: number, 
         psize: number, 
         keyword: string, 
@@ -102,11 +109,6 @@ export class TripsService {
         };
         return this.client.get<Trip[]>(`${environment.backendURL}/trips/search`, {
             params: parameters, observe: "body",
-        }).toPromise();
-
-    async cancelTripByManager(trip: Trip, cancelReason = ""): Promise<void> {
-        await this.client.put(`${environment.backendURL}/trips/${trip._id}/cancel`, { 
-            cancelReason: cancelReason
-        }).toPromise()      
+        }).toPromise(); 
     }
 }

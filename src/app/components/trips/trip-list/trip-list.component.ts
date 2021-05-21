@@ -133,14 +133,14 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   }
 }
 
-  async searchTrips() {
+  /*async searchTrips() {
       return this.tripService.searchTrips(0, MAX_TRIPS, this.keyword, this.minPrice, this.maxPrice,
           this.minDate, this.maxDate)
           .then((res) => {
               this.data = res;
           })
           .catch((err) => console.error(err.message));
-  }
+  }*/
 
   getFirstPicture(trip: Trip) {
       if ( trip.pictures.length > 0) {

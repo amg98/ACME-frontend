@@ -133,7 +133,7 @@ import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-
         MatFormFieldModule, 
         MatFileUploadModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
         MatTableModule,
         MatPaginatorModule
     ],
