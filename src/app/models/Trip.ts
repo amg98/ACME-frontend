@@ -4,21 +4,18 @@ import {Picture} from "./Picture";
 export interface Trip extends Entity {
     ticker: string,
     title: string,
-    description: string,
-    price: number,
-    requeriments: string[],
+    description?: string,
+    requirements: string[],
     startDate: string,
     endDate: string,
     pictures: string[],
-    picturesObject: Picture[],
-    managerID: string;
+    cancelReason: string,
+    isCancelled:boolean,
+    isPublished: boolean,
+    price: number,
     stages: [{
-        _id: string,
         title: string,
         description: string,
         price: number,
-    }];
-    isPublished: boolean,
-    isCancelled:boolean,
-    cancelReason: string
+    }];  
 }

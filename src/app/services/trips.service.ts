@@ -59,13 +59,7 @@ export class TripsService {
         headers.append("Content-Type", "application/json");
 
         const body = JSON.stringify(trip);
-
-        return new Promise<any>((resolve, reject) => {
-            this.client.post(`${environment.backendURL}/trips`, body, httpOptions).toPromise()
-                .then(res => {
-                    resolve(res);
-                }, err => {console.error(err); reject(err); });
-        });
+        return this.client.post(`${environment.backendURL}/trips`,body,httpOptions)
     }
 
     async updateTrip(trip: Trip, id: string) {

@@ -168,10 +168,14 @@
     "endDate": "Fecha fin",
     "stages": "Etapas",
     "apply": "Aplicar",
-    "requeriments" : "Requisitos",
+    "requirements" : "Requisitos",
 
     "newTripFormText": "Formulario Nuevo Viaje",
     "addRequeriments": "Añade requisitos",
     "dates": "Fechas",
-    "newTrip": "Nuevo Viaje"
+    "newTrip": "Nuevo Viaje",
+    "sponsorText": "Patrocinar",
+    "dragAndDropPicturesText": "Arrastra las imágenes aquí",
+    "addStagesText":"Añade etapas",
+    "requirement": "Requisito"
 }

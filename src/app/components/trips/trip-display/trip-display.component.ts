@@ -47,7 +47,8 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
   endDate!: string;
   stages!: string;
   apply!: string;
-  requeriments!: string;
+  requirements!: string;
+  sponsor!: string;
 
 
   constructor(public actorsService: ActorsService,
@@ -87,7 +88,8 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
           this.close = translator.getString("close");
           this.back = translator.getString("back");
           this.apply = translator.getString("apply");
-          this.requeriments = translator.getString("requeriments");
+          this.requirements = translator.getString("requirements");
+          this.sponsor = translator.getString("sponsorText");
       });
   }
 
@@ -127,6 +129,10 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
       } else {
           return "https://i.ya-webdesign.com/images/image-not-available-png-3.png";
       }
+  }
+
+  goSponsor(tripID:string){
+    this.router.navigate(["/sponsorship-form"], { queryParams: { tripID: tripID}})
   }
   async onApply(tripId: string) {
       // console.log('idTrip: ' + idTrip);

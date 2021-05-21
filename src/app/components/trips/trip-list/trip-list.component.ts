@@ -18,7 +18,7 @@ const MAX_TRIPS = 10;
     styleUrls: ["./trip-list.component.scss"]
 })
 export class TripListComponent extends TranslatableComponent implements OnInit {
-
+ 
  loggedActorName: string | null;
  loggedActorSub: Subscription;
  isAdmin = false;

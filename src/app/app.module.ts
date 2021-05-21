@@ -22,7 +22,9 @@ import { MatDialogModule } from "@angular/material/dialog"
 import { MatExpansionModule } from "@angular/material/expansion"
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import {MatGridListModule} from '@angular/material/grid-list';
-
+import { MatFileUploadModule } from 'angular-material-fileupload';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { AppRoutingModule } from "./app-routing.module"
 import { AppComponent } from "./app.component"
@@ -81,6 +83,7 @@ import { TripListComponent } from './components/trips/trip-list/trip-list.compon
         TripFormComponent,
         FooterComponent,
         TripListComponent,
+    
     ],
     imports: [
         CommonModule,
@@ -105,11 +108,16 @@ import { TripListComponent } from './components/trips/trip-list/trip-list.compon
         PlotlyModule,
         FormsModule,
         MatCarouselModule,
-        MatGridListModule
+        MatGridListModule,
+        MatFormFieldModule, 
+        MatFileUploadModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+}

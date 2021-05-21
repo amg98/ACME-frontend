@@ -94,7 +94,7 @@ export class ActorsService {
     }
 
     checkIsCurrentUser(id: string) {
-        if ( this.currentActor !== undefined && this.currentActor != null && this.currentActor._id === id) {
+        if (this.currentActor !== undefined && this.currentActor != null && this.currentActor._id === id) {
             return true;
         } else {
             return false;
@@ -102,7 +102,7 @@ export class ActorsService {
     }
 
     checkId(id: string) {
-        if ( this.currentActor !== undefined && this.currentActor != null) {
+        if (this.currentActor !== undefined && this.currentActor != null) {
             if (this.currentActor._id === id) {
                 return true;
             } else {
@@ -112,9 +112,9 @@ export class ActorsService {
             return false;
         }
     }
-      
+
     checkRole(role: string) {
-        if ( this.currentActor !== undefined && this.currentActor != null) {
+        if (this.currentActor !== undefined && this.currentActor != null) {
             if (this.currentActor.roles.includes(role)) {
                 console.log("1")
                 return true;

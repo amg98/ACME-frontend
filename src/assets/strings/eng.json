@@ -168,11 +168,15 @@
     "endDate": "End date",
     "stages": "Stages",
     "apply": "Apply",
-    "requeriments" : "Requeriments",
+    "requirements" : "Requeriments",
 
     "newTripFormText": "New Trip Form",
-    "addRequeriments": "Add requeriments",
+    "addRequeriments": "Add requirements",
     "dates": "Dates",
-    "newTrip": "New trip"
+    "newTrip": "New trip",
+    "sponsorText": "Sponsor",
+    "dragAndDropPicturesText": "Drag and drop pictures here",
+    "addStagesText": "Add stages",
+    "requirement": "Requirement"
 
 }
