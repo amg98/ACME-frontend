@@ -1,0 +1,28 @@
+.content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin-bottom: 3em;
+}
+
+.title {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    font-weight: 400;
+    font-size: 1.4rem;
+}
+
+.trip-card {
+    margin-top: 3em;
+    flex-basis: 40%;
+}
+
+.card__image {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 70%;
+    border-radius: 1em;
+}
