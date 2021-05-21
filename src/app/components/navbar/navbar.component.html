@@ -5,6 +5,11 @@
             <mat-icon>account_circle</mat-icon>
             {{msg["edit-profile"]}}
         </button>
+        <button *ngIf="isExplorer" mat-button class="menu-button" routerLink="/applications"
+            (click)="sidenav.close()">
+            <mat-icon>book</mat-icon>
+            {{msg["my-apps"]}}
+        </button>
         <button *ngIf="isManager" mat-button class="menu-button" routerLink="/manager/apps" (click)="sidenav.close()">
             <mat-icon>book</mat-icon>
             {{msg["all-apps"]}}
@@ -18,7 +23,8 @@
             <mat-icon>favorite</mat-icon>
             {{msg["favourite-lists"]}}
         </button>
-        <button *ngIf="isSponsor" mat-button class="menu-button" routerLink="/sponsor/sponsorships" (click)="sidenav.close()">
+        <button *ngIf="isSponsor" mat-button class="menu-button" routerLink="/sponsor/sponsorships"
+            (click)="sidenav.close()">
             <mat-icon>attach_money</mat-icon>
             {{msg["sponsorships"]}}
         </button>
