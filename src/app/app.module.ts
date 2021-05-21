@@ -55,6 +55,7 @@ import { SponsorshipComponent } from "./components/forms/sponsorship/sponsorship
 import { NewFavouriteListComponent } from "./components/dialog/new-favourite-list/new-favourite-list.component"
 import { EditFavouriteListComponent } from "./components/dialog/edit-favourite-list/edit-favourite-list.component"
 import { AddToFavouritesComponent } from "./components/add-to-favourites/add-to-favourites.component"
+import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-explorer-list.component"
 
 @NgModule({
     declarations: [
@@ -86,6 +87,7 @@ import { AddToFavouritesComponent } from "./components/add-to-favourites/add-to-
         NewFavouriteListComponent,
         EditFavouriteListComponent,
         AddToFavouritesComponent,
+        AppsExplorerListComponent,
     ],
     imports: [
         CommonModule,

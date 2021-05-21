@@ -18,6 +18,7 @@ import { SponsorshipsComponent } from "@components/sponsorships/sponsorships.com
 import { SponsorGuard } from "./guards/sponsor.guard"
 import { SponsorshipPaymentComponent } from "@components/sponsorship-payment/sponsorship-payment.component"
 import { SponsorshipComponent } from "@components/forms/sponsorship/sponsorship.component"
+import { AppsExplorerListComponent } from "@components/apps-explorer-list/apps-explorer-list.component"
 
 export const routes: Routes = [
     { path: "register", component: RegisterComponent },
@@ -26,6 +27,7 @@ export const routes: Routes = [
     { path: "admin/dashboard", component: DashboardComponent, canActivate: [AdminGuard] },
     { path: "admin/users", component: UsersListComponent, canActivate: [AdminGuard] },
     { path: "admin/cube", component: CubeComponent, canActivate: [AdminGuard] },
+    { path: "applications", component: AppsExplorerListComponent, canActivate: [ExplorerGuard] },
     { path: "manager/apps", component: ManagerApplicationsComponent, canActivate: [ManagerGuard] },
     { path: "manager/trips", component: TripsManagerListComponent, canActivate: [ManagerGuard] },
     { path: "explorer/favourite-lists", component: FavouriteListsComponent, canActivate: [ExplorerGuard] },
