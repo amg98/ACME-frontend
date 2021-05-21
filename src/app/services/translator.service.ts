@@ -57,4 +57,8 @@ export class TranslatorService {
     getMessages(): Record<string, string> {
         return messages[this.language.getValue()]
     }
+
+    getString(label: string): string {
+        return messages[this.language.getValue()][label];
+    }
 }

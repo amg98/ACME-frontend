@@ -17,8 +17,12 @@ import { ExplorerGuard } from "./guards/explorer.guard"
 import { SponsorshipsComponent } from "@components/sponsorships/sponsorships.component"
 import { SponsorGuard } from "./guards/sponsor.guard"
 import { SponsorshipPaymentComponent } from "@components/sponsorship-payment/sponsorship-payment.component"
+import { TripDisplayComponent } from './components/trips/trip-display/trip-display.component';
+import { TripFormComponent } from './components/trips/trip-form/trip-form.component';
+import { TripListComponent } from './components/trips/trip-list/trip-list.component'  
 import { SponsorshipComponent } from "@components/forms/sponsorship/sponsorship.component"
 import { AppsExplorerListComponent } from "@components/apps-explorer-list/apps-explorer-list.component"
+
 
 export const routes: Routes = [
     { path: "register", component: RegisterComponent },
@@ -34,6 +38,13 @@ export const routes: Routes = [
     { path: "sponsor/sponsorships", component: SponsorshipsComponent, canActivate: [SponsorGuard] },
     { path: "sponsorship-payment", component: SponsorshipPaymentComponent },
     { path: "sponsorship-form", component: SponsorshipComponent, canActivate: [SponsorGuard] },
+  {path: "trips", children: [
+        {path: "new", component: TripFormComponent},
+        {path: "search", component: TripListComponent},
+        {path: "display/:id", component: TripDisplayComponent},
+        {path: "", component: TripListComponent},
+        {path: "finder", component: TripListComponent},
+    ]}
 ]
 
 @NgModule({

@@ -1,0 +1,24 @@
+@import "../../../shared/styles/forms.scss";
+
+
+.validation-error-text {
+    margin-left: 21%;
+    padding-top: 5%;
+    color: $forms__errorColor;
+}
+.upload-drop-zone{
+  text-align: center;
+}
+.mat-form-field{
+  padding: 10px;
+}
+
+.upload-drop-zone{
+  padding: 18px;
+}
+.mat-card{
+  width: 75%;
+}
+.mat-form-field-flex{
+  width: 75%;
+}
