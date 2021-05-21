@@ -1,5 +1,5 @@
-import { Entity } from "./Entity";
-import {Picture} from "./Picture";
+import { Entity } from "./Entity"
+import {Picture} from "./Picture"
 
 export interface Trip extends Entity {
     ticker: string,

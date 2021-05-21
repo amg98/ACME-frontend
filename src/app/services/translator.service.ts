@@ -59,6 +59,6 @@ export class TranslatorService {
     }
 
     getString(label: string): string {
-        return messages[this.language.getValue()][label];
+        return messages[this.language.getValue()][label]
     }
 }
