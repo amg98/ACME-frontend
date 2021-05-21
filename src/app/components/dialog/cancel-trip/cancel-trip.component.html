@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>{{msg["trips/cancel"]}}</h2>
+<div mat-dialog-content>
+    <p>{{msg["trips/enter-reason"]}}</p>
+    <mat-form-field>
+        <mat-label>{{msg["trips/cancel-reason"]}}:</mat-label>
+        <input matInput [(ngModel)]="cancelReason">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button class="return-button" mat-button (click)="onNoClick()">
+        {{msg["back"]}}
+    </button>
+    <button class="cancel-button" mat-button [mat-dialog-close]="cancelReason" cdkFocusInitial>
+        {{msg["trips/cancel"]}}
+    </button>
+</div>

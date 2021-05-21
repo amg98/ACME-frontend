@@ -20,6 +20,8 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatSidenavModule } from "@angular/material/sidenav"
 import { MatDialogModule } from "@angular/material/dialog"
 import { MatExpansionModule } from "@angular/material/expansion"
+import { MatTableModule } from "@angular/material/table"
+import { MatPaginatorModule } from "@angular/material/paginator"
 import { MatMenuModule } from "@angular/material/menu"
 
 import { AppRoutingModule } from "./app-routing.module"
@@ -42,7 +44,9 @@ import { UsersListComponent } from "./components/users-list/users-list.component
 import { CubeComponent } from "./components/stats/cube/cube.component"
 import { ManagerApplicationsComponent } from "./components/manager/applications/applications.component"
 import { RejectApplicationComponent } from "./components/dialog/reject-application/reject-application.component"
+import { TripsManagerListComponent } from "./components/manager/trips-manager-list/trips-manager-list.component"
 import { FavouriteListsComponent } from "./components/favourite-lists/favourite-lists.component"
+import { CancelTripComponent } from "./components/dialog/cancel-trip/cancel-trip.component"
 import { SponsorshipsComponent } from "./components/sponsorships/sponsorships.component"
 import { FlatRateComponent } from "./components/flat-rate/flat-rate.component"
 import { DialogFlatRateComponent } from "./components/dialog/flat-rate/flat-rate.component"
@@ -71,8 +75,10 @@ import { AddToFavouritesComponent } from "./components/add-to-favourites/add-to-
         CubeComponent,
         ManagerApplicationsComponent,
         RejectApplicationComponent,
+        TripsManagerListComponent,
         FavouriteListsComponent,
         SponsorshipsComponent,
+        CancelTripComponent,
         FlatRateComponent,
         DialogFlatRateComponent,
         SponsorshipPaymentComponent,
@@ -104,6 +110,8 @@ import { AddToFavouritesComponent } from "./components/add-to-favourites/add-to-
         MatMenuModule,
         PlotlyModule,
         FormsModule,
+        MatTableModule,
+        MatPaginatorModule,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

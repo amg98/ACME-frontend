@@ -9,7 +9,12 @@
             <mat-icon>book</mat-icon>
             {{msg["all-apps"]}}
         </button>
-        <button *ngIf="isExplorer" mat-button class="menu-button" routerLink="/explorer/favourite-lists" (click)="sidenav.close()">
+        <button *ngIf="isManager" mat-button class="menu-button" routerLink="/manager/trips" (click)="sidenav.close()">
+            <mat-icon>flight_takeoff</mat-icon>
+            {{msg["all-trips"]}}
+        </button>
+        <button *ngIf="isExplorer" mat-button class="menu-button" routerLink="/explorer/favourite-lists"
+            (click)="sidenav.close()">
             <mat-icon>favorite</mat-icon>
             {{msg["favourite-lists"]}}
         </button>

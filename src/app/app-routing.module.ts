@@ -10,6 +10,7 @@ import { AdminGuard } from "./guards/admin.guard"
 import { UsersListComponent } from "@components/users-list/users-list.component"
 import { CubeComponent } from "@components/stats/cube/cube.component"
 import { ManagerApplicationsComponent } from "@components/manager/applications/applications.component"
+import { TripsManagerListComponent } from "@components/manager/trips-manager-list/trips-manager-list.component"
 import { ManagerGuard } from "./guards/manager.guard"
 import { FavouriteListsComponent } from "@components/favourite-lists/favourite-lists.component"
 import { ExplorerGuard } from "./guards/explorer.guard"
@@ -26,6 +27,7 @@ export const routes: Routes = [
     { path: "admin/users", component: UsersListComponent, canActivate: [AdminGuard] },
     { path: "admin/cube", component: CubeComponent, canActivate: [AdminGuard] },
     { path: "manager/apps", component: ManagerApplicationsComponent, canActivate: [ManagerGuard] },
+    { path: "manager/trips", component: TripsManagerListComponent, canActivate: [ManagerGuard] },
     { path: "explorer/favourite-lists", component: FavouriteListsComponent, canActivate: [ExplorerGuard] },
     { path: "sponsor/sponsorships", component: SponsorshipsComponent, canActivate: [SponsorGuard] },
     { path: "sponsorship-payment", component: SponsorshipPaymentComponent },
