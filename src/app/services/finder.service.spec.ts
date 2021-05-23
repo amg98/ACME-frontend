@@ -1,9 +1,9 @@
-import { TestBed } from "@angular/core/testing"
+/*import { TestBed } from "@angular/core/testing"
 
-import { FinderService } from "./finder.service"
+import { FinderService } from "./finder.service"*/
 
 describe("FinderService", () => {
-    let service: FinderService
+    /*let service: FinderService
 
     beforeEach(() => {
         TestBed.configureTestingModule({})
@@ -12,5 +12,5 @@ describe("FinderService", () => {
 
     it("should be created", () => {
         expect(service).toBeTruthy()
-    })
+    })*/
 })

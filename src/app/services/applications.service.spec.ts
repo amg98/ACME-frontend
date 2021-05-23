@@ -3,6 +3,7 @@ import { fakeAsync, TestBed, tick } from "@angular/core/testing"
 import { environment } from "@env/environment"
 import { Actor } from "../models/Actor"
 import { Application, ApplicationStatus } from "../models/Application"
+import { Trip } from "../models/Trip"
 import { ActorsService } from "./actors.service"
 
 import { ApplicationsService } from "./applications.service"
@@ -10,8 +11,9 @@ import { TripsService } from "./trips.service"
 
 describe("ApplicationsService", () => {
 
-    const sampleTrip = {
-        _id: "123",
+    const tripID = "123"
+    const sampleTrip: Trip = {
+        _id: tripID,
         ticker: "210510-IMUZ",
         title: "Trip title",
         requirements: ["R1", "R2", "R3"],
@@ -59,13 +61,13 @@ describe("ApplicationsService", () => {
         const apps: Application[] = [
             {
                 status: ApplicationStatus.Pending,
-                tripID: sampleTrip._id,
+                tripID: tripID,
                 explorerID: explorerIDs[0],
                 timeStamp: new Date().toISOString(),
             },
             {
                 status: ApplicationStatus.Accepted,
-                tripID: sampleTrip._id,
+                tripID: tripID,
                 explorerID: explorerIDs[1],
                 timeStamp: new Date().toISOString(),
             },
@@ -88,12 +90,12 @@ describe("ApplicationsService", () => {
             }
         ]
 
-        //const getTripsByManager = spyOn(tripsService, "getTripsByManager").and.returnValue(Promise.resolve([sampleTrip]))
+        const getTripsByManager = spyOn(tripsService, "getTripsByManager").and.returnValue(Promise.resolve([sampleTrip]))
         const getActorSummary = spyOn(actorsService, "getActorSummary").and.returnValues(Promise.resolve(explorers[0]), Promise.resolve(explorers[1]))
         service.getManagerApplications().then(data => {
             expect(data.apps).toEqual([apps])
             expect(data.explorers).toEqual([explorers])
-            //expect(data.trips).toEqual([sampleTrip])
+            expect(data.trips).toEqual([sampleTrip])
         })
         tick()
         httpMock.expectOne(`${environment.backendURL}/applications/trips/${sampleTrip._id}`)
@@ -101,7 +103,7 @@ describe("ApplicationsService", () => {
         tick()
         tick()
 
-        //expect(getTripsByManager).toHaveBeenCalled()
+        expect(getTripsByManager).toHaveBeenCalled()
         expect(getActorSummary).toHaveBeenCalledWith(explorers[0]._id)
         expect(getActorSummary).toHaveBeenCalledWith(explorers[1]._id)
     }))
@@ -112,7 +114,7 @@ describe("ApplicationsService", () => {
 
         const explorers: Actor[] = []
 
-        //const getTripsByManager = spyOn(tripsService, "getTripsByManager").and.returnValue(Promise.resolve([sampleTrip]))
+        const getTripsByManager = spyOn(tripsService, "getTripsByManager").and.returnValue(Promise.resolve([sampleTrip]))
         const getActorSummary = spyOn(actorsService, "getActorSummary").and.returnValue(Promise.resolve({
             _id: "1",
             name: "User 1",
@@ -124,7 +126,7 @@ describe("ApplicationsService", () => {
         service.getManagerApplications().then(data => {
             expect(data.apps).toEqual([apps])
             expect(data.explorers).toEqual([explorers])
-            //expect(data.trips).toEqual([sampleTrip])
+            expect(data.trips).toEqual([sampleTrip])
         })
         tick()
         httpMock.expectOne(`${environment.backendURL}/applications/trips/${sampleTrip._id}`)
@@ -132,7 +134,7 @@ describe("ApplicationsService", () => {
         tick()
         tick()
 
-        //expect(getTripsByManager).toHaveBeenCalled()
+        expect(getTripsByManager).toHaveBeenCalled()
         expect(getActorSummary).not.toHaveBeenCalled()
     }))
 })

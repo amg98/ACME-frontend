@@ -6,13 +6,15 @@ import { MatSnackBarModule } from "@angular/material/snack-bar"
 import { ApplicationsService, GetManagerApplicationsData } from "@services/applications.service"
 import { TranslatorService } from "@services/translator.service"
 import { ApplicationStatus } from "src/app/models/Application"
+import { Trip } from "src/app/models/Trip"
 
 import { ManagerApplicationsComponent } from "./applications.component"
 
 describe("ManagerApplicationsComponent", () => {
 
-    const sampleTrip = {
-        _id: "123",
+    const tripID = "123"
+    const sampleTrip: Trip = {
+        _id: tripID,
         ticker: "210510-IMUZ",
         title: "Trip title",
         requirements: ["R1", "R2", "R3"],
@@ -66,13 +68,13 @@ describe("ManagerApplicationsComponent", () => {
                 [
                     {
                         status: ApplicationStatus.Pending,
-                        tripID: sampleTrip._id,
+                        tripID: tripID,
                         explorerID: explorerIDs[0],
                         timeStamp: new Date().toISOString(),
                     },
                     {
                         status: ApplicationStatus.Accepted,
-                        tripID: sampleTrip._id,
+                        tripID: tripID,
                         explorerID: explorerIDs[1],
                         timeStamp: new Date().toISOString(),
                     },
