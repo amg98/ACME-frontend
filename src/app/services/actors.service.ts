@@ -23,6 +23,7 @@ interface CheckAuthResponse {
 export class ActorsService {
 
     private loggedActor = new BehaviorSubject<Actor | null | undefined>(undefined);
+    private currentActor = this.getLoggedActor()
 
     constructor(private client: HttpClient) {
         this.loginFromLocalStorage()
@@ -90,5 +91,40 @@ export class ActorsService {
 
     async setActorBanStatus(actor: Actor, banned: boolean): Promise<void> {
         await this.client.put(`${environment.backendURL}/actors/${actor._id}/ban`, { isBanned: banned }).toPromise()
+    }
+
+    checkIsCurrentUser(id: string) {
+        if (this.currentActor !== undefined && this.currentActor != null && this.currentActor._id === id) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    checkId(id: string) {
+        if (this.currentActor !== undefined && this.currentActor != null) {
+            if (this.currentActor._id === id) {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+
+    checkRole(role: string) {
+        if (this.currentActor !== undefined && this.currentActor != null) {
+            if (this.currentActor.roles.includes(role)) {
+                console.log("1")
+                return true
+            } else {
+                console.log("2")
+                return false
+            }
+        } else {
+            console.log("3")
+            return false
+        }
     }
 }

@@ -21,9 +21,16 @@ import { MatSidenavModule } from "@angular/material/sidenav"
 import { MatSlideToggleModule } from "@angular/material/slide-toggle"
 import { MatDialogModule } from "@angular/material/dialog"
 import { MatExpansionModule } from "@angular/material/expansion"
+
+import { MatCarouselModule } from "@ngmodule/material-carousel"
+import {MatGridListModule} from "@angular/material/grid-list"
+import { MatFileUploadModule } from "angular-material-fileupload"
+import {MatDatepickerModule} from "@angular/material/datepicker"
+import { MatNativeDateModule } from "@angular/material/core"
 import { MatTableModule } from "@angular/material/table"
 import { MatPaginatorModule } from "@angular/material/paginator"
 import { MatMenuModule } from "@angular/material/menu"
+
 
 import { AppRoutingModule } from "./app-routing.module"
 import { AppComponent } from "./app.component"
@@ -52,12 +59,17 @@ import { CancelTripComponent } from "./components/dialog/cancel-trip/cancel-trip
 import { SponsorshipsComponent } from "./components/sponsorships/sponsorships.component"
 import { FlatRateComponent } from "./components/flat-rate/flat-rate.component"
 import { DialogFlatRateComponent } from "./components/dialog/flat-rate/flat-rate.component"
+
 import { SponsorshipPaymentComponent } from "./components/sponsorship-payment/sponsorship-payment.component"
+import { TripDisplayComponent } from "./components/trips/trip-display/trip-display.component"
+import { TripFormComponent } from "./components/trips/trip-form/trip-form.component"
+import { TripListComponent } from "./components/trips/trip-list/trip-list.component"
 import { SponsorshipComponent } from "./components/forms/sponsorship/sponsorship.component"
 import { NewFavouriteListComponent } from "./components/dialog/new-favourite-list/new-favourite-list.component"
 import { EditFavouriteListComponent } from "./components/dialog/edit-favourite-list/edit-favourite-list.component"
 import { AddToFavouritesComponent } from "./components/add-to-favourites/add-to-favourites.component"
 import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-explorer-list.component"
+
 
 @NgModule({
     declarations: [
@@ -86,6 +98,10 @@ import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-
         FlatRateComponent,
         DialogFlatRateComponent,
         SponsorshipPaymentComponent,
+        TripDisplayComponent,
+        TripFormComponent,
+        FooterComponent,
+        TripListComponent,
         SponsorshipComponent,
         NewFavouriteListComponent,
         EditFavouriteListComponent,
@@ -116,12 +132,19 @@ import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-
         PlotlyModule,
         MatSlideToggleModule,
         FormsModule,
+        MatCarouselModule,
+        MatGridListModule,
+        MatFormFieldModule, 
+        MatFileUploadModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
         MatTableModule,
-        MatPaginatorModule,
+        MatPaginatorModule
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+}

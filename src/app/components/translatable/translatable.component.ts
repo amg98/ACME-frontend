@@ -17,6 +17,13 @@ export class TranslatableComponent implements OnDestroy {
         })
     }
 
+    setLanguageChangeListener(onDataMap: VoidFunction): void {
+        if(this.translatorSub) this.translatorSub.unsubscribe()
+        this.translatorSub = this.translator.subscribe(() => {
+            onDataMap()
+        })
+    }
+
     ngOnDestroy(): void {
         this.translatorSub.unsubscribe()
     }

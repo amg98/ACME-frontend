@@ -39,7 +39,7 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
 
     logout(): void {
         this.actorsService.logout()
-        this.router.navigate(["/"])
+        this.router.navigate(["trips"])
     }
 
     ngOnDestroy(): void {

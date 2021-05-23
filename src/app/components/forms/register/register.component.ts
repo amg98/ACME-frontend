@@ -82,7 +82,7 @@ export class RegisterComponent extends TranslatableComponent {
                 duration: 5000,
                 panelClass: [ "alert-success" ]
             })
-            this.router.navigate(["/"])
+            this.router.navigate(["trips"])
         } catch {
             this.snackbar.open(this.msg["registration-failure"], this.msg.close, {
                 duration: 5000,

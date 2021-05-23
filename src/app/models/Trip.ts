@@ -1,10 +1,5 @@
 import { Entity } from "./Entity"
-
-export interface TripStage extends Entity {
-    title: string,
-    description: string,
-    price: number,
-}
+import {Picture} from "./Picture"
 
 export interface Trip extends Entity {
     ticker: string,
@@ -15,8 +10,12 @@ export interface Trip extends Entity {
     endDate: string,
     pictures: string[],
     cancelReason: string,
-    isCancelled: boolean
-    isPublished: boolean,   // should be always true
+    isCancelled:boolean,
+    isPublished: boolean,
     price: number,
-    stages: TripStage[],
+    stages: [{
+        title: string,
+        description: string,
+        price: number,
+    }];  
 }
