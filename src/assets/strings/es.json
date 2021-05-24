@@ -33,11 +33,6 @@
     "my-apps": "Mis reservas",
     "all-trips": "Todos los viajes",
     "edit": "Editar",
-    "ticker": "Ticket",
-    "tittle": "Titulo",
-    "price": "Precio",
-    "startDate": "Fecha Inicio",
-    "endDate": "Fecha Fin",
     "url-validation": "La URL no es correcta",
 
     "registration-success": "Se ha creado el usuario satisfactoriamente",
@@ -112,6 +107,7 @@
     "cube/empty-result": "No se han encontrado resultados",
 
     "applications/error-change-status": "No se ha podido cambiar el estado de la reserva",
+    "applications/success": "Reservas obtenidas correctamente",
     "applications/error": "No se han podido obtener las reservas",
     "applications/no-reason": "No se ha especificado un motivo",
     "applications/reject": "Rechazar reserva",
@@ -152,7 +148,6 @@
     "favourite-lists/already-exists": "El viaje ya ha sido añadido a esta lista",
     "favourite-lists/add-success": "El viaje ha sido añadido satisfactoriamente",
 
-    "back":"Volver",
     "trips/cancel": "Cancelar viaje",
     "trips/enter-reason": "Introduzca el motivo",
     "trips/cancel-reason": "Motivo de la cancelación",

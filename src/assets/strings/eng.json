@@ -33,11 +33,6 @@
     "my-apps": "My applications",
     "all-trips": "All trips",
     "edit": "Edit",
-    "ticker": "Ticker",
-    "tittle": "Tittle",
-    "price": "Price",
-    "startDate": "Start Date",
-    "endDate": "End Date",
     "url-validation": "The entered URL is invalid",
 
     "registration-success": "User has been registered successfully",
@@ -112,6 +107,7 @@
     "cube/empty-result": "No matching results have been found",
 
     "applications/error-change-status": "Unable to change the application status",
+    "applications/success": "Applications successfully retrieved",
     "applications/error": "Unable to retrieve the applications",
     "applications/no-reason": "No reason has been specified",
     "applications/reject": "Reject application",
@@ -152,7 +148,6 @@
     "favourite-lists/already-exists": "The trips is already in this list",
     "favourite-lists/add-success": "The trip has been successfully added",
 
-    "back":"Back",
     "trips/cancel": "Cancel trip",
     "trips/enter-reason": "Enter the reason",
     "trips/cancel-reason": "Cancel reason",
