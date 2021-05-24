@@ -1,5 +1,4 @@
 import { Entity } from "./Entity"
-import {Picture} from "./Picture"
 
 export interface Trip extends Entity {
     ticker: string,
@@ -10,7 +9,7 @@ export interface Trip extends Entity {
     endDate: string,
     pictures: string[],
     cancelReason: string,
-    isCancelled:boolean,
+    isCancelled: boolean,
     isPublished: boolean,
     price: number,
     stages: [{
