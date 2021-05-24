@@ -48,32 +48,17 @@ export class TripsService {
 
         const headers = new HttpHeaders()
         headers.append("Content-Type", "application/json")
-        const body = JSON.stringify({"explorerID": explorerID, "tripID": tripID})
+        const body = JSON.stringify({ "explorerID": explorerID, "tripID": tripID })
         return this.client.post(url, body, httpOptions).toPromise()
 
     }
 
     async postTrip(trip: Trip) {
-
-        const headers = new HttpHeaders()
-        headers.append("Content-Type", "application/json")
-
-        const body = JSON.stringify(trip)
-        return this.client.post(`${environment.backendURL}/trips`,body,httpOptions)
+        await this.client.post(`${environment.backendURL}/trips`, { trip }).toPromise()
     }
 
     async updateTrip(trip: Trip, id: string) {
-        const headers = new HttpHeaders()
-        headers.append("Content-Type", "application/json")
-
-        const body = JSON.stringify(trip)
-        console.log(body)
-        return new Promise<any>((resolve, reject) => {
-            this.client.put(`${environment.backendURL}/trips/${id}`, body, httpOptions).toPromise()
-                .then(res => {
-                    resolve(res)
-                }, err => {console.error(err); reject(err) })
-        })
+        await this.client.put(`${environment.backendURL}/trips/${id}`, { trip }, httpOptions).toPromise()
     }
 
     async deleteTrip(id: string) {
@@ -84,18 +69,18 @@ export class TripsService {
     }
 
     async cancelTripByManager(trip: Trip, cancelReason = ""): Promise<void> {
-        await this.client.put(`${environment.backendURL}/trips/${trip._id}/cancel`, { 
+        await this.client.put(`${environment.backendURL}/trips/${trip._id}/cancel`, {
             cancelReason: cancelReason
         }).toPromise()
     }
-    
 
-    async searchTrips(start: number, 
-        psize: number, 
-        keyword: string, 
-        minPrice: string, 
-        maxPrice: string, 
-        minDate: string, 
+
+    async searchTrips(start: number,
+        psize: number,
+        keyword: string,
+        minPrice: string,
+        maxPrice: string,
+        minDate: string,
         maxDate: string) {
 
         const parameters = {
@@ -109,6 +94,6 @@ export class TripsService {
         }
         return this.client.get<Trip[]>(`${environment.backendURL}/trips/search`, {
             params: parameters, observe: "body",
-        }).toPromise() 
+        }).toPromise()
     }
 }

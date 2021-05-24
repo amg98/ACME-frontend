@@ -19,15 +19,16 @@
             <input matInput formControlName="description">
         </mat-form-field>
 
+         <!-- Dates -->
         <mat-form-field appearance="outline" class="forms__form-field">
             <mat-label>{{dates}}</mat-label>
             <mat-date-range-input [rangePicker]="picker">
-                <input matStartDate name="startDate" formControlName="startDate" placeholder="{{startDate}}" required>
+                <input matStartDate  name="startDate" formControlName="startDate" placeholder="{{startDate}}" required>
                 <mat-error *ngIf="tripForm.controls.startDate.touched && tripForm.controls.startDate.invalid">
                     <span class="forms__error"
                         *ngIf="tripForm.controls.startDate.errors?.required">{{msg["required-field"]}}</span>
                 </mat-error>
-                <input matEndDate name="endDate" formControlName="endDate" placeholder="{{endDate}}" required>
+                <input matEndDate [min]="startDate" name="endDate" formControlName="endDate" placeholder="{{endDate}}" required>
                 <mat-error *ngIf="tripForm.controls.endDate.touched && tripForm.controls.endDate.invalid">
                     <span class="forms__error"
                         *ngIf="tripForm.controls.endDate.errors?.required">{{msg["required-field"]}}</span>
@@ -39,7 +40,7 @@
 
         <!-- Requirements -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{addRequerimentsText}}</mat-label>
+            <mat-label>{{addrequirementsText}}</mat-label>
             <div formArrayName="requirements"
                 *ngFor="let requirement of getControls(tripForm, 'requirements'); let i=index">
                 <div [formGroupName]="i">
@@ -49,7 +50,7 @@
                     <mat-icon  color="primary" (click)='removeReq(i)'>delete</mat-icon>
                 </div>
             </div>
-            <mat-icon color = "primary" (click)="addRequeriments()">add</mat-icon>
+            <mat-icon color = "primary" (click)="addRequirements()">add</mat-icon>
         </mat-form-field>
 
         <!-- Stages -->
@@ -57,17 +58,19 @@
             <mat-label>{{addStagesText}}</mat-label>
             <div formArrayName="stages" *ngFor="let stage of getControls(tripForm, 'stages'); let i = index;">
                 <div [formGroupName]="i">
+
                     <mat-form-field appearance="fill" class="forms__form-field">
                     <input matInput formControlName="title" placeholder="{{title}}">
                    </mat-form-field>
-                   <mat-form-field appearance="fill" class="forms__form-field">
 
+                   <mat-form-field appearance="fill" class="forms__form-field">
                     <input matInput formControlName="description" placeholder="{{description}}">
                    </mat-form-field>
-                   <mat-form-field appearance="fill" class="forms__form-field">
 
-                    <input matInput formControlName="price" placeholder="{{price}}">
+                   <mat-form-field appearance="fill" class="forms__form-field">
+                    <input matInput class = "price-stage" formControlName="price" placeholder="{{price}}">
                    </mat-form-field>
+
                     <mat-icon color="primary" (click)='removeStage(i)'>delete</mat-icon>
                 </div>
             </div>

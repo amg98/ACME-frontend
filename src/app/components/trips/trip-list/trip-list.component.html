@@ -1,45 +1,39 @@
 <!-- New trip button -->
 <button mat-raised-button color="accent" type="button" class="card_button" (click)="newTrip();" *ngIf="isManager">
-    {{newTripText}}
+  {{msg["newTrip"]}}
 </button>
 
 <div class="content" *ngIf="data != undefined && data.length > 0">
-    <div class="trip-card" *ngFor="let trip of data">
-        <div *ngIf="this.displayTrip(trip)" class="card mb-3 ml-4 " infiniteScroll (scrolled)="onScrollDown()"
-            (scrolledUp)="onScrollUp()">
+  <div class="trip-card" *ngFor="let trip of data">
+    <div *ngIf="this.displayTrip(trip)" class="card mb-3 ml-4 " infiniteScroll (scrolled)="onScrollDown()"
+      (scrolledUp)="onScrollUp()">
 
-            <!-- Cards-->
-            <mat-card class="mat-elevation-z4">
-                <h3 class="title">{{trip.title}}</h3>
-                <img class="card__image" src="{{getFirstPicture(trip)}}" alt="{{trip.title}}">
+      <!-- Cards-->
+      <mat-card class="mat-elevation-z4">
+        <h3 class="title">{{trip.title}}</h3>
+        <img class="card__image" src="{{getFirstPicture(trip)}}" alt="{{trip.title}}">
 
-                <mat-card-content>
-                    <details>
-                        <summary ng-hide="advstatus">
-                            {{trip.description | slice:0:50}}
-                            <span class="badge badge-light" ng-click="advstatus=true">(...)</span>
-                        </summary>
-                        <p>{{trip.description}}</p>
-                    </details>
-                    <mat-card-actions>
-                        <a *ngIf="isManager" routerLink="/trips/{{trip.ticker}}" class="btn btn-primary pull-left mx-1">
-                            <span class="fa fa-pencil" aria-hidden="true"></span>
-                            {{editTripText}}
-                        </a>
-                        <button routerLink="/trips/display/{{trip._id}}" class="mdc-button mdc-button--raised">
-                            <span class="mdc-button__ripple"></span>
-                            <i class="material-icons mdc-button__icon" aria-hidden="true">bookmark</i>
-                        </button>
-                        <button *ngIf="trip.cancelReason" class="btn btn-warning pull-left" type="button"
-                            (click)="showReasonCancel(trip)"><span class="fa fa-search-plus" aria-hidden="true"></span>
-                            {{tripCanceledText}}</button>
-                        <button *ngIf="isManager && !this.showfilter" type="button" class="card_button"
-                            (click)="newTrip();">
-                            {{newTripText}}
-                        </button>
-                    </mat-card-actions>
-                </mat-card-content>
-            </mat-card>
-        </div>
+        <mat-card-content>
+          <details>
+            <summary ng-hide="advstatus">
+              {{trip.description | slice:0:50}}
+              <span class="badge badge-light" ng-click="advstatus=true">(...)</span>
+            </summary>
+            <p>{{trip.description}}</p>
+          </details>
+          <mat-card-actions>
+            <button *ngIf="isManager" routerLink="/trips/{{trip._id}}" class="edit-trip">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button routerLink="/trips/display/{{trip._id}}" class="mdc-button mdc-button--raised">
+              <mat-icon>pageview icon</mat-icon>
+            </button>
+            <button mat-raised-button *ngIf="trip.cancelReason" class="btn-cancelled" type="button"
+              (click)="showReasonCancel(trip)">
+              {{msg["cancelled-trip"]}}</button>
+          </mat-card-actions>
+        </mat-card-content>
+      </mat-card>
     </div>
+  </div>
 </div>

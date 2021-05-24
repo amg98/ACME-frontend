@@ -37,17 +37,6 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     maxPrice!: string;
     minDate!: string;
     maxDate!: string;
-    cancelReason!: Trip["cancelReason"];
-    close!: string;
-    editTripText!: string;
-    tripCanceledText!: string;
-    tripDetailsText!: string;
-    tripDeletedText!: string;
-    tripCreatedText!: string;
-    tripUpdatedText!: string;
-    newTripText!: string;
-    tripsListText!: string;
-    finderSavedText!: string;
 
     showfilter = true;
 
@@ -59,7 +48,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
         translator: TranslatorService,
         private router: Router,
         private route: ActivatedRoute,
-        private snackbar: MatSnackBar) {
+        private snackBar: MatSnackBar) {
         super(translator)
         route.queryParams.subscribe(val => this.ngOnInit())
 
@@ -80,19 +69,6 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
                 this.isExplorer = loggedActor.roles.includes("EXPLORER")
                 this.isSponsor = loggedActor.roles.includes("SPONSOR")
             }
-        })
-
-        this.setLanguageChangeListener(() => {
-            this.cancelReason = translator.getString("cancelReason")
-            this.close = translator.getString("close")
-            this.newTripText = translator.getString("newTrip")
-            this.editTripText = translator.getString("tripDetailText")
-            this.tripCanceledText = translator.getString("tripCanceledText")
-            this.tripDetailsText = translator.getString("tripDetailsText")
-            this.tripCanceledText = translator.getString("tripDeletedText")
-            this.tripCreatedText = translator.getString("tripCreatedText")
-            this.tripUpdatedText = translator.getString("tripUpdatedText")
-            this.finderSavedText = translator.getString("finderSavedText")
         })
     }
 
@@ -235,14 +211,18 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     }
 
     showReasonCancel(trip: Trip) {
-        this.snackbar.open(trip.cancelReason, this.close, {
-            duration: 5000,
-            panelClass: ["alert-success"]
-        })
+        this.showAlert(trip.cancelReason, "alert-error")
     }
 
     newTrip() {
         this.router.navigate(["trips/new"])
+    }
+
+    showAlert(messageID: string, panelClass: string): void {
+        this.snackBar.open(this.msg[messageID], this.msg.close, {
+            duration: 5000,
+            panelClass: [panelClass]
+        })
     }
 
 }

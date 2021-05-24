@@ -7,8 +7,8 @@
     <!-- boton solicitar -->
   <div class="btn-apply">
     <div *ngIf="trip != undefined && trip !=null"></div>
-    <button mat-raised-button  *ngIf = "isExplorer && !trip.isCancelled" color="accent" (click)="onApply(trip._id!)" id="applybutton" class="btn btn-primary">
-      {{apply}}
+    <button mat-raised-button  *ngIf = "isExplorer && !trip.isCancelled && onDate(trip.startDate)" color="accent" (click)="onApply(trip._id!)" id="applybutton" class="btn btn-primary">
+      {{msg["apply"]}}
     </button>
   </div> 
   </div>
@@ -17,7 +17,7 @@
   <div>
     <div *ngIf="trip != undefined && trip !=null "></div>
     <button mat-raised-button  *ngIf = "isSponsor" color="accent" (click) ="goSponsor(trip._id!)" class="btn btn-primary">
-      {{sponsor}}
+      {{msg["sponsor"]}}
     </button>
   </div> 
   </div>
@@ -26,13 +26,13 @@
   
   <mat-card class= "card1">
     <h3 class="card-title The-explorer-4-hex">Ticker: {{trip.ticker}}</h3>
-    <h3 class="card-title The-explorer-4-hex">{{price}}: {{trip.price}}&euro;</h3>
-    <h3>{{startDate}}: {{trip.startDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
-    <h3>{{endDate}}: {{trip.endDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
+    <h3 class="card-title The-explorer-4-hex">{{msg["price"]}}: {{trip.price}}&euro;</h3>
+    <h3>{{msg["startDate"]}}: {{trip.startDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
+    <h3>{{msg["endDate"]}}: {{trip.endDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
      <!-- requirements -->
     <mat-card *ngIf= "trip.requirements != null">
       <div *ngFor="let requirement of trip.requirements; let i = index">
-        <p>{{i+1}}: {{requirement}}</p>
+        <p>{{i+1}}: {{msg["requirement"]}}</p>
       </div>
     </mat-card>
     <!-- stages -->
