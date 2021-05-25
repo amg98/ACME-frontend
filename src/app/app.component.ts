@@ -27,11 +27,9 @@ export class AppComponent implements OnInit {
 
     changeTheme(theme: string | null): void {
         this.className = theme === "light" ? "light-mode" : "dark-mode"
-        this.overLayContainer
-            .getContainerElement()
+        this.overLayContainer.getContainerElement()
             .classList.add(theme === "light" ? "light-mode" : "dark-mode")
-        this.overLayContainer
-            .getContainerElement()
+        this.overLayContainer.getContainerElement()
             .classList.remove(theme !== "light" ? "light-mode" : "dark-mode")
     }
 }

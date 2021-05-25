@@ -8,8 +8,7 @@ import { TranslatorService } from "@services/translator.service"
 import { Trip } from "src/app/models/Trip"
 import { TripsService } from "@services/trips.service"
 import { MatDialog } from "@angular/material/dialog"
-import { CancelTripComponent } from "@components/dialog/cancel-trip/cancel-trip.component"
-import { trigger, state, style, transition, animate } from "@angular/animations" 
+import { CancelTripComponent } from "@components/dialog/cancel-trip/cancel-trip.component" 
 
 @Component({
     selector: "app-trips-manager-list",
