@@ -9,6 +9,7 @@ import { Trip } from "src/app/models/Trip"
 import { TripsService } from "@services/trips.service"
 import { MatDialog } from "@angular/material/dialog"
 import { CancelTripComponent } from "@components/dialog/cancel-trip/cancel-trip.component"
+import { trigger, state, style, transition, animate } from "@angular/animations" 
 
 @Component({
     selector: "app-trips-manager-list",
@@ -19,8 +20,9 @@ import { CancelTripComponent } from "@components/dialog/cancel-trip/cancel-trip.
 export class TripsManagerListComponent extends TranslatableComponent implements AfterViewInit, OnInit {
 
     displayedColumns: string[] = [
-        "ticker", "title", "price", "startDate", "endDate", "description", "cancelReason"
+        "ticker", "title", "price", "startDate", "endDate", "description" 
     ];
+    
     dataSource: MatTableDataSource<Trip>
     trips: Trip[] | null = null
     currentDate = new Date()
@@ -37,6 +39,7 @@ export class TripsManagerListComponent extends TranslatableComponent implements 
     async ngOnInit(): Promise<void> {
         try {
             this.trips = await this.tripsService.getTripsByManager()
+            console.log(this.trips)
             this.dataSource.data = this.trips
         } catch {
             this.showAlert("trips/error", "alert-error")
@@ -54,7 +57,6 @@ export class TripsManagerListComponent extends TranslatableComponent implements 
 
     onCancel(trip: Trip, index: number): void {
         if (!this.trips) return
-        console.log("on cancel", trip)
         const dialogRef = this.dialogRef.open(CancelTripComponent, {
             width: "30em",
             data: { cancelReason: "" }
@@ -73,19 +75,33 @@ export class TripsManagerListComponent extends TranslatableComponent implements 
     async cancelTrip(trip: Trip, index: number, cancelReason: string): Promise<void> {
         if (!this.trips) return
         this.showSpiner = true
-        try {
+        try { 
             trip.cancelReason = cancelReason
             await this.tripsService.cancelTripByManager(trip, cancelReason)
+            this.trips[index].cancelReason = cancelReason
+            this.trips[index].isCancelled = true
+            this.showAlert("trips/success-cancel", "alert-success")
         } catch {
             this.showAlert("trips/error-cancel", "alert-error")
         }
-
-        // console.log(index)
-        // this.trips.slice(index,1)
-        // this.dataSource.data = this.trips
-        
+        this.dataSource.data = this.trips 
         this.showSpiner = false
     }
+
+    async deleteTrip(trip: Trip): Promise<void> {
+        if (!this.trips) return
+        this.showSpiner = true
+        try { 
+            await this.tripsService.deleteTrip(trip) 
+            this.trips = await this.tripsService.getTripsByManager()
+            this.showAlert("trips/success-delete", "alert-success")
+        } catch {
+            this.showAlert("trips/error-delete", "alert-error")
+        }
+        this.dataSource.data = this.trips 
+        this.showSpiner = false
+    }
+
 
     showAlert(messageID: string, panelClass: string): void {
         this.snackBar.open(this.msg[messageID], this.msg.close, {
