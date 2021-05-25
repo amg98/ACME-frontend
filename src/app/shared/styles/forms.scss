@@ -7,7 +7,6 @@ $forms__errorColor: darken(#ffa500, 10%);
     width: 40%;
     border-radius: 1.5em;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
-    background-color: rgba(#fff, 0.8);
     border: 2px solid #222;
 }
 
@@ -19,9 +18,6 @@ $forms__errorColor: darken(#ffa500, 10%);
     ::ng-deep .mat-form-field-outline {
         color: #bbb;
         border-radius: 5px;
-    }
-    ::ng-deep .mat-form-field-label {
-        color: #333;
     }
 }
 
@@ -37,7 +33,6 @@ $forms__errorColor: darken(#ffa500, 10%);
     border-bottom: 1px solid #aaa;
     padding-right: 0;
     padding-left: 0;
-    color: #000;
 }
 
 .forms__submit-button {

@@ -18,6 +18,7 @@ import { MatCardModule } from "@angular/material/card"
 import { MatIconModule } from "@angular/material/icon"
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatSidenavModule } from "@angular/material/sidenav"
+import { MatSlideToggleModule } from "@angular/material/slide-toggle"
 import { MatDialogModule } from "@angular/material/dialog"
 import { MatExpansionModule } from "@angular/material/expansion"
 
@@ -47,6 +48,7 @@ import { TokenInterceptor } from "./interceptors/token.interceptor"
 import { PieChartComponent } from "./components/stats/pie-chart/pie-chart.component"
 import { TableComponent } from "./components/stats/table/table.component"
 import { KeywordsTableComponent } from "./components/stats/keywords-table/keywords-table.component"
+import { ThemeSwitchComponent } from "./components/theme-switch/theme-switch.component"
 import { UsersListComponent } from "./components/users-list/users-list.component"
 import { CubeComponent } from "./components/stats/cube/cube.component"
 import { ManagerApplicationsComponent } from "./components/manager/applications/applications.component"
@@ -84,6 +86,7 @@ import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-
         PieChartComponent,
         TableComponent,
         KeywordsTableComponent,
+        ThemeSwitchComponent,
         UsersListComponent,
         CubeComponent,
         ManagerApplicationsComponent,
@@ -127,6 +130,7 @@ import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-
         MatExpansionModule,
         MatMenuModule,
         PlotlyModule,
+        MatSlideToggleModule,
         FormsModule,
         MatCarouselModule,
         MatGridListModule,

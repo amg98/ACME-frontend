@@ -19,7 +19,7 @@ import { SponsorGuard } from "./guards/sponsor.guard"
 import { SponsorshipPaymentComponent } from "@components/sponsorship-payment/sponsorship-payment.component"
 import { TripDisplayComponent } from "./components/trips/trip-display/trip-display.component"
 import { TripFormComponent } from "./components/trips/trip-form/trip-form.component"
-import { TripListComponent } from "./components/trips/trip-list/trip-list.component"  
+import { TripListComponent } from "./components/trips/trip-list/trip-list.component"
 import { SponsorshipComponent } from "@components/forms/sponsorship/sponsorship.component"
 import { AppsExplorerListComponent } from "@components/apps-explorer-list/apps-explorer-list.component"
 
