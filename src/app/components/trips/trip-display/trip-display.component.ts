@@ -88,7 +88,7 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     }
 
     goSponsor(tripID: string) {
-        this.router.navigate(["/sponsorship-form"], { queryParams: { tripID: tripID } })
+        this.router.navigate(["sponsorship-form"], { queryParams: { tripID: tripID } })
     }
 
     onDate(startDate: string) {

@@ -194,6 +194,7 @@
     "flat-rate/update": "Actualizar",
 
     "tripDeletedText": "Viaje eliminado con éxito",
+    "tripDeletedErrorText": "Error eliminando viaje",
     "tripCreatedText": "Viaje creado con éxito",
     "tripCreationError": "Error al crear el viaje",
     "tripUpdatedText": "Viaje actualizado con éxito",
@@ -211,7 +212,7 @@
     "apply": "Aplicar",
     "requirements" : "Requisitos",
 
-    "newTripFormText": "Formulario Nuevo Viaje",
+    "tripFormText": "Formulario Viaje",
     "addRequeriments": "Añade requisitos",
     "dates": "Fechas",
     "newTrip": "Nuevo Viaje",

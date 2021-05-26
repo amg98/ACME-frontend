@@ -101,15 +101,11 @@ export class ActorsService {
         }
     }
 
-    checkId(id: string) {
-        if (this.currentActor !== undefined && this.currentActor != null) {
-            if (this.currentActor._id === id) {
-                return true
-            } else {
-                return false
-            }
+    checkManagerId(managerID: string) {
+        if (managerID == this.getLoggedActor()?._id) {
+            return true;
         } else {
-            return false
+            return false;
         }
     }
 

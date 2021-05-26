@@ -40,6 +40,7 @@ export const routes: Routes = [
     { path: "sponsorship-form", component: SponsorshipComponent, canActivate: [SponsorGuard] },
     {path: "trips", children: [
         {path: "new", component: TripFormComponent},
+        {path: ":id", component: TripFormComponent},
         {path: "search", component: TripListComponent},
         {path: "display/:id", component: TripDisplayComponent},
         {path: "", component: TripListComponent},

@@ -53,8 +53,8 @@ export class TripsService {
 
     }
 
-    async postTrip(trip: Trip) {
-        await this.client.post(`${environment.backendURL}/trips`, { trip }).toPromise()
+    async postTrip(trip: Trip) : Promise<Trip>{
+        return await this.client.post(`${environment.backendURL}/trips`, { trip }).toPromise() as Trip
     }
 
     async updateTrip(trip: Trip, id: string) {
@@ -74,6 +74,10 @@ export class TripsService {
         }).toPromise()
     }
 
+    async publishTrip(id: string) {
+        await this.client.put(`${environment.backendURL}/trips/${id}/publish`, httpOptions).toPromise()
+
+    }
 
     async searchTrips(start: number,
         psize: number,

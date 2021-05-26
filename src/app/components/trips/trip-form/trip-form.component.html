@@ -1,11 +1,11 @@
 <mat-card class="forms__card">
     <form [formGroup]="tripForm" (submit)="onSubmit()">
 
-        <mat-card-title class="forms__title">{{newTripFormText}}</mat-card-title>
+        <mat-card-title class="forms__title">{{msg["tripFormText"]}}</mat-card-title>
 
         <!-- Title -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{title}}</mat-label>
+            <mat-label>{{msg["title"]}}</mat-label>
             <input matInput formControlName="title" required>
             <mat-error *ngIf="tripForm.controls.title.touched && tripForm.controls.title.invalid">
                 <span class="forms__error"
@@ -15,13 +15,13 @@
 
         <!-- Description -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{description}}</mat-label>
+            <mat-label>{{msg["description"]}}</mat-label>
             <input matInput formControlName="description">
         </mat-form-field>
 
          <!-- Dates -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{dates}}</mat-label>
+            <mat-label>{{msg["dates"]}}</mat-label>
             <mat-date-range-input [rangePicker]="picker">
                 <input matStartDate  name="startDate" formControlName="startDate" placeholder="{{startDate}}" required>
                 <mat-error *ngIf="tripForm.controls.startDate.touched && tripForm.controls.startDate.invalid">
@@ -40,12 +40,12 @@
 
         <!-- Requirements -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{addrequirementsText}}</mat-label>
+            <mat-label>{{msg["addrequirementsText"]}}</mat-label>
             <div formArrayName="requirements"
-                *ngFor="let requirement of getControls(tripForm, 'requirements'); let i=index">
+                *ngFor="let req of getControls(tripForm, 'requirements'); let i=index">
                 <div [formGroupName]="i">
                     <mat-form-field appearance="fill" class="forms__form-field">
-                    <input matInput formcontrolname="requirement" placeholder="{{requirementText}}">
+                    <input matInput formcontrolname="requirements" placeholder="{{requirementText}}">
                     </mat-form-field>
                     <mat-icon  color="primary" (click)='removeReq(i)'>delete</mat-icon>
                 </div>
@@ -55,7 +55,7 @@
 
         <!-- Stages -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{addStagesText}}</mat-label>
+            <mat-label>{{msg["addStagesText"]}}</mat-label>
             <div formArrayName="stages" *ngFor="let stage of getControls(tripForm, 'stages'); let i = index;">
                 <div [formGroupName]="i">
 
@@ -68,7 +68,7 @@
                    </mat-form-field>
 
                    <mat-form-field appearance="fill" class="forms__form-field">
-                    <input matInput class = "price-stage" formControlName="price" placeholder="{{price}}">
+                    <input matInput formControlName="price" placeholder="{{price}}">
                    </mat-form-field>
 
                     <mat-icon color="primary" (click)='removeStage(i)'>delete</mat-icon>
@@ -79,13 +79,14 @@
 
         <!-- Pictures -->
         <div [fileUploadInputFor]="fileUploadQueue" class="upload-drop-zone">
-            {{dragAndDropPicturesText}}
+            {{msg["dragAndDropPicturesText"]}}
         </div>
         <div style="width: 500px">
             <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'"
                 [httpUrl]="'https://localhost:8180/jax-rs-jersey-application-sample'" multiple>
 
                 <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index">
+
                 </mat-file-upload>
             </mat-file-upload-queue>
         </div>

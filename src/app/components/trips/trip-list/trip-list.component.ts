@@ -53,7 +53,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
         route.queryParams.subscribe(val => this.ngOnInit())
 
         this.tripService.subscribeToSearchResults(trips => {
-            if(trips == null) return
+            if (trips == null) return
             this.data = trips
         })
 
@@ -114,15 +114,6 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
         }
     }
 
-    /*async searchTrips() {
-        return this.tripService.searchTrips(0, MAX_TRIPS, this.keyword, this.minPrice, this.maxPrice,
-            this.minDate, this.maxDate)
-            .then((res) => {
-                this.data = res;
-            })
-            .catch((err) => console.error(err.message));
-    }*/
-
     getFirstPicture(trip: Trip) {
         if (trip.pictures.length > 0) {
             if (trip.pictures[0] === "") {
@@ -147,6 +138,28 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
             }
         })
     }
+    checkManagerId(managerID: string) {
+        if (managerID == this.actorsService.getLoggedActor()?._id) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    isOneWeekBeforeToStart(startDate: string) {
+        
+        var q = new Date();
+        var m = q.getMonth() + 1;
+        var d = q.getDay();
+        var y = q.getFullYear();
+
+        var date = new Date(y, m, d);
+        var tripStartDate = new Date(startDate);
+        tripStartDate.setDate(tripStartDate.getDate() + 7);
+        if (tripStartDate < date) {
+            return true;
+        }
+        return false;
+    }
 
     saveFinder() {
         if (this.actor != null && this.actor !== undefined) {
@@ -163,14 +176,12 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
                     //this.messageService.notifyMessage(this.translateService.instant('errorMessages.500'), 'alert alert-danger');
                 })
         }
-
     }
 
-    //AÑADIR COMPROBACIÓN DE DIAS, CREO QUE ES UNA SEMANA ANTES DE QUE EMPIECE
     displayTrip(trip: Trip) {
         const date = new Date()
         const startDate = new Date(trip.startDate)
-        return trip.isPublished && (startDate.getTime() > date.getTime())
+        return trip.isPublished && (startDate.getTime() + 7 > date.getTime())
     }
 
     // Functions to infinite scroll

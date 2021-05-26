@@ -194,6 +194,7 @@
     "flat-rate/update": "Update",
 
     "tripDeletedText": "Trip successfully deleted",
+    "tripDeletedErrorText": "Error deleting a trip",
     "tripCreatedText": "Trip successfully created",
     "tripCreationError": "Trip creation failure",
     "tripUpdatedText": "Trip successfully updated",
@@ -211,7 +212,7 @@
     "apply": "Apply",
     "requirements" : "Requeriments",
 
-    "newTripFormText": "New Trip Form",
+    "tripFormText": "Trip Form",
     "addRequeriments": "Add requirements",
     "dates": "Dates",
     "newTrip": "New trip",
