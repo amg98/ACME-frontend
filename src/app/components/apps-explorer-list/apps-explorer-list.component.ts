@@ -35,11 +35,11 @@ export class AppsExplorerListComponent extends TranslatableComponent implements 
     }
 
     async getApps(): Promise<void> {
-        this.pending = await this.appServices.getApps(ApplicationStatus.Pending)
-        this.due = await this.appServices.getApps(ApplicationStatus.Due)
-        this.accepted = await this.appServices.getApps(ApplicationStatus.Accepted)
-        this.rejected = await this.appServices.getApps(ApplicationStatus.Rejected)
-        this.cancelled = await this.appServices.getApps(ApplicationStatus.Cancelled)
+        this.pending = await this.appServices.getAppsByStatus(ApplicationStatus.Pending)
+        this.due = await this.appServices.getAppsByStatus(ApplicationStatus.Due)
+        this.accepted = await this.appServices.getAppsByStatus(ApplicationStatus.Accepted)
+        this.rejected = await this.appServices.getAppsByStatus(ApplicationStatus.Rejected)
+        this.cancelled = await this.appServices.getAppsByStatus(ApplicationStatus.Cancelled)
     }
 
     onPay(appId: Application): void {

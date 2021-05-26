@@ -39,6 +39,7 @@
     "registration-failure": "Error while registering the user",
     "login-success": "Login has been completed successfully",
     "login-failure": "Entered credentials are invalid",
+    "preferences": "Preferences",
     "close": "Close",
     "save": "Save",
     "save-success": "Los cambios han sido guardados correctamente",

@@ -39,6 +39,7 @@
     "registration-failure": "Ha ocurrido un error creando el usuario",
     "login-success": "Se ha iniciado sesión correctamente",
     "login-failure": "Las credenciales introducidas no son válidas",
+    "preferences": "Preferencias",
     "close": "Cerrar",
     "save": "Guardar",
     "save-success": "Los cambios han sido guardados correctamente",

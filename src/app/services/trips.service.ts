@@ -43,7 +43,7 @@ export class TripsService {
         this.searchResults.next(results)
     }
 
-    applyTrip(tripID: string, explorerID: string) {
+    applyTrip(tripID: string, explorerID: string)  {
         const url = `${environment.backendURL}/applications`
 
         const headers = new HttpHeaders()
@@ -91,7 +91,7 @@ export class TripsService {
 
 
     async searchTrips(start: number, psize: number, keyword: string,
-        minPrice: string, maxPrice: string, minDate: string, maxDate: string) {
+        minPrice: string, maxPrice: string, minDate: string, maxDate: string) : Promise<Trip[]> {
 
         const parameters = {
             startFrom: "" + start,
