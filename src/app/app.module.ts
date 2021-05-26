@@ -69,6 +69,7 @@ import { NewFavouriteListComponent } from "./components/dialog/new-favourite-lis
 import { EditFavouriteListComponent } from "./components/dialog/edit-favourite-list/edit-favourite-list.component"
 import { AddToFavouritesComponent } from "./components/add-to-favourites/add-to-favourites.component"
 import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-explorer-list.component"
+import { PreferencesComponent } from "./components/preferences/preferences.component"
 
 
 @NgModule({
@@ -107,6 +108,7 @@ import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-
         EditFavouriteListComponent,
         AddToFavouritesComponent,
         AppsExplorerListComponent,
+        PreferencesComponent,
     ],
     imports: [
         CommonModule,

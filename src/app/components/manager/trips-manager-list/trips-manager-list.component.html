@@ -35,10 +35,10 @@
             <td mat-cell *matCellDef="let trip; let i = index">
                 <div *ngIf="(checkDate(trip.startDate))">
                     <button mat-raised-button color="primary" [disabled]="trip.isCancelled" type="button"
-                        class="buttons" [disabled]="trip.isPublished">
+                        class="buttons" [disabled]="!trip.isPublished" routerLink="/trips/{{trip._id}}">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-raised-button color="warn" [disabled]="(trip.isCancelled || !trip.isPublished)"
+                    <button mat-raised-button color="warn" [disabled]="(trip.isCancelled)"
                         type="button" class="buttons"(click)="onCancel(trip, i)" >
                         <mat-icon>clear</mat-icon>
                     </button>
