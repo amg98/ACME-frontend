@@ -108,6 +108,8 @@
     "cube/empty-result": "No matching results have been found",
 
     "applications/error-change-status": "Unable to change the application status",
+    "applications/error-cancel": "Unable to cancel the application",
+    "applications/success-cancel": "Application successfully cancelled",
     "applications/success": "Applications successfully retrieved",
     "applications/error": "Unable to retrieve the applications",
     "applications/no-reason": "No reason has been specified",

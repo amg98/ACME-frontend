@@ -108,6 +108,8 @@
     "cube/empty-result": "No se han encontrado resultados",
 
     "applications/error-change-status": "No se ha podido cambiar el estado de la reserva",
+    "applications/error-cancel": "No se ha podido cancelar la reserva",
+    "applications/success-cancel": "Reserva cancelada con éxito",
     "applications/success": "Reservas obtenidas correctamente",
     "applications/error": "No se han podido obtener las reservas",
     "applications/no-reason": "No se ha especificado un motivo",

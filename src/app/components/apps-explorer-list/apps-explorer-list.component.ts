@@ -20,7 +20,7 @@ export class AppsExplorerListComponent extends TranslatableComponent implements 
     cancelled: Application[] = [];
     showSpiner = true
 
-    constructor(translator: TranslatorService, private appServices: ApplicationsService,
+    constructor(translator: TranslatorService, private appService: ApplicationsService,
         private snackbar: MatSnackBar) {
         super(translator)
     }
@@ -35,19 +35,46 @@ export class AppsExplorerListComponent extends TranslatableComponent implements 
     }
 
     async getApps(): Promise<void> {
-        this.pending = await this.appServices.getAppsByStatus(ApplicationStatus.Pending)
-        this.due = await this.appServices.getAppsByStatus(ApplicationStatus.Due)
-        this.accepted = await this.appServices.getAppsByStatus(ApplicationStatus.Accepted)
-        this.rejected = await this.appServices.getAppsByStatus(ApplicationStatus.Rejected)
-        this.cancelled = await this.appServices.getAppsByStatus(ApplicationStatus.Cancelled)
+        this.due = await this.appService.getAppsByStatus(ApplicationStatus.Due)
+        this.rejected = await this.appService.getAppsByStatus(ApplicationStatus.Rejected)
+        this.accepted = await this.appService.getAppsByStatus(ApplicationStatus.Accepted)
+        this.pending = await this.appService.getAppsByStatus(ApplicationStatus.Pending)
+        this.cancelled = await this.appService.getAppsByStatus(ApplicationStatus.Cancelled)
     }
 
     onPay(appId: Application): void {
         console.log(appId)
     }
 
-    onCancel(appId: number): void {
-        console.log(appId)
+    async onCancel(app: Application): Promise<void> {
+        try {
+            const previousState = app.status
+            // app.status = ApplicationStatus.Cancelled
+            await this.appService.cancelApplication(app).then(res => {
+
+                console.log("cancel ", res)
+
+            })
+
+            this.showAlert("applications/success-cancel", "alert-success")
+            await this.reload(previousState)
+        } catch (error) {
+            this.showAlert("applications/error-cancel", "alert-error")
+        }
+
+    }
+
+    async reload(status: string): Promise<void> {
+        console.log(status)
+        if (status === ApplicationStatus.Accepted) {
+            this.accepted = []
+            this.accepted = await this.appService.getAppsByStatus(ApplicationStatus.Accepted)
+        } else {
+            this.pending = []
+            this.pending = await this.appService.getAppsByStatus(ApplicationStatus.Pending)
+        }
+        this.cancelled = []
+        this.cancelled = await this.appService.getAppsByStatus(ApplicationStatus.Cancelled)
     }
 
     showAlert(messageID: string, panelClass: string): void {
