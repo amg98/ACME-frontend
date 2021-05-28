@@ -2,6 +2,7 @@
 
   <h3 class="title">{{trip.title}}</h3>
   <div class="button-container">
+    
     <!-- boton solicitar -->
     <div class="btn-apply">
       <div *ngIf="trip != undefined && trip !=null"></div>
@@ -26,6 +27,10 @@
   </div>
 
   <mat-card class="card">
+    <!-- icon edit -->
+    <button mat-stroked-button color="primary" *ngIf="isManager && actorsService.checkManagerId(trip.managerID)" routerLink="/trips/{{trip._id}}" class="edit-trip">
+      <mat-icon>edit</mat-icon>
+    </button>
 
     <mat-card class="card1">
       <div class="info">
@@ -37,7 +42,7 @@
       <!-- requirements -->
       <mat-card *ngIf="trip.requirements != null">
         <div *ngFor="let requirement of trip.requirements; let i = index">
-          <p><b>{{i+1}}:</b> {{msg["requirement"]}}</p>
+          <p><b>{{i+1}}: </b> {{requirement}}</p>
         </div>
       </mat-card>
       <!-- stages -->

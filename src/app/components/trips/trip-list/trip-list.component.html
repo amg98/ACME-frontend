@@ -22,10 +22,10 @@
             <p>{{trip.description}}</p>
           </details>
           <mat-card-actions>
-            <button routerLink="/trips/display/{{trip._id}}" class="mdc-button mdc-button--raised">
+            <button mat-stroked-button color="primary" routerLink="/trips/display/{{trip._id}}" class="mdc-button mdc-button--raised">
               <mat-icon>pageview icon</mat-icon>
             </button>
-            <button *ngIf="isManager && checkManagerId(trip.managerID)" routerLink="/trips/{{trip._id}}" class="edit-trip">
+            <button  mat-stroked-button color="primary" *ngIf="isManager && checkManagerId(trip.managerID)" routerLink="/trips/{{trip._id}}" class="edit-trip">
               <mat-icon>edit</mat-icon>
             </button>
             <button mat-raised-button *ngIf="trip.cancelReason" class="btn-cancelled" type="button"

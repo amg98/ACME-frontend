@@ -41,7 +41,6 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
     title!: string;
     description!: string;
     price!: string;
-    saveText!: string;
     addrequirementsText!: string;
     startDate!: string;
     endDate!: string;
@@ -59,14 +58,15 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
         this.setLanguageChangeListener(() => {
             this.newTripFormText = translator.getString("newTripFormText")
             this.description = translator.getString("description")
+            this.title = translator.getString("title")
             this.price = translator.getString("price")
             this.stagesText = translator.getString("stages")
             this.requirementText = translator.getString("requirement")
             this.requirementsText = translator.getString("requirements")
-            this.saveText = translator.getString("save")
             this.addStagesText = translator.getString("addStagesText")
         })
     }
+
     createForm() {
         this.tripForm = this.formBuilder.group({
             title: ["", Validators.required],
@@ -118,6 +118,9 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
     removeStage(index: number) {
         this.stages.removeAt(index)
     }
+    goBack() {
+        window.history.back();
+      }
 
     addStage() {
         this.stages = this.tripForm.get("stages") as FormArray
@@ -173,13 +176,13 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
         this.removePic(0)
         this.tripForm.setControl("pictures", this.pictures)
     }
+
     getControls(frmGrp: FormGroup, key: string) {
         return (<FormArray>frmGrp.controls[key]).controls
     }
 
     async onSubmit(): Promise<void> {
         const formTrip = this.tripForm.value
-        formTrip.price = new Number(formTrip.price)
         formTrip.startDate = new Date(formTrip.startDate).toISOString();
         formTrip.endDate = new Date(formTrip.endDate).toISOString();
         if (this.trip_new) {
@@ -199,10 +202,9 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
         } else {
             try {
                 if (this.trip._id !== undefined && this.trip._id !== null) {
-                    console.log(formTrip)
                     this.tripsService.updateTrip(formTrip, this.trip._id);
                     this.updated = true
-                    this.router.navigate(["manager/trips"]);
+                    this.router.navigate(["trips/display/" + this.trip._id]);
                     this.showAlert("tripCreatedText", "alert-success")
                     this.loading = false
                 }
