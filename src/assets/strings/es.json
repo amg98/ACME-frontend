@@ -33,17 +33,13 @@
     "my-apps": "Mis reservas",
     "all-trips": "Todos los viajes",
     "edit": "Editar",
-    "ticker": "Ticket",
-    "tittle": "Titulo",
-    "price": "Precio",
-    "startDate": "Fecha Inicio",
-    "endDate": "Fecha Fin",
     "url-validation": "La URL no es correcta",
 
     "registration-success": "Se ha creado el usuario satisfactoriamente",
     "registration-failure": "Ha ocurrido un error creando el usuario",
     "login-success": "Se ha iniciado sesión correctamente",
     "login-failure": "Las credenciales introducidas no son válidas",
+    "preferences": "Preferencias",
     "close": "Cerrar",
     "save": "Guardar",
     "save-success": "Los cambios han sido guardados correctamente",
@@ -112,6 +108,9 @@
     "cube/empty-result": "No se han encontrado resultados",
 
     "applications/error-change-status": "No se ha podido cambiar el estado de la reserva",
+    "applications/error-cancel": "No se ha podido cancelar la reserva",
+    "applications/success-cancel": "Reserva cancelada con éxito",
+    "applications/success": "Reservas obtenidas correctamente",
     "applications/error": "No se han podido obtener las reservas",
     "applications/no-reason": "No se ha especificado un motivo",
     "applications/reject": "Rechazar reserva",
@@ -152,12 +151,14 @@
     "favourite-lists/already-exists": "El viaje ya ha sido añadido a esta lista",
     "favourite-lists/add-success": "El viaje ha sido añadido satisfactoriamente",
 
-    "back":"Volver",
     "trips/cancel": "Cancelar viaje",
     "trips/enter-reason": "Introduzca el motivo",
     "trips/cancel-reason": "Motivo de la cancelación",
     "trips/no-reason": "No se ha especificado un motivo",
     "trips/error-cancel": "No se ha podido cancelar el viaje",
+    "trips/success-cancel": "Viaje cancelado con éxito",
+    "trips/error-delete": "No se ha podido eliminar el viaje",
+    "trips/success-delete": "Viaje eliminado con éxito",
     "trips/error": "No se han podido obtener los viajes",
     "cancelled-trip": "Cancelado",
     "expired-trip": "Finalizado",
@@ -211,6 +212,9 @@
     "stages": "Etapas",
     "apply": "Aplicar",
     "requirements" : "Requisitos",
+    "startDate": "Fecha inicio",
+    "endDate": "Fecha fin",
+    "price": "Precio",
 
     "tripFormText": "Formulario Viaje",
     "addRequeriments": "Añade requisitos",
@@ -219,5 +223,8 @@
     "sponsorText": "Patrocinar",
     "dragAndDropPicturesText": "Arrastra las imágenes aquí",
     "addStagesText":"Añade etapas",
-    "requirement": "Requisito"
+    "requirement": "Requisito",
+    "picture": "Imagen",
+    "addPictures": "Añade imagen"
+
 }

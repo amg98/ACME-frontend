@@ -103,9 +103,9 @@ export class ActorsService {
 
     checkManagerId(managerID: string) {
         if (managerID == this.getLoggedActor()?._id) {
-            return true;
+            return true
         } else {
-            return false;
+            return false
         }
     }
 

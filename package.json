@@ -26,6 +26,7 @@
         "@angular/platform-browser-dynamic": "~11.2.9",
         "@angular/router": "~11.2.9",
         "@material/chips": "^11.0.0",
+        "@material/slider": "^11.0.0",
         "@ngmodule/material-carousel": "^0.6.0",
         "angular-material-fileupload": "^3.0.2",
         "angular-plotly.js": "^4.0.0",

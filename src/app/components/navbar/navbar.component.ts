@@ -1,8 +1,10 @@
 import { Component, OnDestroy } from "@angular/core"
 import { Router } from "@angular/router"
 import { TranslatableComponent } from "@components/translatable/translatable.component"
+import { AdvancedfinderComponent } from "@components/advanced-finder/advanced-finder.component"
 import { ActorsService } from "@services/actors.service"
 import { TranslatorService } from "@services/translator.service"
+import { MatDialog } from "@angular/material/dialog"
 import { Subscription } from "rxjs"
 
 @Component({
@@ -19,7 +21,10 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
     isExplorer = false;
     isSponsor = false;
 
-    constructor(translator: TranslatorService, private actorsService: ActorsService, private router: Router) {
+    constructor(translator: TranslatorService, 
+        private actorsService: ActorsService, 
+        private router: Router,
+        private dialogRef: MatDialog) {
         super(translator)
 
         this.loggedActorName = ""
@@ -34,6 +39,13 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
                 this.isExplorer = loggedActor.roles.includes("EXPLORER")
                 this.isSponsor = loggedActor.roles.includes("SPONSOR")
             }
+        })
+    }
+    advancedSearch(){
+        const dialogRef = this.dialogRef.open(AdvancedfinderComponent, {
+            width: "300em",
+            data: { minPrice: Number,
+            maxPrice: Number }
         })
     }
 

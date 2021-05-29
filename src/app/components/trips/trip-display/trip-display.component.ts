@@ -2,9 +2,10 @@ import { Component, OnInit } from "@angular/core"
 import { TranslatableComponent } from "@components/translatable/translatable.component"
 import { TranslatorService } from "@services/translator.service"
 import { TripsService } from "@services/trips.service"
+import { SponsorshipsService } from "@services/sponsorships.service"
 import { Router, ActivatedRoute } from "@angular/router"
 import { ActorsService } from "@services/actors.service"
-import { Actor } from "src/app/models/Actor"
+import { Sponsorship } from "src/app/models/Sponsorship"
 import { MatSnackBar } from "@angular/material/snack-bar"
 import { Trip } from "src/app/models/Trip"
 import { Subscription } from "rxjs"
@@ -25,14 +26,17 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
 
     trip!: Trip;
     id!: string;
-    
+    sponsorship!: Sponsorship;
+
     constructor(public actorsService: ActorsService,
         private tripService: TripsService,
         translator: TranslatorService,
+        private sponsorshipsService: SponsorshipsService,
         private router: Router,
         private route: ActivatedRoute,
         private snackBar: MatSnackBar) {
         super(translator)
+
 
         this.loggedActorName = ""
         this.loggedActorSub = actorsService.subscribeToLoggedActor(loggedActor => {
@@ -56,18 +60,13 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
         const param = this.route.snapshot.params["paramKey"]
         // console.log('param: ' + param);
 
-        // si viene del boton ver trip del datatable de applications
-        if (param === "application") {
-            this.trip = await this.tripService.getTrip(this.id)
+        this.trip = await this.tripService.getTrip(this.id)
+        console.log(this.trip._id)
 
-        } else {
-            this.trip = await this.tripService.getTrip(this.id)
-
-            /*if ( this.trip !== undefined && this.trip !== null ) {
-                this.pictures = this.trip.pictures;
-                this.sponsorships = this.sponsorshipService.getRandomSponsorForATrip(this.trip._id);   
-            }  
-            */
+        if (this.trip._id) {
+            await (await this.sponsorshipsService.getRandomSponsorship(this.trip._id)).subscribe(res=>{
+                this.sponsorship
+            })    
         }
     }
 
@@ -75,6 +74,7 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     goBack(): void {
         this.router.navigate(["/trips"])
     }
+
     getPicture(n: number) {
         if (this.trip.pictures.length > 0) {
             if (this.trip.pictures[n] === "") {
@@ -92,18 +92,18 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     }
 
     onDate(startDate: string) {
-        var q = new Date();
-        var m = q.getMonth() + 1;
-        var d = q.getDay();
-        var y = q.getFullYear();
+        const q = new Date()
+        const m = q.getMonth() + 1
+        const d = q.getDay()
+        const y = q.getFullYear()
 
-        var date = new Date(y, m, d);
-        let startDateParsed = new Date(startDate);
-         if(startDateParsed > date){
-             return true;
-         }else{
-             return false;
-         }
+        const date = new Date(y, m, d)
+        const startDateParsed = new Date(startDate)
+        if (startDateParsed > date) {
+            return true
+        } else {
+            return false
+        }
     }
 
     async onApply(tripId: string) {

@@ -53,19 +53,19 @@ export class TripsService {
 
     }
 
-    async postTrip(trip: Trip) : Promise<Trip>{
+    async postTrip(trip: Trip): Promise<Trip> {
         return await this.client.post(`${environment.backendURL}/trips`, { trip }).toPromise() as Trip
     }
 
-    async updateTrip(trip: Trip, id: string) {
+    async updateTrip(trip: Trip, id: string): Promise<void> {
         await this.client.put(`${environment.backendURL}/trips/${id}`, { trip }, httpOptions).toPromise()
     }
 
-    async deleteTrip(id: string) {
+    async deleteTrip(trip: Trip): Promise<void> {
         const headers = new HttpHeaders()
         headers.append("Content-Type", "application/json")
 
-        this.client.delete(`${environment.backendURL}/trips/${id}`, httpOptions).toPromise()
+        this.client.delete(`${environment.backendURL}/trips/${trip._id}`, httpOptions).toPromise()
     }
 
     async cancelTripByManager(trip: Trip, cancelReason = ""): Promise<void> {
@@ -74,7 +74,7 @@ export class TripsService {
         }).toPromise()
     }
 
-    async publishTrip(id: string) {
+    async publishTrip(id: string): Promise<void> {
         await this.client.put(`${environment.backendURL}/trips/${id}/publish`, httpOptions).toPromise()
 
     }
@@ -85,7 +85,7 @@ export class TripsService {
         minPrice: string,
         maxPrice: string,
         minDate: string,
-        maxDate: string) {
+        maxDate: string): Promise<Trip[]> {
 
         const parameters = {
             startFrom: "" + start,
@@ -96,7 +96,7 @@ export class TripsService {
             minDate: minDate == null ? "" : minDate,
             maxDate: maxDate == null ? "" : maxDate
         }
-        return this.client.get<Trip[]>(`${environment.backendURL}/trips/search`, {
+        return this.client.get<Trip[]>(`${environment.backendURL}/trips`, {
             params: parameters, observe: "body",
         }).toPromise()
     }

@@ -18,14 +18,15 @@ import { MatCardModule } from "@angular/material/card"
 import { MatIconModule } from "@angular/material/icon"
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatSidenavModule } from "@angular/material/sidenav"
+import { MatSlideToggleModule } from "@angular/material/slide-toggle"
 import { MatDialogModule } from "@angular/material/dialog"
 import { MatExpansionModule } from "@angular/material/expansion"
 
 import { MatCarouselModule } from "@ngmodule/material-carousel"
 import {MatGridListModule} from "@angular/material/grid-list"
 import { MatFileUploadModule } from "angular-material-fileupload"
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
+import { MatDatepickerModule } from "@angular/material/datepicker"
+import { MatNativeDateModule } from "@angular/material/core"
 import { MatTableModule } from "@angular/material/table"
 import { MatPaginatorModule } from "@angular/material/paginator"
 import { MatMenuModule } from "@angular/material/menu"
@@ -47,6 +48,7 @@ import { TokenInterceptor } from "./interceptors/token.interceptor"
 import { PieChartComponent } from "./components/stats/pie-chart/pie-chart.component"
 import { TableComponent } from "./components/stats/table/table.component"
 import { KeywordsTableComponent } from "./components/stats/keywords-table/keywords-table.component"
+import { ThemeSwitchComponent } from "./components/theme-switch/theme-switch.component"
 import { UsersListComponent } from "./components/users-list/users-list.component"
 import { CubeComponent } from "./components/stats/cube/cube.component"
 import { ManagerApplicationsComponent } from "./components/manager/applications/applications.component"
@@ -67,6 +69,8 @@ import { NewFavouriteListComponent } from "./components/dialog/new-favourite-lis
 import { EditFavouriteListComponent } from "./components/dialog/edit-favourite-list/edit-favourite-list.component"
 import { AddToFavouritesComponent } from "./components/add-to-favourites/add-to-favourites.component"
 import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-explorer-list.component"
+import { PreferencesComponent } from "./components/preferences/preferences.component";
+import { AdvancedfinderComponent } from './components/advanced-finder/advanced-finder.component'
 
 
 @NgModule({
@@ -84,6 +88,7 @@ import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-
         PieChartComponent,
         TableComponent,
         KeywordsTableComponent,
+        ThemeSwitchComponent,
         UsersListComponent,
         CubeComponent,
         ManagerApplicationsComponent,
@@ -104,6 +109,8 @@ import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-
         EditFavouriteListComponent,
         AddToFavouritesComponent,
         AppsExplorerListComponent,
+        PreferencesComponent,
+        AdvancedfinderComponent,
     ],
     imports: [
         CommonModule,
@@ -127,6 +134,7 @@ import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-
         MatExpansionModule,
         MatMenuModule,
         PlotlyModule,
+        MatSlideToggleModule,
         FormsModule,
         MatCarouselModule,
         MatGridListModule,

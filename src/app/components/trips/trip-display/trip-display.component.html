@@ -6,7 +6,7 @@
     <!-- boton solicitar -->
     <div class="btn-apply">
       <div *ngIf="trip != undefined && trip !=null"></div>
-      <button mat-raised-button *ngIf="isExplorer && !trip.isCancelled && onDate(trip.startDate)" color="accent"
+      <button mat-raised-button *ngIf="isExplorer && !trip.isCancelled" color="accent"
         (click)="onApply(trip._id!)" id="applybutton" class="btn btn-primary">
         {{msg["apply"]}}
       </button>
@@ -39,6 +39,9 @@
         <h3><b>{{msg["startDate"]}}:</b> {{trip.startDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
         <h3><b>{{msg["endDate"]}}:</b> {{trip.endDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
       </div>
+
+     
+      
       <!-- requirements -->
       <mat-card *ngIf="trip.requirements != null">
         <div *ngFor="let requirement of trip.requirements; let i = index">
@@ -76,5 +79,6 @@
       <mat-carousel-slide #matCarouselSlide *ngFor="let picture of trip.pictures let i = index;" [image]="getPicture(i)"
         overlayColor="#00000040" [hideOverlay]="false"></mat-carousel-slide>
     </mat-carousel>
+    
   </mat-card>
 </div>

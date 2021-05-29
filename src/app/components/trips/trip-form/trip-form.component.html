@@ -41,11 +41,11 @@
 
         <!-- Requirements -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{msg["addrequirementsText"]}}</mat-label>
+            <mat-label>{{msg["addRequeriments"]}}</mat-label>
             <div formArrayName="requirements"
                 *ngFor="let requirement of getControls(tripForm, 'requirements'); let i=index">
                 <mat-form-field appearance="fill" class="forms__form-field">
-                    <input matInput [formControlName]="i" placeholder="{{requirementText}}">
+                    <input matInput #myInput [formControlName]="i" type="text" placeholder="{{requirementText}}">
                 </mat-form-field>
                 <mat-icon color="primary" (click)='removeReq(i)'>delete</mat-icon>
             </div>
@@ -60,15 +60,15 @@
 
 
                     <mat-form-field appearance="fill" class="forms__form-field">
-                        <input matInput formControlName="title" placeholder="{{title}}" required matInputAutofocus>
+                        <input matInput #myInput formControlName="title" placeholder="{{title}}" type="text" required>
                     </mat-form-field>
 
                     <mat-form-field appearance="fill" class="forms__form-field">
-                        <input matInput formControlName="description" placeholder="{{description}}" matInputAutofocus>
+                        <input matInput #myInput formControlName="description" type="text" placeholder="{{description}}">
                     </mat-form-field>
 
                     <mat-form-field appearance="fill" class="forms__form-field">
-                        <input matInput type="number" formControlName="price" placeholder="{{price}}" required matInputAutofocus>
+                        <input matInput #myInput type="number" formControlName="price" placeholder="{{price}}" required>
                     </mat-form-field>
 
                     <mat-icon color="primary" (click)='removeStage(i)'>delete</mat-icon>
@@ -82,19 +82,17 @@
         </mat-form-field>
 
         <!-- Pictures -->
-        <div [fileUploadInputFor]="fileUploadQueue" class="upload-drop-zone">
-            {{msg["dragAndDropPicturesText"]}}
-        </div>
-        <div style="width: 500px">
-            <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'"
-                [httpUrl]="'https://localhost:8180/jax-rs-jersey-application-sample'" multiple>
-
-                <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index">
-                    <input>
-                </mat-file-upload>
-            </mat-file-upload-queue>
-        </div>
-
+        <mat-form-field appearance="outline" class="forms__form-field">
+            <mat-label>{{msg["addPictures"]}}</mat-label>
+            <div formArrayName="pictures"
+                *ngFor="let picture of getControls(tripForm, 'pictures'); let i=index">
+                <mat-form-field appearance="fill" class="forms__form-field">
+                    <input matInput #myInput [formControlName]="i" type="text" placeholder="{{pic}}">
+                </mat-form-field>
+                <mat-icon color="primary" (click)='removePic(i)'>delete</mat-icon>
+            </div>
+            <mat-icon color="primary" (click)="addPicture()">add</mat-icon>
+        </mat-form-field>
 
         <!-- Submit button -->
         <div class="forms__submit-button">
@@ -103,11 +101,4 @@
                 [disabled]="!tripForm.valid || loading">{{msg["save"]}}</button>
             <mat-spinner *ngIf="loading" diameter="35" class="forms__loading-spinner"></mat-spinner>
         </div>
-        
-        <script type="text/javascript">
-            $(".matInput").keyup(function () {
-                var ind = $(".matInput").index(this);
-                $(".matInput").eq(ind + 1).focus();
-            });
-        </script>
     </form>

@@ -75,41 +75,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     async ngOnInit() {
         console.log(this.route.url)
         if (this.route.url !== undefined) {
-            /*this.route.url.subscribe(url => {
-              if (url[0].path !== 'mytrips-created') {
-                if (url[0].path !== 'finders') {
-                  this.route.queryParams
-                  .subscribe(async params => {
-                    this.keyword = params['keyword'];
-                    this.minDate = params['minDate'];
-                    this.maxDate = params['maxDate'];
-                    this.minPrice = params['minPrice'];
-                    this.maxPrice = params['maxPrice'];
-                    await this.searchTrips();
-                  });
-                } else {
-                  this.finderService.getFinderUser(String(this.actor._id)).then(async params => {
-                    /*this.keyword = params['keyword'];
-                    this.minDate = params['minDate'];
-                    this.maxDate = params['maxDate'];
-                    this.minPrice = params['minPrice'];
-                    this.maxPrice = params['maxPrice'];
-                    await this.searchTrips();
-                  });
-                }
-                  this.roles = [];
-              } else {
-                this.showfilter = false;
-                this.actor = actor;
-                this.tripService.getManagerTrips(String(this.actor._id)).then((val) => {
-                  this.data.push(val);
-                });
-              }
-            });
-        });
-      } else {
-        this.data = await this.tripService.getTrips()
-      }*/
+
             this.data = await this.tripService.getAllTrips()
         }
     }
@@ -126,57 +92,30 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
         }
     }
 
-    searchFilter() {
-        console.log(this.minPrice)
-        this.router.navigate(["/trips/search"], {
-            "queryParams": {
-                "keyword": this.keyword,
-                "minPrice": this.minPrice,
-                "maxPrice": this.maxPrice,
-                "minDate": this.minDate,
-                "maxDate": this.maxDate
-            }
-        })
-    }
     checkManagerId(managerID: string) {
         if (managerID == this.actorsService.getLoggedActor()?._id) {
-            return true;
+            return true
         } else {
-            return false;
+            return false
         }
     }
     isOneWeekBeforeToStart(startDate: string) {
         
-        var q = new Date();
-        var m = q.getMonth() + 1;
-        var d = q.getDay();
-        var y = q.getFullYear();
+        const q = new Date()
+        const m = q.getMonth() + 1
+        const d = q.getDay()
+        const y = q.getFullYear()
 
-        var date = new Date(y, m, d);
-        var tripStartDate = new Date(startDate);
-        tripStartDate.setDate(tripStartDate.getDate() + 7);
+        const date = new Date(y, m, d)
+        const tripStartDate = new Date(startDate)
+        tripStartDate.setDate(tripStartDate.getDate() + 7)
         if (tripStartDate < date) {
-            return true;
+            return true
         }
-        return false;
+        return false
     }
 
-    saveFinder() {
-        if (this.actor != null && this.actor !== undefined) {
-            this.finderService.updateFinderUser({
-                "keyword": this.keyword,
-                "minPrice": this.minPrice,
-                "maxPrice": this.maxPrice,
-                "minDate": this.minDate,
-                "maxDate": this.maxDate
-            }, String(this.actor._id))
-                .then((val) => {
-                    //this.messageService.notifyMessage(this.translateService.instant('messages.finder.saved'), 'alert alert-success');
-                }, err => {
-                    //this.messageService.notifyMessage(this.translateService.instant('errorMessages.500'), 'alert alert-danger');
-                })
-        }
-    }
+    
 
     displayTrip(trip: Trip) {
         const date = new Date()
@@ -221,8 +160,9 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
             .catch((err) => console.error(err.message))
     }
 
-    showReasonCancel(trip: Trip) {
-        this.showAlert(trip.cancelReason, "alert-error")
+    showReasonCancel(cancelReason: string) {
+        console.log(cancelReason)
+        this.showAlert(cancelReason, "alert-info")
     }
 
     newTrip() {

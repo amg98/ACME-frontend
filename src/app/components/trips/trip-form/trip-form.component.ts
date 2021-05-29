@@ -8,6 +8,8 @@ import { TranslatorService } from "@services/translator.service"
 import { TripsService } from "@services/trips.service"
 import { Actor } from "src/app/models/Actor"
 import { Trip } from "src/app/models/Trip"
+import { ViewChild } from "@angular/core"
+import { MatInput } from "@angular/material/input"
 
 @Component({
     selector: "app-trip-form",
@@ -17,7 +19,8 @@ import { Trip } from "src/app/models/Trip"
 })
 
 export class TripFormComponent extends TranslatableComponent implements OnInit {
-
+    @ViewChild('myInput')
+    input!: MatInput
     loggedActor = this.actorsService.getLoggedActor();
     requirementList: string[] = ["Not allowed to smoke", "Not allowed pets", "Not allowed children under 16", "Love travelling"];
     loading = false
@@ -25,9 +28,7 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
     tripForm!: FormGroup
     stages!: FormArray;
     stagesText!: string;
-    addStagesText!: string;
     requirements!: FormArray;
-    requirementsText!: string;
     requirementText!: string;
     pictures!: FormArray;
     trip!: Trip;
@@ -36,12 +37,10 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
     trip_new = true;
     updated!: boolean;
     profileForm!: FormGroup;
-    tripCreationError!: string;
-    newTripFormText!: string;
     title!: string;
     description!: string;
     price!: string;
-    addrequirementsText!: string;
+    pic!: string;
     startDate!: string;
     endDate!: string;
     id!: string;
@@ -56,16 +55,18 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
         super(translator)
 
         this.setLanguageChangeListener(() => {
-            this.newTripFormText = translator.getString("newTripFormText")
             this.description = translator.getString("description")
             this.title = translator.getString("title")
             this.price = translator.getString("price")
             this.stagesText = translator.getString("stages")
             this.requirementText = translator.getString("requirement")
-            this.requirementsText = translator.getString("requirements")
-            this.addStagesText = translator.getString("addStagesText")
+            this.pic = translator.getString("picture")
         })
     }
+
+    focusMyInputFromComponent() {
+        this.input.focus();
+     }
 
     createForm() {
         this.tripForm = this.formBuilder.group({
@@ -80,30 +81,30 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.updated = false;
-        this.createForm();
+        this.updated = false
+        this.createForm()
         if (this.route.url !== undefined) {
             this.route.url.subscribe(url => {
-                if (url[0].path !== 'new') {
-                    this.trip_new = false;
+                if (url[0].path !== "new") {
+                    this.trip_new = false
                     this.route.params
                         .subscribe(async params => {
-                            this.trip = await this.tripsService.getTrip(params["id"]);
+                            this.trip = await this.tripsService.getTrip(params["id"])
                             if (!this.actorsService.checkManagerId(this.trip.managerID)) {
-                                this.router.navigate(['/denied-access']);
+                                this.router.navigate(["/denied-access"])
                             } else {
-                                this.tripForm.controls['title'].setValue(this.trip.title);
-                                this.tripForm.controls['description'].setValue(this.trip.description);
-                                this.totalprice = Number(this.trip.price);
-                                this.initRequirements(this.trip.requirements);
-                                this.tripForm.controls['startDate'].setValue(new Date(this.trip.startDate).toISOString());
-                                this.tripForm.controls['endDate'].setValue(new Date(this.trip.endDate).toISOString());
-                                this.initPictures(this.trip.pictures);
-                                this.initStages(this.trip.stages);
+                                this.tripForm.controls["title"].setValue(this.trip.title)
+                                this.tripForm.controls["description"].setValue(this.trip.description)
+                                this.totalprice = Number(this.trip.price)
+                                this.initRequirements(this.trip.requirements)
+                                this.tripForm.controls["startDate"].setValue(new Date(this.trip.startDate).toISOString())
+                                this.tripForm.controls["endDate"].setValue(new Date(this.trip.endDate).toISOString())
+                                this.initPictures(this.trip.pictures)
+                                this.initStages(this.trip.stages)
                             }
-                        });
+                        })
                 }
-            });
+            })
         }
     }
 
@@ -119,8 +120,8 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
         this.stages.removeAt(index)
     }
     goBack() {
-        window.history.back();
-      }
+        window.history.back()
+    }
 
     addStage() {
         this.stages = this.tripForm.get("stages") as FormArray
@@ -183,18 +184,18 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
 
     async onSubmit(): Promise<void> {
         const formTrip = this.tripForm.value
-        formTrip.startDate = new Date(formTrip.startDate).toISOString();
-        formTrip.endDate = new Date(formTrip.endDate).toISOString();
+        formTrip.startDate = new Date(formTrip.startDate).toISOString()
+        formTrip.endDate = new Date(formTrip.endDate).toISOString()
         if (this.trip_new) {
             console.log(formTrip)
             try {
-                this.trip = await this.tripsService.postTrip(formTrip);
+                this.trip = await this.tripsService.postTrip(formTrip)
                 if (this.trip._id !== undefined) {
-                    await this.tripsService.publishTrip(this.trip._id);
+                    await this.tripsService.publishTrip(this.trip._id)
                 }
                 this.updated = true
                 this.showAlert("tripCreatedText", "alert-success")
-                this.router.navigate(["trips"]);
+                this.router.navigate(["trips"])
             } catch {
                 this.showAlert("tripCreationError", "alert-error")
             }
@@ -202,9 +203,9 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
         } else {
             try {
                 if (this.trip._id !== undefined && this.trip._id !== null) {
-                    this.tripsService.updateTrip(formTrip, this.trip._id);
+                    this.tripsService.updateTrip(formTrip, this.trip._id)
                     this.updated = true
-                    this.router.navigate(["trips/display/" + this.trip._id]);
+                    this.router.navigate(["trips/display/" + this.trip._id])
                     this.showAlert("tripCreatedText", "alert-success")
                     this.loading = false
                 }
