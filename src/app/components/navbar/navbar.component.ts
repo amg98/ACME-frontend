@@ -45,7 +45,7 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
         const dialogRef = this.dialogRef.open(AdvancedfinderComponent, {
             width: "300em",
             data: { minPrice: Number,
-            maxPrice: Number }
+                maxPrice: Number }
         })
     }
 

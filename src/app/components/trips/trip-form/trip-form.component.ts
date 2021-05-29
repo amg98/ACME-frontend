@@ -19,7 +19,7 @@ import { MatInput } from "@angular/material/input"
 })
 
 export class TripFormComponent extends TranslatableComponent implements OnInit {
-    @ViewChild('myInput')
+    @ViewChild("myInput")
     input!: MatInput
     loggedActor = this.actorsService.getLoggedActor();
     requirementList: string[] = ["Not allowed to smoke", "Not allowed pets", "Not allowed children under 16", "Love travelling"];
@@ -65,8 +65,8 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
     }
 
     focusMyInputFromComponent() {
-        this.input.focus();
-     }
+        this.input.focus()
+    }
 
     createForm() {
         this.tripForm = this.formBuilder.group({

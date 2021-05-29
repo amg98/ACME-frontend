@@ -18,7 +18,7 @@ export class SponsorshipsService {
     }
 
     async getRandomSponsorship(tripID: string): Promise<Observable<Sponsorship>> {
-        return await this.client.get<Sponsorship>(`${environment.backendURL}/trips/${tripID}/random-sponsorship`);
+        return await this.client.get<Sponsorship>(`${environment.backendURL}/trips/${tripID}/random-sponsorship`)
     }
 
     async paySponsorship(id: string, successURL: string, cancelURL: string): Promise<string> {

@@ -3,28 +3,28 @@ import { Injectable } from "@angular/core"
 import { environment } from "@env/environment"
 
 const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" })
+    headers: new HttpHeaders({ "Content-Type": "application/json" })
 }
 
 @Injectable({
-  providedIn: "root"
+    providedIn: "root"
 })
 export class FinderService {
 
-  constructor(private client: HttpClient) { }
+    constructor(private client: HttpClient) { }
 
-  async getFinderUser(id: string) {
-    return this.client.get(`${environment.backendURL}/finders/actors/${id}`).toPromise()
-  }
+    async getFinderUser(id: string) {
+        return this.client.get(`${environment.backendURL}/finders/actors/${id}`).toPromise()
+    }
 
-  async updateFinderUser(finder: any, id: string) {
-    const headers = new HttpHeaders()
-    headers.append("Content-Type", "application/json")
+    async updateFinderUser(finder: any, id: string) {
+        const headers = new HttpHeaders()
+        headers.append("Content-Type", "application/json")
 
-    const body = JSON.stringify(finder)
-    console.log(body)
+        const body = JSON.stringify(finder)
+        console.log(body)
 
-    this.client.put(`${environment.backendURL}/finders/${id}`, body, httpOptions).toPromise()
+        this.client.put(`${environment.backendURL}/finders/${id}`, body, httpOptions).toPromise()
 
-  }
+    }
 }

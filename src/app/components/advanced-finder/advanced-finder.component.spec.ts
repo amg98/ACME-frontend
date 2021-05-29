@@ -1,25 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing"
 
-import { AdvancedfinderComponent } from './advanced-finder.component';
+import { AdvancedfinderComponent } from "./advanced-finder.component"
 
-describe('AdvancedfinderComponent', () => {
-  let component: AdvancedfinderComponent;
-  let fixture: ComponentFixture<AdvancedfinderComponent>;
+describe("AdvancedfinderComponent", () => {
+    let component: AdvancedfinderComponent
+    let fixture: ComponentFixture<AdvancedfinderComponent>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ AdvancedfinderComponent ]
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [ AdvancedfinderComponent ]
+        })
+            .compileComponents()
     })
-    .compileComponents();
-  });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AdvancedfinderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(AdvancedfinderComponent)
+        component = fixture.componentInstance
+        fixture.detectChanges()
+    })
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    it("should create", () => {
+        expect(component).toBeTruthy()
+    })
+})
