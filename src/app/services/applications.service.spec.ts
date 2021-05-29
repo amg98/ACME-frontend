@@ -32,6 +32,7 @@ describe("ApplicationsService", () => {
                 price: 120,
             }
         ],
+        managerID: "6098ffd610a440000febf5ff"
     }
 
     let service: ApplicationsService

@@ -37,17 +37,6 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     maxPrice!: string;
     minDate!: string;
     maxDate!: string;
-    cancelReason!: Trip["cancelReason"];
-    close!: string;
-    editTripText!: string;
-    tripCanceledText!: string;
-    tripDetailsText!: string;
-    tripDeletedText!: string;
-    tripCreatedText!: string;
-    tripUpdatedText!: string;
-    newTripText!: string;
-    tripsListText!: string;
-    finderSavedText!: string;
 
     showfilter = true;
 
@@ -59,12 +48,12 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
         translator: TranslatorService,
         private router: Router,
         private route: ActivatedRoute,
-        private snackbar: MatSnackBar) {
+        private snackBar: MatSnackBar) {
         super(translator)
         route.queryParams.subscribe(val => this.ngOnInit())
 
         this.tripService.subscribeToSearchResults(trips => {
-            if(trips == null) return
+            if (trips == null) return
             this.data = trips
         })
 
@@ -81,71 +70,15 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
                 this.isSponsor = loggedActor.roles.includes("SPONSOR")
             }
         })
-
-        this.setLanguageChangeListener(() => {
-            this.cancelReason = translator.getString("cancelReason")
-            this.close = translator.getString("close")
-            this.newTripText = translator.getString("newTrip")
-            this.editTripText = translator.getString("tripDetailText")
-            this.tripCanceledText = translator.getString("tripCanceledText")
-            this.tripDetailsText = translator.getString("tripDetailsText")
-            this.tripCanceledText = translator.getString("tripDeletedText")
-            this.tripCreatedText = translator.getString("tripCreatedText")
-            this.tripUpdatedText = translator.getString("tripUpdatedText")
-            this.finderSavedText = translator.getString("finderSavedText")
-        })
     }
 
     async ngOnInit() {
         console.log(this.route.url)
         if (this.route.url !== undefined) {
-            /*this.route.url.subscribe(url => {
-              if (url[0].path !== 'mytrips-created') {
-                if (url[0].path !== 'finders') {
-                  this.route.queryParams
-                  .subscribe(async params => {
-                    this.keyword = params['keyword'];
-                    this.minDate = params['minDate'];
-                    this.maxDate = params['maxDate'];
-                    this.minPrice = params['minPrice'];
-                    this.maxPrice = params['maxPrice'];
-                    await this.searchTrips();
-                  });
-                } else {
-                  this.finderService.getFinderUser(String(this.actor._id)).then(async params => {
-                    /*this.keyword = params['keyword'];
-                    this.minDate = params['minDate'];
-                    this.maxDate = params['maxDate'];
-                    this.minPrice = params['minPrice'];
-                    this.maxPrice = params['maxPrice'];
-                    await this.searchTrips();
-                  });
-                }
-                  this.roles = [];
-              } else {
-                this.showfilter = false;
-                this.actor = actor;
-                this.tripService.getManagerTrips(String(this.actor._id)).then((val) => {
-                  this.data.push(val);
-                });
-              }
-            });
-        });
-      } else {
-        this.data = await this.tripService.getTrips()
-      }*/
+
             this.data = await this.tripService.getAllTrips()
         }
     }
-
-    /*async searchTrips() {
-        return this.tripService.searchTrips(0, MAX_TRIPS, this.keyword, this.minPrice, this.maxPrice,
-            this.minDate, this.maxDate)
-            .then((res) => {
-                this.data = res;
-            })
-            .catch((err) => console.error(err.message));
-    }*/
 
     getFirstPicture(trip: Trip) {
         if (trip.pictures.length > 0) {
@@ -159,42 +92,35 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
         }
     }
 
-    searchFilter() {
-        console.log(this.minPrice)
-        this.router.navigate(["/trips/search"], {
-            "queryParams": {
-                "keyword": this.keyword,
-                "minPrice": this.minPrice,
-                "maxPrice": this.maxPrice,
-                "minDate": this.minDate,
-                "maxDate": this.maxDate
-            }
-        })
-    }
-
-    saveFinder() {
-        if (this.actor != null && this.actor !== undefined) {
-            this.finderService.updateFinderUser({
-                "keyword": this.keyword,
-                "minPrice": this.minPrice,
-                "maxPrice": this.maxPrice,
-                "minDate": this.minDate,
-                "maxDate": this.maxDate
-            }, String(this.actor._id))
-                .then((val) => {
-                    //this.messageService.notifyMessage(this.translateService.instant('messages.finder.saved'), 'alert alert-success');
-                }, err => {
-                    //this.messageService.notifyMessage(this.translateService.instant('errorMessages.500'), 'alert alert-danger');
-                })
+    checkManagerId(managerID: string) {
+        if (managerID == this.actorsService.getLoggedActor()?._id) {
+            return true
+        } else {
+            return false
         }
+    }
+    isOneWeekBeforeToStart(startDate: string) {
+        
+        const q = new Date()
+        const m = q.getMonth() + 1
+        const d = q.getDay()
+        const y = q.getFullYear()
 
+        const date = new Date(y, m, d)
+        const tripStartDate = new Date(startDate)
+        tripStartDate.setDate(tripStartDate.getDate() + 7)
+        if (tripStartDate < date) {
+            return true
+        }
+        return false
     }
 
-    //AÑADIR COMPROBACIÓN DE DIAS, CREO QUE ES UNA SEMANA ANTES DE QUE EMPIECE
+    
+
     displayTrip(trip: Trip) {
         const date = new Date()
         const startDate = new Date(trip.startDate)
-        return trip.isPublished && (startDate.getTime() > date.getTime())
+        return trip.isPublished && (startDate.getTime() + 7 > date.getTime())
     }
 
     // Functions to infinite scroll
@@ -234,15 +160,20 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
             .catch((err) => console.error(err.message))
     }
 
-    showReasonCancel(trip: Trip) {
-        this.snackbar.open(trip.cancelReason, this.close, {
-            duration: 5000,
-            panelClass: ["alert-success"]
-        })
+    showReasonCancel(cancelReason: string) {
+        console.log(cancelReason)
+        this.showAlert(cancelReason, "alert-info")
     }
 
     newTrip() {
         this.router.navigate(["trips/new"])
+    }
+
+    showAlert(messageID: string, panelClass: string): void {
+        this.snackBar.open(this.msg[messageID], this.msg.close, {
+            duration: 5000,
+            panelClass: [panelClass]
+        })
     }
 
 }

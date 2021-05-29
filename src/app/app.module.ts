@@ -25,7 +25,7 @@ import { MatExpansionModule } from "@angular/material/expansion"
 import { MatCarouselModule } from "@ngmodule/material-carousel"
 import {MatGridListModule} from "@angular/material/grid-list"
 import { MatFileUploadModule } from "angular-material-fileupload"
-import {MatDatepickerModule} from "@angular/material/datepicker"
+import { MatDatepickerModule } from "@angular/material/datepicker"
 import { MatNativeDateModule } from "@angular/material/core"
 import { MatTableModule } from "@angular/material/table"
 import { MatPaginatorModule } from "@angular/material/paginator"
@@ -70,6 +70,7 @@ import { EditFavouriteListComponent } from "./components/dialog/edit-favourite-l
 import { AddToFavouritesComponent } from "./components/add-to-favourites/add-to-favourites.component"
 import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-explorer-list.component"
 import { PreferencesComponent } from "./components/preferences/preferences.component"
+import { AdvancedfinderComponent } from "./components/advanced-finder/advanced-finder.component"
 
 
 @NgModule({
@@ -109,6 +110,7 @@ import { PreferencesComponent } from "./components/preferences/preferences.compo
         AddToFavouritesComponent,
         AppsExplorerListComponent,
         PreferencesComponent,
+        AdvancedfinderComponent,
     ],
     imports: [
         CommonModule,
@@ -144,7 +146,7 @@ import { PreferencesComponent } from "./components/preferences/preferences.compo
         MatPaginatorModule
     ],
     providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+        { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     ],
     bootstrap: [AppComponent]
 })

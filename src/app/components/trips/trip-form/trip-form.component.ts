@@ -1,4 +1,4 @@
-import { Component } from "@angular/core"
+import { Component, OnInit } from "@angular/core"
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms"
 import { MatSnackBar } from "@angular/material/snack-bar"
 import { TranslatableComponent } from "@components/translatable/translatable.component"
@@ -8,23 +8,27 @@ import { TranslatorService } from "@services/translator.service"
 import { TripsService } from "@services/trips.service"
 import { Actor } from "src/app/models/Actor"
 import { Trip } from "src/app/models/Trip"
+import { ViewChild } from "@angular/core"
+import { MatInput } from "@angular/material/input"
 
 @Component({
     selector: "app-trip-form",
     templateUrl: "./trip-form.component.html",
-    styleUrls: ["./trip-form.component.scss"]
+    styleUrls: ["./trip-form.component.scss"],
+
 })
-export class TripFormComponent extends TranslatableComponent {
+
+export class TripFormComponent extends TranslatableComponent implements OnInit {
+    @ViewChild("myInput")
+    input!: MatInput
     loggedActor = this.actorsService.getLoggedActor();
     requirementList: string[] = ["Not allowed to smoke", "Not allowed pets", "Not allowed children under 16", "Love travelling"];
     loading = false
     actor!: Actor;
-    tripForm: FormGroup;
+    tripForm!: FormGroup
     stages!: FormArray;
     stagesText!: string;
-    addStagesText!: string;
     requirements!: FormArray;
-    requirementsText!: string;
     requirementText!: string;
     pictures!: FormArray;
     trip!: Trip;
@@ -33,21 +37,13 @@ export class TripFormComponent extends TranslatableComponent {
     trip_new = true;
     updated!: boolean;
     profileForm!: FormGroup;
-    tripCreationError!: string;
-    closeText!: string;
-    saveSuccessText!: string;
-    saveFailureText!: string;
-    newTripFormText!: string;
     title!: string;
-    requiredFieldText!: string;
     description!: string;
     price!: string;
-    saveText!: string;
-    addRequerimentsText!: string;
+    pic!: string;
     startDate!: string;
     endDate!: string;
-    dates!: string;
-    dragAndDropPicturesText!: string;
+    id!: string;
 
     constructor(private formBuilder: FormBuilder,
         translator: TranslatorService,
@@ -55,79 +51,76 @@ export class TripFormComponent extends TranslatableComponent {
         private router: Router,
         private route: ActivatedRoute,
         private actorsService: ActorsService,
-        private snackbar: MatSnackBar) {
+        private snackBar: MatSnackBar) {
         super(translator)
 
+        this.setLanguageChangeListener(() => {
+            this.description = translator.getString("description")
+            this.title = translator.getString("title")
+            this.price = translator.getString("price")
+            this.stagesText = translator.getString("stages")
+            this.requirementText = translator.getString("requirement")
+            this.pic = translator.getString("picture")
+        })
+    }
 
+    focusMyInputFromComponent() {
+        this.input.focus()
+    }
+
+    createForm() {
         this.tripForm = this.formBuilder.group({
             title: ["", Validators.required],
             description: ["", Validators.required],
-            price: [""],
-            requirements: this.formBuilder.array([this.createRequeriment]),
+            requirements: this.formBuilder.array([""]),
             startDate: ["", Validators.required],
             endDate: ["", Validators.required],
             pictures: this.formBuilder.array([""]),
             stages: this.formBuilder.array([this.createStage()]),
-            //managerID: [""]
-        })
-        this.setLanguageChangeListener(() => {
-            this.closeText = translator.getString("close")
-            this.saveSuccessText = translator.getString("save-success")
-            this.saveFailureText = translator.getString("save-failure")
-            this.newTripFormText = translator.getString("newTripFormText")
-            this.title = translator.getString("title")
-            this.description = translator.getString("description")
-            this.price = translator.getString("price")
-            this.stagesText = translator.getString("stages")
-            this.requirementText = translator.getString("requirement")
-            this.requirementsText = translator.getString("requirements")
-            this.addRequerimentsText = translator.getString("addRequeriments")
-            this.saveText = translator.getString("save")
-            this.dates = translator.getString("dates")
-            this.dragAndDropPicturesText = translator.getString("dragAndDropPicturesText")
-            this.addStagesText = translator.getString("addStagesText")
         })
     }
 
-    formatDate(d: Date) {
-        let month = "" + (d.getMonth() + 1)
-        let day = "" + d.getDate()
-        const year = d.getFullYear()
-
-        if (month.length < 2) { month = "0" + month }
-        if (day.length < 2) { day = "0" + day }
-
-        return [year, month, day].join("-")
-    }
-
-    updatePrice() {
-
-        const stages_price = document.getElementsByName("stage-price")
-        this.totalprice = 0
-        for (let i = 0; i < stages_price.length; i++) {
-            const stage = <HTMLInputElement>stages_price[i]
-            this.totalprice += Number(stage.value)
+    ngOnInit() {
+        this.updated = false
+        this.createForm()
+        if (this.route.url !== undefined) {
+            this.route.url.subscribe(url => {
+                if (url[0].path !== "new") {
+                    this.trip_new = false
+                    this.route.params
+                        .subscribe(async params => {
+                            this.trip = await this.tripsService.getTrip(params["id"])
+                            if (!this.actorsService.checkManagerId(this.trip.managerID)) {
+                                this.router.navigate(["/denied-access"])
+                            } else {
+                                this.tripForm.controls["title"].setValue(this.trip.title)
+                                this.tripForm.controls["description"].setValue(this.trip.description)
+                                this.totalprice = Number(this.trip.price)
+                                this.initRequirements(this.trip.requirements)
+                                this.tripForm.controls["startDate"].setValue(new Date(this.trip.startDate).toISOString())
+                                this.tripForm.controls["endDate"].setValue(new Date(this.trip.endDate).toISOString())
+                                this.initPictures(this.trip.pictures)
+                                this.initStages(this.trip.stages)
+                            }
+                        })
+                }
+            })
         }
-        this.tripForm.controls["price"].setValue(this.totalprice)
     }
 
     createStage() {
         return this.formBuilder.group({
             title: [""],
             description: [""],
-            price: [""]
-        })
-    }
-
-    createRequeriment() {
-        return this.formBuilder.group({
-            requirement: [""],
+            price: [Number]
         })
     }
 
     removeStage(index: number) {
         this.stages.removeAt(index)
-        this.updatePrice()
+    }
+    goBack() {
+        window.history.back()
     }
 
     addStage() {
@@ -149,7 +142,7 @@ export class TripFormComponent extends TranslatableComponent {
         this.tripForm.setControl("stages", this.stages)
     }
 
-    addRequeriments() {
+    addRequirements() {
         this.requirements = this.tripForm.get("requirements") as FormArray
         this.requirements.push(new FormControl([""]))
     }
@@ -158,7 +151,7 @@ export class TripFormComponent extends TranslatableComponent {
         this.requirements.removeAt(index)
     }
 
-    initRequeriments(requirementsList: string[]) {
+    initRequirements(requirementsList: string[]) {
         this.requirements = this.tripForm.get("requirements") as FormArray
         requirementsList.map(requirement => {
             this.requirements.push(new FormControl(requirement))
@@ -184,81 +177,49 @@ export class TripFormComponent extends TranslatableComponent {
         this.removePic(0)
         this.tripForm.setControl("pictures", this.pictures)
     }
+
     getControls(frmGrp: FormGroup, key: string) {
         return (<FormArray>frmGrp.controls[key]).controls
     }
 
     async onSubmit(): Promise<void> {
-        this.loading = true
-        this.updated = false
-        this.tripForm.controls["price"].setValue(this.updatePrice)
-        /*if (this.route.url !== undefined) {
-            this.route.url.subscribe(url => {
-                if (url[0].path !== "new") {
-                    this.trip_new = false;
-                    this.route.params
-                        .subscribe(async params => {
-                            this.trip = await this.tripsService.getTrip(params["id"]);
-                            if (!this.actorsService.checkId(this.trip.managerID)) {
-                                this.router.navigate(["/denied-access"]);
-                            } else {
-                                this.tripForm.controls["title"].setValue(this.trip.title);
-                                this.tripForm.controls["description"].setValue(this.trip.description);
-                                this.totalprice = Number(this.trip.price);
-                                this.tripForm.controls["price"].setValue(this.trip.price);
-                                this.initRequeriments(this.trip.requirements);
-                                this.tripForm.controls['startDate'].setValue(this.formatDate(new Date(this.trip.startDate)));
-                                this.tripForm.controls['endDate'].setValue(this.formatDate(new Date(this.trip.endDate)));
-                                this.initPictures(this.trip.pictures);
-                                this.initStages(this.trip.stages);
-                            }
-                        });
-                }
-            });
-        }*/
-        if (this.loggedActor !== null
-            && this.loggedActor !== undefined
-            && this.loggedActor._id !== null) {
-            //this.tripForm.controls["managerID"].setValue(this.loggedActor._id);
-        }
         const formTrip = this.tripForm.value
-        console.log(formTrip)
+        formTrip.startDate = new Date(formTrip.startDate).toISOString()
+        formTrip.endDate = new Date(formTrip.endDate).toISOString()
         if (this.trip_new) {
-            this.tripsService.postTrip(formTrip).then(val => {
+            console.log(formTrip)
+            try {
+                this.trip = await this.tripsService.postTrip(formTrip)
+                if (this.trip._id !== undefined) {
+                    await this.tripsService.publishTrip(this.trip._id)
+                }
                 this.updated = true
-                this.loading = false
-                this.snackbar.open(this.saveSuccessText, this.closeText, {
-                    duration: 5000,
-                    panelClass: ["alert-success"]
-                })
-                this.loading = false
-                //PONER EN ESTA RUTA EL NOMBRE DE LA PANTALLA QUE LE DE FAUSTINO
-                //this.router.navigate(["/my-trips"]);
-                // TODO : poner mensaje creado
-            }, err => {
-                this.snackbar.open(this.saveFailureText, this.closeText, {
-                    duration: 5000,
-                    panelClass: ["alert-error"]
-                })
+                this.showAlert("tripCreatedText", "alert-success")
+                this.router.navigate(["trips"])
+            } catch {
+                this.showAlert("tripCreationError", "alert-error")
             }
-            )
+            this.loading = false
         } else {
-            this.tripsService.updateTrip(formTrip, this.trip.ticker).then(val => {
-                this.updated = true
-                //this.router.navigate(["/my-trips"]);
-                this.snackbar.open(this.saveSuccessText, this.closeText, {
-                    duration: 5000,
-                    panelClass: ["alert-success"]
-                })
-                this.loading = false
-            }, err => {
-                this.snackbar.open(this.saveFailureText, this.closeText, {
-                    duration: 5000,
-                    panelClass: ["alert-error"]
-                })
+            try {
+                if (this.trip._id !== undefined && this.trip._id !== null) {
+                    this.tripsService.updateTrip(formTrip, this.trip._id)
+                    this.updated = true
+                    this.router.navigate(["trips/display/" + this.trip._id])
+                    this.showAlert("tripCreatedText", "alert-success")
+                    this.loading = false
+                }
+            } catch {
+                this.showAlert("tripCreationError", "alert-error")
             }
-            )
         }
+    }
+
+    showAlert(messageID: string, panelClass: string): void {
+        this.snackBar.open(this.msg[messageID], this.msg.close, {
+            duration: 5000,
+            panelClass: [panelClass]
+        })
     }
 }
 

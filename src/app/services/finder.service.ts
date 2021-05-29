@@ -23,11 +23,8 @@ export class FinderService {
 
         const body = JSON.stringify(finder)
         console.log(body)
-        return new Promise<any>((resolve, reject) => {
-            this.client.put(`${environment.backendURL}/finders/${id}`, body, httpOptions).toPromise()
-                .then(res => {
-                    resolve(res)
-                }, err => {console.error(err); reject(err) })
-        })
+
+        this.client.put(`${environment.backendURL}/finders/${id}`, body, httpOptions).toPromise()
+
     }
 }

@@ -43,7 +43,7 @@ export class TripsService {
         this.searchResults.next(results)
     }
 
-    applyTrip(tripID: string, explorerID: string)  {
+    applyTrip(tripID: string, explorerID: string) {
         const url = `${environment.backendURL}/applications`
 
         const headers = new HttpHeaders()
@@ -53,27 +53,12 @@ export class TripsService {
 
     }
 
-    async postTrip(trip: Trip) {
-
-        const headers = new HttpHeaders()
-        headers.append("Content-Type", "application/json")
-
-        const body = JSON.stringify(trip)
-        return this.client.post(`${environment.backendURL}/trips`, body, httpOptions)
+    async postTrip(trip: Trip): Promise<Trip> {
+        return await this.client.post(`${environment.backendURL}/trips`, { trip }).toPromise() as Trip
     }
 
-    async updateTrip(trip: Trip, id: string) {
-        const headers = new HttpHeaders()
-        headers.append("Content-Type", "application/json")
-
-        const body = JSON.stringify(trip)
-        console.log(body)
-        return new Promise<any>((resolve, reject) => {
-            this.client.put(`${environment.backendURL}/trips/${id}`, body, httpOptions).toPromise()
-                .then(res => {
-                    resolve(res)
-                }, err => { console.error(err); reject(err) })
-        })
+    async updateTrip(trip: Trip, id: string): Promise<void> {
+        await this.client.put(`${environment.backendURL}/trips/${id}`, { trip }, httpOptions).toPromise()
     }
 
     async deleteTrip(trip: Trip): Promise<void> {
@@ -89,9 +74,18 @@ export class TripsService {
         }).toPromise()
     }
 
+    async publishTrip(id: string): Promise<void> {
+        await this.client.put(`${environment.backendURL}/trips/${id}/publish`, httpOptions).toPromise()
 
-    async searchTrips(start: number, psize: number, keyword: string,
-        minPrice: string, maxPrice: string, minDate: string, maxDate: string) : Promise<Trip[]> {
+    }
+
+    async searchTrips(start: number,
+        psize: number,
+        keyword: string,
+        minPrice: string,
+        maxPrice: string,
+        minDate: string,
+        maxDate: string): Promise<Trip[]> {
 
         const parameters = {
             startFrom: "" + start,
@@ -102,7 +96,7 @@ export class TripsService {
             minDate: minDate == null ? "" : minDate,
             maxDate: maxDate == null ? "" : maxDate
         }
-        return this.client.get<Trip[]>(`${environment.backendURL}/trips/search`, {
+        return this.client.get<Trip[]>(`${environment.backendURL}/trips`, {
             params: parameters, observe: "body",
         }).toPromise()
     }

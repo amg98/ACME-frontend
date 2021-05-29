@@ -23,6 +23,8 @@ import { TripListComponent } from "./components/trips/trip-list/trip-list.compon
 import { SponsorshipComponent } from "@components/forms/sponsorship/sponsorship.component"
 import { AppsExplorerListComponent } from "@components/apps-explorer-list/apps-explorer-list.component"
 import { PreferencesComponent } from "@components/preferences/preferences.component"
+import { AdvancedfinderComponent } from "@components/advanced-finder/advanced-finder.component"
+
 
 export const routes: Routes = [
     { path: "register", component: RegisterComponent },
@@ -45,7 +47,9 @@ export const routes: Routes = [
         { path: "search", component: TripListComponent },
         { path: "display/:id", component: TripDisplayComponent },
         { path: "", component: TripListComponent },
+        { path: "", component: AdvancedfinderComponent },
         { path: "finder", component: TripListComponent },
+        
     ]},
     { path: "", component: TripListComponent },
 ]

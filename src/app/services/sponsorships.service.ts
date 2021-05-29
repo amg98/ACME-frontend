@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http"
 import { Injectable } from "@angular/core"
 import { environment } from "@env/environment"
+import { Observable } from "rxjs"
 import { Sponsorship } from "../models/Sponsorship"
 import { TranslatorService } from "./translator.service"
 
@@ -14,6 +15,10 @@ export class SponsorshipsService {
 
     async getSponsorships(): Promise<Sponsorship[]> {
         return await this.client.get(`${environment.backendURL}/sponsorships`).toPromise() as Sponsorship[]
+    }
+
+    async getRandomSponsorship(tripID: string): Promise<Observable<Sponsorship>> {
+        return await this.client.get<Sponsorship>(`${environment.backendURL}/trips/${tripID}/random-sponsorship`)
     }
 
     async paySponsorship(id: string, successURL: string, cancelURL: string): Promise<string> {

@@ -1,11 +1,11 @@
 <mat-card class="forms__card">
     <form [formGroup]="tripForm" (submit)="onSubmit()">
 
-        <mat-card-title class="forms__title">{{newTripFormText}}</mat-card-title>
+        <mat-card-title class="forms__title">{{msg["tripFormText"]}}</mat-card-title>
 
         <!-- Title -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{title}}</mat-label>
+            <mat-label>{{msg["title"]}}</mat-label>
             <input matInput formControlName="title" required>
             <mat-error *ngIf="tripForm.controls.title.touched && tripForm.controls.title.invalid">
                 <span class="forms__error"
@@ -15,89 +15,90 @@
 
         <!-- Description -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{description}}</mat-label>
+            <mat-label>{{msg["description"]}}</mat-label>
             <input matInput formControlName="description">
         </mat-form-field>
 
+        <!-- Dates -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{dates}}</mat-label>
+            <mat-label>{{msg["dates"]}}</mat-label>
             <mat-date-range-input [rangePicker]="picker">
                 <input matStartDate name="startDate" formControlName="startDate" placeholder="{{startDate}}" required>
-                <mat-error *ngIf="tripForm.controls.startDate.touched && tripForm.controls.startDate.invalid">
-                    <span class="forms__error"
-                        *ngIf="tripForm.controls.startDate.errors?.required">{{msg["required-field"]}}</span>
-                </mat-error>
-                <input matEndDate name="endDate" formControlName="endDate" placeholder="{{endDate}}" required>
-                <mat-error *ngIf="tripForm.controls.endDate.touched && tripForm.controls.endDate.invalid">
-                    <span class="forms__error"
-                        *ngIf="tripForm.controls.endDate.errors?.required">{{msg["required-field"]}}</span>
-                </mat-error>
+                <input matEndDate [min]="startDate" name="endDate" formControlName="endDate" placeholder="{{endDate}}"
+                    required>
             </mat-date-range-input>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-date-range-picker #picker></mat-date-range-picker>
+            <mat-error *ngIf="tripForm.controls.startDate.touched && tripForm.controls.startDate.invalid">
+                <span class="forms__error"
+                    *ngIf="tripForm.controls.startDate.errors?.required">{{msg["required-field"]}}</span>
+            </mat-error>
+            <mat-error *ngIf="tripForm.controls.endDate.touched && tripForm.controls.endDate.invalid">
+                <span class="forms__error"
+                    *ngIf="tripForm.controls.endDate.errors?.required">{{msg["required-field"]}}</span>
+            </mat-error>
         </mat-form-field>
 
         <!-- Requirements -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{addRequerimentsText}}</mat-label>
+            <mat-label>{{msg["addRequeriments"]}}</mat-label>
             <div formArrayName="requirements"
                 *ngFor="let requirement of getControls(tripForm, 'requirements'); let i=index">
-                <div [formGroupName]="i">
-                    <mat-form-field appearance="fill" class="forms__form-field">
-                    <input matInput formcontrolname="requirement" placeholder="{{requirementText}}">
-                    </mat-form-field>
-                    <mat-icon  color="primary" (click)='removeReq(i)'>delete</mat-icon>
-                </div>
+                <mat-form-field appearance="fill" class="forms__form-field">
+                    <input matInput #myInput [formControlName]="i" type="text" placeholder="{{requirementText}}">
+                </mat-form-field>
+                <mat-icon color="primary" (click)='removeReq(i)'>delete</mat-icon>
             </div>
-            <mat-icon color = "primary" (click)="addRequeriments()">add</mat-icon>
+            <mat-icon color="primary" (click)="addRequirements()">add</mat-icon>
         </mat-form-field>
 
         <!-- Stages -->
         <mat-form-field appearance="outline" class="forms__form-field">
-            <mat-label>{{addStagesText}}</mat-label>
+            <mat-label>{{msg["addStagesText"]}}</mat-label>
             <div formArrayName="stages" *ngFor="let stage of getControls(tripForm, 'stages'); let i = index;">
                 <div [formGroupName]="i">
+
+
                     <mat-form-field appearance="fill" class="forms__form-field">
-                    <input matInput formControlName="title" placeholder="{{title}}">
-                   </mat-form-field>
-                   <mat-form-field appearance="fill" class="forms__form-field">
+                        <input matInput #myInput formControlName="title" placeholder="{{title}}" type="text" required>
+                    </mat-form-field>
 
-                    <input matInput formControlName="description" placeholder="{{description}}">
-                   </mat-form-field>
-                   <mat-form-field appearance="fill" class="forms__form-field">
+                    <mat-form-field appearance="fill" class="forms__form-field">
+                        <input matInput #myInput formControlName="description" type="text" placeholder="{{description}}">
+                    </mat-form-field>
 
-                    <input matInput formControlName="price" placeholder="{{price}}">
-                   </mat-form-field>
+                    <mat-form-field appearance="fill" class="forms__form-field">
+                        <input matInput #myInput type="number" formControlName="price" placeholder="{{price}}" required>
+                    </mat-form-field>
+
                     <mat-icon color="primary" (click)='removeStage(i)'>delete</mat-icon>
                 </div>
             </div>
-            <mat-icon type="button" color = "primary" (click)="addStage()">add</mat-icon>
+            <mat-icon type="button" color="primary" (click)="addStage()">add</mat-icon>
+            <mat-error *ngIf="tripForm.controls.stages.touched && tripForm.controls.stages.invalid">
+                <span class="forms__error"
+                    *ngIf="tripForm.controls.stages.errors?.required">{{msg["required-field"]}}</span>
+            </mat-error>
         </mat-form-field>
 
         <!-- Pictures -->
-        <div [fileUploadInputFor]="fileUploadQueue" class="upload-drop-zone">
-            {{dragAndDropPicturesText}}
-        </div>
-        <div style="width: 500px">
-            <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'"
-                [httpUrl]="'https://localhost:8180/jax-rs-jersey-application-sample'" multiple>
-
-                <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index">
-                </mat-file-upload>
-            </mat-file-upload-queue>
-        </div>
+        <mat-form-field appearance="outline" class="forms__form-field">
+            <mat-label>{{msg["addPictures"]}}</mat-label>
+            <div formArrayName="pictures"
+                *ngFor="let picture of getControls(tripForm, 'pictures'); let i=index">
+                <mat-form-field appearance="fill" class="forms__form-field">
+                    <input matInput #myInput [formControlName]="i" type="text" placeholder="{{pic}}">
+                </mat-form-field>
+                <mat-icon color="primary" (click)='removePic(i)'>delete</mat-icon>
+            </div>
+            <mat-icon color="primary" (click)="addPicture()">add</mat-icon>
+        </mat-form-field>
 
         <!-- Submit button -->
         <div class="forms__submit-button">
+            <button mat-raised-button class="forms__submit-button" type="reset" (click)="goBack()">{{msg["cancel"]}}</button>
             <button mat-raised-button color="accent" class="forms__submit-button" type="submit"
-                [disabled]="!tripForm.valid || loading">{{msg.save}}</button>
+                [disabled]="!tripForm.valid || loading">{{msg["save"]}}</button>
             <mat-spinner *ngIf="loading" diameter="35" class="forms__loading-spinner"></mat-spinner>
         </div>
-        <script type="text/javascript">
-            $(".matInput").keyup(function() {	            
-  var ind = $(".matInput").index(this);
-  $(".matInput").eq(ind + 1).focus();
-});
-        </script>
     </form>
-    
