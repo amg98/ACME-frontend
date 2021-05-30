@@ -1,5 +1,5 @@
 <!-- New trip button -->
-<button mat-raised-button color="accent" type="button" class="card_button" (click)="newTrip();" *ngIf="isManager">
+<button mat-raised-button id="newTrip" color="accent" type="button" class="card_button" (click)="newTrip();" *ngIf="isManager">
   {{msg["newTrip"]}}
 </button>
 
@@ -23,12 +23,12 @@
               <p>{{trip.description}}</p>
             </details>
             <mat-card-actions>
-              <button mat-stroked-button color="primary" routerLink="/trips/display/{{trip._id}}"
+              <button mat-stroked-button color="primary" id = "detail" routerLink="/trips/display/{{trip._id}}"
                 class="mdc-button mdc-button--raised">
                 <mat-icon>pageview icon</mat-icon>
               </button>
               <button mat-stroked-button color="primary" *ngIf="isManager && checkManagerId(trip.managerID)"
-                routerLink="/trips/{{trip._id}}" class="edit-trip">
+                routerLink="/trips/{{trip._id}}" id = "edit" class="edit-trip">
                 <mat-icon>edit</mat-icon>
               </button>
               <button mat-raised-button color="warn" *ngIf="trip.cancelReason" class="btn-cancelled" type="button"
