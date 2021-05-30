@@ -1,1 +1,23 @@
-<p>preferences works!</p>
+<mat-card class="forms__card">
+    <mat-card-title class="forms__title">{{msg.preferences}}</mat-card-title>
+    <mat-card-content>
+        <div class="forms__form-field">
+            <label class="labels" mat-label>{{msg.thema}}</label>
+            <app-theme-switch></app-theme-switch>
+        </div>
+        <div class="forms__form-field">
+            <label class="labels" mat-label> {{msg.fontSize}} </label>
+            <app-size-selector></app-size-selector>
+        </div>
+        <div class="forms__form-field">
+            <label class="labels" mat-label> {{msg.fontFamily}}</label>
+          <label class="labels">
+              <app-font-selector></app-font-selector>
+          </label>  
+        </div>
+        <div class="forms__form-field">
+            <label class="labels" mat-label> {{msg.current}} </label>
+            <app-current-selector></app-current-selector>
+        </div>
+    </mat-card-content>
+</mat-card>

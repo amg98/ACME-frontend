@@ -17,7 +17,7 @@
 
         <ng-container matColumnDef="price">
             <th mat-header-cell *matHeaderCellDef> {{msg["price"]}} </th>
-            <td mat-cell *matCellDef="let trip"> {{trip.price}} </td>
+            <td mat-cell *matCellDef="let trip"> {{trip.price}} {{current}}</td>
         </ng-container>
 
         <ng-container matColumnDef="startDate">

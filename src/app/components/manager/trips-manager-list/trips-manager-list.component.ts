@@ -9,6 +9,7 @@ import { Trip } from "src/app/models/Trip"
 import { TripsService } from "@services/trips.service"
 import { MatDialog } from "@angular/material/dialog"
 import { CancelTripComponent } from "@components/dialog/cancel-trip/cancel-trip.component" 
+import { PreferencesService } from "@services/preferences.service"
 
 @Component({
     selector: "app-trips-manager-list",
@@ -28,17 +29,18 @@ export class TripsManagerListComponent extends TranslatableComponent implements 
 
     @ViewChild(MatPaginator) paginator!: MatPaginator
     showSpiner = false
+    current: string | null
 
     constructor(translator: TranslatorService, private tripsService: TripsService,
-        private snackBar: MatSnackBar, private dialogRef: MatDialog) {
+        private snackBar: MatSnackBar, private dialogRef: MatDialog, preference: PreferencesService) {
         super(translator)
         this.dataSource = new MatTableDataSource<Trip>()
+        this.current = preference.getPreference("current")
     }
 
     async ngOnInit(): Promise<void> {
         try {
             this.trips = await this.tripsService.getTripsByManager()
-            console.log(this.trips)
             this.dataSource.data = this.trips
         } catch {
             this.showAlert("trips/error", "alert-error")

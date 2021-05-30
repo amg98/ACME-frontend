@@ -8,6 +8,7 @@ import { Actor } from "src/app/models/Actor"
 import { MatSnackBar } from "@angular/material/snack-bar"
 import {Trip} from "src/app/models/Trip"
 import { Subscription } from "rxjs"
+import { PreferencesService } from "@services/preferences.service"
 
 @Component({
     selector: "app-trip-display",
@@ -15,7 +16,7 @@ import { Subscription } from "rxjs"
     styleUrls: ["./trip-display.component.scss"]
 })
 export class TripDisplayComponent extends TranslatableComponent implements OnInit {
-  
+  current: string|null
   loggedActorName: string | null;
   loggedActorSub: Subscription;
   isAdmin = false;
@@ -53,9 +54,12 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     translator: TranslatorService,
     private router: Router,
     private route: ActivatedRoute,
-    private snackbar: MatSnackBar) { 
+    private snackbar: MatSnackBar,
+    preference: PreferencesService) { 
       super(translator)
 
+      this.current = preference.getPreference("current")
+      
       this.loggedActorName = ""
       this.loggedActorSub = actorsService.subscribeToLoggedActor(loggedActor => {
           if(typeof loggedActor == "undefined") this.loggedActorName = ""

@@ -49,9 +49,9 @@ export class AppsExplorerListComponent extends TranslatableComponent implements 
     async onCancel(app: Application): Promise<void> {
         try {
             const previousState = app.status
-            // app.status = ApplicationStatus.Cancelled
+            app.status = ApplicationStatus.Cancelled
             await this.appService.cancelApplication(app).then(res => {
-
+                
                 console.log("cancel ", res)
 
             })

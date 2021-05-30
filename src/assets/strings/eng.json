@@ -224,6 +224,10 @@
     "sponsorText": "Sponsor",
     "dragAndDropPicturesText": "Drag and drop pictures here",
     "addStagesText": "Add stages",
-    "requirement": "Requirement"
+    "requirement": "Requirement",
 
+    "thema": "Thema",
+    "fontSize": "Font size",
+    "fontFamily": "Typography",
+    "current": "Current"
 }

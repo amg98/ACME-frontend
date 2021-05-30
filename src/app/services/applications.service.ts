@@ -44,17 +44,6 @@ export class ApplicationsService {
     }
 
     async cancelApplication(application: Application): Promise<void> {
-        console.log(application)
-
-        const body = JSON.stringify(application)
-
-        console.log("before", body)
-
-        return await this.client.put(`${environment.backendURL}/applications/${application._id}/cancel`, {})
-            .toPromise()
-            .then(res => {
-                console.log("them", res)
-            })
-
+        await this.client.put(`${environment.backendURL}/applications/${application._id}/cancel`, {}).toPromise()
     }
 }

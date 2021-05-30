@@ -1,0 +1,5 @@
+<mat-form-field class="field">
+    <mat-select [(value)]="selectedCurrent" (selectionChange)="onCurrentChange($event)">
+        <mat-option *ngFor="let cur of currents; index as i;" [value]="currentLabels[i]">{{cur}}</mat-option>
+    </mat-select>
+</mat-form-field>
