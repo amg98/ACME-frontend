@@ -6,7 +6,7 @@
         <!-- Title -->
         <mat-form-field appearance="outline" class="forms__form-field">
             <mat-label>{{msg["title"]}}</mat-label>
-            <input matInput formControlName="title" required>
+            <input matInput formControlName="title" id="title" required>
             <mat-error *ngIf="tripForm.controls.title.touched && tripForm.controls.title.invalid">
                 <span class="forms__error"
                     *ngIf="tripForm.controls.title.errors?.required">{{msg["required-field"]}}</span>
@@ -16,15 +16,15 @@
         <!-- Description -->
         <mat-form-field appearance="outline" class="forms__form-field">
             <mat-label>{{msg["description"]}}</mat-label>
-            <input matInput formControlName="description">
+            <input matInput formControlName="description" id="description">
         </mat-form-field>
 
         <!-- Dates -->
         <mat-form-field appearance="outline" class="forms__form-field">
             <mat-label>{{msg["dates"]}}</mat-label>
             <mat-date-range-input [rangePicker]="picker">
-                <input matStartDate name="startDate" formControlName="startDate" placeholder="{{startDate}}" required>
-                <input matEndDate [min]="startDate" name="endDate" formControlName="endDate" placeholder="{{endDate}}"
+                <input matStartDate id="startDate" name="startDate" formControlName="startDate" placeholder="{{startDate}}" required>
+                <input matEndDate id="endDate" [min]="startDate" name="endDate" formControlName="endDate" placeholder="{{endDate}}"
                     required>
             </mat-date-range-input>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -45,7 +45,7 @@
             <div formArrayName="requirements"
                 *ngFor="let requirement of getControls(tripForm, 'requirements'); let i=index">
                 <mat-form-field appearance="fill" class="forms__form-field">
-                    <input matInput #myInput [formControlName]="i" type="text" placeholder="{{requirementText}}">
+                    <input matInput #myInput id="requeriment" [formControlName]="i" type="text" placeholder="{{requirementText}}">
                 </mat-form-field>
                 <mat-icon color="primary" (click)='removeReq(i)'>delete</mat-icon>
             </div>
@@ -60,15 +60,16 @@
 
 
                     <mat-form-field appearance="fill" class="forms__form-field">
-                        <input matInput #myInput formControlName="title" placeholder="{{title}}" type="text" required>
+                        <input matInput #myInput id="stageTitle" formControlName="title" placeholder="{{title}}" type="text" required>
                     </mat-form-field>
 
                     <mat-form-field appearance="fill" class="forms__form-field">
-                        <input matInput #myInput formControlName="description" type="text" placeholder="{{description}}">
+                        <input matInput #myInput id="stageDescription" formControlName="description" type="text"
+                            placeholder="{{description}}">
                     </mat-form-field>
 
                     <mat-form-field appearance="fill" class="forms__form-field">
-                        <input matInput #myInput type="number" formControlName="price" placeholder="{{price}}" required>
+                        <input matInput #myInput id="stagePrice" type="number" formControlName="price" placeholder="{{price}}" required>
                     </mat-form-field>
 
                     <mat-icon color="primary" (click)='removeStage(i)'>delete</mat-icon>
@@ -84,10 +85,9 @@
         <!-- Pictures -->
         <mat-form-field appearance="outline" class="forms__form-field">
             <mat-label>{{msg["addPictures"]}}</mat-label>
-            <div formArrayName="pictures"
-                *ngFor="let picture of getControls(tripForm, 'pictures'); let i=index">
+            <div formArrayName="pictures" *ngFor="let picture of getControls(tripForm, 'pictures'); let i=index">
                 <mat-form-field appearance="fill" class="forms__form-field">
-                    <input matInput #myInput [formControlName]="i" type="text" placeholder="{{pic}}">
+                    <input matInput #myInput id="picture" [formControlName]="i" type="text" placeholder="{{pic}}">
                 </mat-form-field>
                 <mat-icon color="primary" (click)='removePic(i)'>delete</mat-icon>
             </div>
@@ -96,7 +96,8 @@
 
         <!-- Submit button -->
         <div class="forms__submit-button">
-            <button mat-raised-button class="forms__submit-button" type="reset" (click)="goBack()">{{msg["cancel"]}}</button>
+            <button mat-raised-button class="forms__submit-button" type="reset"
+                (click)="goBack()">{{msg["cancel"]}}</button>
             <button mat-raised-button color="accent" class="forms__submit-button" type="submit"
                 [disabled]="!tripForm.valid || loading">{{msg["save"]}}</button>
             <mat-spinner *ngIf="loading" diameter="35" class="forms__loading-spinner"></mat-spinner>

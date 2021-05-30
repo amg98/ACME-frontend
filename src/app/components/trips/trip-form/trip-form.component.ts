@@ -206,11 +206,11 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
                     this.tripsService.updateTrip(formTrip, this.trip._id)
                     this.updated = true
                     this.router.navigate(["trips/display/" + this.trip._id])
-                    this.showAlert("tripCreatedText", "alert-success")
+                    this.showAlert("tripUpdatedText", "alert-success")
                     this.loading = false
                 }
             } catch {
-                this.showAlert("tripCreationError", "alert-error")
+                this.showAlert("tripUpdatedText", "alert-error")
             }
         }
     }
