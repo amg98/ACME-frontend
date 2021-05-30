@@ -25,7 +25,7 @@ import { MatExpansionModule } from "@angular/material/expansion"
 import { MatCarouselModule } from "@ngmodule/material-carousel"
 import {MatGridListModule} from "@angular/material/grid-list"
 import { MatFileUploadModule } from "angular-material-fileupload"
-import {MatDatepickerModule} from "@angular/material/datepicker"
+import { MatDatepickerModule } from "@angular/material/datepicker"
 import { MatNativeDateModule } from "@angular/material/core"
 import { MatTableModule } from "@angular/material/table"
 import { MatPaginatorModule } from "@angular/material/paginator"
@@ -73,6 +73,7 @@ import { PreferencesComponent } from "./components/preferences/preferences.compo
 import { FontSelectorComponent } from "./components/font-selector/font-selector.component"
 import { SizeSelectorComponent } from "./components/size-selector/size-selector.component"
 import { CurrentSelectorComponent } from "./components/current-selector/current-selector.component"
+import { AdvancedfinderComponent } from "./components/advanced-finder/advanced-finder.component"
 
 
 @NgModule({
@@ -115,6 +116,7 @@ import { CurrentSelectorComponent } from "./components/current-selector/current-
         FontSelectorComponent,
         SizeSelectorComponent,
         CurrentSelectorComponent,
+        AdvancedfinderComponent,
     ],
     imports: [
         CommonModule,
@@ -150,7 +152,7 @@ import { CurrentSelectorComponent } from "./components/current-selector/current-
         MatPaginatorModule
     ],
     providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+        { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     ],
     bootstrap: [AppComponent]
 })

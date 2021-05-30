@@ -16,5 +16,6 @@ export interface Trip extends Entity {
         title: string,
         description: string,
         price: number,
-    }];  
+    }]; 
+    managerID: string 
 }
