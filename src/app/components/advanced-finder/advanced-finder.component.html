@@ -1,41 +1,33 @@
-<div class="mdc-dialog">
-    <div class="mdc-dialog__container">
-        <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
-            aria-describedby="my-dialog-content">
-            
-            <div class="card-body">
-                <div class="row">
-                  <div class="col-md-12">
-                    <h4 class="">TRIP FILTER: {{this.keyword}}</h4>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <span class="">Rango de precios</span>
-                  </div>
-                  <div class="col-md-6">
-                    <input type="number" class="form-control" id="minPrice" placeholder="minPrice" [(ngModel)]="minPrice">
-                  </div>
-                  <div class="col-md-6">
-                    <input type="number" class="form-control" id="maxPrice" placeholder="maxPrice" [(ngModel)]="maxPrice">
-                  </div>
-                </div>
-      
-                <div class="row">
-                  <div class="col-md-12">
-                    <span class="">Rango de Fechas</span>
-                  </div>
-                  <div class="col-md-6">
-                    <input matInput type="date" class="form-control" id="minDate" placeholder="minDate" [(ngModel)]="minDate">
-                  </div>
-                  <div class="col-md-6">
-                    <input type="date" class="form-control" id="maxDate" placeholder="maxDate" [(ngModel)]="maxDate">
-                  </div>
-                </div>
-      
-                <button class="btn btn-primary mt-4 mb-2 mx-2" type="submit" (click)="searchTrips()">FILTROOO</button>
-                <button *ngIf=isExplorer class="btn btn-primary mt-4 mb-2 mx-2" type="submit" (click)="saveFinder()">SAVE</button>
-              </div>
+<h2 mat-dialog-title>{{msg["advancedSearch"]}}</h2>
+<div mat-dialog-content>
+  <div class="col1">
+    <div class="col-md-12">
+      <mat-label><b>{{msg["pricesRange"]}}</b></mat-label>
     </div>
-    <div class="mdc-dialog__scrim"></div>
+    <div class="col-md-6">
+      <input type="number" class="form-control" id="minPrice" placeholder="min" [(ngModel)]="minPrice">
+    </div>
+    <div class="col-md-6">
+      <input type="number" class="form-control" id="maxPrice" placeholder="max" [(ngModel)]="maxPrice">
+    </div>
+  </div>
+  <div class="col2">
+    <div class="col-md-12">
+      <mat-label><b>{{msg["datesRange"]}}</b></mat-label>
+    </div>
+    <div class="col-md-6">
+      <input type="date" class="form-control" id="minDate" placeholder="min" [(ngModel)]="minDate">
+    </div>
+    <div class="col-md-6">
+      <input type="date" class="form-control" id="maxDate" placeholder="max" [(ngModel)]="maxDate">
+    </div>
+  </div>
 </div>
+<div mat-dialog-actions class="actions_buttons">
+  <button mat-flat-button color="accent" class="search-button" type="submit"
+    [mat-dialog-close]="filters">{{msg["search"]}} </button>
+  <button mat-stroked-button color="primary" class="save-button">{{msg["save"]}}</button>
+  <button mat-stroked-button color="warn" (click)="onNoClick()" class="save-button">{{msg["close"]}}</button>
+
+</div>
+<div class="mdc-dialog__scrim"></div>

@@ -232,6 +232,11 @@
 
     "finder-config":"Configuración de búsqueda",
 
-    "picture": "Imagen",
-    "addPictures": "Añade imagen"
+    "picture": "Imagen", 
+    "addPictures": "Añade imagen",
+
+    "advancedSearch": "Búsqueda avanzada",
+    "pricesRange": "Rango de precios",
+    "datesRange": "Rango de fechas"
+
 }

@@ -228,10 +228,13 @@
     "thema": "Thema",
     "fontSize": "Font size",
     "fontFamily": "Typography",
-    "current": "Current",
+    "current": "Current", 
     
     "finder-config":"Finder settings",
 
+    "advancedSearch": "Advanced Search",
+    "pricesRange": "Prices Range",
+    "datesRange": "Dates Range",
 
     "picture": "Picture",
     "addPictures": "Add pictures"
