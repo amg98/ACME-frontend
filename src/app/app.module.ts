@@ -73,8 +73,8 @@ import { PreferencesComponent } from "./components/preferences/preferences.compo
 import { FontSelectorComponent } from "./components/font-selector/font-selector.component"
 import { SizeSelectorComponent } from "./components/size-selector/size-selector.component"
 import { CurrentSelectorComponent } from "./components/current-selector/current-selector.component"
-import { AdvancedfinderComponent } from "./components/advanced-finder/advanced-finder.component";
-import { ApplicationPaymentComponent } from './components/application-payment/application-payment.component'
+import { AdvancedfinderComponent } from "./components/advanced-finder/advanced-finder.component"
+import { ApplicationPaymentComponent } from "./components/application-payment/application-payment.component"
 
 
 @NgModule({
