@@ -224,7 +224,12 @@
     "dragAndDropPicturesText": "Arrastra las imágenes aquí",
     "addStagesText":"Añade etapas",
     "requirement": "Requisito",
+
+    "thema": "Tema",
+    "fontSize": "Tamaño de letra",
+    "fontFamily": "Tipo de fuente",
+    "current": "Moneda",
+
     "picture": "Imagen",
     "addPictures": "Añade imagen"
-
 }

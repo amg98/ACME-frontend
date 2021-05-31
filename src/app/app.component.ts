@@ -1,8 +1,7 @@
-import { Component, HostBinding, OnInit } from "@angular/core"
+import { Component, HostBinding } from "@angular/core"
 import { OverlayContainer } from "@angular/cdk/overlay"
 
-import { ThemeService } from "@services/theme.service"
-import { Router } from "@angular/router"
+import { PreferencesService } from "@services/preferences.service"
 
 @Component({
     selector: "app-root",
@@ -10,26 +9,44 @@ import { Router } from "@angular/router"
     styleUrls: ["./app.component.scss"]
 })
 
-export class AppComponent implements OnInit {
-    @HostBinding("class") className = "";
+export class AppComponent {
 
-    constructor(private router: Router, public overLayContainer: OverlayContainer,
-        theme: ThemeService) {
-        this.changeTheme(theme.getTheme())
-        theme.activateTheme.subscribe((theme) => {
+    @HostBinding("class") className = ""
+    constructor(public overLayContainer: OverlayContainer, private preference: PreferencesService) {
+
+        this.changeTheme(preference.getPreference("theme"))
+        this.changeFontFamily(preference.getPreference("font"))
+        this.changeFontSize(preference.getPreference("size"))
+
+        preference.activateTheme.subscribe((theme) => {
             this.changeTheme(theme)
+        })
+
+        preference.changeFontFamily.subscribe((fontFamily => {
+            this.changeFontFamily(fontFamily)
+        }))
+
+        preference.changeSize.subscribe((size) => {
+            this.changeFontSize(size)
         })
     }
 
-    ngOnInit(): void {
-        this.router.navigate(["trips"])
+    changeTheme(theme: string | null): void {
+        this.className = `${this.preference.getPreference("font")} ${theme === "light" ? "light" : "dark"}`
+
+        this.overLayContainer.getContainerElement().classList
+            .add(theme === "light" ? "light" : "dark")
+        this.overLayContainer.getContainerElement().classList
+            .remove(theme !== "light" ? "light" : "dark")
     }
 
-    changeTheme(theme: string | null): void {
-        this.className = theme === "light" ? "light-mode" : "dark-mode"
-        this.overLayContainer.getContainerElement()
-            .classList.add(theme === "light" ? "light-mode" : "dark-mode")
-        this.overLayContainer.getContainerElement()
-            .classList.remove(theme !== "light" ? "light-mode" : "dark-mode")
+    changeFontSize(size: string | null): void {
+        document.getElementsByTagName("html")[0].style.fontSize = `${size}px`
+        document.getElementsByTagName("body")[0].style.fontSize = `${size}px`
+    }
+
+    changeFontFamily(fontFamily: string | null): void {
+        this.className = `${fontFamily} ${this.preference.getPreference("theme")}`
+        document.getElementsByTagName("body")[0].style.fontFamily = `${fontFamily}`
     }
 }

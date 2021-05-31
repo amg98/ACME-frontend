@@ -224,9 +224,12 @@
     "dragAndDropPicturesText": "Drag and drop pictures here",
     "addStagesText": "Add stages",
     "requirement": "Requirement",
+
+    "thema": "Thema",
+    "fontSize": "Font size",
+    "fontFamily": "Typography",
+    "current": "Current",
+    
     "picture": "Picture",
     "addPictures": "Add pictures"
-
-    
-
 }

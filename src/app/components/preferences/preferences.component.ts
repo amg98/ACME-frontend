@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core"
+import { Component } from "@angular/core"
 import { TranslatableComponent } from "@components/translatable/translatable.component"
 import { TranslatorService } from "@services/translator.service"
 
@@ -7,14 +7,9 @@ import { TranslatorService } from "@services/translator.service"
     templateUrl: "./preferences.component.html",
     styleUrls: ["./preferences.component.scss"]
 })
-export class PreferencesComponent extends TranslatableComponent implements OnInit {
+export class PreferencesComponent extends TranslatableComponent   {
 
     constructor(translator : TranslatorService) {
         super(translator)
-    }
-
-    ngOnInit(): void {
-        console.log("")
-    }
-
+    } 
 }

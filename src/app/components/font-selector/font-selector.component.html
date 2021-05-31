@@ -1,0 +1,5 @@
+<mat-form-field class="field">
+    <mat-select [value]="selectedFont" (selectionChange)="onFontChange($event)">
+        <mat-option *ngFor="let font of fonts; index as i;" [value]="fontLabels[i]">{{font}}</mat-option>
+    </mat-select>
+</mat-form-field>

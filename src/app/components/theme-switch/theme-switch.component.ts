@@ -1,7 +1,7 @@
 import { Component } from "@angular/core"
 import { FormControl } from "@angular/forms"
 
-import { ThemeService } from "@services/theme.service"
+import { PreferencesService } from "@services/preferences.service"
 
 @Component({
     selector: "app-theme-switch",
@@ -11,13 +11,13 @@ import { ThemeService } from "@services/theme.service"
 
 export class ThemeSwitchComponent {
     toggleControl = new FormControl();
-    constructor(private theme: ThemeService) {
-        this.toggleControl.setValue(theme.getTheme() === "light" ? false : true)
-        
+    constructor(private preference: PreferencesService) {
+        this.toggleControl.setValue(preference.getPreference("theme") === "light" ? false : true)
+
         this.toggleControl.valueChanges.subscribe((darkModeActivated) => {
             const mode = darkModeActivated ? "dark" : "light"
-            this.theme.activateTheme.emit(mode)
-            this.theme.saveTheme(mode)
+            this.preference.activateTheme.emit(mode)
+            this.preference.savePreference("theme", mode)
         })
     }
 

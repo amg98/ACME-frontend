@@ -1,0 +1,5 @@
+<mat-form-field class="field">
+    <mat-select [(value)]="selectedSize" (selectionChange)="onSizeChange($event)">
+        <mat-option *ngFor="let size of sizes; index as i;" [value]="SizeLabels[i]">{{size}}</mat-option>
+    </mat-select>
+</mat-form-field>

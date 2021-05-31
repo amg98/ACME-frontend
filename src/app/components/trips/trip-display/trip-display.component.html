@@ -35,7 +35,7 @@
     <mat-card class="card1">
       <div class="info">
         <h3 class="card-title The-explorer-4-hex"><b>Ticker:</b> {{trip.ticker}}</h3>
-        <h3 class="card-title The-explorer-4-hex"><b>{{msg["price"]}}: </b> {{trip.price}}&euro;</h3>
+        <h3 class="card-title The-explorer-4-hex"><b>{{msg["price"]}}: </b> {{trip.price}} {{current}}</h3>
         <h3><b>{{msg["startDate"]}}:</b> {{trip.startDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
         <h3><b>{{msg["endDate"]}}:</b> {{trip.endDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
       </div>
@@ -61,8 +61,7 @@
             </mat-expansion-panel-header>
             <div class="panel-content">
               <p class="content-section" class="content">{{stage.description}}</p>
-              <p class="content-section" class="content">{{stage.price}}&euro;
-              </p>
+              <p class="content-section" class="content">{{stage.price}} {{current}}</p>
             </div>
           </mat-expansion-panel>
         </mat-accordion>

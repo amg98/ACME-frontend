@@ -70,7 +70,11 @@ import { EditFavouriteListComponent } from "./components/dialog/edit-favourite-l
 import { AddToFavouritesComponent } from "./components/add-to-favourites/add-to-favourites.component"
 import { AppsExplorerListComponent } from "./components/apps-explorer-list/apps-explorer-list.component"
 import { PreferencesComponent } from "./components/preferences/preferences.component"
+import { FontSelectorComponent } from "./components/font-selector/font-selector.component"
+import { SizeSelectorComponent } from "./components/size-selector/size-selector.component"
+import { CurrentSelectorComponent } from "./components/current-selector/current-selector.component"
 import { AdvancedfinderComponent } from "./components/advanced-finder/advanced-finder.component"
+import { ApplicationPaymentComponent } from "./components/application-payment/application-payment.component"
 
 
 @NgModule({
@@ -110,7 +114,11 @@ import { AdvancedfinderComponent } from "./components/advanced-finder/advanced-f
         AddToFavouritesComponent,
         AppsExplorerListComponent,
         PreferencesComponent,
+        FontSelectorComponent,
+        SizeSelectorComponent,
+        CurrentSelectorComponent,
         AdvancedfinderComponent,
+        ApplicationPaymentComponent,
     ],
     imports: [
         CommonModule,

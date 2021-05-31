@@ -9,6 +9,7 @@ import { Sponsorship } from "src/app/models/Sponsorship"
 import { MatSnackBar } from "@angular/material/snack-bar"
 import { Trip } from "src/app/models/Trip"
 import { Subscription } from "rxjs"
+import { PreferencesService } from "@services/preferences.service"
 
 @Component({
     selector: "app-trip-display",
@@ -17,6 +18,7 @@ import { Subscription } from "rxjs"
 })
 export class TripDisplayComponent extends TranslatableComponent implements OnInit {
 
+    current: string |null
     loggedActorName: string | null;
     loggedActorSub: Subscription;
     isAdmin = false;
@@ -34,10 +36,12 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
         private sponsorshipsService: SponsorshipsService,
         private router: Router,
         private route: ActivatedRoute,
-        private snackBar: MatSnackBar) {
+        private snackBar: MatSnackBar, 
+        preference: PreferencesService) {
         super(translator)
 
-
+        this.current = preference.getPreference("current")
+        
         this.loggedActorName = ""
         this.loggedActorSub = actorsService.subscribeToLoggedActor(loggedActor => {
             if (typeof loggedActor == "undefined") this.loggedActorName = ""

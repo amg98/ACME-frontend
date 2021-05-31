@@ -58,9 +58,8 @@
                             </p>
                             <div class="buttons">
                                 <button class="pay-button" mat-raised-button
-                                    (click)="onPay(app)">{{msg["applications/pay"]}}</button>
-
-                                <!-- <mat-spinner *ngIf="app.status === pending" diameter="35"></mat-spinner> -->
+                                    (click)="onPay(appIndex)">{{msg["applications/pay"]}}</button>
+                                <mat-spinner *ngIf="loadingPay[appIndex]" diameter="35"></mat-spinner>
                             </div>
                         </mat-expansion-panel>
                     </div>

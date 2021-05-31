@@ -5,6 +5,7 @@ import { Actor } from "../models/Actor"
 import { Application, ApplicationStatus } from "../models/Application"
 import { Trip } from "../models/Trip"
 import { ActorsService } from "./actors.service"
+import { TranslatorService } from "./translator.service"
 import { TripsService } from "./trips.service"
 
 export interface GetManagerApplicationsData {
@@ -19,7 +20,7 @@ export interface GetManagerApplicationsData {
 export class ApplicationsService {
 
     constructor(private client: HttpClient, private tripsService: TripsService,
-        private actorsService: ActorsService) {
+        private actorsService: ActorsService, private translator: TranslatorService) {
 
     }
 
@@ -44,17 +45,32 @@ export class ApplicationsService {
     }
 
     async cancelApplication(application: Application): Promise<void> {
-        console.log(application)
-
-        const body = JSON.stringify(application)
-
-        console.log("before", body)
-
-        return await this.client.put(`${environment.backendURL}/applications/${application._id}/cancel`, {})
-            .toPromise()
-            .then(res => {
-                console.log("them", res)
-            })
-
+        await this.client.put(`${environment.backendURL}/applications/${application._id}/cancel`, {}).toPromise()
     }
+
+    async payApplication(id: string, successURL: string, cancelURL: string): Promise<string> {
+        const reqURL = `${environment.backendURL}/applications/payment`
+
+        const body = {
+            paymentData:
+                { id, successURL, cancelURL, lang: this.translator.getLanguage() == "Spanish" ? "es" : "eng" }
+        }
+
+        const paypalURL = await this.client.post(reqURL, body, { responseType: "text" }).toPromise() as string
+        localStorage.setItem("application-payment", id)
+        return paypalURL
+    }
+
+    async confirmApplicationPaymen(paymentID: string, payerID: string): Promise<void> {
+        const id = localStorage.getItem("application-payment")
+        const reqURL = `${environment.backendURL}/applications/payment-confirm`
+        const body = {
+            confirmData: {
+                id, paymentID, payerID
+            }
+        }
+        await this.client.post(reqURL, body).toPromise()
+        localStorage.removeItem("application-payment")
+    }
+
 }
