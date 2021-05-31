@@ -1,8 +1,7 @@
-import { Component, HostBinding, OnInit } from "@angular/core"
+import { Component, HostBinding } from "@angular/core"
 import { OverlayContainer } from "@angular/cdk/overlay"
 
 import { PreferencesService } from "@services/preferences.service"
-import { Router } from "@angular/router"
 
 @Component({
     selector: "app-root",
@@ -10,10 +9,11 @@ import { Router } from "@angular/router"
     styleUrls: ["./app.component.scss"]
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
+
     @HostBinding("class") className = ""
-    constructor(private router: Router, public overLayContainer: OverlayContainer, private preference: PreferencesService) {
-        
+    constructor(public overLayContainer: OverlayContainer, private preference: PreferencesService) {
+
         this.changeTheme(preference.getPreference("theme"))
         this.changeFontFamily(preference.getPreference("font"))
         this.changeFontSize(preference.getPreference("size"))
@@ -28,16 +28,12 @@ export class AppComponent implements OnInit {
 
         preference.changeSize.subscribe((size) => {
             this.changeFontSize(size)
-        })   
-    }
-
-    ngOnInit(): void {
-        this.router.navigate(["trips"])
+        })
     }
 
     changeTheme(theme: string | null): void {
         this.className = `${this.preference.getPreference("font")} ${theme === "light" ? "light" : "dark"}`
-        
+
         this.overLayContainer.getContainerElement().classList
             .add(theme === "light" ? "light" : "dark")
         this.overLayContainer.getContainerElement().classList

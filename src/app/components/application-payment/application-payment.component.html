@@ -8,5 +8,7 @@
     </mat-spinner>
 </mat-card>
 
-<button color="accent" class="button" *ngIf="state == PaymentState.CANCELLED || state == PaymentState.DONE || state == PaymentState.ERROR"
-    mat-raised-button routerLink="/sponsor/sponsorships">{{msg["go-back"]}}</button>
+
+<button color="accent" class="button"
+    *ngIf="state == PaymentState.CANCELLED || state == PaymentState.DONE || state == PaymentState.ERROR"
+    mat-raised-button routerLink="/applications">{{msg["go-back"]}}</button>

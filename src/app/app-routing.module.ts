@@ -24,6 +24,7 @@ import { SponsorshipComponent } from "@components/forms/sponsorship/sponsorship.
 import { AppsExplorerListComponent } from "@components/apps-explorer-list/apps-explorer-list.component"
 import { PreferencesComponent } from "@components/preferences/preferences.component"
 import { AdvancedfinderComponent } from "@components/advanced-finder/advanced-finder.component"
+import { ApplicationPaymentComponent } from "@components/application-payment/application-payment.component"
 
 
 export const routes: Routes = [
@@ -34,6 +35,7 @@ export const routes: Routes = [
     { path: "admin/users", component: UsersListComponent, canActivate: [AdminGuard] },
     { path: "admin/cube", component: CubeComponent, canActivate: [AdminGuard] },
     { path: "applications", component: AppsExplorerListComponent, canActivate: [ExplorerGuard] },
+    { path: "application-payment", component: ApplicationPaymentComponent },
     { path: "manager/apps", component: ManagerApplicationsComponent, canActivate: [ManagerGuard] },
     { path: "manager/trips", component: TripsManagerListComponent, canActivate: [ManagerGuard] },
     { path: "explorer/favourite-lists", component: FavouriteListsComponent, canActivate: [ExplorerGuard] },
@@ -41,17 +43,19 @@ export const routes: Routes = [
     { path: "sponsor/sponsorships", component: SponsorshipsComponent, canActivate: [SponsorGuard] },
     { path: "sponsorship-payment", component: SponsorshipPaymentComponent },
     { path: "sponsorship-form", component: SponsorshipComponent, canActivate: [SponsorGuard] },
-    { path: "trips", children: [
-        { path: "new", component: TripFormComponent },
-        { path: ":id", component: TripFormComponent },
-        { path: "search", component: TripListComponent },
-        { path: "display/:id", component: TripDisplayComponent },
-        { path: "", component: TripListComponent },
-        { path: "", component: AdvancedfinderComponent },
-        { path: "finder", component: TripListComponent },
-        
-    ]},
-    { path: "", component: TripListComponent },
+    {
+        path: "trips", children: [
+            { path: "", component: TripListComponent },
+            { path: "", component: AdvancedfinderComponent },
+            { path: "finder", component: TripListComponent },
+            { path: "new", component: TripFormComponent },
+            { path: ":id", component: TripFormComponent },
+            { path: "search", component: TripListComponent },
+            { path: "display/:id", component: TripDisplayComponent },
+
+        ]
+    },
+    { path: "",redirectTo: "trips", pathMatch: "full"},
 ]
 
 @NgModule({

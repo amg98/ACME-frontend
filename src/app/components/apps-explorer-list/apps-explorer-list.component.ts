@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core"
 import { MatSnackBar } from "@angular/material/snack-bar"
 import { TranslatableComponent } from "@components/translatable/translatable.component"
+import { environment } from "@env/environment"
 import { ApplicationsService } from "@services/applications.service"
 import { TranslatorService } from "@services/translator.service"
 import { Application, ApplicationStatus } from "src/app/models/Application"
@@ -20,6 +21,8 @@ export class AppsExplorerListComponent extends TranslatableComponent implements 
     cancelled: Application[] = [];
     showSpiner = true
 
+    loadingPay: boolean[] = []
+
     constructor(translator: TranslatorService, private appService: ApplicationsService,
         private snackbar: MatSnackBar) {
         super(translator)
@@ -29,6 +32,7 @@ export class AppsExplorerListComponent extends TranslatableComponent implements 
         try {
             await this.getApps()
             this.showAlert("applications/success", "alert-success")
+            this.loadingPay = new Array(this.due.length).fill(false)
         } catch (error) {
             this.showAlert("applications/error", "alert-error")
         }
@@ -42,8 +46,18 @@ export class AppsExplorerListComponent extends TranslatableComponent implements 
         this.cancelled = await this.appService.getAppsByStatus(ApplicationStatus.Cancelled)
     }
 
-    onPay(appId: Application): void {
-        console.log(appId)
+    async onPay(index: number): Promise<void> { 
+        const id = this.due[index]._id
+        if (!id) return
+        this.loadingPay[index] = true
+        try {
+            const paypalURL =
+                await this.appService.payApplication(id, `${environment.frontendURL}/application-payment`, `${environment.frontendURL}/application-payment`)
+            window.location.href = paypalURL 
+        } catch {
+            this.showAlert("payment-error", "alert-error")
+        }
+        this.loadingPay[index] = false
     }
 
     async onCancel(app: Application): Promise<void> {
@@ -51,7 +65,7 @@ export class AppsExplorerListComponent extends TranslatableComponent implements 
             const previousState = app.status
             app.status = ApplicationStatus.Cancelled
             await this.appService.cancelApplication(app).then(res => {
-                
+
                 console.log("cancel ", res)
 
             })
