@@ -42,7 +42,7 @@ export class ApplicationPaymentComponent extends TranslatableComponent implement
 
               try {
                   this.state = PaymentState.PAYING
-                  await appService.confirmApplicationPaymen(params["PayerID"],params["paymentId"])
+                  await appService.confirmApplicationPaymen(params["paymentId"],params["PayerID"])
                   this.state = PaymentState.DONE
               } catch {
                   this.state = PaymentState.ERROR
