@@ -230,6 +230,13 @@
     "fontFamily": "Tipo de fuente",
     "current": "Moneda",
 
-    "picture": "Imagen",
-    "addPictures": "Añade imagen"
+    "finder-config":"Configuración de búsqueda",
+    "finder/no-filters":"No hay filtros para aplicar",
+
+    "picture": "Imagen", 
+    "addPictures": "Añade imagen",
+
+    "advancedSearch": "Búsqueda avanzada",
+    "pricesRange": "Rango de precios",
+    "datesRange": "Rango de fechas"
 }
