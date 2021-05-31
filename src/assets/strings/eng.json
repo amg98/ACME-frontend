@@ -225,8 +225,11 @@
     "addStagesText": "Add stages",
     "requirement": "Requirement",
     "picture": "Picture",
-    "addPictures": "Add pictures"
+    "addPictures": "Add pictures",
 
+    "advancedSearch": "Advanced Search",
+    "pricesRange": "Prices Range",
+    "datesRange": "Dates Range"
     
 
 }

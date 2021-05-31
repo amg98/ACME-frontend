@@ -225,6 +225,10 @@
     "addStagesText":"Añade etapas",
     "requirement": "Requisito",
     "picture": "Imagen",
-    "addPictures": "Añade imagen"
+    "addPictures": "Añade imagen",
+
+    "advancedSearch": "Búsqueda avanzada",
+    "pricesRange": "Rango de precios",
+    "datesRange": "Rango de fechas"
 
 }

@@ -5,6 +5,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatSnackBarModule } from "@angular/material/snack-bar"
 import { ApplicationsService, GetManagerApplicationsData } from "@services/applications.service"
 import { TranslatorService } from "@services/translator.service"
+import { constants } from "node:fs"
 import { ApplicationStatus } from "src/app/models/Application"
 import { Trip } from "src/app/models/Trip"
 
@@ -13,6 +14,7 @@ import { ManagerApplicationsComponent } from "./applications.component"
 describe("ManagerApplicationsComponent", () => {
 
     const tripID = "123"
+    const managerID = "123"
     const sampleTrip: Trip = {
         _id: tripID,
         ticker: "210510-IMUZ",
@@ -21,6 +23,7 @@ describe("ManagerApplicationsComponent", () => {
         startDate: "2021-05-20T12:46:31.290Z",
         endDate: "2021-06-20T12:46:31.290Z",
         pictures: ["https://images.io/image.jpg"],
+        managerID: managerID,
         cancelReason: "",
         isCancelled: false,
         isPublished: true,

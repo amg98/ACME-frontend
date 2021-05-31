@@ -30,6 +30,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
 
     actor!: Actor;
     data!: Trip[];
+    dataFiltered: Trip[] = [];
     roles!: string[];
 
     keyword!: string;
@@ -50,7 +51,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
         private route: ActivatedRoute,
         private snackBar: MatSnackBar) {
         super(translator)
-        route.queryParams.subscribe(val => this.ngOnInit())
+        //route.queryParams.subscribe(val => this.ngOnInit())
 
         this.tripService.subscribeToSearchResults(trips => {
             if (trips == null) return
@@ -77,6 +78,12 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
         if (this.route.url !== undefined) {
 
             this.data = await this.tripService.getAllTrips()
+            console.log(this.data);
+            this.data.forEach(trip => {
+                if (this.checkDate(trip.startDate)) {
+                    this.dataFiltered.push(trip)
+                }
+            });
         }
     }
 
@@ -100,7 +107,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
         }
     }
     isOneWeekBeforeToStart(startDate: string) {
-        
+
         const q = new Date()
         const m = q.getMonth() + 1
         const d = q.getDay()
@@ -115,12 +122,13 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
         return false
     }
 
-    
+    checkDate(date: string): boolean {
+        const now = new Date()
+        return ((new Date(date).getTime() - now.getTime()) / (1000 * 60 * 60 * 24) > 7)
+    }
 
     displayTrip(trip: Trip) {
-        const date = new Date()
-        const startDate = new Date(trip.startDate)
-        return trip.isPublished && (startDate.getTime() + 7 > date.getTime())
+        return trip.isPublished && this.checkDate(trip.startDate)
     }
 
     // Functions to infinite scroll
@@ -152,7 +160,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     }
 
     addTrips(startIndex: number, endIndex: number, _method: string) {
-        this.tripService.searchTrips(startIndex, MAX_TRIPS, this.keyword, this.minPrice, this.maxPrice,
+        this.finderService.searchTrips(startIndex, MAX_TRIPS, this.keyword, this.minPrice, this.maxPrice,
             this.minDate, this.maxDate)
             .then((val) => {
                 this.data = this.data.concat(val)
@@ -162,7 +170,10 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
 
     showReasonCancel(cancelReason: string) {
         console.log(cancelReason)
-        this.showAlert(cancelReason, "alert-info")
+        this.snackBar.open(cancelReason, this.msg.close, {
+            duration: 5000,
+            panelClass: ["alert-info"]
+        })
     }
 
     newTrip() {

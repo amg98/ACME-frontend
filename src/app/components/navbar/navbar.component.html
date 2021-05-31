@@ -73,9 +73,9 @@
                     {{loggedActorName}}
                     <mat-icon>dashboard</mat-icon>
                 </button>
-                <button mat-button (click)="advancedSearch()"
+                <button mat-button *ngIf=isExplorer (click)="advancedSearch()"
                     class="button">
-                    ADVANCED SEARCH
+                    {{msg["advancedSearch"]}}
                 </button>
             </div>
         </mat-toolbar>
