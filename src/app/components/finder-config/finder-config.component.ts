@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core"
+import { TranslatableComponent } from "@components/translatable/translatable.component"
+import { TranslatorService } from "@services/translator.service"
 
 @Component({
-  selector: 'app-finder-config',
-  templateUrl: './finder-config.component.html',
-  styleUrls: ['./finder-config.component.scss']
+    selector: "app-finder-config",
+    templateUrl: "./finder-config.component.html",
+    styleUrls: ["./finder-config.component.scss"]
 })
-export class FinderConfigComponent implements OnInit {
+export class FinderConfigComponent extends TranslatableComponent implements OnInit {
 
-  constructor() { }
+    constructor(translator: TranslatorService) { 
+        super(translator)
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+        console.log("finder config log")      
+    }
 
 }
