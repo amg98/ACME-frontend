@@ -231,6 +231,8 @@
     "current": "Current", 
     
     "finder-config":"Finder settings",
+    "finder/no-filters":"No filters to apply",
+    
 
     "advancedSearch": "Advanced Search",
     "pricesRange": "Prices Range",

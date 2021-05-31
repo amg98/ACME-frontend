@@ -1,12 +1,11 @@
-import { Component, Inject, OnInit } from "@angular/core"
+import { Component, Inject } from "@angular/core"
 import { TranslatableComponent } from "@components/translatable/translatable.component"
 import { TranslatorService } from "@services/translator.service"
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog"
 
-
 export interface AdvancedFinderDialogData {
-    minPrice: Number,
-    maxPrice: Number,
+    minPrice: number,
+    maxPrice: number,
     minDate: Date,
     maxDate: Date
 }
@@ -17,33 +16,26 @@ export interface AdvancedFinderDialogData {
     styleUrls: ["./advanced-finder.component.scss"]
 })
 
-export class AdvancedfinderComponent extends TranslatableComponent implements OnInit{
+export class AdvancedfinderComponent extends TranslatableComponent {
 
-    minPrice!: Number;
-    maxPrice!: Number;
+    minPrice!: number;
+    maxPrice!: number;
     minDate!: Date;
     maxDate!: Date;
 
-    filters!: AdvancedFinderDialogData
+    filters: AdvancedFinderDialogData = {
+        "minPrice": this.minPrice,
+        "maxPrice": this.maxPrice,
+        "minDate": this.minDate,
+        "maxDate": this.maxDate
+    }
 
     constructor(
         translator: TranslatorService,
         public dialogRef: MatDialogRef<AdvancedFinderDialogData>,
         @Inject(MAT_DIALOG_DATA) public data: AdvancedFinderDialogData) {
         super(translator)
-        
-    }
-
-    async ngOnInit() {
-    
-        this.filters = {
-            "minPrice": this.minPrice,
-            "maxPrice": this.maxPrice,
-            "minDate": this.minDate,
-            "maxDate": this.maxDate
-        }
-    }
-    
+    } 
 
     onNoClick(): void {
         this.dialogRef.close()
