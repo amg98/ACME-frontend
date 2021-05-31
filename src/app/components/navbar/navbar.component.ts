@@ -71,31 +71,6 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
         })
     }
 
-    async ngOnInit(): Promise<void> {
-
-        console.log(this.router.url)
-        if (this.route.url !== undefined) {
-            this.route.url.subscribe(url => {
-                if (url[0].path !== "trips") {
-                    this.router.navigate(["trips"])
-                    this.route.queryParams
-                        .subscribe(async params => {
-                            if (this.actor != undefined) {
-                                this.keyword = params["keyword"]
-                                this.minDate = params["minDate"]
-                                this.maxDate = params["maxDate"]
-                                this.minPrice = params["minPrice"]
-                                this.maxPrice = params["maxPrice"]
-                                await this.searchTrips()
-                            }
-                        })
-                }
-            })
-        } else {
-            console.log("test")
-            //await this.searchTrips()
-        }
-    }
     advancedSearch(): void {
         const dialogRef = this.dialogRef.open(AdvancedfinderComponent, {
             width: "27em",
@@ -110,20 +85,20 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
         dialogRef.afterClosed().subscribe(res => {
             console.log(res)
             if (res === undefined) return
-            if (res.minPrice === undefined && res.maxPrice === undefined && res.minDate === undefined && res.maxDate === undefined) {
+            if (res.keyword == undefined
+                && res.minPrice === undefined
+                && res.maxPrice === undefined
+                && res.minDate === undefined
+                && res.maxDate === undefined) {
                 this.showAlert("finder/no-filters", "alert-info")
                 return
             }
-            this.keyword = res['keyword']
-            this.minPrice = res['minPrice']
-            this.maxPrice = res['maxPrice']
-            this.minDate = res['minDate']
-            this.maxDate = res['maxDate']
-
-            console.log(this.minPrice)
-
+            this.keyword = res.keyword
+            this.minPrice = res.minPrice
+            this.maxPrice = res.maxPrice
+            this.minDate = res.maxDate
+            this.maxDate = res.minDate
             this.searchTrips();
-            // this.cancelTrip(trip, index, res) aqui llama al metodo que crea el finder para obtener su id y continua el workflow que estabas haciendo
         })
     }
 
