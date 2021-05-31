@@ -1,14 +1,18 @@
 import { HttpHeaders, HttpClient } from "@angular/common/http"
 import { Injectable } from "@angular/core"
 import { environment } from "@env/environment"
+import { BehaviorSubject } from "rxjs";
+import { Trip } from "../models/Trip";
 
 const httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
 }
 
+
 @Injectable({
     providedIn: "root"
 })
+
 export class FinderService {
 
     constructor(private client: HttpClient) { }
@@ -31,10 +35,10 @@ export class FinderService {
     async searchTrips(start: number,
         psize: number,
         keyword: string,
-        minPrice: string,
-        maxPrice: string,
-        minDate: string,
-        maxDate: string): Promise<any> {
+        minPrice: number,
+        maxPrice: number,
+        minDate: Date,
+        maxDate: Date): Promise<any> {
 
         const parameters = {
             startFrom: "" + start,

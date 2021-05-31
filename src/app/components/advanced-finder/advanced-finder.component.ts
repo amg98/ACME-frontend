@@ -4,6 +4,7 @@ import { TranslatorService } from "@services/translator.service"
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog"
 
 export interface AdvancedFinderDialogData {
+    keyword: string,
     minPrice: number,
     maxPrice: number,
     minDate: Date,
@@ -17,13 +18,14 @@ export interface AdvancedFinderDialogData {
 })
 
 export class AdvancedfinderComponent extends TranslatableComponent {
-
+    keyword!: string;
     minPrice!: number;
     maxPrice!: number;
     minDate!: Date;
     maxDate!: Date;
 
     filters: AdvancedFinderDialogData = {
+        "keyword": this.keyword,
         "minPrice": this.minPrice,
         "maxPrice": this.maxPrice,
         "minDate": this.minDate,
@@ -35,7 +37,7 @@ export class AdvancedfinderComponent extends TranslatableComponent {
         public dialogRef: MatDialogRef<AdvancedFinderDialogData>,
         @Inject(MAT_DIALOG_DATA) public data: AdvancedFinderDialogData) {
         super(translator)
-    } 
+    }
 
     onNoClick(): void {
         this.dialogRef.close()

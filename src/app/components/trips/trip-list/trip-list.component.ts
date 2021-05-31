@@ -26,6 +26,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     isExplorer = false;
     isSponsor = false;
     numObjects = MAX_TRIPS;
+    tripNumber!: number;
 
 
     actor!: Actor;
@@ -34,10 +35,10 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     roles!: string[];
 
     keyword!: string;
-    minPrice!: string;
-    maxPrice!: string;
-    minDate!: string;
-    maxDate!: string;
+    minPrice!: number;
+    maxPrice!: number;
+    minDate!: Date;
+    maxDate!: Date;
 
     showfilter = true;
 

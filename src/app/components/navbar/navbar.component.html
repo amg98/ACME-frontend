@@ -67,6 +67,10 @@
                     {{msg["app-title"]}}
                 </button>
                 <app-finder></app-finder>
+                <button mat-button *ngIf=isExplorer (click)="advancedSearch()"
+                    class="advancedSearch-button">
+                    {{msg["advancedSearch"]}}
+                </button>
             </div>
 
             <div class="wrapper">
@@ -76,10 +80,6 @@
                     class="button username">
                     {{loggedActorName}}
                     <mat-icon>dashboard</mat-icon>
-                </button>
-                <button mat-button *ngIf=isExplorer (click)="advancedSearch()"
-                    class="button">
-                    {{msg["advancedSearch"]}}
                 </button>
             </div>
         </mat-toolbar>

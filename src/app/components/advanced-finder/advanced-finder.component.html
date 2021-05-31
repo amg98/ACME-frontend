@@ -1,5 +1,13 @@
 <h2 mat-dialog-title>{{msg["advancedSearch"]}}</h2>
 <div mat-dialog-content>
+  <div class="row1">
+    <div class="col-md-12">
+      <mat-label><b>keyword</b></mat-label>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <input class="form-control" id="keyword" placeholder="" [(ngModel)]="filters.keyword">
+  </div>
   <div class="col1">
     <div class="col-md-12">
       <mat-label><b>{{msg["pricesRange"]}}</b></mat-label>
@@ -26,9 +34,6 @@
 <div mat-dialog-actions class="actions_buttons">
   <button mat-flat-button color="accent" class="search-button" type="submit" [mat-dialog-close]="filters">
     {{msg["search"]}}
-  </button>
-  <button mat-stroked-button color="primary" class="save-button" [mat-dialog-close]="filters">
-    {{msg["save"]}}
   </button>
   <button mat-stroked-button color="warn" (click)="onNoClick()" class="save-button">{{msg["close"]}}</button>
 

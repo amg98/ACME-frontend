@@ -24,10 +24,10 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
     roles!: string[];
 
     keyword!: string;
-    minPrice!: string;
-    maxPrice!: string;
-    minDate!: string;
-    maxDate!: string;
+    minPrice!: number;
+    maxPrice!: number;
+    minDate!: Date;
+    maxDate!: Date;
 
     showfilter = true;
     finderId!: string;
@@ -86,7 +86,7 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
                                 this.maxDate = params["maxDate"]
                                 this.minPrice = params["minPrice"]
                                 this.maxPrice = params["maxPrice"]
-                                //await this.searchTrips()
+                                await this.searchTrips()
                             }
                         })
                 }
@@ -98,9 +98,7 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
     }
     advancedSearch(): void {
         const dialogRef = this.dialogRef.open(AdvancedfinderComponent, {
-            width: "300em",
-            // esto de aqui es opcional!!, no tiene que ver ni con la interfaz ni con 
-            // los datos que retorna ni nada, si quieres lo puedes dejar en blanco
+            width: "27em",
             data: {
                 minPrice: "",
                 maxPrice: "",
@@ -116,6 +114,15 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
                 this.showAlert("finder/no-filters", "alert-info")
                 return
             }
+            this.keyword = res['keyword']
+            this.minPrice = res['minPrice']
+            this.maxPrice = res['maxPrice']
+            this.minDate = res['minDate']
+            this.maxDate = res['maxDate']
+
+            console.log(this.minPrice)
+
+            this.searchTrips();
             // this.cancelTrip(trip, index, res) aqui llama al metodo que crea el finder para obtener su id y continua el workflow que estabas haciendo
         })
     }
@@ -145,7 +152,7 @@ export class NavbarComponent extends TranslatableComponent implements OnDestroy 
             this.minDate, this.maxDate)
             .then(async (val) => {
                 this.finderId = val["_id"]
-                // await this.finderService.getFinderUser(val["_id"])
+                await this.finderService.getFinderUser(val["_id"])
             })
             .catch((err) => console.error(err.message))
     }
