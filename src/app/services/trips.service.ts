@@ -79,25 +79,4 @@ export class TripsService {
 
     }
 
-    async searchTrips(start: number,
-        psize: number,
-        keyword: string,
-        minPrice: string,
-        maxPrice: string,
-        minDate: string,
-        maxDate: string): Promise<Trip[]> {
-
-        const parameters = {
-            startFrom: "" + start,
-            pageSize: "" + psize,
-            keyword: keyword == null ? "" : keyword,
-            minPrice: minPrice == null ? "" : minPrice,
-            maxPrice: maxPrice == null ? "" : maxPrice,
-            minDate: minDate == null ? "" : minDate,
-            maxDate: maxDate == null ? "" : maxDate
-        }
-        return this.client.get<Trip[]>(`${environment.backendURL}/trips`, {
-            params: parameters, observe: "body",
-        }).toPromise()
-    }
 }

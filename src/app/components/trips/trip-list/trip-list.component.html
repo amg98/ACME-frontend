@@ -1,16 +1,18 @@
 <!-- New trip button -->
-<button mat-raised-button id="newTrip" color="accent" type="button" class="card_button" (click)="newTrip();" *ngIf="isManager">
+<button mat-raised-button id="newTrip" color="accent" type="button" class="card_button" (click)="newTrip();"
+  *ngIf="isManager">
   {{msg["newTrip"]}}
 </button>
 
-<div class="content" *ngIf="data != undefined && data.length > 0">
-  <div class="trip-card" *ngFor="let trip of data">
-    <div *ngIf="this.displayTrip(trip)" class="card mb-3 ml-4 " infiniteScroll (scrolled)="onScrollDown()"
+<div class="content" *ngIf="dataFiltered != undefined && dataFiltered.length > 0">
+  <div class="trip-card" *ngFor="let trip of dataFiltered">
+    <div class="card mb-3 ml-4 " infiniteScroll (scrolled)="onScrollDown()"
       (scrolledUp)="onScrollUp()">
 
       <!-- Cards-->
-      <div layout="row" flex="33" ng-repeat="let trip of data">
+      <div layout="row" flex="33" ng-repeat="let trip of dataFiltered">
         <mat-card class="mat-elevation-z4">
+
           <h3 class="title">{{trip.title}}</h3>
           <img class="card__image" src="{{getFirstPicture(trip)}}" alt="{{trip.title}}">
 
@@ -23,12 +25,12 @@
               <p>{{trip.description}}</p>
             </details>
             <mat-card-actions>
-              <button mat-stroked-button color="primary" id = "detail" routerLink="/trips/display/{{trip._id}}"
+              <button mat-stroked-button color="primary" id="detail" routerLink="/trips/display/{{trip._id}}"
                 class="mdc-button mdc-button--raised">
                 <mat-icon>pageview icon</mat-icon>
               </button>
               <button mat-stroked-button color="primary" *ngIf="isManager && checkManagerId(trip.managerID)"
-                routerLink="/trips/{{trip._id}}" id = "edit" class="edit-trip">
+                routerLink="/trips/{{trip._id}}" id="edit" class="edit-trip">
                 <mat-icon>edit</mat-icon>
               </button>
               <button mat-raised-button color="warn" *ngIf="trip.cancelReason" class="btn-cancelled" type="button"
