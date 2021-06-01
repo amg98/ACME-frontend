@@ -78,12 +78,12 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
         if (this.route.url !== undefined) {
 
             this.data = await this.tripService.getAllTrips()
-            console.log(this.data);
+            console.log(this.data)
             this.data.forEach(trip => {
                 if (this.checkDate(trip.startDate)) {
                     this.dataFiltered.push(trip)
                 }
-            });
+            })
         }
     }
 
