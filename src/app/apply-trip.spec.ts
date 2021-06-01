@@ -62,7 +62,7 @@ class MatDialogStub {
     }
 }
 
-fdescribe("Apply for a trip", () => {
+describe("Apply for a trip", () => {
 
     const tripID = "123"
     const actorID = "12"
