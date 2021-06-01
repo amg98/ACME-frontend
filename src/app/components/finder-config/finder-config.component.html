@@ -1,0 +1,24 @@
+<mat-card class="forms__card">
+    <mat-card-title class="message forms__title"> {{msg["manage-finder"]}} </mat-card-title>
+    <mat-spinner *ngIf="showSpiner" diameter="35" class="spinner"></mat-spinner>
+
+    <mat-accordion class="accordion">
+        <div *ngFor="let finder of finders; let finderIndex = index">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <span class=" ">
+                         <q>{{finder.keyword}}</q>    {{finder.createdAt | date: "MM/dd/yy - hh:mm"}} 
+                        </span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="buttons">
+                    <button class="edit-button" mat-raised-button
+                        (click)="onModify(finder)">{{msg["finder/edit"]}}</button>
+                    <button class="show-button" mat-raised-button
+                        (click)="onShowResults(finder)">{{msg["finder/results"]}}</button>
+                </div>
+            </mat-expansion-panel>
+        </div>
+    </mat-accordion>
+</mat-card>

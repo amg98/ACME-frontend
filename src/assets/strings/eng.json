@@ -228,8 +228,17 @@
     "thema": "Thema",
     "fontSize": "Font size",
     "fontFamily": "Typography",
-    "current": "Current",
+    "current": "Current", 
     
+    "manage-finder":"Manage finder",
+    "finder/no-filters":"No filters to apply",
+    "finder/results":"Show results",
+    "finder/edit":"Modify",
+
+    "advancedSearch": "Advanced Search",
+    "pricesRange": "Prices Range",
+    "datesRange": "Dates Range",
+
     "picture": "Picture",
     "addPictures": "Add pictures"
 }
