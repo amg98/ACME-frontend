@@ -18,7 +18,7 @@ import { PreferencesService } from "@services/preferences.service"
 })
 export class TripDisplayComponent extends TranslatableComponent implements OnInit {
 
-    current: string |null
+    current: string | null
     loggedActorName: string | null;
     loggedActorSub: Subscription;
     isAdmin = false;
@@ -26,7 +26,7 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     isExplorer = false;
     isSponsor = false;
 
-    trip!: Trip;
+    trip: Trip;
     id!: string;
     sponsorship!: Sponsorship;
 
@@ -36,12 +36,31 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
         private sponsorshipsService: SponsorshipsService,
         private router: Router,
         private route: ActivatedRoute,
-        private snackBar: MatSnackBar, 
+        private snackBar: MatSnackBar,
         preference: PreferencesService) {
         super(translator)
 
+        this.trip = {
+            ticker: "",
+            title: "",
+            requirements: [],
+            startDate: "",
+            endDate: "",
+            pictures: [],
+            cancelReason: "",
+            isCancelled: false,
+            isPublished: true,
+            price: 0,
+            stages: [{
+                title: "",
+                description: "",
+                price: 0,
+            }],
+            managerID: ""
+        }
+
         this.current = preference.getPreference("current")
-        
+
         this.loggedActorName = ""
         this.loggedActorSub = actorsService.subscribeToLoggedActor(loggedActor => {
             if (typeof loggedActor == "undefined") this.loggedActorName = ""
@@ -61,16 +80,14 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
         // Recover id param
         this.id = this.route.snapshot.params["id"]
         // console.log('id trip: ' + this.id);
-        const param = this.route.snapshot.params["paramKey"]
-        // console.log('param: ' + param);
 
         this.trip = await this.tripService.getTrip(this.id)
         console.log(this.trip._id)
 
         if (this.trip._id) {
-            await (await this.sponsorshipsService.getRandomSponsorship(this.trip._id)).subscribe(res=>{
+            (await this.sponsorshipsService.getRandomSponsorship(this.trip._id)).subscribe(res => {
                 this.sponsorship
-            })    
+            })
         }
     }
 
