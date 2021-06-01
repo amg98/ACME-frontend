@@ -1,83 +1,86 @@
 <div class="trip">
 
-  <h3 class="title">{{trip.title}}</h3>
-  <div class="button-container">
-    
-    <!-- boton solicitar -->
-    <div class="btn-apply">
-      <div *ngIf="trip != undefined && trip !=null"></div>
-      <button mat-raised-button *ngIf="isExplorer && !trip.isCancelled" color="accent"
-        (click)="onApply(trip._id!)" id="applybutton" class="btn btn-primary">
-        {{msg["apply"]}}
-      </button>
+    <h3 class="title">{{trip.title}}</h3>
+    <div class="button-container">
+
+        <!-- boton solicitar -->
+        <div class="btn-apply">
+            <div *ngIf="trip != undefined && trip !=null"></div>
+            <button mat-raised-button *ngIf="isExplorer && !trip.isCancelled" color="accent"
+                (click)="onApply(trip._id!)" id="applybutton" class="btn btn-primary">
+                {{msg["apply"]}}
+            </button>
+        </div>
+
+        <!-- boton sponsor -->
+        <div class="btn-sponsor">
+            <div *ngIf="trip != undefined && trip !=null "></div>
+            <button mat-raised-button *ngIf="isSponsor" color="accent" (click)="goSponsor(trip._id!)"
+                class="btn btn-primary">
+                {{msg["sponsorText"]}}
+            </button>
+        </div>
+
+        <!-- boton favoritos -->
+        <div class="btn-fav">
+            <app-add-to-favourites *ngIf="isExplorer" tripID="{{trip._id}}"></app-add-to-favourites>
+        </div>
     </div>
 
-    <!-- boton sponsor -->
-  <div class="btn-sponsor">
-    <div *ngIf="trip != undefined && trip !=null "></div>
-    <button mat-raised-button *ngIf="isSponsor" color="accent" (click)="goSponsor(trip._id!)" class="btn btn-primary">
-      {{msg["sponsorText"]}}
-    </button>
-  </div>
+    <mat-card class="card">
+        <!-- icon edit -->
+        <button mat-stroked-button color="primary" *ngIf="isManager && actorsService.checkManagerId(trip.managerID)"
+            routerLink="/trips/{{trip._id}}" class="edit-trip">
+            <mat-icon>edit</mat-icon>
+        </button>
 
-  <!-- boton favoritos -->
-  <div class="btn-fav">
-    <app-add-to-favourites tripID="{{trip._id}}"></app-add-to-favourites>
-  </div>
-  </div>
-
-  <mat-card class="card">
-    <!-- icon edit -->
-    <button mat-stroked-button color="primary" *ngIf="isManager && actorsService.checkManagerId(trip.managerID)" routerLink="/trips/{{trip._id}}" class="edit-trip">
-      <mat-icon>edit</mat-icon>
-    </button>
-
-    <mat-card class="card1">
-      <div class="info">
-        <h3 class="card-title The-explorer-4-hex"><b>Ticker:</b> {{trip.ticker}}</h3>
-        <h3 class="card-title The-explorer-4-hex"><b>{{msg["price"]}}: </b> {{trip.price}} {{current}}</h3>
-        <h3><b>{{msg["startDate"]}}:</b> {{trip.startDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
-        <h3><b>{{msg["endDate"]}}:</b> {{trip.endDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
-      </div>
-
-     
-      
-      <!-- requirements -->
-      <mat-card *ngIf="trip.requirements != null">
-        <div *ngFor="let requirement of trip.requirements; let i = index">
-          <p><b>{{i+1}}: </b> {{requirement}}</p>
-        </div>
-      </mat-card>
-      <!-- stages -->
-      <mat-card>
-        <mat-accordion>
-
-          <mat-expansion-panel class="accordion" *ngFor="let stage of trip.stages">
-            <mat-expansion-panel-header>
-              <mat-panel-title><b>{{stage.title}}</b>
-              </mat-panel-title>
-              <mat-panel-description class="panel-description">
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <div class="panel-content">
-              <p class="content-section" class="content">{{stage.description}}</p>
-              <p class="content-section" class="content">{{stage.price}} {{current}}</p>
+        <mat-card class="card1">
+            <div class="info">
+                <h3 class="card-title The-explorer-4-hex"><b>Ticker:</b> {{trip.ticker}}</h3>
+                <h3 class="card-title The-explorer-4-hex"><b>{{msg["price"]}}: </b> {{trip.price}} {{current}}</h3>
+                <h3><b>{{msg["startDate"]}}:</b> {{trip.startDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
+                <h3><b>{{msg["endDate"]}}:</b> {{trip.endDate | date:"MM/dd/yy - hh:mm:ss"}}</h3>
             </div>
-          </mat-expansion-panel>
-        </mat-accordion>
-      </mat-card>
+
+
+
+            <!-- requirements -->
+            <mat-card *ngIf="trip.requirements != null">
+                <div *ngFor="let requirement of trip.requirements; let i = index">
+                    <p><b>{{i+1}}: </b> {{requirement}}</p>
+                </div>
+            </mat-card>
+            <!-- stages -->
+            <mat-card>
+                <mat-accordion>
+
+                    <mat-expansion-panel class="accordion" *ngFor="let stage of trip.stages">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title><b>{{stage.title}}</b>
+                            </mat-panel-title>
+                            <mat-panel-description class="panel-description">
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div class="panel-content">
+                            <p class="content-section" class="content">{{stage.description}}</p>
+                            <p class="content-section" class="content">{{stage.price}} {{current}}</p>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </mat-card>
+        </mat-card>
+
+        <mat-card>
+            <h3 id="display-description">{{trip.description}}</h3>
+        </mat-card>
+
+
+        <mat-carousel timings="250ms ease-in" [autoplay]="true" color="accent" maxWidth="auto" [loop]="true"
+            [hideArrows]="false" [hideIndicators]="false" [useKeyboard]="true" [useMouseWheel]="false"
+            orientation="ltr">
+            <mat-carousel-slide #matCarouselSlide *ngFor="let picture of trip.pictures let i = index;"
+                [image]="getPicture(i)" overlayColor="#00000040" [hideOverlay]="false"></mat-carousel-slide>
+        </mat-carousel>
+
     </mat-card>
-
-    <mat-card>
-      <h3 id="display-description">{{trip.description}}</h3>
-    </mat-card>
-
-
-    <mat-carousel timings="250ms ease-in" [autoplay]="true" color="accent" maxWidth="auto" [loop]="true"
-      [hideArrows]="false" [hideIndicators]="false" [useKeyboard]="true" [useMouseWheel]="false" orientation="ltr">
-      <mat-carousel-slide #matCarouselSlide *ngFor="let picture of trip.pictures let i = index;" [image]="getPicture(i)"
-        overlayColor="#00000040" [hideOverlay]="false"></mat-carousel-slide>
-    </mat-carousel>
-    
-  </mat-card>
 </div>

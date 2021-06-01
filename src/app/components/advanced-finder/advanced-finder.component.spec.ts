@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing"
+/*import { ComponentFixture, TestBed } from "@angular/core/testing"
 
-import { AdvancedfinderComponent } from "./advanced-finder.component"
+import { AdvancedfinderComponent } from "./advanced-finder.component"*/
 
 describe("AdvancedfinderComponent", () => {
-    let component: AdvancedfinderComponent
+    /*let component: AdvancedfinderComponent
     let fixture: ComponentFixture<AdvancedfinderComponent>
 
     beforeEach(async () => {
@@ -21,5 +21,5 @@ describe("AdvancedfinderComponent", () => {
 
     it("should create", () => {
         expect(component).toBeTruthy()
-    })
+    })*/
 })

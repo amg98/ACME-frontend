@@ -28,6 +28,7 @@ describe("ManagerApplicationsComponent", () => {
         isCancelled: false,
         isPublished: true,
         price: 120,
+        managerID: "123",
         stages: [
             {
                 title: "Stage 1",
