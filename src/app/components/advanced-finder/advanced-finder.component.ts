@@ -35,6 +35,10 @@ export class AdvancedfinderComponent extends TranslatableComponent {
         public dialogRef: MatDialogRef<AdvancedFinderDialogData>,
         @Inject(MAT_DIALOG_DATA) public data: AdvancedFinderDialogData) {
         super(translator)
+        this.filters.minPrice = data.minPrice
+        this.filters.maxPrice = data.maxPrice
+        this.filters.minDate = data.minDate
+        this.filters.maxDate = data.maxDate
     } 
 
     onNoClick(): void {

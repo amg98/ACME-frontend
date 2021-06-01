@@ -46,7 +46,7 @@
         <app-flat-rate *ngIf="isAdmin"></app-flat-rate>
         <button *ngIf="isExplorer" mat-button class="menu-button" routerLink="/finder/config" (click)="sidenav.close()">
             <mat-icon>settings</mat-icon>
-            {{msg["finder-config"]}}
+            {{msg["manage-finder"]}}
         </button>
         <button *ngIf="isExplorer" mat-button class="menu-button" routerLink="/explorer/preferences"
             (click)="sidenav.close()">
@@ -78,7 +78,7 @@
                     <mat-icon>dashboard</mat-icon>
                 </button>
                 <button mat-button *ngIf=isExplorer (click)="advancedSearch()"
-                    class="button">
+                    class="button username">
                     {{msg["advancedSearch"]}}
                 </button>
             </div>

@@ -230,9 +230,10 @@
     "fontFamily": "Typography",
     "current": "Current", 
     
-    "finder-config":"Finder settings",
+    "manage-finder":"Manage finder",
     "finder/no-filters":"No filters to apply",
-    
+    "finder/results":"Show results",
+    "finder/edit":"Modify",
 
     "advancedSearch": "Advanced Search",
     "pricesRange": "Prices Range",

@@ -230,8 +230,10 @@
     "fontFamily": "Tipo de fuente",
     "current": "Moneda",
 
-    "finder-config":"Configuración de búsqueda",
+    "manage-finder":"Administrar buscador",
     "finder/no-filters":"No hay filtros para aplicar",
+    "finder/results":"Ver resultados",
+    "finder/edit":"Modificar",
 
     "picture": "Imagen", 
     "addPictures": "Añade imagen",

@@ -1,6 +1,8 @@
 import { HttpHeaders, HttpClient } from "@angular/common/http"
 import { Injectable } from "@angular/core"
-import { environment } from "@env/environment"
+import { environment } from "@env/environment"  
+import { Finder } from "../models/Finder"
+import { ActorsService } from "./actors.service"
 
 const httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -11,10 +13,15 @@ const httpOptions = {
 })
 export class FinderService {
 
-    constructor(private client: HttpClient) { }
+    constructor(private client: HttpClient, private actorSrv: ActorsService) { }
 
     async getFinderUser(id: string) {
         return this.client.get(`${environment.backendURL}/finders/${id}`).toPromise()
+    }
+
+    async getFindersByActor(): Promise<Finder[]> {
+        const actorId = this.actorSrv.getLoggedActor()?._id
+        return await this.client.get(`${environment.backendURL}/finders/${actorId}`).toPromise() as Finder[]
     }
 
     async updateFinderUser(finder: any, id: string) {
