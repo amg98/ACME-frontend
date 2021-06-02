@@ -10,6 +10,7 @@ import { MatSnackBar } from "@angular/material/snack-bar"
 import { Trip } from "src/app/models/Trip"
 import { Subscription } from "rxjs"
 import { PreferencesService } from "@services/preferences.service"
+import { HistoryService } from "@services/history.service"
 
 @Component({
     selector: "app-trip-display",
@@ -37,7 +38,7 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
         private router: Router,
         private route: ActivatedRoute,
         private snackBar: MatSnackBar,
-        preference: PreferencesService) {
+        preference: PreferencesService, private historySrv: HistoryService) {
         super(translator)
 
         this.trip = {
@@ -83,7 +84,7 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
 
         this.trip = await this.tripService.getTrip(this.id)
         console.log(this.trip._id)
-
+        this.historySrv.updateHistory(this.id, this.trip.title, this.trip.description)//se agrega esta linea para que se guarde en el historial 
         if (this.trip._id) {
             (await this.sponsorshipsService.getRandomSponsorship(this.trip._id)).subscribe(res => {
                 this.sponsorship

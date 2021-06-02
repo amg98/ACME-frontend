@@ -1,0 +1,29 @@
+@import "../../shared/styles/forms.scss";
+
+.mat-table {
+    width: 100%;
+  }
+  
+  .title {
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    margin-right: 20%;
+    margin-left: 20%;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    text-align: center;
+    font-weight: 300;
+    font-size: 2rem;
+  }
+  
+  .spinner {
+    margin: 0 auto;
+    margin-top: 2em;
+    margin-bottom: 100%;
+  }
+  
+  .buttons{
+    margin: 0.5rem;
+  }

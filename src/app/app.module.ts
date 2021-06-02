@@ -75,7 +75,8 @@ import { SizeSelectorComponent } from "./components/size-selector/size-selector.
 import { CurrentSelectorComponent } from "./components/current-selector/current-selector.component"
 import { AdvancedfinderComponent } from "./components/advanced-finder/advanced-finder.component"
 import { ApplicationPaymentComponent } from "./components/application-payment/application-payment.component"
-import { FinderConfigComponent } from "./components/finder-config/finder-config.component"
+import { FinderConfigComponent } from "./components/finder-config/finder-config.component";
+import { HistoryComponent } from './components/history/history.component'
 
 
 @NgModule({
@@ -121,6 +122,7 @@ import { FinderConfigComponent } from "./components/finder-config/finder-config.
         AdvancedfinderComponent,
         ApplicationPaymentComponent,
         FinderConfigComponent,
+        HistoryComponent,
     ],
     imports: [
         CommonModule,

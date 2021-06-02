@@ -42,7 +42,7 @@
         <button *ngIf="isAdmin" mat-button class="menu-button" routerLink="/admin/cube" (click)="sidenav.close()">
             <mat-icon>extension</mat-icon>
             {{msg.cube}}
-        </button> 
+        </button>
         <app-flat-rate *ngIf="isAdmin"></app-flat-rate>
         <button *ngIf="isExplorer" mat-button class="menu-button" routerLink="/finder/config" (click)="sidenav.close()">
             <mat-icon>settings</mat-icon>
@@ -52,6 +52,11 @@
             (click)="sidenav.close()">
             <mat-icon>settings</mat-icon>
             {{msg["preferences"]}}
+        </button> 
+        <button *ngIf="isExplorer" mat-button class="menu-button" routerLink="/explorer/history"
+            (click)="sidenav.close()">
+            <mat-icon>book</mat-icon>
+            {{msg["trip/history"]}}
         </button>
         <button mat-button class="menu-button" (click)="logout()" (click)="sidenav.close()">
             <mat-icon>exit_to_app</mat-icon>
@@ -77,8 +82,7 @@
                     {{loggedActorName}}
                     <mat-icon>dashboard</mat-icon>
                 </button>
-                <button mat-button *ngIf=isExplorer (click)="advancedSearch()"
-                    class="button username">
+                <button mat-button *ngIf=isExplorer (click)="advancedSearch()" class="button username">
                     {{msg["advancedSearch"]}}
                 </button>
             </div>

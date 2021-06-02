@@ -26,6 +26,7 @@ import { PreferencesComponent } from "@components/preferences/preferences.compon
 import { AdvancedfinderComponent } from "@components/advanced-finder/advanced-finder.component"
 import { ApplicationPaymentComponent } from "@components/application-payment/application-payment.component"
 import { FinderConfigComponent } from "@components/finder-config/finder-config.component"
+import { HistoryComponent } from "@components/history/history.component"
 
 
 export const routes: Routes = [
@@ -36,6 +37,7 @@ export const routes: Routes = [
     { path: "admin/users", component: UsersListComponent, canActivate: [AdminGuard] },
     { path: "admin/cube", component: CubeComponent, canActivate: [AdminGuard] },
     { path: "applications", component: AppsExplorerListComponent, canActivate: [ExplorerGuard] },
+    { path: "explorer/history", component: HistoryComponent, canActivate: [ExplorerGuard] },
     { path: "finder/config", component: FinderConfigComponent, canActivate: [ExplorerGuard] },
     { path: "application-payment", component: ApplicationPaymentComponent },
     { path: "manager/apps", component: ManagerApplicationsComponent, canActivate: [ManagerGuard] },
@@ -57,7 +59,7 @@ export const routes: Routes = [
 
         ]
     },
-    { path: "",redirectTo: "trips", pathMatch: "full"},
+    { path: "", redirectTo: "trips", pathMatch: "full" },
 ]
 
 @NgModule({

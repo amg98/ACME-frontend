@@ -150,6 +150,7 @@
     "favourite-lists/add-to-favourites": "Añadir a favoritos",
     "favourite-lists/already-exists": "El viaje ya ha sido añadido a esta lista",
     "favourite-lists/add-success": "El viaje ha sido añadido satisfactoriamente",
+    "favourite/trip": "Ir al favorito",
 
     "trips/cancel": "Cancelar viaje",
     "trips/enter-reason": "Introduzca el motivo",
@@ -240,5 +241,12 @@
 
     "advancedSearch": "Búsqueda avanzada",
     "pricesRange": "Rango de precios",
-    "datesRange": "Rango de fechas"
+    "datesRange": "Rango de fechas",
+
+    "trip/history": "Historial de Viajes",
+    "num. of visits":"Num. visitas", 
+    "frequency":"Frecuencia",
+
+    "ticker": "ticker"
+
 }

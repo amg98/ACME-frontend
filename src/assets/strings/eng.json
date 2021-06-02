@@ -150,6 +150,7 @@
     "favourite-lists/add-to-favourites": "Add to favourites",
     "favourite-lists/already-exists": "The trips is already in this list",
     "favourite-lists/add-success": "The trip has been successfully added",
+    "favourite/trip": "Go to the favourite",
 
     "trips/cancel": "Cancel trip",
     "trips/enter-reason": "Enter the reason",
@@ -240,5 +241,13 @@
     "datesRange": "Dates Range",
 
     "picture": "Picture",
-    "addPictures": "Add pictures"
+    "addPictures": "Add pictures",
+
+    "trip/history": "Trip History",
+    "num. of visits":"Num. visits", 
+    "frequency":"Frecuency",
+
+    "ticker": "ticker"
+
+
 }
