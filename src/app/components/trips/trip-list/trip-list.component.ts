@@ -56,6 +56,11 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
         this.tripService.subscribeToSearchResults(trips => {
             if (trips == null) return
             this.data = trips
+            this.data.forEach(trip => {
+                if (this.checkDate(trip.startDate)) {
+                    this.dataFiltered.push(trip)
+                }
+            })
         })
 
         this.loggedActorName = ""
