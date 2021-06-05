@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core"
-import { MatSort } from "@angular/material/sort"
+import { Component, OnInit } from "@angular/core" 
 import { MatTableDataSource } from "@angular/material/table"
 import { TranslatableComponent } from "@components/translatable/translatable.component"
 import { HistoryService } from "@services/history.service"
@@ -19,8 +18,7 @@ export interface HistoryTrips {
     templateUrl: "./history.component.html",
     styleUrls: ["./history.component.scss"],
 })
-export class HistoryComponent extends TranslatableComponent implements OnInit {
-    @ViewChild(MatSort) sort!: MatSort;
+export class HistoryComponent extends TranslatableComponent implements OnInit { 
     displayedColumns: string[] = [
         "title",
         "description",

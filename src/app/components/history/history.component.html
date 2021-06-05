@@ -1,6 +1,6 @@
 <h4 class="forms__title"> {{msg["trip/history"]}}</h4>
 
-<table mat-table [dataSource]="dataSource" matSort>
+<table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef> {{msg["title"]}} </th>
         <td mat-cell *matCellDef="let trip"> {{trip.title}} </td>
@@ -10,7 +10,6 @@
         <th mat-header-cell *matHeaderCellDef> {{msg["description"]}} </th>
         <td mat-cell *matCellDef="let trip"> {{trip.description}} </td>
     </ng-container>
-
 
     <ng-container matColumnDef="num. of visits">
         <th mat-header-cell *matHeaderCellDef> {{msg["num. of visits"]}} </th>
@@ -26,32 +25,13 @@
         <th mat-header-cell *matHeaderCellDef> </th>
         <td mat-cell *matCellDef="let trip; let i = index">
             <div *ngIf="i == 0">
-                <button mat-raised-button color="primary"  
-                    type="button" class="buttons"routerLink="/trips/display/{{trip._id}}"> {{msg["favourite/trip"]}}
-               
+                <button mat-raised-button color="primary" type="button"
+                 class="buttons" routerLink="/trips/display/{{trip._id}}">
+                    {{msg["favourite/trip"]}}
                 </button>
             </div>
         </td>
     </ng-container>
-
-    <!-- <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef> </th>
-        <td mat-cell *matCellDef="let trip; let i = index">
-            <div *ngIf="(checkDate(trip.startDate))">
-                <button mat-raised-button color="primary" [disabled]="trip.isCancelled" type="button"
-                    class="buttons" [disabled]="!trip.isPublished" routerLink="/trips/{{trip._id}}">
-                    <mat-icon>edit</mat-icon>
-                </button>
-                <button mat-raised-button color="warn" [disabled]="(trip.isCancelled)"
-                    type="button" class="buttons"(click)="onCancel(trip, i)">
-                    <mat-icon>clear</mat-icon>
-                </button>
-                <button mat-raised-button color="accent" type="button" class="buttons" (click)="deleteTrip(trip)">
-                    <mat-icon>delete_forever</mat-icon>
-                </button>
-            </div>
-        </td>
-    </ng-container> -->
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
