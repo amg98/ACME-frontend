@@ -6,6 +6,7 @@ import { HistoryTrips } from "@components/history/history.component"
 })
 export class HistoryService {
 
+    HISTORY_KEY = "history"
     history: HistoryTrips[] = []
     saveHistory: HistoryTrips[] = []
 
@@ -22,10 +23,10 @@ export class HistoryService {
         this.visitedTrip.visits = 1
         this.visitedTrip.frequency = 0
 
-        const localStorageHistory = localStorage.getItem("history")
+        const localStorageHistory = localStorage.getItem(this.HISTORY_KEY)
         if (localStorageHistory == null) {
             this.saveHistory.push(this.visitedTrip)
-            localStorage.setItem("history", JSON.stringify(this.saveHistory))
+            localStorage.setItem(this.HISTORY_KEY, JSON.stringify(this.saveHistory))
             return
         } else {
             this.saveHistory = JSON.parse(localStorageHistory)
@@ -40,7 +41,7 @@ export class HistoryService {
         })
 
         if (!exist) this.saveHistory.push(this.visitedTrip)
-        localStorage.setItem("history", JSON.stringify(this.saveHistory))
+        localStorage.setItem(this.HISTORY_KEY, JSON.stringify(this.saveHistory))
     }
     //habia apagado el
     getHistory(): HistoryTrips[] {
@@ -50,7 +51,7 @@ export class HistoryService {
     }
 
     getHistoryFromLocalStorage(): void {// aqui era que tenia el error
-        const localStorageHistory = localStorage.getItem("history")
+        const localStorageHistory = localStorage.getItem(this.HISTORY_KEY)
         if (localStorageHistory == null) {
             return
         }
