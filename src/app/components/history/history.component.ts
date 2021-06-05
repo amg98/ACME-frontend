@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core" 
+import { Component, OnInit } from "@angular/core"
 import { MatTableDataSource } from "@angular/material/table"
 import { TranslatableComponent } from "@components/translatable/translatable.component"
 import { HistoryService } from "@services/history.service"
 import { TranslatorService } from "@services/translator.service"
 
 export interface HistoryTrips {
-    _id: string;
-    title: string;
-    visits: number;
-    description: string;
-    frequency: number;
+    _id: string
+    title: string
+    visits: number
+    description: string
+    frequency: number
     button: string
 }
 
@@ -20,11 +20,7 @@ export interface HistoryTrips {
 })
 export class HistoryComponent extends TranslatableComponent implements OnInit { 
     displayedColumns: string[] = [
-        "title",
-        "description",
-        "num. of visits",
-        "frequency",
-        "button"
+        "title", "description", "num. of visits", "frequency", "button"
     ];
 
     dataSource: MatTableDataSource<HistoryTrips>;
@@ -34,8 +30,8 @@ export class HistoryComponent extends TranslatableComponent implements OnInit {
         this.dataSource = new MatTableDataSource<HistoryTrips>()
     }
 
-    ngOnInit(): void { 
-        this.dataSource.data = this.historySrv.getHistory().sort(this.order)// ordenar el arreglo del historial que se obtine 
+    ngOnInit(): void { // ordenar el arreglo del historial que se obtine 
+        this.dataSource.data = this.historySrv.getHistory().sort(this.order)
     }
 
     order = function (o1: HistoryTrips, o2: HistoryTrips): number {//funcion para ordenar el arreglo
