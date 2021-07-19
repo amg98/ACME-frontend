@@ -43,7 +43,7 @@ export class HistoryService {
         if (!exist) this.saveHistory.push(this.visitedTrip)
         localStorage.setItem(this.HISTORY_KEY, JSON.stringify(this.saveHistory))
     }
-    //habia apagado el
+ 
     getHistory(): HistoryTrips[] {
         this.getHistoryFromLocalStorage()//se carga lo que este en el localStorage, que era la funcion que me daba error
         this.history = this.getFrecuencies(this.history, this.getVisitCount(this.history))
